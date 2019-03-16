@@ -16,6 +16,7 @@
     "noUnusedLocals": false,
     "importHelpers": true,
     "strictNullChecks": true,
+    "experimentalDecorators": true,
     "suppressImplicitAnyIndexErrors": true,
     "paths": {
       "@styles": ["src/styles"],
