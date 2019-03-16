@@ -25,8 +25,11 @@ const resolveLessRules = require('./utils/resolveLessRules');
 const resolveSource = (...args) => path.resolve(paths.appSrc, ...args);
 
 const resolvedAlias = Object.keys(paths.alias)
-  .map(key => ({ key: [key], path: resolveSource(paths.alias[key]) }))
-  .reduce((a, c) => ( a[c.key] = c.path, a), {});
+  .map(key => ({
+    key: [key],
+    path: resolveSource(paths.alias[key])
+  }))
+  .reduce((a, c) => (a[c.key] = c.path, a), {});
 
 module.exports = {
   context: paths.appSrc,
@@ -62,7 +65,8 @@ module.exports = {
         test: lessModuleRegex,
         localIdentName: '[name]__[local]___[hash:base64:5]',
         extractPlugin: extractMoudleScssPlugin,
-        path: __dirname
+        path: __dirname,
+        ortherLoaders: ['css-type-loader']
       }),
     ]
   },

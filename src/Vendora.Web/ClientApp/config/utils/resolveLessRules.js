@@ -5,7 +5,8 @@ module.exports = function ({
   extractPlugin,
   localIdentName,
   path,
-  sideEffects
+  sideEffects,
+  ortherLoaders = [],
 }) {
   return ({
     test,
@@ -15,8 +16,8 @@ module.exports = function ({
     use: extractPlugin.extract({
       fallback: 'style-loader',
       use: [
-        'css-type-loader',
         'css-hot-loader',
+        ...ortherLoaders,
         {
           loader: 'css-loader',
           query: {

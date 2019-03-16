@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vendora.Application", "src\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vendora.UnitTests", "tests\Vendora.UnitTests\Vendora.UnitTests.csproj", "{76E29311-F761-42BF-8FF7-1001E5489597}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vendora.IntegrationTests", "src\Vendora.IntegrationTests\Vendora.IntegrationTests.csproj", "{11F6A8F2-E717-467E-A297-8B6E7E0401F7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vendora.IntegrationTests", "tests\Vendora.IntegrationTests\Vendora.IntegrationTests.csproj", "{11F6A8F2-E717-467E-A297-8B6E7E0401F7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vendora.WebAdmin", "src\Vendora.WebAdmin\Vendora.WebAdmin.csproj", "{C609793D-1FDD-4F1C-915D-EBD5168730E6}"
 EndProject
