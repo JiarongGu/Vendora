@@ -7,6 +7,8 @@ namespace Vendora.Application.Models.Entities
 {
     public class Enquiry
     {
+        public string Id { get; set; }
+
         public string UserId { get; set; }
 
         public EnquiryType EnquiryType { get; set; }
