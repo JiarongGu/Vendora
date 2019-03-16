@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Vendora.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     public class SampleDataController : Controller
     {
         private static string[] Summaries = new[]

@@ -18,8 +18,8 @@
     "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
     "paths": {
-      "@shared": ["src/shared"],
-      "@shared*": ["src/shared*"],
+      "@styles": ["src/styles"],
+      "@styles*": ["src/styles*"],
       "@models": ["src/models"],
       "@models*": ["src/models*"],
       "@datasources": ["src/datasources"],

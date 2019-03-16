@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vendora.IntegrationTests", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vendora.WebAdmin", "src\Vendora.WebAdmin\Vendora.WebAdmin.csproj", "{C609793D-1FDD-4F1C-915D-EBD5168730E6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vendora.Infrastructure", "src\Vendora.Infrastructure\Vendora.Infrastructure.csproj", "{8DD79395-8DDD-4D70-B78D-B692E74C5B84}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,10 @@ Global
 		{C609793D-1FDD-4F1C-915D-EBD5168730E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C609793D-1FDD-4F1C-915D-EBD5168730E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C609793D-1FDD-4F1C-915D-EBD5168730E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DD79395-8DDD-4D70-B78D-B692E74C5B84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DD79395-8DDD-4D70-B78D-B692E74C5B84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DD79395-8DDD-4D70-B78D-B692E74C5B84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DD79395-8DDD-4D70-B78D-B692E74C5B84}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,6 +59,7 @@ Global
 		{76E29311-F761-42BF-8FF7-1001E5489597} = {AE7A3E79-BF7B-4537-923B-0AE7C8E98ECB}
 		{11F6A8F2-E717-467E-A297-8B6E7E0401F7} = {AE7A3E79-BF7B-4537-923B-0AE7C8E98ECB}
 		{C609793D-1FDD-4F1C-915D-EBD5168730E6} = {C9175D9F-5678-484C-9F66-7F4B6A2FFAC0}
+		{8DD79395-8DDD-4D70-B78D-B692E74C5B84} = {C9175D9F-5678-484C-9F66-7F4B6A2FFAC0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A54BB384-EE77-4F78-B77C-83931253C7E0}

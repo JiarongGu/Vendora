@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Vendora.Web.Services;
 
 namespace Vendora
 {
@@ -27,6 +28,10 @@ namespace Vendora
             {
                 configuration.RootPath = "ClientApp/build";
             });
+
+            services.AddScoped<ISpaPrerenderingService, SpaPrerenderingService>();
+
+            ServiceLocator.SetLocatorProvider(services.BuildServiceProvider());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,24 +49,22 @@ namespace Vendora
             }
 
             app.UseHttpsRedirection();
+
+            app.Map("/api", apiApp => {
+                apiApp.UseMvc(routes => routes.MapRoute("default", "{controller}/{action=Index}/{id?}"));
+            });
+
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
-
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller}/{action=Index}/{id?}");
-            });
 
             app.UseSpa(spa =>
             {
                 spa.Options.SourcePath = "ClientApp";
-
-                if (env.IsDevelopment())
+                spa.UseSpaPrerendering(options =>
                 {
-                    spa.UseReactDevelopmentServer(npmScript: "start");
-                }
+                    options.BootModulePath = $"{spa.Options.SourcePath}/build/server/bundle.js";
+                    options.SupplyData = ServiceLocator.Current.GetInstance<ISpaPrerenderingService>().Process;
+                });
             });
         }
     }

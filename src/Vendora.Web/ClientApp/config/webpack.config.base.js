@@ -17,21 +17,16 @@ const extractMoudleScssPlugin = new ExtractTextPlugin({
 });
 
 // style files regexes
-const sassRegex = /\.(less)$/;
-const sassModuleRegex = /\.module\.(less)$/;
+const lessRegex = /\.(less)$/;
+const lessModuleRegex = /\.module\.(less)$/;
 
 // utils
 const resolveLessRules = require('./utils/resolveLessRules');
-
 const resolveSource = (...args) => path.resolve(paths.appSrc, ...args);
-const resolveAlias = {
-  '@shared': resolveSource('shared'),
-  '@models': resolveSource('models'),
-  '@datasources': resolveSource('datasources'),
-  '@components': resolveSource('components'),
-  '@services': resolveSource('services'),
-  '@constants': resolveSource('constants')
-};
+
+const resolvedAlias = Object.keys(paths.alias)
+  .map(key => ({ key: [key], path: resolveSource(paths.alias[key]) }))
+  .reduce((a, c) => ( a[c.key] = c.path, a), {});
 
 module.exports = {
   context: paths.appSrc,
@@ -47,7 +42,7 @@ module.exports = {
   target: 'web',
   resolve: {
     extensions: ['.js', 'jsx', '.json', '.ts', '.tsx'],
-    alias: resolveAlias
+    alias: resolvedAlias
   },
   module: {
     rules: [{
@@ -56,15 +51,15 @@ module.exports = {
         exclude: /node_modules/
       },
       resolveLessRules({
-        test: sassRegex,
+        test: lessRegex,
         localIdentName: '[local]',
         extractPlugin: extractGlobelScssPlugin,
         path: __dirname,
-        exclude: sassModuleRegex,
+        exclude: lessModuleRegex,
         sideEffects: true
       }),
       resolveLessRules({
-        test: sassModuleRegex,
+        test: lessModuleRegex,
         localIdentName: '[name]__[local]___[hash:base64:5]',
         extractPlugin: extractMoudleScssPlugin,
         path: __dirname

@@ -11,6 +11,7 @@ import { createMemoryHistory } from 'history';
 import { configureSinkStore, runTriggerEvents, getEffectTasks } from 'redux-sink';
 import { constants } from '@constants';
 import { Routes } from './Routes';
+import { HttpClient } from '@services/httpclient';
 
 export default createServerRenderer(async (params: BootFuncParams): Promise<RenderResult> => {
   // Prepare Redux store with in-memory history, and dispatch a navigation event
@@ -22,14 +23,13 @@ export default createServerRenderer(async (params: BootFuncParams): Promise<Rend
   const host = params.data.host;
   const originalHtml = params.data.originalHtml;
 
-  // Parpare store
+  // set HttpClient config
   const httpsAgent = new https.Agent({ rejectUnauthorized: false });
   const config = { baseURL: host, httpsAgent };
+  HttpClient.defualtConfig = config;
 
+  // Parpare store
   const store = configureSinkStore();
-  const history = createMemoryHistory();
-
-  // dispatch new http config
 
   // load all chunk components
   await Loadable.preloadAll();
