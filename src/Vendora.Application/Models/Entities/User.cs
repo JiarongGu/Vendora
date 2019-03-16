@@ -8,5 +8,6 @@ namespace Vendora.Application.Models.Entities
     {
         public string Id { get; set; }
 
+
     }
 }

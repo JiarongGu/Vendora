@@ -8,4 +8,8 @@
     <Folder Include="Services\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="BanBrick.Utils" Version="2.0.0" />
+  </ItemGroup>
+
 </Project>

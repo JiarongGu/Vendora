@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Vendora.Database": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

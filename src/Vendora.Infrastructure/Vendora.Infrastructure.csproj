@@ -4,4 +4,18 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="MongoDb\**" />
+    <EmbeddedResource Remove="MongoDb\**" />
+    <None Remove="MongoDb\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Vendora.Application\Vendora.Application.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Extensions\" />
+  </ItemGroup>
+
 </Project>
