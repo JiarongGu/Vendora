@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="BanBrick.Utils" Version="2.0.0" />
+    <PackageReference Include="BanBrick.Utils" Version="2.0.1" />
     <PackageReference Include="Microsoft.CSharp" Version="4.5.0" />
   </ItemGroup>
 
