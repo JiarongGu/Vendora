@@ -1,13 +1,19 @@
 version: '3.3'
 
 services:
-  mysql:
+  vendora-mysql:
     image: mysql
-    container_name: mysql
+    container_name: vendora-mysql
     restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: 'password'
     ports:
       - 3306:3306
     volumes:
-      - /var/lib/mysql-data:/var/lib/mysql
+      - /mysql:/var/lib/mysql
+    networks:
+      - vendora-networks
+
+networks:
+  vendora-networks:
+    driver: bridge

@@ -25,13 +25,17 @@ namespace Vendora.Database
 
         public void ConfigureServices(IServiceCollection services)
         {
+            var optionsSection = Configuration.GetSection("MigrationOptions");
+            var migrationOptions = optionsSection.Get<MigrationOptions>();
+            services.Configure<MigrationOptions>(optionsSection);
+
             services.AddSingleton<MigrationService>();
 
             services.AddFluentMigratorCore();
             services.ConfigureRunner(builder =>
             {
                 builder.AddMySql5();
-                builder.WithGlobalConnectionString(Configuration.GetConnectionString("Vendora"));
+                builder.WithGlobalConnectionString(migrationOptions.DatabaseConnection);
                 builder.ScanIn(typeof(Program).Assembly).For.Migrations().For.EmbeddedResources();
                 builder.WithVersionTable(new VersionTableMetaData());
             });
