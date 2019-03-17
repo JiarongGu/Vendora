@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Vendora.Application.Models.Entities
+namespace Vendora.Application.Repositories
 {
-    public class Property
+    public interface IProfileRepository
     {
+
     }
 }
