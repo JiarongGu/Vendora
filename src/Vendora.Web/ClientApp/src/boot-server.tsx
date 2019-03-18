@@ -7,8 +7,7 @@ import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 import { StaticRouterContext } from 'react-router';
 import { createServerRenderer, RenderResult, BootFuncParams } from 'aspnet-prerendering';
-import { createMemoryHistory } from 'history';
-import { configureSinkStore, runTriggerEvents, getEffectTasks } from 'redux-sink';
+import { SinkFactory, runTriggerEvents, getEffectTasks } from 'redux-sink';
 import { constants } from '@constants';
 import { Routes } from './Routes';
 import { HttpClient } from '@services/httpclient';
@@ -29,7 +28,7 @@ export default createServerRenderer(async (params: BootFuncParams): Promise<Rend
   HttpClient.defualtConfig = config;
 
   // Parpare store
-  const store = configureSinkStore();
+  const store = SinkFactory.createStore();
 
   // load all chunk components
   await Loadable.preloadAll();
