@@ -1,10 +1,10 @@
 ﻿using BanBrick.Utils.Extensions;
-using Dapper.FluentMap;
-using Dapper.FluentMap.Mapping;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Vendora.Infrastructure;
+using Vendora.Infrastructure.Mapping;
 using Vendora.Infrastructure.Repositories;
 
 namespace Microsoft.Extensions.DependencyInjection
@@ -21,30 +21,24 @@ namespace Microsoft.Extensions.DependencyInjection
                 var interfaces = repository.GetInterfaces().ToList();
                 interfaces.ForEach(i => services.Add(new ServiceDescriptor(i, repository, serviceLifetime)));   
             }
-
-            InitializeFluentMapper(loadableTypes);
-
+            
             return services;
         }
 
-        private static void InitializeFluentMapper(IEnumerable<Type> loadableTypes)
+        public static void AddQueryGenerator(this IServiceCollection services)
         {
-            var mapTypes = loadableTypes.Where(x => x.IsImplementedInterface(typeof(IEntityMap)));
+            var assembly = Assembly.GetAssembly(typeof(QueryGenerator));
+            var mapTypes = assembly.GetLoadableTypes().Where(x => x.IsImplementedInterface(typeof(IEntityMap)));
+            var mapDictionary = mapTypes.ToDictionary(
+                mapType => mapType
+                    .GetInterfaces()
+                    .First(x => x.GetGenericTypeDefinitionOrDefault() == typeof(IEntityMap<>))
+                    .GetGenericArguments().First(),
+                mapType => (IEntityMap)Activator.CreateInstance(mapType)
+            );
 
-            FluentMapper.Initialize(config =>
-            {
-                var addMapMethod = config.GetType().GetMethod("AddMap");
-                foreach (var mapType in mapTypes)
-                {
-                    var entityType = mapType
-                        .GetInterfaces()
-                        .First(x => x.GetGenericTypeDefinitionOrDefault() == typeof(IEntityMap<>))
-                        .GetGenericArguments().First();
-
-                    var mapInstance = Activator.CreateInstance(mapType);
-                    addMapMethod.MakeGenericMethod(entityType).Invoke(config, new object[] { mapInstance });
-                }
-            });
+            services.AddSingleton<IEntityMapCollection>(new EntityMapCollection(mapDictionary));
+            services.AddSingleton<IQueryGenerator, QueryGenerator>();
         }
     }
 }

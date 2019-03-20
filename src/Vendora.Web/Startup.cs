@@ -29,6 +29,7 @@ namespace Vendora
             });
 
             services.AddScoped<ISpaPrerenderingService, SpaPrerenderingService>();
+            services.AddQueryGenerator();
             services.AddDapperRepositories();
 
             ServiceLocator.SetLocatorProvider(services.BuildServiceProvider());

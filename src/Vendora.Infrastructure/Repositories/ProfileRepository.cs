@@ -4,13 +4,19 @@ using System;
 using System.Threading.Tasks;
 using Vendora.Application.Models;
 using Vendora.Application.Repositories;
+using Vendora.Infrastructure.Mapping;
 
 namespace Vendora.Infrastructure.Repositories
 {
     public class ProfileRepository : DapperRepository, IProfileRepository
     {
-        public ProfileRepository(IConfiguration configuration) : base(configuration)
+        private readonly Func<QueryType, string> _queryBuilder;
+        private readonly string _tableName;
+
+        public ProfileRepository(IConfiguration configuration, IQueryGenerator queryGenerator) : base(configuration)
         {
+            _queryBuilder = queryGenerator.GetTypedBuilder<Profile>();
+            _tableName = queryGenerator.GetTableName<Profile>();
         }
 
         public async Task<Profile> InsertAsync(Profile profile) {
@@ -19,7 +25,7 @@ namespace Vendora.Infrastructure.Repositories
             profile.UpdatedDate = profile.CreatedDate;
 
             using (var connection = GetConnection()) {
-                await connection.QueryAsync(ProfileRepositoryQueries.Insert, profile);
+                await connection.QueryAsync(_queryBuilder(QueryType.Insert), profile);
                 return profile;
             }
         }
@@ -27,7 +33,8 @@ namespace Vendora.Infrastructure.Repositories
         public async Task<Profile> SelectByIdAsync(string id) {
             using (var connection = GetConnection())
             {
-                return await connection.QueryFirstAsync<Profile>(ProfileRepositoryQueries.SelectById, new { Id = id });
+                var query = $"{_queryBuilder(QueryType.Select)} WHERE id = @Id";
+                return await connection.QueryFirstAsync<Profile>(query, new { Id = id });
             }
         }
     }
