@@ -112,7 +112,7 @@ namespace Vendora.Infrastructure
 
         private string GetUpdateQuery(IEnumerable<(string property, string column, QueryType queryType)> properties, string tableName) {
             var setQuery = string.Join(", ", properties.Where(x => CheckBAnd(x.queryType, QueryType.Update)).Select(x => $"`{x.column}` = @{x.property}"));
-            return $"UPDATE `{tableName}` SET {setQuery};";
+            return $"UPDATE `{tableName}` SET {setQuery}";
         }
 
         private string GetInsertQuery(IEnumerable<(string property, string column, QueryType queryType)> properties, string tableName) {
@@ -120,7 +120,7 @@ namespace Vendora.Infrastructure
             var columns = string.Join(", ", requiredProperties.Select(x => $"`{x.column}`"));
             var values = string.Join(", ", requiredProperties.Select(x => $"@{x.property}"));
 
-            return $"INSERT INTO `{tableName}` ({columns}) VALUES ({values});";
+            return $"INSERT INTO `{tableName}` ({columns}) VALUES ({values})";
         }
 
         private bool CheckBAnd(QueryType falgs, QueryType queryType) {

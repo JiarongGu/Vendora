@@ -5,10 +5,8 @@ using System.Text;
 
 namespace Vendora.Application.Models
 {
-    public class ProfileForm
+    public class ProfileForm: Entity<ProfileForm>
     {
-        public string Id { get; set; }
-
         public string ProfileId { get;set; }
 
         public string FormId { get; set; }
@@ -16,10 +14,6 @@ namespace Vendora.Application.Models
         public Form FormSnapshot { get; set; }
 
         public IEnumerable<FieldData> FormData { get; set; } = Enumerable.Empty<FieldData>();
-
-        public DateTime CreatedDate { get; set; }
-
-        public DateTime UpdatedDate { get; set; }
     }
 
     public class FieldData {

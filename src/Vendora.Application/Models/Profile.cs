@@ -2,10 +2,8 @@
 
 namespace Vendora.Application.Models
 {
-    public class Profile
+    public class Profile : Entity<Profile>
     {
-        public string Id { get; set; }
-
         public string AccountId { get; set; }
 
         public string Name { get; set; }
@@ -13,9 +11,5 @@ namespace Vendora.Application.Models
         public string Email { get; set; }
 
         public string Phone { get; set; }
-
-        public DateTime CreatedDate { get; set; }
-
-        public DateTime UpdatedDate { get; set; }
     }
 }

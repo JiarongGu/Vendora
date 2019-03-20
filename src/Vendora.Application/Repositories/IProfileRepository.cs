@@ -11,5 +11,7 @@ namespace Vendora.Application.Repositories
         Task<Profile> InsertAsync(Profile profile);
 
         Task<Profile> SelectByIdAsync(string id);
+
+        Task<Profile> UpdateAsync(Profile profile);
     }
 }

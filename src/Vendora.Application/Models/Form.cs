@@ -5,19 +5,13 @@ using Vendora.Application.Enums;
 
 namespace Vendora.Application.Models
 {
-    public class Form
+    public class Form : Entity<Form>
     {
-        public string Id { get; set; }
-
         public string Name { get; set; }
 
         public string LanguageCode { get; set; }
 
         public IEnumerable<FormPage> FormMetadata { get; set; }
-
-        public DateTime CreatedDate { get; set; }
-
-        public DateTime UpdatedDate { get; set; }
     }
 
     public class FormPage
