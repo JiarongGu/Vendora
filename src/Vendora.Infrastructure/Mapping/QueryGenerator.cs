@@ -7,7 +7,7 @@ using Vendora.Infrastructure.Mapping;
 
 namespace Vendora.Infrastructure
 {
-    public class EntityQueryCollection
+    public class QueryCollection
     {
         public IDictionary<QueryType, string> Queries { get; set; }
 
@@ -20,19 +20,19 @@ namespace Vendora.Infrastructure
     public interface IQueryGenerator {
         string GetQuery<TEntity>(QueryType queryType);
         string GetTableName<TEntity>();
-
+        QueryCollection GetQueryCollection<TEntity>();
         Func<QueryType, string> GetTypedBuilder<TEntity>();
     }
 
     public class QueryGenerator: IQueryGenerator
     {
-        private readonly IDictionary<Type, EntityQueryCollection> _entityQueries;
+        private readonly IDictionary<Type, QueryCollection> _queryCollections;
         private readonly IEntityMapCollection _entityMapCollection;
         private object _generationLock = new object();
 
         public QueryGenerator(IEntityMapCollection entityMapCollection) {
             _entityMapCollection = entityMapCollection;
-            _entityQueries = new Dictionary<Type, EntityQueryCollection>();
+            _queryCollections = new Dictionary<Type, QueryCollection>();
         }
 
         public Func<QueryType, string> GetTypedBuilder<TEntity>() {
@@ -43,32 +43,32 @@ namespace Vendora.Infrastructure
             if (queryType == QueryType.All || queryType == QueryType.None)
                 throw new ArgumentException("Invalid queryType, using all or none");
             
-            return GetEntityCollectiony<TEntity>().Queries[queryType];
+            return GetQueryCollection<TEntity>().Queries[queryType];
         }
 
         public string GetTableName<TEntity>() {
-            return GetEntityCollectiony<TEntity>().TableName;
+            return GetQueryCollection<TEntity>().TableName;
         }
 
-        private EntityQueryCollection GetEntityCollectiony<TEntity>() {
+        public QueryCollection GetQueryCollection<TEntity>() {
             var entityType = typeof(TEntity);
-            if (!_entityQueries.ContainsKey(entityType))
+            if (!_queryCollections.ContainsKey(entityType))
             {
                 lock (_generationLock)
                 {
-                    if (!_entityQueries.ContainsKey(entityType))
+                    if (!_queryCollections.ContainsKey(entityType))
                     {
-                        _entityQueries[entityType] = CreateQueryCollection(entityType);
+                        _queryCollections[entityType] = CreateQueryCollection(entityType);
                     }
                 }
             }
-            return _entityQueries[typeof(TEntity)];
+            return _queryCollections[typeof(TEntity)];
         }
 
-        private EntityQueryCollection CreateQueryCollection(Type entityType) {
+        private QueryCollection CreateQueryCollection(Type entityType) {
             var map = _entityMapCollection.Maps.ContainsKey(entityType) ? _entityMapCollection.Maps[entityType] : null;
             var properties = entityType.GetProperties(BindingFlags.Instance | BindingFlags.SetProperty | BindingFlags.GetProperty | BindingFlags.Public);
-            var collection = new EntityQueryCollection();
+            var collection = new QueryCollection();
 
             collection.Properties = properties.Select(property => {
                 var column = property.Name;
