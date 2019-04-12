@@ -25,7 +25,8 @@ namespace Vendora.Database.Migrations._20190317
                 .WithColumn("form_data").AsCustom("JSON").Nullable()
                 .WithColumn("form_snapshot").AsCustom("JSON").Nullable()
                 .WithColumn("created_date").AsDateTime().NotNullable()
-                .WithColumn("updated_date").AsDateTime().NotNullable();
+                .WithColumn("updated_date").AsDateTime().NotNullable()
+                .WithColumn("deleted_date").AsDateTime().Nullable();
         }
     }
 }

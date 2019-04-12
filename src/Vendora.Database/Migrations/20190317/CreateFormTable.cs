@@ -23,7 +23,8 @@ namespace Vendora.Database.Migrations._20190317
                 .WithColumn("language_code").AsString(10).NotNullable()
                 .WithColumn("metadata").AsCustom("JSON").Nullable()
                 .WithColumn("created_date").AsDateTime().NotNullable()
-                .WithColumn("updated_date").AsDateTime().NotNullable();
+                .WithColumn("updated_date").AsDateTime().NotNullable()
+                .WithColumn("deleted_date").AsDateTime().Nullable();
 
             Create.Index("IX_form_name")
                 .OnTable(TableName)
@@ -34,6 +35,10 @@ namespace Vendora.Database.Migrations._20190317
                 .OnTable(TableName)
                 .OnColumn("language_code")
                 .Ascending().WithOptions().NonClustered();
+
+            Create.UniqueConstraint("UX_from_name_deleted_date")
+                .OnTable(TableName)
+                .Columns("name", "deleted_date");
         }
     }
 }

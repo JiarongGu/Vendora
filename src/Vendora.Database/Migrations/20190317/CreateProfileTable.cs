@@ -23,9 +23,9 @@ namespace Vendora.Database.Migrations._20190317
                 .WithColumn("name").AsString().Nullable()
                 .WithColumn("email").AsString().Nullable()
                 .WithColumn("phone").AsString().Nullable()
-                .WithColumn("deleted").AsBoolean().NotNullable().WithDefaultValue(false)
                 .WithColumn("created_date").AsDateTime().NotNullable()
-                .WithColumn("updated_date").AsDateTime().NotNullable();
+                .WithColumn("updated_date").AsDateTime().NotNullable()
+                .WithColumn("deleted_date").AsDateTime().Nullable();
 
             Create.Index("IX_profile_email")
                 .OnTable(TableName)
