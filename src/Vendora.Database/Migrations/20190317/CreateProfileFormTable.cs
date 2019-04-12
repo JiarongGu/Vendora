@@ -1,7 +1,4 @@
 ﻿using FluentMigrator;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Vendora.Database.Migrations._20190317
 {
