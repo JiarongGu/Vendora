@@ -1,7 +1,6 @@
-﻿
-using System.Reflection;
+﻿using System.Reflection;
 
-namespace Vendora.Infrastructure.Mapping
+namespace Vendora.Infrastructure.Helpers
 {
     public interface IPropertyMap
     {

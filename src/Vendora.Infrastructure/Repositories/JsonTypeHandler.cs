@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.Data;
 
-namespace Vendora.Infrastructure.TypeHelpers
+namespace Vendora.Infrastructure.Repositories
 {
     public class JsonTypeHandler : SqlMapper.ITypeHandler
     {

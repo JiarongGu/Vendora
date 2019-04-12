@@ -1,5 +1,5 @@
 ﻿using Vendora.Application.Models;
-using Vendora.Infrastructure.Mapping;
+using Vendora.Infrastructure.Helpers;
 
 namespace Vendora.Infrastructure.EntityMaps
 {

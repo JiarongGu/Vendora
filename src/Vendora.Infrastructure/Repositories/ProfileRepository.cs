@@ -4,7 +4,7 @@ using System;
 using System.Threading.Tasks;
 using Vendora.Application.Models;
 using Vendora.Application.Repositories;
-using Vendora.Infrastructure.Mapping;
+using Vendora.Infrastructure.Helpers;
 
 namespace Vendora.Infrastructure.Repositories
 {

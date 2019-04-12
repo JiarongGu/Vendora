@@ -1,7 +1,6 @@
 ﻿using Dapper;
 using Microsoft.Extensions.Configuration;
 using MySql.Data.MySqlClient;
-using Vendora.Infrastructure.TypeHelpers;
 
 namespace Vendora.Infrastructure.Repositories
 {

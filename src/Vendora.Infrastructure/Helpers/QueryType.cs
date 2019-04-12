@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Vendora.Infrastructure.Mapping
+namespace Vendora.Infrastructure.Helpers
 {
     [Flags]
     public enum QueryType

@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using Vendora.Infrastructure.Mapping;
 
-namespace Vendora.Infrastructure
+namespace Vendora.Infrastructure.Helpers
 {
     public class QueryCollection
     {

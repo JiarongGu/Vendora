@@ -1,10 +1,8 @@
 ﻿using BanBrick.Utils.Extensions;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Vendora.Infrastructure;
-using Vendora.Infrastructure.Mapping;
+using Vendora.Infrastructure.Helpers;
 using Vendora.Infrastructure.Repositories;
 
 namespace Microsoft.Extensions.DependencyInjection

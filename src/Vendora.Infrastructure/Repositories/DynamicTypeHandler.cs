@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using System.Data;
 
-namespace Vendora.Infrastructure.TypeHelpers
+namespace Vendora.Infrastructure.Repositories
 {
     public class DynamicTypeHandler : SqlMapper.TypeHandler<dynamic>
     {
