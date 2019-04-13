@@ -24,7 +24,6 @@ const store = SinkFactory.createStore({
 
 // setup location change event
 history.listen(location => store.dispatch({ type: constants.actions.locationChange, payload: location }));
-SinkFactory.addReloader(constants.actions.locationChange, history.location);
 
 // fire location event when there is no inital state
 if (!preloadedState)

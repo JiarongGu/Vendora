@@ -7,7 +7,7 @@ import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 import { StaticRouterContext } from 'react-router';
 import { createServerRenderer, RenderResult, BootFuncParams } from 'aspnet-prerendering';
-import { SinkFactory, runTriggerEvents, getEffectTasks } from 'redux-sink';
+import { SinkFactory } from 'redux-sink';
 import { constants } from '@constants';
 import { Routes } from './Routes';
 import { HttpClient } from '@services/httpclient';
@@ -34,7 +34,11 @@ export default createServerRenderer(async (params: BootFuncParams): Promise<Rend
   await Loadable.preloadAll();
 
   // process location tasks
-  await runTriggerEvents({ type: constants.actions.locationChange, payload: { pathname: urlAfterBasename } });
+  const locationAction = { 
+    type: constants.actions.locationChange, 
+    payload: { pathname: urlAfterBasename } 
+  };
+  await SinkFactory.runTriggerEvents(locationAction);
 
   // Prepare an instance of the application and perform an inital render that will
   const routerContext: StaticRouterContext = { url: undefined };
@@ -48,7 +52,7 @@ export default createServerRenderer(async (params: BootFuncParams): Promise<Rend
   );
 
   // ensure all effect task completed
-  await Promise.all(getEffectTasks());
+  await Promise.all(SinkFactory.effectTasks);
 
   // load data for current url
   await params.domainTasks;
