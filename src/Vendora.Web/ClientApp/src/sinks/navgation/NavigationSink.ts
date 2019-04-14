@@ -1,4 +1,4 @@
-import { sink, state, reducer } from 'redux-sink';
+import { sink, state } from 'redux-sink';
 
 export interface NavigationModel {
   name: string;
@@ -16,9 +16,4 @@ export class NavigationSink {
   state: NavigationState = {
     layout: []
   };
-
-  @reducer
-  setNavigations(navigationState: NavigationState) {
-    return navigationState;
-  }
 }
