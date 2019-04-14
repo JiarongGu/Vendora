@@ -6,12 +6,16 @@ import Menu from 'antd/lib/Menu';
 import * as styles from './mainLayout.module.less';
 
 import { Route, Link } from 'react-router-dom';
+import { sinking } from 'redux-sink';
+import { NavigationSink } from '@sinks/navgation';
 
-export interface MainLayoutProps {}
+export interface MainLayoutProps {
+  navigation: NavigationSink;
+}
 
 export class MainLayout extends React.PureComponent<MainLayoutProps> {
   render() {
-    const { children } = this.props;
+    const { children, navigation } = this.props;
     return (
       <Layout className={styles.container}>
         <Layout.Header className={'header'}>
@@ -22,9 +26,11 @@ export class MainLayout extends React.PureComponent<MainLayoutProps> {
             defaultSelectedKeys={['2']}
             style={{ lineHeight: '64px' }}
           >
-            <Menu.Item key={'1'}>nav 1</Menu.Item>
-            <Menu.Item key={'2'}>nav 2</Menu.Item>
-            <Menu.Item key={'3'}>nav 3</Menu.Item>
+            {navigation.state.layout.map(link =>
+              <Menu.Item key={link.name}>
+                <Link to={link.path}>{link.name}</Link>
+              </Menu.Item>
+            )}
           </Menu>
         </Layout.Header>
         <div>{children ? children : null}</div>
@@ -32,3 +38,5 @@ export class MainLayout extends React.PureComponent<MainLayoutProps> {
     );
   }
 }
+
+export default sinking(NavigationSink)(MainLayout);

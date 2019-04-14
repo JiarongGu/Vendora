@@ -5,9 +5,10 @@ import { hot } from 'react-hot-loader';
 import { Provider } from 'react-redux';
 import { createBrowserHistory } from 'history';
 import { SinkFactory } from 'redux-sink';
-import { Routes } from './Routes';
+import App from './App';
 import { constants } from '@constants';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import { defaultSinkState } from '@sinks';
 
 // Grab the state from a global variable injected into the server-generated HTML
 const preloadedState = window.__PRELOADED_STATE__;
@@ -18,7 +19,7 @@ delete window.__PRELOADED_STATE__;
 // prepare store
 const history = createBrowserHistory();
 const store = SinkFactory.createStore({
-  preloadedState,
+  preloadedState: { ...preloadedState, ...defaultSinkState },
   devtoolOptions: { devToolCompose: composeWithDevTools }
 });
 
@@ -32,13 +33,13 @@ if (!preloadedState)
   store.dispatch({ type: constants.actions.locationChange, payload: history.location });
 
 // hot app module
-export const App = hot(module)(() => <Routes />);
+export const HotApp = hot(module)(() => <App />);
 
 // initalize default state with requests, then render dom
 ReactDOM.hydrate(
   <Provider store={store}>
     <Router history={history}>
-      <App />
+      <HotApp />
     </Router>
   </Provider>,
   document.getElementById('root')

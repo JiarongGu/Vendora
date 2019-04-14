@@ -3,6 +3,7 @@ import { sink, state, reducer } from 'redux-sink';
 export interface NavigationModel {
   name: string;
   path: string;
+  component: React.ComponentClass<any, any> | React.FunctionComponent<any>
 }
 
 export interface NavigationState {
@@ -17,10 +18,7 @@ export class NavigationSink {
   };
 
   @reducer
-  setLayoutNavigations(layoutNavigations: Array<NavigationModel>) {
-    return {
-      ...this.state,
-      layout: layoutNavigations
-    };
+  setNavigations(navigationState: NavigationState) {
+    return navigationState;
   }
 }

@@ -9,7 +9,7 @@ import { StaticRouterContext } from 'react-router';
 import { createServerRenderer, RenderResult, BootFuncParams } from 'aspnet-prerendering';
 import { SinkFactory } from 'redux-sink';
 import { constants } from '@constants';
-import { Routes } from './Routes';
+import App from './App';
 import { HttpClient } from '@services/httpclient';
 
 export default createServerRenderer(
@@ -47,7 +47,7 @@ export default createServerRenderer(
     const app = (
       <Provider store={store}>
         <StaticRouter basename={basename} context={routerContext} location={params.location.path}>
-          <Routes />
+          <App />
         </StaticRouter>
       </Provider>
     );
