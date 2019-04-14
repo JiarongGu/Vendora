@@ -10,6 +10,7 @@ const alias = {
   '@datasources': 'datasources',
   '@components': 'components',
   '@services': 'services',
+  '@sinks': 'sinks',
   '@constants': 'constants'
 };
 

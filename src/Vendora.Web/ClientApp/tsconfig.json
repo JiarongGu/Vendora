@@ -29,6 +29,8 @@
       "@components*": ["src/components*"],
       "@services": ["src/services"],
       "@services*": ["src/services*"],
+      "@sinks": ["src/sinks"],
+      "@sinks*": ["src/sinks*"],
       "@constants": ["src/constants"],
     },
   },
