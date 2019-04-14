@@ -19,7 +19,7 @@ export class Home extends React.Component<HomePropsWithSink> {
         <h1>{content.state && content.state.home.header}</h1>
         <div>Current antd version: {version}</div>
         <div style={{ marginTop: '16px' }}>
-          <Button type={'primary'} >Example button</Button>
+          <Button type={'primary'}>Example button</Button>
         </div>
       </div>
     );

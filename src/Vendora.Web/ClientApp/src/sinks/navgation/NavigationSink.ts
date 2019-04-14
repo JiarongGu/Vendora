@@ -12,12 +12,15 @@ export interface NavigationState {
 @sink('navigation')
 export class NavigationSink {
   @state
-  navigations: NavigationState =  {
-    layout: [ ]
-  }
+  state: NavigationState = {
+    layout: []
+  };
 
   @reducer
   setLayoutNavigations(layoutNavigations: Array<NavigationModel>) {
-    return { ...this.navigations, layout: layoutNavigations };
+    return {
+      ...this.state,
+      layout: layoutNavigations
+    };
   }
 }

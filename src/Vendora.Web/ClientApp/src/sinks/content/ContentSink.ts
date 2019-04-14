@@ -8,10 +8,10 @@ export interface ContentState {
 @sink('content')
 export class ContentSink {
   @state
-  state: ContentState =  {
+  state: ContentState = {
     layout: {},
-    home: { 
-      header: 'Please fork this codesandbox to reproduce your issue.' 
+    home: {
+      header: 'Please fork this codesandbox to reproduce your issue.'
     }
-  }
+  };
 }

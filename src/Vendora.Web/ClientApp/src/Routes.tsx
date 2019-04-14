@@ -11,10 +11,10 @@ export class Routes extends React.Component {
     return (
       <Switch>
         <MainLayout>
-          <Route path="/" component={Home}></Route>
-          <Route path="/user" component={User}></Route>
+          <Route path="/" component={Home} />
+          <Route path="/user" component={User} />
         </MainLayout>
       </Switch>
-    )
+    );
   }
 }

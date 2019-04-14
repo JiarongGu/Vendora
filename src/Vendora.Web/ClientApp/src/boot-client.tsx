@@ -17,22 +17,22 @@ delete window.__PRELOADED_STATE__;
 
 // prepare store
 const history = createBrowserHistory();
-const store = SinkFactory.createStore({ 
-  preloadedState, 
-  devtoolOptions: { devToolCompose: composeWithDevTools } 
+const store = SinkFactory.createStore({
+  preloadedState,
+  devtoolOptions: { devToolCompose: composeWithDevTools }
 });
 
 // setup location change event
-history.listen(location => store.dispatch({ type: constants.actions.locationChange, payload: location }));
+history.listen((location) =>
+  store.dispatch({ type: constants.actions.locationChange, payload: location })
+);
 
 // fire location event when there is no inital state
 if (!preloadedState)
   store.dispatch({ type: constants.actions.locationChange, payload: history.location });
 
 // hot app module
-export const App = hot(module)(() => (
-  <Routes />
-));
+export const App = hot(module)(() => <Routes />);
 
 // initalize default state with requests, then render dom
 ReactDOM.hydrate(
