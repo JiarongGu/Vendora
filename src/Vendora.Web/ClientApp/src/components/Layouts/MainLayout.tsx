@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { Layout, Menu, Icon, Breadcrumb } from 'antd';
 import * as styles from './mainLayout.module.less';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
+import { version, Button } from "antd";
 export interface MainLayoutProps {
   
 }
@@ -13,13 +15,40 @@ export class MainLayout extends React.PureComponent<MainLayoutProps> {
       <Layout className={styles.container}>
         <Layout.Header className={'header'}>
           <div className={'logo'} />
-          <Menu theme={'dark'} mode={'horizontal'} defaultSelectedKeys={['2']} style={{ lineHeight: '64px' }}>
+          <Menu theme={'light'} mode={'horizontal'} defaultSelectedKeys={['2']} style={{ lineHeight: '64px' }}>
             <Menu.Item key={'1'}>nav 1</Menu.Item>
             <Menu.Item key={'2'}>nav 2</Menu.Item>
             <Menu.Item key={'3'}>nav 3</Menu.Item>
           </Menu>
         </Layout.Header>
-        <Layout>
+        <Route path="/" component={Home}></Route>
+        <Route path="/user" component={User}></Route>
+      </Layout>
+    );
+  };
+}
+class Home extends React.Component {
+  constructor(property){
+    super(property);
+  }
+  render() {
+    return (<div className="App">
+    <h1>Please fork this codesandbox to reproduce your issue.</h1>
+    <div>Current antd version: {version}</div>
+    <div style={{ marginTop: "16px" }}>
+      <Button type="primary">Example button</Button>
+    </div>
+  </div>);
+  }
+}
+
+class User extends React.Component {
+  constructor(property){
+    super(property);
+  }
+  render() {
+    return (
+      <Layout>
           <Layout.Sider width={200} style={{ background: '#fff' }}>
             <Menu
               mode={'inline'}
@@ -33,18 +62,6 @@ export class MainLayout extends React.PureComponent<MainLayoutProps> {
                 <Menu.Item key={'3'}>option3</Menu.Item>
                 <Menu.Item key={'4'}>option4</Menu.Item>
               </Menu.SubMenu>
-              <Menu.SubMenu key={'sub2'} title={<span><Icon type={'laptop'} />subnav 2</span>}>
-                <Menu.Item key={'5'}>option5</Menu.Item>
-                <Menu.Item key={'6'}>option6</Menu.Item>
-                <Menu.Item key={'7'}>option7</Menu.Item>
-                <Menu.Item key={'8'}>option8</Menu.Item>
-              </Menu.SubMenu>
-              <Menu.SubMenu key={'sub3'} title={<span><Icon type={'notification'} />subnav 3</span>}>
-                <Menu.Item key={'9'}>option9</Menu.Item>
-                <Menu.Item key={'10'}>option10</Menu.Item>
-                <Menu.Item key={'11'}>option11</Menu.Item>
-                <Menu.Item key={'12'}>option12</Menu.Item>
-              </Menu.SubMenu>
             </Menu>
           </Layout.Sider>
           <Layout style={{ padding: '0 24px 24px' }}>
@@ -57,11 +74,9 @@ export class MainLayout extends React.PureComponent<MainLayoutProps> {
               background: '#fff', padding: 24, margin: 0, minHeight: 280,
             }}
             >
-              {children || null}
             </Layout.Content>
           </Layout>
         </Layout>
-      </Layout>
     );
   }
 }
