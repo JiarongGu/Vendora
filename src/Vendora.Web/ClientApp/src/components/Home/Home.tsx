@@ -15,11 +15,11 @@ export class Home extends React.Component<HomePropsWithSink> {
   render() {
     const { version, content } = this.props;
     return (
-      <div className="HomePage">
+      <div className={'HomePage'}>
         <h1>{content.state && content.state.home.header}</h1>
         <div>Current antd version: {version}</div>
-        <div style={{ marginTop: "16px" }}>
-          <Button type="primary">Example button</Button>
+        <div style={{ marginTop: '16px' }}>
+          <Button type={'primary'} >Example button</Button>
         </div>
       </div>
     );
