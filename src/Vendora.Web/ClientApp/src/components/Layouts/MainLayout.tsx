@@ -26,7 +26,7 @@ export class MainLayout extends React.PureComponent<MainLayoutProps> {
             defaultSelectedKeys={['2']}
             style={{ lineHeight: '64px' }}
           >
-            {navigation.state.layout.map(link =>
+            {navigation.layout.map(link =>
               <Menu.Item key={link.name}>
                 <Link to={link.path}>{link.name}</Link>
               </Menu.Item>

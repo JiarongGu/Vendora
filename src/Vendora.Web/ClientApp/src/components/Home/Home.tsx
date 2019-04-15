@@ -17,7 +17,7 @@ export const Home = (props: HomePropsWithSink) => {
 
   return (
     <div className={'HomePage'}>
-      <h1>{content.state.home.header}</h1>
+      <h1>{content.home.header}</h1>
       <div>Current antd version: {props.version}</div>
       <div style={{ marginTop: '16px' }}>
         <Button type={'primary'}>Example button</Button>

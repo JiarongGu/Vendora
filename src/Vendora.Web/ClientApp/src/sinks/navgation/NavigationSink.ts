@@ -13,7 +13,5 @@ export interface NavigationState {
 @sink('navigation')
 export class NavigationSink {
   @state
-  state: NavigationState = {
-    layout: []
-  };
+  layout: Array<NavigationModel> = []
 }

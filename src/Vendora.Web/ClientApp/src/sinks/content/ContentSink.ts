@@ -1,17 +1,12 @@
-import { sink, state, reducer } from 'redux-sink';
-
-export interface ContentState {
-  layout: any;
-  home: any;
-}
+import { sink, state } from 'redux-sink';
 
 @sink('content')
 export class ContentSink {
   @state
-  state: ContentState = {
-    layout: {},
-    home: {
-      header: 'Please fork this codesandbox to reproduce your issue.'
-    }
-  };
+  layout = {}
+
+  @state
+  home = {
+    header: 'Please fork this codesandbox to reproduce your issue.'
+  }
 }

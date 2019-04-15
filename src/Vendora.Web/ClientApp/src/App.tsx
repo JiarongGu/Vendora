@@ -10,7 +10,7 @@ import { NavigationSink } from '@sinks/navgation';
 export const App = ({ navigation }: { navigation: NavigationSink }) => (
   <MainLayout>
     <Switch>
-      {navigation.state.layout.concat().sort((a, b) => b.path.localeCompare(a.path)).map(route =>
+      {navigation.layout.concat().sort((a, b) => b.path.localeCompare(a.path)).map(route =>
         <Route key={route.path} strict path={route.path} component={route.component} />
       )}
     </Switch>
