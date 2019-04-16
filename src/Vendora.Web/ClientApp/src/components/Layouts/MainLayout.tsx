@@ -5,7 +5,7 @@ import Icon from 'antd/lib/Icon';
 import Menu from 'antd/lib/Menu';
 import * as styles from './mainLayout.module.less';
 
-import { Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { sinking } from 'redux-sink';
 import { NavigationSink } from '@sinks/navgation';
 
