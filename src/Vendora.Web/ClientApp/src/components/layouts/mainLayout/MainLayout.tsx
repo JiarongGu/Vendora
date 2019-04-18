@@ -34,11 +34,10 @@ export class MainLayout extends React.PureComponent<MainLayoutProps> {
     return (
       <Layout className={styles.container}>
         <Layout.Header className={styles.header}>
-          <Menu theme={'light'} mode={'horizontal'} style={{ lineHeight: '60px' }}>
-            <Menu.Item key={'logo'} className={classnames(styles.logo, styles.menuItem)}>
-              <Link to={'/'}>LOGO</Link>
-            </Menu.Item>
-
+          <div className={classnames(styles.headerLogo, styles.menuItem)}>
+            <Link to={'/'}>LOGO</Link>
+          </div>
+          <Menu theme={'light'} mode={'horizontal'} className={styles.headerMenu}>
             {navigation.layout.filter(route => route.display !== undefined).map((route, index) =>
               <Menu.Item key={index} className={styles.menuItem}>
                 <Link to={route.path}>
@@ -47,17 +46,13 @@ export class MainLayout extends React.PureComponent<MainLayoutProps> {
                 </Link>
               </Menu.Item>
             )}
-
-            <Menu.Item key={'login'} className={classnames('right', styles.menuItem)}>
-              <Button className={styles.menuItemButton}>Login/Sign Up</Button>
-            </Menu.Item>
-
-            <Menu.Item key={'user'} className={classnames('right', styles.menuItem)}>
-              <Dropdown overlay={accountMenu} placement={'bottomRight'}>
-                <Avatar className={styles.profileIcon} size={40} icon={'user'} />
-              </Dropdown>
-            </Menu.Item>
           </Menu>
+          <div className={classnames('right', styles.accountSection)}>
+            <Dropdown overlay={accountMenu} placement={'bottomRight'}>
+              <Avatar className={styles.accountSectionAvatar} size={40} icon={'user'} />
+            </Dropdown>
+            <Button className={styles.menuItemButton}>Login/Sign Up</Button>
+          </div>
         </Layout.Header>
 
         <Layout.Content>

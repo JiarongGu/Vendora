@@ -30,41 +30,43 @@
 }
 
 .header {
-  width: 100%;
-  height: 63px;
+  height: 60px;
   padding: 0;
+  display: flex;
+  width: 100vw;
+  align-items: stretch;
+  background-color: #fff;
 
-  .menuItem {
+  &__menu {
+    flex-basis: 100%;
+    display: flex;
+    align-items: stretch;
+    line-height: 60px;
+  }
 
-    &.ant-menu-item-selected,
-    &:hover {
-      border-bottom: 2px solid transparent;
-    }
-
-    &.logo {
-      background-color: @primary-color;
-      padding: 0px;
-      width: 170px;
-      height: 60px;
-      text-align: center;
-    }
-
-    .profileIcon {
-      i {
-        margin-right: 0;
-        font-size: 22px
-      }
-    }
-
-    &-button {
-      #default.button();
-    }
+  &__logo {
+    background-color: @primary-color;
+    padding: 0px;
+    width: 170px;
+    height: 60px;
+    text-align: center;
   }
 }
 
 .footer {
   background-color: @background-dark;
   color: @background-dark-text;
+}
+
+.menuItem {
+  &.ant-menu-item-selected,
+  &:hover {
+    border-bottom: 2px solid transparent;
+  }
+
+  &-button {
+    #default.button();
+  }
 }
 
 .dropdown-menu {
@@ -74,25 +76,27 @@
   border: 2px solid #f2f2f2;
   background-color: #fff;
   min-width: 200px;
+}
 
-  .dropdown-item {
-    padding: 0.5rem 1rem;
-    width: 100%;
-    display: block;
-    border: 0px;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #fff;
+.dropdown-item {
+  padding: 0.5rem 1rem;
+  width: 100%;
+  display: block;
+  border: 0px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+}
 
-    button {
-      #default.button()
-    }
+.account-section {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  padding: 0 10px;
 
-    i {
-      margin-left: 10px;
-      color: #999999;
-    }
+  &__avatar {
+    margin-right: 10px;
   }
 }
