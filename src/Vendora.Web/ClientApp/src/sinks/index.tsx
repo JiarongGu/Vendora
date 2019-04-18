@@ -1,6 +1,6 @@
-import { Home } from '@components/Home';
-import { Quote } from '@components/Quote';
-import { User } from '@components/User';
+import { Home } from '@components/home';
+import { Quote } from '@components/quote';
+import { User } from '@components/user';
 
 export const defaultSinkState = {
   navigation: {
