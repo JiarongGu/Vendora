@@ -30,12 +30,12 @@ export class MainLayout extends React.PureComponent<MainLayoutProps> {
   render() {
     const { navigation } = this.props;
     const routes = navigation.layout.concat().sort((a, b) => b.path.localeCompare(a.path));
-    
+
     return (
       <Layout className={styles.container}>
         <Layout.Header className={styles.header}>
           <div className={classnames(styles.headerLogo, styles.menuItem)}>
-            <Link to={'/'}>LOGO</Link>
+            <h1 >LOGO</h1>
           </div>
           <Menu theme={'light'} mode={'horizontal'} className={styles.headerMenu}>
             {navigation.layout.filter(route => route.display !== undefined).map((route, index) =>
