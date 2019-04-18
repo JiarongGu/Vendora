@@ -9,14 +9,16 @@ import * as styles from './mainLayout.module.less';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserTie } from '@fortawesome/free-solid-svg-icons'
 import { Route, Link } from "react-router-dom";
+import { sinking } from 'redux-sink';
+import { NavigationSink } from '@sinks/navgation';
 
 export interface MainLayoutProps {
-  
+  navigation: NavigationSink;
 }
 
 export class MainLayout extends React.PureComponent<MainLayoutProps> {
   render() {
-    const { children } = this.props;
+    const { children, navigation } = this.props;
     console.info(children);
     const logoClasses = [styles.logo, styles.menuItem].join(' ');
     const signInMenuClasses = ['right', styles.menuItem].join(' ');
@@ -55,3 +57,5 @@ export class MainLayout extends React.PureComponent<MainLayoutProps> {
     );
   };
 }
+
+export default sinking(NavigationSink)(MainLayout);

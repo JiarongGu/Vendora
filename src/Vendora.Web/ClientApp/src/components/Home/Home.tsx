@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { sinking } from 'redux-sink';
+import { sinking, SinkFactory } from 'redux-sink';
 import Button from 'antd/lib/button';
 import { ContentSink } from '@sinks/content';
 import Content from 'antd/lib/layout';

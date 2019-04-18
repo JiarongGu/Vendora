@@ -1,4 +1,11 @@
-import Axios, { AxiosRequestConfig, AxiosInstance, AxiosPromise, AxiosInterceptorManager, AxiosResponse, CancelTokenSource } from 'axios';
+import Axios, {
+  AxiosRequestConfig,
+  AxiosInstance,
+  AxiosPromise,
+  AxiosInterceptorManager,
+  AxiosResponse,
+  CancelTokenSource
+} from 'axios';
 import { formatRequestQuery } from './formatRequestQuery';
 
 export class HttpClient {
@@ -20,7 +27,7 @@ export class HttpClient {
     this.interceptors = {
       request: this._axios.interceptors.request,
       response: this._axios.interceptors.response
-    }
+    };
   }
 
   cancelTokenSource: CancelTokenSource;
@@ -29,7 +36,6 @@ export class HttpClient {
     request: AxiosInterceptorManager<AxiosRequestConfig>;
     response: AxiosInterceptorManager<AxiosResponse<any>>;
   };
-
 
   delete<TResponse = any>(url: string, config?: AxiosRequestConfig) {
     return this._axios.delete(url, config) as AxiosPromise<TResponse>;
@@ -44,8 +50,7 @@ export class HttpClient {
   }
 
   get<TRequest = any, TResponse = any>(url: string, data?: TRequest, config?: AxiosRequestConfig) {
-    if (data)
-      return this._axios.get<TResponse>(`${url}?${formatRequestQuery(data)}`, config);
+    if (data) return this._axios.get<TResponse>(`${url}?${formatRequestQuery(data)}`, config);
     return this._axios.get<TResponse>(url, config);
   }
 
@@ -57,7 +62,11 @@ export class HttpClient {
     return this._axios.put<TResponse>(url, data, config);
   }
 
-  patch<TRequest = any, TResponse = any>(url: string, data?: TRequest, config?: AxiosRequestConfig) {
+  patch<TRequest = any, TResponse = any>(
+    url: string,
+    data?: TRequest,
+    config?: AxiosRequestConfig
+  ) {
     return this._axios.patch<TResponse>(url, data, config);
   }
 }
