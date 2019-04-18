@@ -8,7 +8,6 @@ import { SinkFactory } from 'redux-sink';
 import App from './App';
 import { constants } from '@constants';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { defaultSinkState } from '@sinks';
 
 // Grab the state from a global variable injected into the server-generated HTML
 const preloadedState = window.__PRELOADED_STATE__;
@@ -19,7 +18,7 @@ delete window.__PRELOADED_STATE__;
 // prepare store
 const history = createBrowserHistory();
 const store = SinkFactory.createStore({
-  preloadedState: { ...preloadedState, ...defaultSinkState },
+  preloadedState: { ...preloadedState },
   devtoolOptions: { devToolCompose: composeWithDevTools }
 });
 
