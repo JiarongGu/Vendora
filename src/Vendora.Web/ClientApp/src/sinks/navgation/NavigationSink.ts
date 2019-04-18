@@ -3,6 +3,8 @@ import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { Home } from '@components/home';
 import { User } from '@components/user';
 import { faUserTie } from '@fortawesome/free-solid-svg-icons/faUserTie';
+import { faHome } from '@fortawesome/free-solid-svg-icons/faHome';
+import { Quote } from '@components/quote';
 
 export interface NavigationModel {
   display?: string;
@@ -19,8 +21,8 @@ export interface NavigationState {
 export class NavigationSink {
   @state
   layout: Array<NavigationModel> = [
-    { path: '/', component: Home },
-    { path: '/user', display: 'Talk to Expert', component: User, icon: faUserTie },
+    { path: '/', display: 'Home', component: Home, icon: faHome },
+    { path: '/quote', display: 'Talk to Expert', component: Quote, icon: faUserTie },
     { path: '/user', display: 'About Us', component: User }
   ]
 }

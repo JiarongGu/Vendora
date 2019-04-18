@@ -30,7 +30,7 @@ export class MainLayout extends React.PureComponent<MainLayoutProps> {
   render() {
     const { navigation } = this.props;
     const routes = navigation.layout.concat().sort((a, b) => b.path.localeCompare(a.path));
-
+    
     return (
       <Layout className={styles.container}>
         <Layout.Header className={styles.header}>
