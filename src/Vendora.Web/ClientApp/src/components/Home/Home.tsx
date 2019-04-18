@@ -14,10 +14,10 @@ interface HomePropsWithSink extends HomeProps {
 
 export class Home extends React.Component<HomePropsWithSink> {
   render() {
-    const {content } = this.props;
+    const { content } = this.props;
     return (
       <div className="HomePage">
-        <h1>{content.state && content.state.home.header}</h1>
+        <h1>{content && content.home.header}</h1>
         <div style={{ marginTop: "16px" }}>
           <Button type="primary">Example button</Button>
         </div>
