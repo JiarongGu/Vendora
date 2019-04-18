@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Switch, Route } from 'react-router';
+import { Switch, Route, Redirect } from 'react-router';
 import { MainLayout } from '@components/Layouts';
 import 'antd/dist/antd.less';
 import '@styles/global.less';
@@ -11,8 +11,11 @@ export class Routes extends React.Component {
     return (
       <Switch>
         <MainLayout>
-          <Route path="/" component={Home}></Route>
-          <Route path="/user" component={User}></Route>
+          <Switch>
+            <Route path="/" component={Home}></Route>
+            <Route path="/user" component={User}></Route>
+            <Route render={() => <Redirect to="/" />} />
+          </Switch>
         </MainLayout>
       </Switch>
     )

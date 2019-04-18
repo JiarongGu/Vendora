@@ -39,6 +39,14 @@ module.exports = function ({
         {
           loader: "less-loader",
           options: {
+            modifyVars: {
+              'primary-color': '#5dc0a6',
+              'link-color': '#5dc0a6',
+              'border-color-base': '#5dc0a6',
+              'text-color': '#224488',
+              'text-color-secondary': '#fff',
+              'border-radius-base': '2px'
+            },
             javascriptEnabled: true
           }
         }

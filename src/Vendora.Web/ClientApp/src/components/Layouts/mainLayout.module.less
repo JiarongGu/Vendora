@@ -1,3 +1,8 @@
+
+@primary-color-two: #5dc0a6;
+@background-dark: #666;
+@background-dark-text: #f2f2f2;
+
 .container {
   height: 100vh;
 
@@ -6,8 +11,78 @@
   }
 }
 
-.logo{
-  background-color: dodgerblue;
-  width: 200px;
-  height: 60px;
+#default(){
+  .button{
+    border:1px solid @primary-color;
+    background-color: #fff;
+    font-weight: 500;
+    color: @primary-color;
+    &:hover{
+      color: #fff;
+      background-color: @primary-color;
+    }
+    &:active, &:focus{
+      border: none;
+    }
+  }
 }
+.header{
+  width: 100%;
+  height: 63px;
+  padding: 0;
+  .menuItem{
+    &.ant-menu-item-selected, &:hover{
+      border-bottom: 2px solid transparent;
+    }
+    &.logo{
+      background-color: @primary-color;
+      padding: 0px;
+      width: 170px;
+      height: 60px;
+      text-align: center;
+    }
+    .profileIcon{
+      i {
+        margin-right: 0;
+        font-size: 22px
+      }
+    }
+    &-button{
+      #default.button();
+    }
+  }
+}
+.footer{
+  background-color: @background-dark;
+  color: @background-dark-text;
+}
+  .dropdown-menu {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    -webkit-box-shadow: 0 0 10px 0 rgba(0,0,0,.1);
+    -moz-box-shadow: 0 0 10px 0 rgba(0,0,0,.1);
+    box-shadow: 0 0 10px 0 rgba(0,0,0,.1);
+    border: 2px solid #f2f2f2;
+    background-color: #fff;
+    min-width: 200px;
+    .dropdown-item{
+      padding: 0.5rem 1rem;
+      width: 100%;
+      display: block;
+      border: 0px;
+      cursor: pointer;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #fff;
+      button{
+        #default.button()
+      }
+      i{
+        margin-left: 10px;
+        color: #999999;
+      }
+    }
+  }

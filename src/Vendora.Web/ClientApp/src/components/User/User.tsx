@@ -8,7 +8,7 @@ export default class User extends React.Component<UserProps> {
   render() {
     const { version } = this.props;
     return (
-      <div></div>
+      <div>User Page</div>
     );
   }
 }
