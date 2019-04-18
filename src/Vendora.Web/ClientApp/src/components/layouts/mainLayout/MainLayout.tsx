@@ -34,13 +34,13 @@ export class MainLayout extends React.PureComponent<MainLayoutProps> {
     return (
       <Layout className={styles.container}>
         <Layout.Header className={styles.header}>
-          <div className={classnames(styles.headerLogo, styles.menuItem)}>
+          <div className={styles.headerLogo}>
             <h1 >LOGO</h1>
           </div>
 
           <Menu theme={'light'} mode={'horizontal'} className={styles.headerMenu}>
             {navigation.layout.filter(route => route.display !== undefined).map((route, index) =>
-              <Menu.Item key={index} className={styles.menuItem}>
+              <Menu.Item key={index}>
                 <Link to={route.path}>
                   {route.icon && <FontAwesomeIcon icon={route.icon} />}
                   {route.display}
@@ -53,7 +53,7 @@ export class MainLayout extends React.PureComponent<MainLayoutProps> {
             <Dropdown overlay={accountMenu} placement={'bottomRight'}>
               <Avatar className={styles.accountSectionAvatar} size={40} icon={'user'} />
             </Dropdown>
-            <Button className={styles.menuItemButton}>Login/Sign Up</Button>
+            <Button>Login/Sign Up</Button>
           </div>
         </Layout.Header>
 

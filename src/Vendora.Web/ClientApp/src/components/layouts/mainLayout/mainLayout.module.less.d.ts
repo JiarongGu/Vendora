@@ -5,24 +5,17 @@ interface CssExports {
   'account-section__avatar': string;
   'accountSection': string;
   'accountSectionAvatar': string;
-  'ant-menu-item-selected': string;
-  'antMenuItemSelected': string;
   'container': string;
-  'container-content': string;
-  'containerContent': string;
-  'dropdown-item': string;
-  'dropdown-menu': string;
   'dropdownItem': string;
   'dropdownMenu': string;
+  'dropdown__item': string;
+  'dropdown__menu': string;
   'footer': string;
   'header': string;
   'headerLogo': string;
   'headerMenu': string;
   'header__logo': string;
   'header__menu': string;
-  'menuItem': string;
-  'menuItem-button': string;
-  'menuItemButton': string;
 }
 
 declare var cssExports: CssExports;

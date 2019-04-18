@@ -4,29 +4,6 @@
 
 .container {
   height: 100vh;
-
-  &-content {
-    display: flex;
-  }
-}
-
-#default() {
-  .button {
-    border: 1px solid @primary-color;
-    background-color: #fff;
-    font-weight: 500;
-    color: @primary-color;
-
-    &:hover {
-      color: #fff;
-      background-color: @primary-color;
-    }
-
-    &:active,
-    &:focus {
-      border: none;
-    }
-  }
 }
 
 .header {
@@ -58,36 +35,27 @@
   color: @background-dark-text;
 }
 
-.menuItem {
-  &.ant-menu-item-selected,
-  &:hover {
-    border-bottom: 2px solid transparent;
+.dropdown {
+  &__menu {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, .1);
+    border: 2px solid #f2f2f2;
+    background-color: #fff;
+    min-width: 200px;
   }
 
-  &-button {
-    #default.button();
+  &__item {
+    padding: 0.5rem 1rem;
+    width: 100%;
+    display: block;
+    border: 0px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
   }
-}
-
-.dropdown-menu {
-  padding-top: 0px;
-  padding-bottom: 0px;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, .1);
-  border: 2px solid #f2f2f2;
-  background-color: #fff;
-  min-width: 200px;
-}
-
-.dropdown-item {
-  padding: 0.5rem 1rem;
-  width: 100%;
-  display: block;
-  border: 0px;
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #fff;
 }
 
 .account-section {
