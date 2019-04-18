@@ -39,7 +39,7 @@ export default createServerRenderer(
       type: constants.actions.locationChange,
       payload: { pathname: urlAfterBasename }
     };
-    await SinkFactory.runTriggerEvents(locationAction);
+    await SinkFactory.activeTrigger(locationAction);
 
     // Prepare an instance of the application and perform an inital render that will
     const routerContext: StaticRouterContext = { url: undefined };
