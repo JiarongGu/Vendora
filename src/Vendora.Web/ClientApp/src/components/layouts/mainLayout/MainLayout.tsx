@@ -37,6 +37,7 @@ export class MainLayout extends React.PureComponent<MainLayoutProps> {
           <div className={classnames(styles.headerLogo, styles.menuItem)}>
             <h1 >LOGO</h1>
           </div>
+
           <Menu theme={'light'} mode={'horizontal'} className={styles.headerMenu}>
             {navigation.layout.filter(route => route.display !== undefined).map((route, index) =>
               <Menu.Item key={index} className={styles.menuItem}>
@@ -47,6 +48,7 @@ export class MainLayout extends React.PureComponent<MainLayoutProps> {
               </Menu.Item>
             )}
           </Menu>
+          
           <div className={classnames('right', styles.accountSection)}>
             <Dropdown overlay={accountMenu} placement={'bottomRight'}>
               <Avatar className={styles.accountSectionAvatar} size={40} icon={'user'} />
