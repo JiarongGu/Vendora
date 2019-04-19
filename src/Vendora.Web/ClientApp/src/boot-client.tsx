@@ -6,7 +6,6 @@ import { Provider } from 'react-redux';
 import { createBrowserHistory } from 'history';
 import { SinkFactory } from 'redux-sink';
 import App from './App';
-import { constants } from '@constants';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 // Grab the state from a global variable injected into the server-generated HTML
@@ -24,12 +23,12 @@ const store = SinkFactory.createStore({
 
 // setup location change event
 history.listen((location) =>
-  store.dispatch({ type: constants.actions.locationChange, payload: location })
+  store.dispatch({ type: 'LOCATION_CHANGE', payload: location })
 );
 
 // fire location event when there is no inital state
 if (!preloadedState)
-  store.dispatch({ type: constants.actions.locationChange, payload: history.location });
+  store.dispatch({ type: 'LOCATION_CHANGE', payload: history.location });
 
 // hot app module
 export const HotApp = hot(module)(() => <App />);

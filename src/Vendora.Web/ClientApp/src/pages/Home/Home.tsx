@@ -1,14 +1,9 @@
 import * as React from 'react';
-import { sinking, SinkFactory } from 'redux-sink';
+import { sinking } from 'redux-sink';
 import Button from 'antd/lib/button';
 import { ContentSink } from '@sinks/content';
-import Content from 'antd/lib/layout';
 
-export interface HomeProps {
-  version: String;
-}
-
-interface HomePropsWithSink extends HomeProps {
+interface HomePropsWithSink {
   content: ContentSink;
 }
 
@@ -26,4 +21,4 @@ export class Home extends React.Component<HomePropsWithSink> {
   }
 }
 
-export default sinking(ContentSink)(Home) as React.ComponentClass<HomeProps>;
+export default sinking(ContentSink)(Home) as React.ComponentClass;

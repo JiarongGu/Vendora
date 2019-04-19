@@ -31,7 +31,10 @@
       "@services*": ["src/services*"],
       "@sinks": ["src/sinks"],
       "@sinks*": ["src/sinks*"],
-      "@constants": ["src/constants"],
+      "@pages": ["src/pages"],
+      "@pages*": ["src/pages*"],
+      "@layouts": ["src/layouts"],
+      "@layouts*": ["src/layouts*"]
     },
   },
   "exclude": ["dist", "build", "node_modules", "scripts"]

@@ -11,7 +11,9 @@ const alias = {
   '@components': 'components',
   '@services': 'services',
   '@sinks': 'sinks',
-  '@constants': 'constants'
+  '@constants': 'constants',
+  '@pages': 'pages',
+  '@layouts': 'layouts'
 };
 
 module.exports = {

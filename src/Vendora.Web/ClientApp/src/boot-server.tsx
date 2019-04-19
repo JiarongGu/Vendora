@@ -8,7 +8,6 @@ import { StaticRouter } from 'react-router-dom';
 import { StaticRouterContext } from 'react-router';
 import { createServerRenderer, RenderResult, BootFuncParams } from 'aspnet-prerendering';
 import { SinkFactory } from 'redux-sink';
-import { constants } from '@constants';
 import App from './App';
 import { HttpClient } from '@services/httpclient';
 
@@ -36,7 +35,7 @@ export default createServerRenderer(
 
     // process location tasks
     const locationAction = {
-      type: constants.actions.locationChange,
+      type: 'LOCATION_CHANGE',
       payload: { pathname: urlAfterBasename }
     };
     await SinkFactory.activeTrigger(locationAction);

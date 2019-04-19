@@ -1,24 +1,17 @@
 import * as React from 'react';
 import { Layout } from 'antd';
 import { Menu } from 'antd';
-import { Route, Link, Switch } from "react-router-dom";
-import { Quotes } from './Quotes';
+import { Route, Link, Switch, RouteComponentProps } from "react-router-dom";
 import { Profile } from './Profile';
-import { QuoteDetail } from './quote-detail';
 
-export interface UserProps {
-  match: any;
-}
 const menuItems: Array<any> = [
-  { path: 'quotes', display: 'My Quotes', component: Quotes },
-  { path: 'profile', display: 'My Proile', component: Profile },
-  { path: 'quote/:quoteId', component: QuoteDetail }
+  { path: 'profile', display: 'My Proile', component: Profile }
 ];
 
-export default class User extends React.PureComponent<UserProps> {
+export default class User extends React.PureComponent<RouteComponentProps<any, any, any>> {
   render() {
-    const match = this.props.match;
-    console.info(this.props)
+    const { match } = this.props as any;
+    console.log(match);
     return (
       <Layout>
         <Layout.Sider>
@@ -33,9 +26,9 @@ export default class User extends React.PureComponent<UserProps> {
         <Layout.Content>
           <div>User Page</div>
           <Switch>
-            <Route exact path={match.url} component={Profile} />
+            <Route exact path={match.path} component={Profile} />
             {menuItems.map((item) =>
-              <Route strict path={match.url + '/' + item.path} key={item.path} render={(props) => <item.component {...props} />} />
+              <Route strict path={match.path + '/' + item.path} key={item.path} render={(props) => <item.component {...props} />} />
             )}
           </Switch>
         </Layout.Content>
