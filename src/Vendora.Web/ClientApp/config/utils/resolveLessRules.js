@@ -44,8 +44,8 @@ module.exports = function ({
               'link-color': '#5dc0a6',
               'border-color-base': '#5dc0a6',
               'text-color': '#224488',
-              'text-color-secondary': '#fff',
-              'border-radius-base': '2px'
+              'text-color-secondary': '#aaa',
+              'border-radius-base': '5px'
             },
             javascriptEnabled: true
           }

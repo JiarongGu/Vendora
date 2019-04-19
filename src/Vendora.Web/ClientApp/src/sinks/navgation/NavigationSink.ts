@@ -7,22 +7,24 @@ import { faHome } from '@fortawesome/free-solid-svg-icons/faHome';
 import { Quote } from '@components/quote';
 
 export interface NavigationModel {
+  key: string;
   display?: string;
   path: string;
   icon?: IconDefinition;
   component: React.ComponentClass<any, any> | React.FunctionComponent<any>
 }
 
-export interface NavigationState {
-  layout: Array<NavigationModel>;
-}
+// export interface NavigationState {
+//   layout: Array<NavigationModel>;
+//   dropdownMenu: any;
+// }
 
 @sink('navigation')
 export class NavigationSink {
   @state
   layout: Array<NavigationModel> = [
-    { path: '/', display: 'Home', component: Home, icon: faHome },
-    { path: '/quote', display: 'Talk to Expert', component: Quote, icon: faUserTie },
-    { path: '/user', display: 'About Us', component: User }
+    { key: 'HOME', path: '/', display: 'Home', component: Home, icon: faHome },
+    { key: 'QUOTE', path: '/quote', display: 'Talk to Expert', component: Quote, icon: faUserTie },
+    { key: 'USER', path: '/user', component: User }
   ]
 }

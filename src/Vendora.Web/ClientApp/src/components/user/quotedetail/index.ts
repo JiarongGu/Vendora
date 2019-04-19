@@ -1,0 +1,1 @@
+export {default as QuoteDetail} from './QuoteDetail'
