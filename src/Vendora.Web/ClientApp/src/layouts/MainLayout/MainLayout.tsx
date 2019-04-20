@@ -1,17 +1,14 @@
 import * as React from 'react';
 import { Route, Link, Switch } from 'react-router-dom';
+import Avatar from 'antd/lib/avatar';
+import Icon from 'antd/lib/icon';
 
-import { Home } from '@pages/Home';
-import { Quote } from '@pages/Quote';
-import { User } from '@pages/User';
-import { HeaderMenu } from './HeaderMenu';
+import { Home, Quote, User } from '@pages';
+import { DropdownMenu, HeaderMenu } from '@components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFile } from '@fortawesome/free-solid-svg-icons/faFile';
 import classnames from 'classnames';
 import * as styles from './MainLayout.module.less';
-import { DropdownMenu } from '@components/DropdownMenu';
-import Avatar from 'antd/lib/avatar';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Icon from 'antd/lib/icon';
-import { faFile } from '@fortawesome/free-solid-svg-icons/faFile';
 
 
 export default class MainLayout extends React.Component {
@@ -35,7 +32,7 @@ export default class MainLayout extends React.Component {
         </div>
 
         <Switch>
-          <Route key={'/user'} strict path={'/user'} render={(match) => <User { ...match } />} />
+          <Route key={'/user'} strict path={'/user'} render={(match) => <User {...match} />} />
           <Route key={'/quote'} strict path={'/quote'} render={() => <Quote />} />
           <Route key={'/'} strict path={'/'} render={() => <Home />} />
         </Switch>
