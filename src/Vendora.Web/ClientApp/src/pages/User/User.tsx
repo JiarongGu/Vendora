@@ -8,7 +8,7 @@ const menuItems: Array<any> = [
   { path: 'profile', display: 'My Proile', component: Profile }
 ];
 
-export default class User extends React.PureComponent<RouteComponentProps<any, any, any>> {
+export default class User extends React.PureComponent {
   render() {
     const { match } = this.props as any;
     console.log(match);

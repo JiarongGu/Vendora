@@ -2,16 +2,7 @@
 
 interface CssExports {
   'container': string;
-  'dropdownItem': string;
-  'dropdown__item': string;
   'footer': string;
-  'header': string;
-  'headerLogo': string;
-  'headerMenu': string;
-  'header__logo': string;
-  'header__menu': string;
-  'user-avatar': string;
-  'userAvatar': string;
 }
 
 declare var cssExports: CssExports;

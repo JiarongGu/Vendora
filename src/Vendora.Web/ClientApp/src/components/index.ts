@@ -1,2 +1,2 @@
 export * from './DropdownMenu';
-export * from './HeaderMenu';
+export * from './NavMenu';

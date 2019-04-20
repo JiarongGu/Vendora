@@ -2,11 +2,11 @@
 import * as React from 'react';
 import Menu from 'antd/lib/menu';
 import { Link } from 'react-router-dom';
-import * as styles from './HeaderMenu.module.less';
+import * as styles from './NavMenu.module.less';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserTie } from '@fortawesome/free-solid-svg-icons/faUserTie';
 
-export const HeaderMenu = () => (
+export const NavMenu = () => (
   <Menu theme={'light'} mode={'horizontal'} className={styles.container}>
     <Menu.Item>
       <Link to={'/'}>Home</Link>

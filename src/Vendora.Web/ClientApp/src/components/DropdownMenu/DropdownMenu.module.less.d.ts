@@ -2,6 +2,7 @@
 
 interface CssExports {
   'container': string;
+  'overlay': string;
 }
 
 declare var cssExports: CssExports;
