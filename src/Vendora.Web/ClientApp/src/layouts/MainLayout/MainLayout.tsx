@@ -9,10 +9,9 @@ import * as styles from './MainLayout.module.less';
 import { sinking } from 'redux-sink';
 import { MainLayoutService } from './MainLayoutService';
 
-export class MainLayout extends React.Component {
+export class MainLayout extends React.PureComponent {
   render() {
     const { mainLayoutService } = this.props as any;
-    console.log(this.props);
     return (
       <Layout className={styles.container}>
         <Header />
