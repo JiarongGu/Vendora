@@ -5,8 +5,8 @@ import { hot } from 'react-hot-loader';
 import { Provider } from 'react-redux';
 import { createBrowserHistory } from 'history';
 import { SinkFactory } from 'redux-sink';
-import App from './App';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import App from './App';
 
 // Grab the state from a global variable injected into the server-generated HTML
 const preloadedState = window.__PRELOADED_STATE__;

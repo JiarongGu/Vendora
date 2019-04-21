@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Layout from 'antd/lib/layout';
-import { Route, Switch, Link } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
+import { Switch } from 'react-router';
 
 import { Home, Quote, User } from '@pages';
 import { Header } from './Header';

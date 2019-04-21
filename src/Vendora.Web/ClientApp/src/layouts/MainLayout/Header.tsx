@@ -3,13 +3,14 @@ import Avatar from 'antd/lib/avatar';
 import Icon from 'antd/lib/icon';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFile } from '@fortawesome/free-solid-svg-icons/faFile';
-import { DropdownMenu, NavMenu, Link } from '@components';
+import { DropdownMenu, NavMenu } from '@components';
 
 import classnames from 'classnames';
 import * as styles from './Header.module.less';
 import Layout from 'antd/lib/layout';
 import Menu from 'antd/lib/menu';
 import Button from 'antd/lib/button';
+import { Link } from 'react-router-dom';
 
 export const Header = () => (
   <Layout.Header className={classnames('.ant-menu-horizontal', styles.container)}>
