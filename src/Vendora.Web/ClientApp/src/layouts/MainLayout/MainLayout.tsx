@@ -7,7 +7,7 @@ import { Header } from './Header';
 
 import * as styles from './MainLayout.module.less';
 import { sinking } from 'redux-sink';
-import { MainLayoutService } from './MainLayoutService';
+import { MainLayoutService } from '@services/laytous/MainLayoutService';
 
 export class MainLayout extends React.PureComponent {
   render() {
