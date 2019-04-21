@@ -14,7 +14,9 @@ import MenuItem from 'antd/lib/menu/MenuItem';
 export const Header = () => (
   <Layout.Header className={classnames('.ant-menu-horizontal', styles.container)}>
     <div className={styles.logo}>
-      <h1 >LOGO</h1>
+      <Link to={'/'}>
+        <h1 >LOGO</h1>
+      </Link>
     </div>
     <NavMenu />
     <DropdownMenu display={<Avatar className={styles.avatar} size={40} icon={'user'} />}>

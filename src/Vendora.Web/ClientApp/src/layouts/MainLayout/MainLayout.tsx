@@ -7,14 +7,14 @@ import { Header } from './Header';
 
 import * as styles from './MainLayout.module.less'; 
 
-export class MainLayout extends React.PureComponent {
+export class MainLayout extends React.Component {
   render() {
     return (
       <Layout className={styles.container}>
         <Header />
         <Layout.Content>
           <Switch>
-            <Route key={'/user'} strict path={'/user'} render={(match) => <User {...match} />} />
+            <Route key={'/user'} strict path={'/user'} render={() => <User />} />
             <Route key={'/quote'} strict path={'/quote'} render={() => <Quote />} />
             <Route key={'/'} strict path={'/'} render={() => <Home />} />
           </Switch>
