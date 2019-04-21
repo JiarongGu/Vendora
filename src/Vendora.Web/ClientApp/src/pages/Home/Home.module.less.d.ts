@@ -4,7 +4,11 @@ interface CssExports {
   'lender-board': string;
   'lenderBoard': string;
   'main-section': string;
+  'main-section__button': string;
+  'main-section__button-group': string;
   'mainSection': string;
+  'mainSectionButton': string;
+  'mainSectionButtonGroup': string;
 }
 
 declare var cssExports: CssExports;

@@ -12,6 +12,7 @@ import { MainLayoutService } from './MainLayoutService';
 export class MainLayout extends React.Component {
   render() {
     const { mainLayoutService } = this.props as any;
+    console.log(this.props);
     return (
       <Layout className={styles.container}>
         <Header />
@@ -22,7 +23,7 @@ export class MainLayout extends React.Component {
             <Route key={'/'} strict path={'/'} component={Home} />
           </Switch>
         </Layout.Content>
-        
+
         {mainLayoutService.footer && 
           <Layout.Footer className={styles.footer}>
             Footer
