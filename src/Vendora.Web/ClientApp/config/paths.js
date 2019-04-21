@@ -7,13 +7,12 @@ const appBuild = path.resolve(__dirname, '../build');
 const alias = {
   '@styles': 'styles',
   '@models': 'models',
-  '@datasources': 'datasources',
   '@components': 'components',
   '@services': 'services',
-  '@sinks': 'sinks',
   '@constants': 'constants',
   '@pages': 'pages',
-  '@layouts': 'layouts'
+  '@layouts': 'layouts',
+  '@utilities': 'utilities'
 };
 
 module.exports = {
