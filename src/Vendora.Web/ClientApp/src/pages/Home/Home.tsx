@@ -5,7 +5,7 @@ import * as styles from './Home.module.less';
 import Icon from 'antd/lib/icon';
 import { ContentService } from '@services/common/ContentService';
 import { MainLayoutService } from '@services/laytous/MainLayoutService';
-import { Link } from '@components/Link';
+import { Link } from 'react-router-dom';
 
 interface HomeProps {
   contentService: ContentService;
