@@ -5,8 +5,7 @@ import { ContentService } from '@services/content';
 import * as styles from './Home.module.less';
 import Icon from 'antd/lib/icon';
 import { MainLayoutService } from '@layouts/MainLayout/MainLayoutService';
-import { Link } from 'react-router-dom';
-import { MenuLink } from '@components/Link';
+import { Link } from '@components/Link';
 
 interface HomeProps {
   contentService: ContentService;
@@ -19,18 +18,18 @@ function Home({ contentService, mainLayoutService }: HomeProps) {
     <>
       <div className={styles.mainSection}>
         <div className={styles.mainSectionButtonGroup}>
-          <MenuLink to={'/quote/buyinghome'}>
+          <Link to={'/quote/buyinghome'}>
             <Button className={styles.mainSectionButton} size={'large'} type={'primary'}>
               <Icon type={'home'} />
               我要买房
             </Button>
-          </MenuLink>
-          <MenuLink to={'/quote/refinance'}>
+          </Link>
+          <Link to={'/quote/refinance'}>
             <Button className={styles.mainSectionButton} size={'large'} type={'primary'}>
               <Icon type={'dollar'} />
               我要融资
             </Button>
-          </MenuLink>
+          </Link>
         </div>
       </div>
       <div className={styles.lenderBoard}>
