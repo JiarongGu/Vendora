@@ -22,6 +22,7 @@ export class MainLayout extends React.Component {
             <Route key={'/'} strict path={'/'} component={Home} />
           </Switch>
         </Layout.Content>
+        
         {mainLayoutService.footer && 
           <Layout.Footer className={styles.footer}>
             Footer

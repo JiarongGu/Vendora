@@ -12,8 +12,8 @@ interface HomeProps {
 }
 
 function Home({ contentService, mainLayoutService }: HomeProps) {
-  mainLayoutService.displayFooter(false);
-  
+  React.useEffect(() => mainLayoutService.displayFooter(false));
+
   return (
     <>
       <div className={styles.mainSection}>
@@ -25,6 +25,9 @@ function Home({ contentService, mainLayoutService }: HomeProps) {
           <Icon type={'dollar'} />
           融资
         </Button>
+      </div>
+      <div className={styles.lenderBoard}>
+        Banks
       </div>
     </>
   )

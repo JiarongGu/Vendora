@@ -4,6 +4,7 @@ module.exports = {
     'postcss-reporter': {
       clearReportedMessages: true
     },
+    'autoprefixer': {},
     'postcss-preset-env': {},
   }
 }
