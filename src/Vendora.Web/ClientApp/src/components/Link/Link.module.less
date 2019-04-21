@@ -1,20 +1,24 @@
 .container {
   background: none;
-  height: 100%;
-  width: 100%;
-  position: relative;
-  display: flex;
-  align-items: center;
+  display: inline;
   border: none;
+  box-sizing: unset;
+  color: unset;
+  transition: unset;
 }
 
 .item {
-  width: 100%;
-  margin: 0;
-
   &:global.ant-menu-item {
-      height: unset;
-      padding: unset;
+    padding: unset;
+    margin: unset;
+    display: inline;
+    line-height: unset;
+    text-overflow: unset;
+    overflow: unset;
+
+    >a {
+      color: unset;
+      display: inline;
+    }
   }
 }
-

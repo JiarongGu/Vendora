@@ -12,7 +12,7 @@ export function Link(props: LinkProps) {
   const { to, replace, children, className} = props;
 
   return (
-    <Menu className={classnames(className, styles.container)}>
+    <Menu className={classnames(className, styles.container)} selectable={false}>
       <Menu.Item className={styles.item}>
         <Router.Link to={to} replace={replace}>
           {children}

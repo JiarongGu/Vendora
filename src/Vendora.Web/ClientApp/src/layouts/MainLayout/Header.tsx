@@ -1,10 +1,9 @@
 import * as React from 'react';
 import Avatar from 'antd/lib/avatar';
 import Icon from 'antd/lib/icon';
-import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFile } from '@fortawesome/free-solid-svg-icons/faFile';
-import { DropdownMenu, NavMenu } from '@components';
+import { DropdownMenu, NavMenu, Link } from '@components';
 
 import classnames from 'classnames';
 import * as styles from './Header.module.less';
@@ -14,11 +13,9 @@ import Button from 'antd/lib/button';
 
 export const Header = () => (
   <Layout.Header className={classnames('.ant-menu-horizontal', styles.container)}>
-    <div className={styles.logo}>
-      <Link to={'/'}>
-        <h1 >LOGO</h1>
-      </Link>
-    </div>
+    <Link to={'/'}>
+        <h1 className={styles.logo}>LOGO</h1>
+    </Link>
     <NavMenu />
     <div className={classnames('right', styles.dropdown)}>
       <DropdownMenu display={<Avatar className={styles.avatar} size={40} icon={'user'} />}>
