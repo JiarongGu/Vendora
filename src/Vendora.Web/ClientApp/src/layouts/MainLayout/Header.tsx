@@ -9,7 +9,8 @@ import { DropdownMenu, NavMenu } from '@components';
 import classnames from 'classnames';
 import * as styles from './Header.module.less';
 import Layout from 'antd/lib/layout';
-import MenuItem from 'antd/lib/menu/MenuItem';
+import Menu from 'antd/lib/menu';
+import Button from 'antd/lib/button';
 
 export const Header = () => (
   <Layout.Header className={classnames('.ant-menu-horizontal', styles.container)}>
@@ -19,20 +20,23 @@ export const Header = () => (
       </Link>
     </div>
     <NavMenu />
-    <DropdownMenu display={<Avatar className={styles.avatar} size={40} icon={'user'} />}>
-      <MenuItem key={'user'}>
-        <Link to={'/user'}>
+    <div className={classnames('right', styles.dropdown)}>
+      <DropdownMenu display={<Avatar className={styles.avatar} size={40} icon={'user'} />}>
+        <Menu.Item key={'user'}>
+          <Link to={'/user'}>
+            <span className={styles.dropdownItem}>
+              Quotes<FontAwesomeIcon icon={faFile} />
+            </span>
+          </Link>
+        </Menu.Item>
+        <hr />
+        <Menu.Item key={'login'}>
           <span className={styles.dropdownItem}>
-            Quotes<FontAwesomeIcon icon={faFile} />
+            Logout&nbsp;<Icon type={'logout'}></Icon>
           </span>
-        </Link>
-      </MenuItem>
-      <hr />
-      <MenuItem key={'login'}>
-        <span className={styles.dropdownItem}>
-          Logout&nbsp;<Icon type={'logout'}></Icon>
-        </span>
-      </MenuItem>
-    </DropdownMenu>
+        </Menu.Item>
+      </DropdownMenu>
+      <Button>Login/Sign Up</Button>
+    </div>
   </Layout.Header>
 )

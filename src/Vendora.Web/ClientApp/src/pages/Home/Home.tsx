@@ -1,24 +1,33 @@
 import * as React from 'react';
 import { sinking } from 'redux-sink';
 import Button from 'antd/lib/button';
-import { ContentSink } from '@sinks/content';
+import { ContentService } from '@services/content';
+import * as styles from './Home.module.less';
+import Icon from 'antd/lib/icon';
+import { MainLayoutService } from '@layouts/MainLayout/MainLayoutService';
 
-interface HomePropsWithSink {
-  content: ContentSink;
+interface HomeProps {
+  contentService: ContentService;
+  mainLayoutService: MainLayoutService;
 }
 
-export class Home extends React.Component<HomePropsWithSink> {
-  render() {
-    const { content } = this.props;
-    return (
-      <div className="HomePage">
-        <h1>{content && content.home.header}</h1>
-        <div style={{ marginTop: "16px" }}>
-          <Button type="primary">Example button</Button>
-        </div>
+function Home({ contentService, mainLayoutService }: HomeProps) {
+  mainLayoutService.displayFooter(false);
+  
+  return (
+    <>
+      <div className={styles.mainSection}>
+        <Button type={'primary'}>
+          <Icon type={'home'} />
+          我要买房
+        </Button>
+        <Button type={'primary'}>
+          <Icon type={'dollar'} />
+          融资
+        </Button>
       </div>
-    );
-  }
+    </>
+  )
 }
 
-export default sinking(ContentSink)(Home) as React.ComponentClass;
+export default sinking(ContentService, MainLayoutService)(Home) as React.FunctionComponent;

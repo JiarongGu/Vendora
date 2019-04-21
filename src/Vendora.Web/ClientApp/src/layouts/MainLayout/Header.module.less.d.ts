@@ -3,6 +3,7 @@
 interface CssExports {
   'avatar': string;
   'container': string;
+  'dropdown': string;
   'dropdown-item': string;
   'dropdownItem': string;
   'logo': string;

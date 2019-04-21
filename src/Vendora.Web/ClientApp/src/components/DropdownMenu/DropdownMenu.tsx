@@ -9,21 +9,18 @@ import Menu from 'antd/lib/menu';
 interface DropdownMenuProps {
   display: JSX.Element;
   children?: React.ReactNode;
-  placement?: 'topLeft' | 'topCenter'  | 'topRight' | 'bottomLeft' | 'bottomCenter' | 'bottomRight';
+  placement?: 'topLeft' | 'topCenter' | 'topRight' | 'bottomLeft' | 'bottomCenter' | 'bottomRight';
 }
 
 export const DropdownMenu = ({ display, children, placement }: DropdownMenuProps) => (
-  <div className={classnames('right', styles.container)}>
-    <Dropdown
-      overlay={
-        <Menu className={styles.overlay}>
-          {children}
-        </Menu>
-      }
-      placement={placement}
-    >
-      {display}
-    </Dropdown>
-    <Button>Login/Sign Up</Button>
-  </div>
+  <Dropdown
+    overlay={
+      <Menu className={styles.overlay}>
+        {children}
+      </Menu>
+    }
+    placement={placement}
+  >
+    {display}
+  </Dropdown>
 );

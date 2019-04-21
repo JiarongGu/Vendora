@@ -1,7 +1,7 @@
 import { sink, state } from 'redux-sink';
 
-@sink('content')
-export class ContentSink {
+@sink('contentService')
+export class ContentService {
   @state
   layout = {}
 
