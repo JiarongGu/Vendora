@@ -1,0 +1,43 @@
+
+@import (reference) '../../../styles/global.less';
+.main-section {
+    display: flex;
+    min-height: 85vh;
+    background-color: aquamarine;
+}
+
+.container{
+    display: flex;
+    width: 85%;
+    margin: 0 auto;
+}
+.step-bar-container{
+    width: 20%;
+    flex: 20%;
+    border: 1px solid #000;
+    .step-bar{
+        color: @text-color;
+    }
+    .column();
+    
+}
+.question-group-container{
+    background-color: rgb(255, 144, 181);
+    color: @text-color;
+    width: 80%;
+    flex: 80%;
+    .column();
+}
+.question-container{
+    border: 1px solid saddlebrown;
+    .row();
+    .question{
+        .column();
+    }
+    .answer-group{
+        .column();
+        i{
+            color: @primary-color;
+        }
+    }
+}
