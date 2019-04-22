@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CreateQuote } from './CreateQuote/CreateQuote'; 
+import { CreateQuote } from './CreateQuote'; 
 import { Switch, Route, Redirect } from 'react-router';
 
 export default function (props) {
