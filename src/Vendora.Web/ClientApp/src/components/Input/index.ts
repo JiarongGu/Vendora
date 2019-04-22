@@ -1,1 +1,1 @@
-export {default as CurrencyInput} from './CurrencyInput/CurrencyInput';
+export { default as CurrencyInput } from './CurrencyInput/CurrencyInput';
