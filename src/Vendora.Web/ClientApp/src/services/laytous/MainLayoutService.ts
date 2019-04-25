@@ -1,12 +1,18 @@
-import { sink, state, effect } from 'redux-sink';
+import { sink, state, effect, trigger } from 'redux-sink';
 
 @sink('mainLayoutService')
 export class MainLayoutService {
   @state 
   footer = true;
 
-  @effect
-  displayFooter(display: boolean) {
-    this.footer = display;
+  ignoreFooterPaths= ['/'];
+
+  @trigger('LOCATION_CHANGE', { fireOnInit: true })
+  onLocationChange(payload: Location) {
+    if (this.ignoreFooterPaths.find(x => x === payload.pathname)) {
+      this.footer = false;
+    } else {
+      this.footer = true;
+    }
   }
 }

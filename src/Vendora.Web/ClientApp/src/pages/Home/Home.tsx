@@ -9,11 +9,9 @@ import { Link } from 'react-router-dom';
 
 interface HomeProps {
   contentService: ContentService;
-  mainLayoutService: MainLayoutService;
 }
 
-function Home({ contentService, mainLayoutService }: HomeProps) {
-  React.useEffect(() => mainLayoutService.displayFooter(false));
+function Home({ contentService }: HomeProps) {
   return (
     <>
       <div className={styles.mainSection}>
@@ -39,4 +37,4 @@ function Home({ contentService, mainLayoutService }: HomeProps) {
   )
 }
 
-export default sinking(ContentService, MainLayoutService)(Home) as React.FunctionComponent;
+export default sinking(ContentService)(Home) as React.FunctionComponent;
