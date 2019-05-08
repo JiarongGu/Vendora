@@ -1,8 +1,9 @@
 //var isProduction = process.argv.indexOf('-p') >= 0 || process.env.NODE_ENV === 'production';
 
-module.exports = function(env) {
-  const baseConfig = require('./config/webpack.config.base.js');
-  const customConfig = require(`./config/webpack.config.${env}.js`);
+module.exports = function(env, values) {
+  const publicPath = values.public || '';
+  const baseConfig = require('./config/webpack.config.base.js')(publicPath);
+  const customConfig = require(`./config/webpack.config.${env}.js`)(publicPath);
 
   const plugins = baseConfig.plugins.concat(customConfig.plugins || []);
 

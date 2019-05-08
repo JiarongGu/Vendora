@@ -3,9 +3,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Vendora.Web.Middlewares;
 using Vendora.Web.Services;
 
-namespace Vendora
+namespace Vendora.Web
 {
     public class Startup
     {
@@ -48,6 +49,8 @@ namespace Vendora
                 app.UseHsts();
             }
 
+            app.UseMiddleware<ExceptionHandlingMiddleware>();
+
             app.UseHttpsRedirection();
 
             app.Map("/api", apiApp => {
@@ -60,11 +63,11 @@ namespace Vendora
             app.UseSpa(spa =>
             {
                 spa.Options.SourcePath = "ClientApp";
-                spa.UseSpaPrerendering(options =>
-                {
-                    options.BootModulePath = $"{spa.Options.SourcePath}/build/server/bundle.js";
-                    options.SupplyData = ServiceLocator.Current.GetInstance<ISpaPrerenderingService>().Process;
-                });
+                //spa.UseSpaPrerendering(options =>
+                //{
+                //    options.BootModulePath = $"{spa.Options.SourcePath}/build/server/bundle.js";
+                //    options.SupplyData = ServiceLocator.Current.GetInstance<ISpaPrerenderingService>().Process;
+                //});
             });
         }
     }

@@ -1,13 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Vendora.Controllers
+namespace Vendora.Web.Controllers
 {
-    [Route("[controller]")]
-    public class SampleDataController : Controller
+    [Route("api/[controller]")]
+    public class SampleDataController : ControllerBase
     {
         private static string[] Summaries = new[]
         {
