@@ -5,31 +5,29 @@ import * as styles from './CurrencyInput.module.less';
 
 
 const formatInputCurrency = function (value) {
-  value = value.replace(/[^\d,]/g, '');
+  value = value.replace(/[^\d]/g, '');
   const origin = value === '' ? value : Number(value.split(',').join('')) + '';
-  const list = origin.split(',');
-  let num = list[0];
-  let result = '';
-  while (num.length > 3) {
-    result = `,${num.slice(-3)}${result}`;
-    num = num.slice(0, num.length - 3);
-  }
-  if (num) {
-    result = num + result;
-  }
-  return result;
+  return new Intl.NumberFormat('en-AU', { style: 'currency', currency: 'AUD', minimumFractionDigits: 0 }).format(Number(origin));
 }
 
+const formatOutputValue = function(display) {
+  return Number(display.replace(/[\$,]/g, '')) || 0;
+}
 function CurrencyInput(props, ref) {
-  const [value, setValue] = React.useState('');
+  const [display, setDisplay] = React.useState('');
+  const onchange = function(input) {
+    const newDisplay = formatInputCurrency(input);
+    setDisplay(newDisplay);
+    props.onChange(formatOutputValue(newDisplay));
+  }
   return (
     <Input
       ref={ref}
       className={styles.inputbox}
-      value={value}
+      value={display}
       addonBefore={<Icon type="dollar" />}
       allowClear={true}
-      onChange={(e) => setValue(formatInputCurrency(e.target.value))}
+      onChange={(e) => onchange(e.target.value)}
     />
   );
 }

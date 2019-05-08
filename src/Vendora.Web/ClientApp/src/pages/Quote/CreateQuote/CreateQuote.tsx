@@ -20,9 +20,8 @@ export default class CreateQuote extends React.Component {
   
   inputRef = React.createRef<Input>();
   
-  getInputNumber = () => { 
-    const currency = this.inputRef.current ? this.inputRef.current.state.value : '0';
-    return Number(currency.replace(/,/g, '')) || 0;
+  updateAnswer = (value) => {
+    this.setState({answer: value})
   };
 
   render() {
@@ -44,12 +43,16 @@ export default class CreateQuote extends React.Component {
                   <h2>What is the expected purchase price? </h2>
                 </div>
                 <div className={styles.answerGroup}>
-                  <CurrencyInput ref={this.inputRef} />
+                  <CurrencyInput ref={this.inputRef} onChange={this.updateAnswer} />
                   <div>{this.state.answer}</div>
                 </div>
-                <Button onClick={() => this.setState({ answer: this.getInputNumber() })}>
-                  Submit
-                </Button>
+                <div className={styles.question}>
+                  <h2>How much deposit do you have?</h2>
+                </div>
+                <div className={styles.answerGroup}>
+                  <CurrencyInput ref={this.inputRef} onChange={this.updateAnswer} />
+                  <div>{this.state.answer}</div>
+                </div>
               </div>
             </div>
           </div>
