@@ -1,14 +1,16 @@
 var path = require('path');
 
-module.exports = {
+module.exports = function () {
+  return {
     target: 'node',
     entry: {
-        ssr: './boot-server.tsx'
+      ssr: './boot-server.tsx'
     },
     devtool: false,
     output: {
-        filename: 'bundle.js',
-        libraryTarget: 'commonjs',
-        path: path.resolve(__dirname, '../build/server')
+      filename: 'bundle.js',
+      libraryTarget: 'commonjs',
+      path: path.resolve(__dirname, '../build/server')
     }
-};
+  };
+}

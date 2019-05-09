@@ -9,13 +9,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const WebpackCleanupPlugin = require('webpack-cleanup-plugin');
 
-const extractGlobelScssPlugin = new ExtractTextPlugin({
-  filename: 'static/css/globel.[md5:contenthash:hex:20].css'
-});
-const extractMoudleScssPlugin = new ExtractTextPlugin({
-  filename: 'static/css/module.[md5:contenthash:hex:20].css'
-});
-
 // style files regexes
 const lessRegex = /\.(less)$/;
 const lessModuleRegex = /\.module\.(less)$/;
@@ -31,24 +24,32 @@ const resolvedAlias = Object.keys(paths.alias)
   }))
   .reduce((a, c) => (a[c.key] = c.path, a), {});
 
-module.exports = {
-  context: paths.appSrc,
-  entry: {
-    app: './boot-client.tsx'
-  },
-  output: {
-    path: paths.appBuild,
-    filename: 'static/js/[name].[hash:8].js',
-    chunkFilename: 'static/js/[name].[hash:8].chunk.js',
-    publicPath: '/'
-  },
-  target: 'web',
-  resolve: {
-    extensions: ['.js', 'jsx', '.json', '.ts', '.tsx'],
-    alias: resolvedAlias
-  },
-  module: {
-    rules: [{
+module.exports = function (publicPath) {
+  const extractGlobelScssPlugin = new ExtractTextPlugin({
+    filename: `static/css/globel.[md5:contenthash:hex:20].css`
+  });
+  const extractMoudleScssPlugin = new ExtractTextPlugin({
+    filename: 'static/css/module.[md5:contenthash:hex:20].css'
+  });
+  
+  return {
+    context: paths.appSrc,
+    entry: {
+      app: './boot-client.tsx'
+    },
+    output: {
+      path: paths.appBuild,
+      filename: 'static/js/[name].[hash:8].js',
+      chunkFilename: 'static/js/[name].[hash:8].chunk.js',
+      publicPath: `/${publicPath}`
+    },
+    target: 'web',
+    resolve: {
+      extensions: ['.js', 'jsx', '.json', '.ts', '.tsx'],
+      alias: resolvedAlias
+    },
+    module: {
+      rules: [{
         test: /\.(ts|tsx)$/,
         use: ['ts-loader'],
         exclude: /node_modules/
@@ -68,15 +69,16 @@ module.exports = {
         path: __dirname,
         ortherLoaders: ['css-type-loader']
       }),
+      ]
+    },
+    plugins: [
+      new webpack.WatchIgnorePlugin([/css\.d\.ts$/]),
+      new webpack.NamedModulesPlugin(),
+      new webpack.NoEmitOnErrorsPlugin(),
+      new MiniCssExtractPlugin(),
+      new WebpackCleanupPlugin(),
+      extractGlobelScssPlugin,
+      extractMoudleScssPlugin
     ]
-  },
-  plugins: [
-    new webpack.WatchIgnorePlugin([/css\.d\.ts$/]),
-    new webpack.NamedModulesPlugin(),
-    new webpack.NoEmitOnErrorsPlugin(),
-    new MiniCssExtractPlugin(),
-    new WebpackCleanupPlugin(),
-    extractGlobelScssPlugin,
-    extractMoudleScssPlugin
-  ]
-};
+  };
+}

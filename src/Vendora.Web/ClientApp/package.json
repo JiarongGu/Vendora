@@ -8,6 +8,7 @@
     "build": "webpack --mode production -p --progress --colors --env prod",
     "build:ssr": "webpack --mode production -p --progress --colors --env server",
     "build:all": "npm run build & npm run build:ssr",
+    "release": "webpack --mode production -p --progress --colors --env prod --public Prod",
     "format": "prettier --write \"src/**/*.{ts,tsx,css}\""
   },
   "browserslist": [
@@ -16,6 +17,7 @@
     "not ie <= 11",
     "not op_mini all"
   ],
+  "homepage": "Prod",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.3.4",

@@ -23,31 +23,33 @@ const devServer = {
   }
 };
 
-module.exports = {
-  devtool: 'source-map',
-  devServer,
-  module: {
-    rules: [{
-      test: /\.js$/,
-      enforce: 'pre',
-      loader: 'source-map-loader'
-    }]
-  },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.EnvironmentPlugin({
-      NODE_ENV: 'development', // use 'development' unless process.env.NODE_ENV is defined
-      DEBUG: false
-    }),
-    new HtmlWebpackPlugin({
-      template: path.resolve(paths.appPublic, 'index.html'),
-      minify: false
-    }),
-    new CopyWebpackPlugin([{
-      from: paths.appPublic,
-      to: paths.appBuild
-    }], {
-      ignore: ['index.html']
-    })
-  ]
+module.exports = function (publicPath) {
+  return {
+    devtool: 'source-map',
+    devServer,
+    module: {
+      rules: [{
+        test: /\.js$/,
+        enforce: 'pre',
+        loader: 'source-map-loader'
+      }]
+    },
+    plugins: [
+      new webpack.HotModuleReplacementPlugin(),
+      new webpack.EnvironmentPlugin({
+        NODE_ENV: 'development', // use 'development' unless process.env.NODE_ENV is defined
+        DEBUG: false
+      }),
+      new HtmlWebpackPlugin({
+        template: path.resolve(paths.appPublic, 'index.html'),
+        minify: false
+      }),
+      new CopyWebpackPlugin([{
+        from: paths.appPublic,
+        to: paths.appBuild
+      }], {
+          ignore: ['index.html']
+        })
+    ]
+  }
 }
