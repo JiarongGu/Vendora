@@ -17,7 +17,7 @@ function CurrencyInput(props, ref) {
     )
     return (
         <Dropdown  overlay={menu} trigger={['click']}>
-            <a className={styles.label + ' ant-dropdown-link'} href="#">
+            <a className={styles.dlabel + ' ant-dropdown-link'} href="#">
                 <span>Click me </span><Icon type="down" />
             </a>
         </Dropdown>

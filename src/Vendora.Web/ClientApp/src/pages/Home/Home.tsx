@@ -33,6 +33,7 @@ function Home({ contentService }: HomeProps) {
       <div className={styles.lenderBoard}>
         Banks
       </div>
+
     </>
   )
 }
