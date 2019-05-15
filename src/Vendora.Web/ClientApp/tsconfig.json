@@ -32,9 +32,7 @@
       "@layouts": ["src/layouts"],
       "@layouts*": ["src/layouts*"],
       "@utilities": ["src/utilities"],
-      "@utilities*": ["src/utilities*"],
-      "@assets": ["src/assets"],
-      "@assets*": ["src/assets*"]
+      "@utilities*": ["src/utilities*"]
     },
   },
   "exclude": ["dist", "build", "node_modules", "scripts"]

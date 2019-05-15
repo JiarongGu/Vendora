@@ -6,7 +6,6 @@ interface CssExports {
   'aboutus': string;
   'calculator-button': string;
   'calculator-image': string;
-  'calculator-image__img': string;
   'calculator-item': string;
   'calculator-item-group': string;
   'calculator-section': string;
@@ -14,7 +13,6 @@ interface CssExports {
   'calculator-title': string;
   'calculatorButton': string;
   'calculatorImage': string;
-  'calculatorImageImg': string;
   'calculatorItem': string;
   'calculatorItemGroup': string;
   'calculatorSection': string;

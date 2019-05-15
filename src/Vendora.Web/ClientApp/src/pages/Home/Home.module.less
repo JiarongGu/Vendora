@@ -1,12 +1,10 @@
-
-
-
 @import (reference) '../../styles/global.less';
 
 .section {
   display: flex;
   height: 300px;
 }
+
 .main-section {
   display: flex;
   height: 85vh;
@@ -24,7 +22,7 @@
   }
 }
 
-.aboutus{
+.aboutus {
   background: #fff;
   width: 100%;
   padding: 7% 0 3% 0;
@@ -33,34 +31,41 @@
   align-items: center;
   flex-direction: column;
   text-align: center;
-  .about-text{
+
+  .about-text {
     color: #555;
     width: 100%;
     padding: 0 10%;
     margin-bottom: 40px;
+
     h1 {
       font-weight: bold;
-      font-size: 24px; 
+      font-size: 24px;
       color: @color-darkGreen;
     }
-    hr{
+
+    hr {
       border: 0;
       height: 1px;
       background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
     }
-    p{
+
+    p {
       font-size: 14px;
     }
   }
-  .info-group{
+
+  .info-group {
     width: 80%;
-    .info-card{
+
+    .info-card {
       display: block;
       float: left;
       width: 25%;
       padding: 0px 30px;
       position: relative;
-      &::after{
+
+      &::after {
         content: "\f101";
         font-family: "Font Awesome 5 Free";
         font-weight: 900;
@@ -69,19 +74,23 @@
         margin-top: -30%;
         color: @color-midGreen--lighter;
       }
+
       &:last-child {
         content: "";
       }
-      .info-image{
+
+      .info-image {
         background: #bbb;
         width: 100%;
         padding-bottom: 70%;
         margin-bottom: 10px;
       }
-      .infoText{
+
+      .infoText {
         padding: 10px 5px;
       }
-      h2{
+
+      h2 {
         font-size: 20px;
         color: #555;
       }
@@ -89,43 +98,47 @@
   }
 }
 
-.interestrate-section{
+.interestrate-section {
   background: #444;
   padding: 5% 0;
   display: flex;
   flex-direction: row;
   align-items: center;
   flex-wrap: nowrap;
-  .rate-text{
+
+  .rate-text {
     color: #fff;
     font-size: 30px;
     font-weight: 200;
     flex: 3 0 0;
     padding: 0 30px;
-    &:first-child{
+
+    &:first-child {
       text-align: right
     }
-    
-    &:last-child{
+
+    &:last-child {
       text-align: left
     }
   }
-  
-  .rate-figure{
+
+  .rate-figure {
     color: #fff;
     font-weight: 200;
     flex: 1 0 0;
-    span{
+
+    span {
       font-size: 14px;
     }
-    .number{
+
+    .number {
       font-size: 50px;
     }
   }
 
 }
 
-.calculator-section{
+.calculator-section {
   display: flex;
   padding: 4% 0 3% 0;
   background: #fff;
@@ -133,61 +146,71 @@
   align-items: center;
   flex-direction: column;
 
-  .calculator-title{
+  .calculator-title {
     width: 100%;
     text-align: center;
-    h1{
+
+    h1 {
       font-weight: 700;
       font-size: 24px;
       margin-bottom: 30px;
       color: @color-darkGreen;
     }
   }
-  .calculator-item-group{
+
+  .calculator-item-group {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    .calculator-item{
+
+    .calculator-item {
       flex-grow: 1;
       width: 33%;
       margin-bottom: 30px;
-      .calculator-image{
+
+      .calculator-image {
         width: 25%;
         float: left;
         padding-right: 10px;
         text-align: right;
-        &__img{
+
+        img {
           margin-right: 5px;
-          border: 1px solid #000;
+          border: 1px solid #FFF;
+          width: 50px;
+          border-radius: 25px;
         }
       }
-      .calculator-text{
+
+      .calculator-text {
         width: 75%;
         float: left;
         padding-left: 10px;
-        h2{
+
+        h2 {
           font-size: 20px;
           font-weight: bold;
           margin-bottom: 0px;
         }
+
         p {
           min-height: 46px;
         }
-        .calculator-button{
+
+        .calculator-button {
           border-radius: 20px;
           background: #fff;
           color: @primary-color;
         }
-        .calculator-desc{
 
-        }
+        .calculator-desc {}
       }
     }
   }
 }
+
 .lender-board {
   height: 600px;
 }
-
