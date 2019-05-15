@@ -4,7 +4,6 @@ import Button from 'antd/lib/button';
 import * as styles from './Home.module.less';
 import Icon from 'antd/lib/icon';
 import { ContentService } from '@services/common/ContentService';
-import { MainLayoutService } from '@services/laytous/MainLayoutService';
 import { Link } from 'react-router-dom';
 
 interface HomeProps {
@@ -30,10 +29,24 @@ function Home({ contentService }: HomeProps) {
           </Link>
         </div>
       </div>
-      <div className={styles.lenderBoard}>
-        Banks
+      <div>
+        Content
       </div>
-
+      <div>
+        Interest Rate
+      </div>
+      <div>
+        Calculator
+      </div>
+      <div>
+        About us
+      </div>
+      <div className={styles.lenderBoard}>
+        
+      </div>
+      <div>
+        Articles
+      </div>
     </>
   )
 }
