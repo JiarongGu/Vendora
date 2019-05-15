@@ -2,12 +2,15 @@
 import * as React from 'react';
 import Menu from 'antd/lib/menu';
 import { Link } from 'react-router-dom';
-import * as styles from './NavMenu.module.less';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserTie } from '@fortawesome/free-solid-svg-icons/faUserTie';
 
-export const NavMenu = () => (
-  <Menu theme={'light'} mode={'horizontal'} className={styles.container}>
+interface NavMenuProps {
+  className?: string
+}
+
+export const NavMenu = ({ className }: NavMenuProps) => (
+  <Menu theme={'light'} mode={'horizontal'} className={className}>
     <Menu.Item>
       <Link to={'/'}>Home</Link>
     </Menu.Item>

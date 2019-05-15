@@ -13,26 +13,22 @@ import { NavMenu } from '@components/NavMenu';
 
 export class MainLayout extends React.PureComponent {
   render() {
-    const { mainLayoutService } = this.props as any;
     return (
       <Layout>
         <div className={styles.header}>
           <Link to={'/'}>
             <div className={styles.logo}>LOGO</div>
           </Link>
-          <NavMenu />
+          <NavMenu className={styles.headerNav} />
         </div>
-        <Layout.Content>
+        <div className={styles.body}>
           <Switch>
             <Route key={'/user'} strict path={'/user'} component={User} />
             <Route key={'/quote'} strict path={'/quote'} component={Quote} />
             <Route key={'/'} strict path={'/'} component={Home} />
           </Switch>
-        </Layout.Content>
-
-        <Layout.Footer className={styles.footer}>
           <Footer />
-        </Layout.Footer>
+        </div>
       </Layout>
     );
   };
