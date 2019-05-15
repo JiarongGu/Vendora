@@ -29,22 +29,22 @@ function Home({ contentService }: HomeProps) {
           </Link>
         </div>
       </div>
-      <div>
+      <div className={styles.section} style={{background: '#FF5' }}>
         Content
       </div>
-      <div>
+      <div className={styles.section} style={{background: '#F0F' }}>
         Interest Rate
       </div>
-      <div>
+      <div className={styles.section} style={{background: '#F55' }}>
         Calculator
       </div>
-      <div>
+      <div className={styles.section} style={{background: '#0FF' }}>
         About us
       </div>
-      <div className={styles.lenderBoard}>
-        
+      <div className={styles.section} style={{background: '#055' }}>
+
       </div>
-      <div>
+      <div className={styles.section} style={{background: '#5F0' }}>
         Articles
       </div>
     </>

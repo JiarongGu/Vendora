@@ -5,14 +5,13 @@ interface CssExports {
   'aboutus-section__h1': string;
   'aboutusSection': string;
   'aboutusSectionH1': string;
-  'lender-board': string;
-  'lenderBoard': string;
   'main-section': string;
   'main-section__button': string;
   'main-section__button-group': string;
   'mainSection': string;
   'mainSectionButton': string;
   'mainSectionButtonGroup': string;
+  'section': string;
 }
 
 declare var cssExports: CssExports;

@@ -1,8 +1,9 @@
 import * as React from 'react';
+import * as styles from './Footer.module.less';
 
 export function Footer() {
   return (
-    <div>
+    <div className={styles.container}>
       <div>
         <h1>Main Sector</h1>
         <p>Home</p>
