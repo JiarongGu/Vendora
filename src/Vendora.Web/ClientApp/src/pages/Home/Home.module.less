@@ -24,7 +24,7 @@
   }
 }
 
-.aboutus{
+.content-section{
   background: #fff;
   width: 100%;
   padding: 7% 0 3% 0;
@@ -33,7 +33,7 @@
   align-items: center;
   flex-direction: column;
   text-align: center;
-  .about-text{
+  .content-text{
     color: #555;
     width: 100%;
     padding: 0 10%;
@@ -127,7 +127,7 @@
 
 .calculator-section{
   display: flex;
-  padding: 4% 0 3% 0;
+  padding: 7% 0 3% 0;
   background: #fff;
   justify-content: center;
   align-items: center;
@@ -158,9 +158,11 @@
         float: left;
         padding-right: 10px;
         text-align: right;
-        &__img{
+        img{
           margin-right: 5px;
-          border: 1px solid #000;
+          width: 60px;
+          height: 60px;
+          margin-top: 20px;
         }
       }
       .calculator-text{
@@ -187,7 +189,66 @@
     }
   }
 }
-.lender-board {
-  height: 600px;
+
+.about-us-section {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 7% 0;
+  .about-us-title{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 30px;
+    h1{
+      font-weight: 700;
+      font-size: 24px;
+      margin-bottom: 30px;
+      color: @color-darkGreen;
+    }
+  }
+  .about-us-image{
+    width: 60%;
+    padding-bottom: 28%;
+    background-color: #bbbbbb;
+  }
+  .about-us-text{
+    width: 70%;
+    margin-top: 50px;
+    text-align: center;
+    color: #555;
+    .about-us-button{
+      margin-top: 30px;
+    }
+  }
+}
+
+
+.lender-board-section {
+  display: flex;
+  flex-direction: column;
+  padding: 7% 0;
+  background-color: #fff;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  .lender-board-group{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    .lender{
+      width: 20%;
+      padding: 20px 40px;
+      img{
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+
 }
 
