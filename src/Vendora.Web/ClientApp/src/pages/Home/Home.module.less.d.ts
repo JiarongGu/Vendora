@@ -11,6 +11,13 @@ interface CssExports {
   'aboutUsSection': string;
   'aboutUsText': string;
   'aboutUsTitle': string;
+  'article': string;
+  'article-group': string;
+  'article-section': string;
+  'article-title': string;
+  'articleGroup': string;
+  'articleSection': string;
+  'articleTitle': string;
   'calculator-button': string;
   'calculator-image': string;
   'calculator-item': string;
@@ -55,6 +62,8 @@ interface CssExports {
   'rateFigure': string;
   'rateText': string;
   'section': string;
+  'view-more': string;
+  'viewMore': string;
 }
 
 declare var cssExports: CssExports;
