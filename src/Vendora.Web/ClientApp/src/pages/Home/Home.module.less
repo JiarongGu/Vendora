@@ -4,6 +4,7 @@
   display: flex;
   height: 300px;
 }
+
 .main-section {
   display: flex;
   height: 85vh;
@@ -21,7 +22,7 @@
   }
 }
 
-.content-section{
+.content-section {
   background: #fff;
   width: 100%;
   padding: 7% 0 3% 0;
@@ -30,14 +31,16 @@
   align-items: center;
   flex-direction: column;
   text-align: center;
-  .content-text{
+
+  .content-text {
     color: #555;
     width: 100%;
     padding: 0 10%;
     margin-bottom: 40px;
+
     h1 {
       font-weight: bold;
-      font-size: 24px; 
+      font-size: 24px;
       color: @color-darkGreen;
     }
 
@@ -135,7 +138,7 @@
 
 }
 
-.calculator-section{
+.calculator-section {
   display: flex;
   padding: 7% 0 3% 0;
   background: #fff;
@@ -172,7 +175,8 @@
         float: left;
         padding-right: 10px;
         text-align: right;
-        img{
+
+        img {
           margin-right: 5px;
           width: 60px;
           height: 60px;
@@ -215,28 +219,33 @@
   justify-content: center;
   align-items: center;
   padding: 7% 0;
-  .about-us-title{
+
+  .about-us-title {
     width: 100%;
     text-align: center;
     margin-bottom: 30px;
-    h1{
+
+    h1 {
       font-weight: 700;
       font-size: 24px;
       margin-bottom: 30px;
       color: @color-darkGreen;
     }
   }
-  .about-us-image{
+
+  .about-us-image {
     width: 60%;
     padding-bottom: 28%;
     background-color: #bbbbbb;
   }
-  .about-us-text{
+
+  .about-us-text {
     width: 70%;
     margin-top: 50px;
     text-align: center;
     color: #555;
-    .about-us-button{
+
+    .about-us-button {
       margin-top: 30px;
     }
   }
@@ -251,17 +260,20 @@
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
-  .lender-board-group{
-    width: 95%;
+
+  .lender-board-group {
+    width: 1050px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
     align-items: center;
-    .lender{
-      width: 20%;
-      padding: 20px 40px;
-      img{
+    justify-content: flex-start;
+
+    .lender {
+      width: 170px;
+      padding: 10px 20px;
+
+      img {
         width: 100%;
         height: auto;
       }
@@ -270,44 +282,51 @@
 
 }
 
-.article-section{
+.article-section {
   display: flex;
   padding: 7% 0 15% 0;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  .article-title{
+  width: 100vw;
+  overflow: auto;
+
+  .article-title {
     margin-bottom: 30px;
     text-align: left;
     width: 15%;
-    h1{
+
+    h1 {
       font-weight: 700;
       font-size: 24px;
       margin-bottom: 30px;
       color: @color-darkGreen;
     }
   }
-  .article-group { 
+
+  .article-group {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
     align-items: flex-start;
     height: 550px;
     width: 70%;
-      .article {
-        position: relative;
-        flex: 1 auto;
-        padding: 1em;
-        width: 48%;
-        color:#555;
-        margin: 10px;
-        border: 2px dashed #bbb;
-        .view-more{
-          position: absolute;
-          bottom: 10px;
-          right: 10px;
-        }
+
+    .article {
+      position: relative;
+      flex: 1 auto;
+      padding: 1em;
+      width: 48%;
+      color: #555;
+      margin: 10px;
+      border: 2px dashed #bbb;
+
+      .view-more {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
       }
     }
+  }
 }
