@@ -13,6 +13,10 @@ interface CssExports {
   'infoText': string;
   'lender-board': string;
   'lenderBoard': string;
+  'aboutus-section': string;
+  'aboutus-section__h1': string;
+  'aboutusSection': string;
+  'aboutusSectionH1': string;
   'main-section': string;
   'main-section__button': string;
   'main-section__button-group': string;
@@ -26,6 +30,7 @@ interface CssExports {
   'rate-text': string;
   'rateFigure': string;
   'rateText': string;
+  'section': string;
 }
 
 declare var cssExports: CssExports;

@@ -4,31 +4,31 @@ import { Route, Link } from 'react-router-dom';
 import { Switch } from 'react-router';
 
 import { Home, Quote, User } from '@pages';
-import { Header } from './Header';
 
 import * as styles from './MainLayout.module.less';
 import { sinking } from 'redux-sink';
 import { MainLayoutService } from '@services/laytous/MainLayoutService';
+import { Footer } from '@components/Footer';
+import { NavMenu } from '@components/NavMenu';
 
 export class MainLayout extends React.PureComponent {
   render() {
-    const { mainLayoutService } = this.props as any;
     return (
-      <Layout className={styles.container}>
-        <Header />
-        <Layout.Content>
+      <Layout>
+        <div className={styles.header}>
+          <Link to={'/'}>
+            <div className={styles.logo}>LOGO</div>
+          </Link>
+          <NavMenu className={styles.headerNav} />
+        </div>
+        <div className={styles.body}>
           <Switch>
             <Route key={'/user'} strict path={'/user'} component={User} />
             <Route key={'/quote'} strict path={'/quote'} component={Quote} />
             <Route key={'/'} strict path={'/'} component={Home} />
           </Switch>
-        </Layout.Content>
-
-        {mainLayoutService.footer && 
-          <Layout.Footer className={styles.footer}>
-            Footer
-          </Layout.Footer>
-        }
+          <Footer />
+        </div>
       </Layout>
     );
   };

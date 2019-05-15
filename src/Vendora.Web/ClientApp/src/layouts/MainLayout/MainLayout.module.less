@@ -2,12 +2,43 @@
 @background-dark: #666;
 @background-dark-text: #f2f2f2;
 
-.container {
-  height: 100vh;
-  overflow-x: hidden;
-}
+@header-height: 64px;
 
 .footer {
   background-color: @background-dark;
   color: @background-dark-text;
+}
+
+.logo {
+  background-color: @primary-color;
+  width: 170px;
+  height: 100%;
+  text-align: center;
+  color: #000;
+  font-size: 20px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.header {
+  height: @header-height;
+  display: flex;
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+
+  &-nav {
+    flex-basis: 100%;
+    display: flex;
+    align-items: stretch;
+    line-height: @header-height;
+    justify-content: flex-end;
+  }
+}
+
+.body {
+  margin-top: @header-height;
+  height: calc(100vh - @header-height);
+  overflow: auto;
 }

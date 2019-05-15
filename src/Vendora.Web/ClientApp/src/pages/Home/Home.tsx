@@ -4,7 +4,6 @@ import Button from 'antd/lib/button';
 import * as styles from './Home.module.less';
 import Icon from 'antd/lib/icon';
 import { ContentService } from '@services/common/ContentService';
-import { MainLayoutService } from '@services/laytous/MainLayoutService';
 import { Link } from 'react-router-dom';
 
 interface HomeProps {
@@ -91,10 +90,24 @@ function Home({ contentService }: HomeProps) {
             </Button>
         </div>
       </div>
-      <div className={styles.lenderBoard}>
-        Banks
+      <div className={styles.section} style={{background: '#FF5' }}>
+        Content
       </div>
+      <div className={styles.section} style={{background: '#F0F' }}>
+        Interest Rate
+      </div>
+      <div className={styles.section} style={{background: '#F55' }}>
+        Calculator
+      </div>
+      <div className={styles.section} style={{background: '#0FF' }}>
+        About us
+      </div>
+      <div className={styles.section} style={{background: '#055' }}>
 
+      </div>
+      <div className={styles.section} style={{background: '#5F0' }}>
+        Articles
+      </div>
     </>
   )
 }
