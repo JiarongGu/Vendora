@@ -10,12 +10,13 @@ const formatInputCurrency = function (value) {
   return new Intl.NumberFormat('en-AU', { style: 'currency', currency: 'AUD', minimumFractionDigits: 0 }).format(Number(origin));
 }
 
-const formatOutputValue = function(display) {
+const formatOutputValue = function (display) {
   return Number(display.replace(/[\$,]/g, '')) || 0;
 }
+
 function CurrencyInput(props, ref) {
   const [display, setDisplay] = React.useState('');
-  const onchange = function(input) {
+  const onchange = function (input) {
     const newDisplay = formatInputCurrency(input);
     setDisplay(newDisplay);
     props.onChange(formatOutputValue(newDisplay));
