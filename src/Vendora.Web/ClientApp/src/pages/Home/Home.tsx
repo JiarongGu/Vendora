@@ -5,7 +5,7 @@ import * as styles from './Home.module.less';
 import Icon from 'antd/lib/icon';
 import { ContentService } from '@services/common/ContentService';
 import { Link } from 'react-router-dom';
-
+import 'classnames';
 interface HomeProps {
   contentService: ContentService;
 }
@@ -72,7 +72,7 @@ function Home({ contentService }: HomeProps) {
         
         </div>
       </div>
-      <div className={styles.ourRate}>
+      <div className={styles.interestrateSection}>
         <div className={styles.rateText}>
           最新优惠利率
         </div>
@@ -86,23 +86,35 @@ function Home({ contentService }: HomeProps) {
         <div className={styles.rateText}>
           <Button className={styles.mainSectionButton} size={'large'} type={'primary'}>
               <Icon type={'dollar'} />
-              计算利率
-            </Button>
+              更多利率
+          </Button>
         </div>
       </div>
-      <div className={styles.section} style={{background: '#FF5' }}>
-        Content
-      </div>
-      <div className={styles.section} style={{background: '#F0F' }}>
-        Interest Rate
-      </div>
-      <div className={styles.section} style={{background: '#F55' }}>
-        Calculator
+      <div className={styles.calculatorSection}>
+        <div className={styles.calculatorTitle}>
+          <h1>贷款利率计算器</h1>
+        </div>
+        <div className= {styles.calculatorItemGroup}>
+          {[0,1,2,3,4,5].map((i) => (
+          <div className={styles.calculatorItem}>
+            <div className={styles.calculatorImage}>
+              <img src="/assets/images/calculator.jpg" />
+            </div>
+            <div className={styles.calculatorText}>
+              <h2>Credit Score Calculator</h2>
+              <p>Are you a high risk borrower?</p>
+              <Button className={styles.calculatorButton} size={'default'} type={'default'}>
+                  了解更多
+                  <Icon type={'arrow-right'} />
+              </Button>
+            </div>
+          </div>))}
+        </div>
       </div>
       <div className={styles.section} style={{background: '#0FF' }}>
         About us
       </div>
-      <div className={styles.section} style={{background: '#055' }}>
+      <div className={styles.lenderBoard}>
 
       </div>
       <div className={styles.section} style={{background: '#5F0' }}>

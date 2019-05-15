@@ -89,7 +89,7 @@
   }
 }
 
-.our-rate{
+.interestrate-section{
   background: #444;
   padding: 5% 0;
   display: flex;
@@ -124,6 +124,70 @@
   }
 
 }
+
+.calculator-section{
+  display: flex;
+  padding: 4% 0 3% 0;
+  background: #fff;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  .calculator-title{
+    width: 100%;
+    text-align: center;
+    h1{
+      font-weight: 700;
+      font-size: 24px;
+      margin-bottom: 30px;
+      color: @color-darkGreen;
+    }
+  }
+  .calculator-item-group{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    .calculator-item{
+      flex-grow: 1;
+      width: 33%;
+      margin-bottom: 30px;
+      .calculator-image{
+        width: 25%;
+        float: left;
+        padding-right: 10px;
+        text-align: right;
+        &__img{
+          margin-right: 5px;
+          border: 1px solid #000;
+        }
+      }
+      .calculator-text{
+        width: 75%;
+        float: left;
+        padding-left: 10px;
+        h2{
+          font-size: 20px;
+          font-weight: bold;
+          margin-bottom: 0px;
+        }
+        p {
+          min-height: 46px;
+        }
+        .calculator-button{
+          border-radius: 20px;
+          background: #fff;
+          color: @primary-color;
+        }
+        .calculator-desc{
+
+        }
+      }
+    }
+  }
+}
 .lender-board {
   height: 600px;
 }
+
