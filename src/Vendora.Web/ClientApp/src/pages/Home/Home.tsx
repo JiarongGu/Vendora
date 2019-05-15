@@ -9,6 +9,7 @@ import 'classnames';
 interface HomeProps {
   contentService: ContentService;
 }
+
 function Home({ contentService }: HomeProps) {
  
   return (
@@ -43,33 +44,33 @@ function Home({ contentService }: HomeProps) {
               <h2>什么是Lorem Ipsum?</h2>
             </div>
           </div>
-          
+
           <div className={styles.infoCard}>
             <div className={styles.infoImage}></div>
-            
+
             <div className={styles.infoText}>
               <h2>我们为何用它？</h2>
             </div>
-            
+
           </div>
-          
+
           <div className={styles.infoCard}>
             <div className={styles.infoImage}></div>
-            
+
             <div className={styles.infoText}>
               <h2>它起源于哪里？</h2>
             </div>
-            
+
           </div>
-          
+
           <div className={styles.infoCard}>
             <div className={styles.infoImage}></div>
             <div className={styles.infoText}>
               <h2>我能从哪里获取？</h2>
             </div>
-            
+
           </div>
-        
+
         </div>
       </div>
       <div className={styles.interestrateSection}>
@@ -82,11 +83,11 @@ function Home({ contentService }: HomeProps) {
         <div className={styles.rateFigure}>
           <span>start from</span><span className={styles.number}>3.22</span><span>%</span>
         </div>
-        
+
         <div className={styles.rateText}>
           <Button className={styles.mainSectionButton} size={'large'} type={'primary'}>
-              <Icon type={'dollar'} />
-              更多利率
+            <Icon type={'dollar'} />
+            更多利率
           </Button>
         </div>
       </div>
@@ -94,21 +95,21 @@ function Home({ contentService }: HomeProps) {
         <div className={styles.calculatorTitle}>
           <h1>贷款利率计算器</h1>
         </div>
-        <div className= {styles.calculatorItemGroup}>
-          {[0,1,2,3,4,5].map((i) => (
-          <div className={styles.calculatorItem}>
-            <div className={styles.calculatorImage}>
-              <img src="/assets/images/calculator.jpg" />
-            </div>
-            <div className={styles.calculatorText}>
-              <h2>Credit Score Calculator</h2>
-              <p>Are you a high risk borrower?</p>
-              <Button className={styles.calculatorButton} size={'default'} type={'default'}>
+        <div className={styles.calculatorItemGroup}>
+          {[0, 1, 2, 3, 4, 5].map((i) => (
+            <div className={styles.calculatorItem}>
+              <div className={styles.calculatorImage}>
+                <img src={'/images/calculator.jpg'} />
+              </div>
+              <div className={styles.calculatorText}>
+                <h2>Credit Score Calculator</h2>
+                <p>Are you a high risk borrower?</p>
+                <Button className={styles.calculatorButton} size={'default'} type={'default'}>
                   了解更多
                   <Icon type={'arrow-right'} />
-              </Button>
-            </div>
-          </div>))}
+                </Button>
+              </div>
+            </div>))}
         </div>
       </div>
       <div className={styles.aboutUsSection}>
@@ -149,7 +150,7 @@ function Home({ contentService }: HomeProps) {
         })}
         </div>
       </div>
-      <div className={styles.section} style={{background: '#5F0' }}>
+      <div className={styles.section} style={{ background: '#5F0' }}>
         Articles
       </div>
     </>
