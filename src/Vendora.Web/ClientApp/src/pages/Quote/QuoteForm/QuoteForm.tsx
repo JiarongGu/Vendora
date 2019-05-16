@@ -5,6 +5,8 @@ import Radio from 'antd/lib/radio';
 import Select from 'antd/lib/select';
 
 import { CurrencyInput } from '@components/Input';
+import * as styles from './QuoteForm.module.less';
+
 
 interface QuoteFormProps extends FormComponentProps {
 
@@ -14,34 +16,36 @@ export class QuoteFormComponent extends React.Component<QuoteFormProps> {
   render() {
     const { form: { getFieldDecorator } } = this.props;
     return (
-      <Form>
-        <Form.Item label={'Needed Service'}>
-          {getFieldDecorator('service', {
-            rules: [
-              {
-                required: true,
-                message: 'Please select service',
-              },
-            ]
-          })(
-            <Radio.Group>
-              <Radio value={'newhome'}>New Home Loan</Radio>
-              <Radio value={'refinance'}>Refinance</Radio>
-            </Radio.Group>,
-          )}
-        </Form.Item>
-        <div style={{ display: 'flex' }}>
-          <Form.Item label={'Use of Property'}>
+      <Form className={styles.container}>
+        <div className={styles.section}>
+          <Form.Item label={'服务类型'}>
+            {getFieldDecorator('service', {
+              rules: [
+                {
+                  required: true,
+                  message: '请选择服务类型',
+                },
+              ]
+            })(
+              <Radio.Group>
+                <Radio value={'newhome'}>购置新房</Radio>
+                <Radio value={'refinance'}>房屋融资</Radio>
+              </Radio.Group>,
+            )}
+          </Form.Item>
+          <Form.Item label={'房产使用类型'}>
             {getFieldDecorator('propertyUsage', {
               rules: [{ required: true, message: 'Please select your use property!' }],
             })(
-              <Select placeholder={'Please select relevant usage'}>
-                <Select.Option value={'living'}>Living</Select.Option>
-                <Select.Option value={'invest'}>Invest</Select.Option>
+              <Select placeholder={'请选择房产使用类型'}>
+                <Select.Option value={'living'}>自主房</Select.Option>
+                <Select.Option value={'invest'}>投资房</Select.Option>
               </Select>,
             )}
           </Form.Item>
-          <Form.Item label={'Property Value'}>
+        </div>
+        <div className={styles.section}>
+          <Form.Item label={'房产价值'}>
             {getFieldDecorator('propertyValue', {
               rules: [
                 {
@@ -51,9 +55,7 @@ export class QuoteFormComponent extends React.Component<QuoteFormProps> {
               ],
             })(<CurrencyInput />)}
           </Form.Item>
-        </div>
-        <div style={{ display: 'flex' }}>
-          <Form.Item label={'Current Deposit'}>
+          <Form.Item label={'已付款额度'}>
             {getFieldDecorator('currentDepoist', {
               rules: [
                 {
@@ -63,7 +65,7 @@ export class QuoteFormComponent extends React.Component<QuoteFormProps> {
               ],
             })(<CurrencyInput />)}
           </Form.Item>
-          <Form.Item label={'Expected Loan Amount'}>
+          <Form.Item label={'所需贷款额度'}>
             {getFieldDecorator('currentDepoist', {
               rules: [
                 {
@@ -71,7 +73,7 @@ export class QuoteFormComponent extends React.Component<QuoteFormProps> {
                   message: 'Please input your E-mail!',
                 },
               ],
-            })(<Input />)}
+            })(<CurrencyInput />)}
           </Form.Item>
         </div>
       </Form>

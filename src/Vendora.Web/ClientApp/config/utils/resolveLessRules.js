@@ -40,9 +40,9 @@ module.exports = function ({
           loader: "less-loader",
           options: {
             modifyVars: {
-              'primary-color': '#5dc0a6',
-              'link-color': '#5dc0a6',
-              'border-color-base': '#5dc0a6',
+              'primary-color': '#0FC0AF',
+              'link-color': '#0FC0AF',
+              'border-color-base': '#0FC0AF',
               'text-color': '#224488',
               'text-color-secondary': '#aaa',
               'border-radius-base': '5px'

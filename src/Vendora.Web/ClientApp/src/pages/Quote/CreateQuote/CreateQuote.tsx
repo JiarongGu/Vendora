@@ -3,6 +3,7 @@ import * as styles from './CreateQuote.module.less';
 import Input from 'antd/lib/input';
 import { CurrencyInput } from '@components/Input';
 import { QuoteForm } from '../QuoteForm/QuoteForm';
+import Steps from 'antd/lib/steps';
 
 interface CreateQuoteProps {
 }
@@ -32,29 +33,19 @@ export default class CreateQuote extends React.Component {
   render() {
     return (
       <div className={styles.mainSection}>
-        <div className={styles.container}>
-          <div className={styles.stepBarContainer}>
-          </div>
-          <div className={styles.questionGroupContainer}>
-            <QuoteForm />
-            {/* <div className={styles.questionContainer}>
-                <div className={styles.question}>
-                  <h2>What is the expected purchase price? </h2>
-                </div>
-                <div className={styles.answerGroup}>
-                  <CurrencyInput ref={this.inputRef} onChange={this.updateAnswer(1)} />
-                  <div>{this.form.question1}</div>
-                </div>
-              </div>
-              <div className={styles.questionContainer}>
-                <div className={styles.question}>
-                  <h2>How much deposit do you have?</h2>
-                </div>
-                <div className={styles.answerGroup}>
-                  <CurrencyInput ref={this.inputRef} onChange={this.updateAnswer(2)} />
-                  <div>{this.form.question2}</div>
-                </div>
-              </div> */}
+        <div style={{ background: '#FFF', padding: '20px 0' }}>
+          <div className={styles.container}>
+            <div className={styles.stepBarContainer}>
+              <Steps current={0} direction={'vertical'}>
+                <Steps.Step className={styles.stepBar} title={'Step 1'} description={'服务信息'} />
+                <Steps.Step className={styles.stepBar} title={'Step 2'} description={'贷款信息'} />
+                <Steps.Step className={styles.stepBar} title={'Step 3'} description={'财务信息'} />
+                <Steps.Step className={styles.stepBar} title={'Step 4'} description={'个人信息'} />
+              </Steps>
+            </div>
+            <div className={styles.questionGroupContainer}>
+              <QuoteForm />
+            </div>
           </div>
         </div>
       </div>
