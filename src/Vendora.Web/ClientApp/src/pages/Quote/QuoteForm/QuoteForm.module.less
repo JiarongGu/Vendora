@@ -1,3 +1,6 @@
+
+@baseWidth: 8.5%;
+@colNumber: 12;
 .container {
   width: 500px;
   display: flex;
@@ -5,6 +8,25 @@
 }
 
 .section {
-  height: 300px;
+  min-height: 300px;
   padding: 4px 0;
+}
+.form-row{
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  .createColumns(1);
+}
+.createColumns (@index) when (@index <= @colNumber) {
+  .column-@{index} {
+      width: @baseWidth * @index;
+      padding: 0 20px;
+      &:first-child {
+        padding-left: 0px;
+      }
+      &:last-child {
+        padding-right: 0px;
+      }
+  }
+  .createColumns (@index + 1);
 }
