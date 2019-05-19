@@ -62,6 +62,8 @@ export default createServerRenderer(
       return { redirectUrl: routerContext.url };
     }
 
+    const body = await renderToString(app);
+
     // render headers
     const header = Helmet.renderStatic();
     const headerTags =
@@ -74,7 +76,7 @@ export default createServerRenderer(
 
     return {
       html: originalHtml
-        .replace(holderTag('body'), renderToString(app))
+        .replace(holderTag('body'), body)
         .replace(holderTag('header'), headerTags)
         .replace(
           holderTag('store'),
