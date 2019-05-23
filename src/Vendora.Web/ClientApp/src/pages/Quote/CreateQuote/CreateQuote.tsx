@@ -10,6 +10,10 @@ interface CreateQuoteProps {
 
 
 export default class CreateQuote extends React.Component {
+
+  componentDidMount() {
+    console.info(this.props.children)
+  }
   state = {
     question1: 0,
     question2: 0,
@@ -36,7 +40,7 @@ export default class CreateQuote extends React.Component {
         <div style={{ background: '#FFF', padding: '20px 0' }}>
           <div className={styles.container}>
             <div className={styles.stepBarContainer}>
-              <Steps current={0} direction={'vertical'}>
+              <Steps current={0} direction={'horizontal'}>
                 <Steps.Step className={styles.stepBar} title={'Step 1'} description={'服务信息'} />
                 <Steps.Step className={styles.stepBar} title={'Step 2'} description={'贷款信息'} />
                 <Steps.Step className={styles.stepBar} title={'Step 3'} description={'财务信息'} />

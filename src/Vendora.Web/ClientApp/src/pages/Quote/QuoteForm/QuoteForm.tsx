@@ -8,6 +8,7 @@ import Select from 'antd/lib/select';
 
 import { CurrencyInput } from '@components/Input';
 import * as styles from './QuoteForm.module.less';
+import SuburbInput from '@components/Input/SuburbInput/SuburbInput';
 
 
 interface QuoteFormProps extends FormComponentProps {
@@ -15,25 +16,13 @@ interface QuoteFormProps extends FormComponentProps {
 }
 
 export class QuoteFormComponent extends React.Component<QuoteFormProps> {
-  state = { suburbAutoCompleteResult: []};
-
-
-  handleSuburbChange = (value) => {
-    let result;
-    if (!value) {
-      result = ['Burwood', 'Chatswood', 'Ashfield', 'Hornsby'];
-    } else {
-      result = ['Burwood', 'Chatswood', 'Ashfield', 'Hornsby'].filter((sub) => new RegExp(value, "i").test(sub));
-    }
-    this.setState({ 'suburbAutoCompleteResult': result });
+  suburbRef = React.createRef();
+  componentDidMount() {
+    console.info(this.suburbRef.current);
   }
   
   render() {
     const { form: { getFieldDecorator } } = this.props;
-    const { suburbAutoCompleteResult } = this.state;
-    const suburbOptionsTemplate = suburbAutoCompleteResult.map(sub => (
-      <AutoComplete.Option key={sub}>{sub}</AutoComplete.Option>
-    ));
 
     const prefixSelector = getFieldDecorator('prefix', {
       initialValue: '86',
@@ -138,15 +127,7 @@ export class QuoteFormComponent extends React.Component<QuoteFormProps> {
               <Form.Item label={'房屋所在地区'}>
                 {getFieldDecorator('propertySuburb', {
                     rules: [{ required: true, message: '请输入房屋所在区域！' }],
-                  })(
-                    <AutoComplete
-                      dataSource={suburbOptionsTemplate}
-                      onChange={this.handleSuburbChange}
-                      placeholder="所在区"
-                    >
-                      <Input />
-                    </AutoComplete>
-                  )}
+                  })(<SuburbInput ref = {this.suburbRef}/>)}
               </Form.Item>
             </div>
           </div>
@@ -252,14 +233,17 @@ export class QuoteFormComponent extends React.Component<QuoteFormProps> {
             <div className={styles.column3}>
               <Form.Item label={'姓氏'}>
                 {getFieldDecorator('surname', {
-                    rules: [{ required: true, message: '请输入姓氏' }],
+                    rules: [{ required: true, message: '请输入姓氏' },
+                    { required: true, message: '请输入姓氏' },
+                    {pattern: /[a-zA-Z]/i, message: '仅拼音'}],
                   })(<Input placeholder="姓氏"/>)}
               </Form.Item>
             </div>
             <div className={styles.column5}>
               <Form.Item label={'名'}>
                 {getFieldDecorator('firstname', {
-                    rules: [{ required: true, message: '请输入名字' }],
+                    rules: [{ required: true, message: '请输入名字拼音' },
+                    {pattern: /[a-zA-Z]/i, message: '仅拼音'}],
                   })(<Input placeholder="名"/>)}
               </Form.Item>
             </div>
@@ -284,10 +268,14 @@ export class QuoteFormComponent extends React.Component<QuoteFormProps> {
             <div className={styles.column6}>
               <Form.Item label="手机号码">
                 {getFieldDecorator('phone', {
-                  rules: [{ required: true, message: '请输入手机号码！' }],
+                  rules: [{ required: true, message: '手机号码不能为空！' }],
                 })(<Input addonBefore={prefixSelector} />)}
               </Form.Item>
             </div>
+          </div>
+          
+          <div className={styles.formRow}>
+          
           </div>
         </div>
       </Form>
