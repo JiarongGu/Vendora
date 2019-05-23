@@ -47,12 +47,16 @@ namespace Vendora.WebAdmin
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
 
-            app.UseMvc(routes =>
+            app.Map("/api", apiApp =>
             {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller}/{action=Index}/{id?}");
+                apiApp.UseMvc(routes =>
+                {
+                    routes.MapRoute(
+                        name: "default",
+                        template: "{controller}/{action=Index}/{id?}");
+                });
             });
+            
 
             app.UseSpa(spa =>
             {
