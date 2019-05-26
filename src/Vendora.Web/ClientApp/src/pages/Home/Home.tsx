@@ -12,107 +12,85 @@ interface HomeProps {
 
 function Home({ contentService }: HomeProps) {
 
+  const whyusItems = [
+    {title: 'Our Team', imagePath: '', desc: "Abacus Finance gathers professional mortgage brokers who always put the best interests of their customers first and are committed to maintaining an efficient and smooth loan process."}, 
+    {title: 'Our Experience', imagePath: '', desc: "Abacus Finance gathers professional mortgage brokers who always put the best"}, 
+    {title: 'Our Service Network', imagePath: '', desc: "Abacus Finance gathers professional mortgage brokers who always put the best"}, 
+    {title: 'Our Lenders', imagePath: '', desc: "Abacus Finance gathers professional mortgage brokers who always put the best"}, 
+    {title: 'Our Results', imagePath: '', desc: "Abacus Finance gathers professional mortgage brokers who always put the best"}, 
+    {title: 'Our Process', imagePath: '', desc: "Abacus Finance gathers professional mortgage brokers who always put the best"}, 
+  
+  ];
   return (
     <>
-      <div className={styles.mainSection}>
-        <div className={styles.mainSectionButtonGroup}>
-          <Link to={'/quote/buyinghome'}>
+      <div className={`${styles.mainSection} ${styles.section}`}>
+        <div className={styles.mainSectionTextGroup}>
+          <h1 className={styles.mainSectionTitle}>The future<br/><span>is ours to shape</span></h1>
+          <p className={styles.mainSectionText}>For over 20 years, we’ve been changing the way the world uses technology.</p>
+          <Link to={'/quote'}>
             <Button className={styles.mainSectionButton} size={'large'} type={'primary'}>
-              <Icon type={'home'} />
-              我要买房
-            </Button>
-          </Link>
-          <Link to={'/quote/refinance'}>
-            <Button className={styles.mainSectionButton} size={'large'} type={'primary'}>
-              <Icon type={'dollar'} />
-              我要融资
+              Enquiry Now
             </Button>
           </Link>
         </div>
+        <div className={styles.mainSectionBackground}></div>
       </div>
 
-      <div className={styles.contentSection}>
+
+      <div className={`${styles.contentSection} ${styles.section}`}>
         <div className={styles.contentText}>
-          <h1>无人爱苦，亦无人寻之欲之，乃因其苦...</h1>
-          <hr />
-          <p>如今，很多桌面排版软件以及网页编辑用Lorem Ipsum作为默认的示范文本，搜一搜“Lorem Ipsum”就能找到这些网站的雏形。这些年来Lorem Ipsum演变出了各式各样的版本，有些出于偶然，有些则是故意的（刻意的幽默之类的）。</p>
+          <h1>“Integrity, Quality,<br/>Focus and Reliance”</h1>
         </div>
         <div className={styles.infoGroup}>
-          <div className={styles.infoCard}>
-            <div className={styles.infoImage}></div>
-            <div className={styles.infoText}>
-              <h2>什么是Lorem Ipsum?</h2>
-            </div>
+          <div className={`${styles.infoCard} ${styles.left}`}>
+            <div><span className={`${styles.titleDot} ${styles.title}`}>What <span className={styles.highlight}>we do</span></span></div>
+            <div><Button className={styles.mainSectionButton} size={'large'} type={'primary'}>
+              More About us
+            </Button></div>
           </div>
-
-          <div className={styles.infoCard}>
-            <div className={styles.infoImage}></div>
-
-            <div className={styles.infoText}>
-              <h2>我们为何用它？</h2>
-            </div>
-
+          <div className={`${styles.infoCard} ${styles.right}`}>
+            <p>Established in 2004, Abacus Finance adheres to the brand philosophy of “Integrity, Quality, Focus and Reliance”, providing high-quality loan services to corporate and individual customers with efficient service and excellent customer experience. We aim to build a financial brand, trusted by Australian loan customers.</p>
           </div>
-
-          <div className={styles.infoCard}>
-            <div className={styles.infoImage}></div>
-
-            <div className={styles.infoText}>
-              <h2>它起源于哪里？</h2>
-            </div>
-
-          </div>
-
-          <div className={styles.infoCard}>
-            <div className={styles.infoImage}></div>
-            <div className={styles.infoText}>
-              <h2>我能从哪里获取？</h2>
-            </div>
-
-          </div>
-
         </div>
       </div>
-      <div className={styles.interestrateSection}>
-        <div className={styles.rateText}>
-          最新优惠利率
-        </div>
-        <div className={styles.rateFigure}>
-          <span>start from</span><span className={styles.number}>3.22</span><span>%</span>
-        </div>
-        <div className={styles.rateFigure}>
-          <span>start from</span><span className={styles.number}>3.22</span><span>%</span>
-        </div>
-
-        <div className={styles.rateText}>
-          <Button className={styles.mainSectionButton} size={'large'} type={'primary'}>
-            <Icon type={'dollar'} />
-            更多利率
-          </Button>
+      
+      <div className={`${styles.middleBannerSection} ${styles.section}`}>
+        <div className={styles.back1}>
         </div>
       </div>
-      <div className={styles.calculatorSection}>
-        <div className={styles.calculatorTitle}>
-          <h1>贷款利率计算器</h1>
+      <div className={`${styles.whyusSection} ${styles.section}`}>
+        <div className={styles.whyusTitle}>
+          <span className={styles.titleDot}>Why <span className = {styles.highlight}>Abcus Finance</span></span>
         </div>
-        <div className={styles.calculatorItemGroup}>
-          {[0, 1, 2, 3, 4, 5].map((i) => (
-            <div className={styles.calculatorItem}>
-              <div className={styles.calculatorImage}>
-                <img src={'/images/calculator.jpg'} />
+        <div className={styles.whyusItemGroup}>
+          { whyusItems.map((item, index) => (
+            <div className={styles.whyusItem}>
+              <div className={styles.whyusImage}>
+                <img src={item.imagePath} />
               </div>
-              <div className={styles.calculatorText}>
-                <h2>Credit Score Calculator</h2>
-                <p>Are you a high risk borrower?</p>
-                <Button className={styles.calculatorButton} size={'default'} type={'default'}>
-                  了解更多
-                  <Icon type={'arrow-right'} />
-                </Button>
+              <div className={styles.whyusText}>
+                <div className={styles.whyusIndex}>
+                  <span>0{index + 1}</span>
+                </div>
+                <div className={styles.whyusTextLeft}><span className={styles.titleDot}>{item.title}</span></div>
+                <div className={styles.whyusTextRight}><p className={styles.whyusDesc}>{item.desc}</p></div>
               </div>
             </div>))}
         </div>
       </div>
-      <div className={styles.aboutUsSection}>
+
+      <div className={`${styles.interestrateSection} ${styles.section}`}>
+        <div className={styles.rateText}>
+          最新优惠利率
+          <div className={styles.rateFigure}>
+            <span>start from</span><span className={styles.number}>3.22</span><span>%</span>
+          </div>
+          <div className={styles.rateFigure}>
+            <span>start from</span><span className={styles.number}>3.22</span><span>%</span>
+          </div>
+        </div>
+      </div>
+      <div className={`${styles.aboutUsSection} ${styles.section}`}>
         <div className={styles.aboutUsTitle}>
           <h1>我们的团队</h1>
         </div>
@@ -128,7 +106,7 @@ function Home({ contentService }: HomeProps) {
         </div>
       </div>
       {/*banks*/}
-      <div className={styles.lenderBoardSection}>
+      <div className={`${styles.lenderBoardSection} ${styles.section}`}>
         <div className={styles.lenderBoardGroup}>
           {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14].map((i) => {
             if (i % 3 === 1) {
@@ -150,7 +128,7 @@ function Home({ contentService }: HomeProps) {
           })}
         </div>
       </div>
-      <div className={styles.articleSection}>
+      <div className={`${styles.articleSection} ${styles.section}`}>
         <div className={styles.articleTitle}>
           <h1>相关阅读</h1>
         </div>

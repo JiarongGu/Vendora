@@ -5,7 +5,7 @@ import * as styles from './Dropdown.module.less';
 
 import Dropdown from 'antd/lib/dropdown';
 
-function CurrencyInput(props, ref) {
+function DropdownInput(props, ref) {
     const menu = (
       <Menu>
         {props.items.map((item) => 
@@ -24,4 +24,4 @@ function CurrencyInput(props, ref) {
     );
 }
 
-export default React.forwardRef(CurrencyInput);
+export default React.forwardRef(DropdownInput);

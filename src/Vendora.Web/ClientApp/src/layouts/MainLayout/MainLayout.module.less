@@ -1,16 +1,11 @@
-@primary-color-two: #5dc0a6;
-@background-dark: #666;
-@background-dark-text: #f2f2f2;
 
-@header-height: 64px;
-
+@import (reference) '../../styles/global.less';
 .footer {
   background-color: @background-dark;
   color: @background-dark-text;
 }
 
 .logo {
-  background-color: @primary-color;
   width: 170px;
   height: 100%;
   text-align: center;
@@ -19,6 +14,10 @@
   align-items: center;
   display: flex;
   justify-content: center;
+  background-repeat: no-repeat;
+  background-size: initial;
+  background-position: right;
+  background-image: url('/assets/images/abacus_finance_logo.png');
 }
 
 .header {
@@ -27,19 +26,14 @@
   position: fixed;
   width: 100%;
   z-index: 1000;
-
-  &-nav {
-    flex-basis: 100%;
-    display: flex;
-    align-items: stretch;
-    line-height: @header-height;
-    justify-content: flex-end;
-  }
+  background-color: transparent;
+  color: @text-color;
+  justify-content: center;
 }
 
 .body {
-  margin-top: @header-height;
-  height: calc(100vh - @header-height);
+  padding-top: @header-height;
+  height: 100vh;
   overflow-y: auto;
   overflow-x: hidden;
 }

@@ -17,9 +17,9 @@ export class MainLayout extends React.PureComponent {
       <Layout>
         <div className={styles.header}>
           <Link to={'/'}>
-            <div className={styles.logo}>LOGO</div>
+            <div className={styles.logo}></div>
           </Link>
-          <NavMenu className={styles.headerNav} />
+          <NavMenu/>
         </div>
         <div className={styles.body}>
           <Switch>

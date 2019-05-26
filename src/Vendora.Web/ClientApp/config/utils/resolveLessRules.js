@@ -40,12 +40,12 @@ module.exports = function ({
           loader: "less-loader",
           options: {
             modifyVars: {
-              'primary-color': '#0FC0AF',
-              'link-color': '#0FC0AF',
-              'border-color-base': '#0FC0AF',
-              'text-color': '#224488',
-              'text-color-secondary': '#aaa',
-              'border-radius-base': '5px'
+              'primary-color': '#637f3f',//green
+              'link-color': '#88ad58',//dark gray
+              'border-color-base': '#637f3f',//dark gray
+              'text-color': '#4d4c53',//dark gray
+              'text-color-secondary': '#9599a5',
+              'border-radius-base': '1px'
             },
             javascriptEnabled: true
           }
