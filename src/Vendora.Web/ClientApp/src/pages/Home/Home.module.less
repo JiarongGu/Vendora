@@ -1,5 +1,6 @@
 @import (reference) '../../styles/global.less';
 
+@title-font:  Spectral, serif;
 .section {
   display: flex;
   min-height: 300px;
@@ -97,7 +98,7 @@
       font-size: 60px;
       font-weight: 400;
       color: @primary-color;
-      font-family: Spectral, serif;
+      font-family: @title-font;
       margin-left: -40%;
     }
   }
@@ -128,7 +129,7 @@
         height: 35px;
       }
       span.title {
-        font-family: Spectral, serif;
+        font-family: @title-font;
         font-size: 40px;
       }
       p{
@@ -149,21 +150,60 @@
   background-size: 100%;
 
   .rate-text {
-    background: #444;
+    background: @background-dark;
+    color: @background-dark-text;
     margin-top: 15%;
     display: flex;
     flex-direction: row;
-    align-items: center;
     flex-wrap: nowrap;
     width: 90%;
+    padding: 60px 0;
+
+    &__left{
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      flex: 2 0 0;
+      padding: 20px 80px;
+
+      &>span{
+        font-size: 40px
+      }
+      button{
+        background: @background-dark-text;
+        color: @text-color;
+        font-weight: 600;
+        padding: 0 30px;
+      }
+    }
     &__right{
-      font-size: 30px;
-      font-weight: 200;
       display: flex;
       flex-direction: column;
-      flex: 3 0 0;
+      flex: 1 0 0;
       padding: 0 30px;
   
+      .rate-figure {
+        font-weight: 200;
+        flex: 1 0 0;
+        span {
+          font-size: 14px;
+        }
+        p{
+          &.title{
+            font-weight: 600;
+            font-size: 14px;
+            margin: -10px 0 4px 0;
+          }
+          font-size: 12px;
+          max-width: 60%;
+          color: @text-color-secondary;
+        }
+    
+        .number {
+          font-size: 75px;
+          font-family: @title-font;
+        }
+      }
       &:first-child {
         text-align: right
       }
@@ -174,19 +214,6 @@
     }
   }
 
-  .rate-figure {
-    color: #fff;
-    font-weight: 200;
-    flex: 1 0 0;
-
-    span {
-      font-size: 14px;
-    }
-
-    .number {
-      font-size: 50px;
-    }
-  }
 
 }
 .middle-banner-section{
@@ -208,7 +235,7 @@
     span {
       font-size: 55px;
       margin-bottom: 30px;
-      font-family: Spectral, serif;
+      font-family: @title-font;
     }
   }
 
@@ -377,6 +404,11 @@
   justify-content: center;
   align-items: center;
 
+  &__title{
+    font-family: @title-font;
+    font-size: 55px;
+    margin-bottom: 30px;
+  }
   .lender-board-group {
     width: 1050px;
     display: flex;

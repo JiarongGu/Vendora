@@ -34,8 +34,10 @@ interface CssExports {
   'lender': string;
   'lender-board-group': string;
   'lender-board-section': string;
+  'lender-board-section__title': string;
   'lenderBoardGroup': string;
   'lenderBoardSection': string;
+  'lenderBoardSectionTitle': string;
   'main-section': string;
   'main-section__background': string;
   'main-section__button': string;
@@ -53,9 +55,11 @@ interface CssExports {
   'number': string;
   'rate-figure': string;
   'rate-text': string;
+  'rate-text__left': string;
   'rate-text__right': string;
   'rateFigure': string;
   'rateText': string;
+  'rateTextLeft': string;
   'rateTextRight': string;
   'right': string;
   'section': string;

@@ -5,11 +5,21 @@ import * as styles from './Home.module.less';
 import Icon from 'antd/lib/icon';
 import { ContentService } from '@services/common/ContentService';
 import { Link } from 'react-router-dom';
+import Carousel from 'antd/lib/carousel';
+
 import 'classnames';
 interface HomeProps {
   contentService: ContentService;
 }
-
+const sortBank = function (banks){
+  const itemsPerPage = 8, pages = Math.ceil(banks / itemsPerPage);
+  let bankstemplate = [];
+  for(let i = 0; i < banks.length; i++){
+    if (i % 8 === 0 || i === 0){
+      
+    }
+  }
+}
 function Home({ contentService }: HomeProps) {
 
   const whyusItems = [
@@ -21,6 +31,8 @@ function Home({ contentService }: HomeProps) {
     {title: 'Our Process', imagePath: '', desc: "Abacus Finance gathers professional mortgage brokers who always put the best"}, 
   
   ];
+
+
   return (
     <>
       <div className={`${styles.mainSection} ${styles.section}`}>
@@ -81,51 +93,48 @@ function Home({ contentService }: HomeProps) {
 
       <div className={`${styles.interestrateSection} ${styles.section}`}>
         <div className={styles.rateText}>
-          最新优惠利率
-          <div className={styles.rateFigure}>
-            <span>start from</span><span className={styles.number}>3.22</span><span>%</span>
+          <div className={styles.rateTextLeft}>
+            <span>Home Loan Interest Rates</span>
+            <div><Button size= {'large'} type={'default'}>Calculate my home loan repayment</Button></div>
           </div>
-          <div className={styles.rateFigure}>
-            <span>start from</span><span className={styles.number}>3.22</span><span>%</span>
+          <div className={styles.rateTextRight}>
+
+            <div className={styles.rateFigure}>
+              <span className={styles.number}>3.55</span><span>%</span>
+              <p className={styles.title}>Lorem Ipsum</p>
+              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+            </div>
+            <div className={styles.rateFigure}>
+              <span className={styles.number}>3.57</span><span>%</span>
+              <p className={styles.title}>Lorem Ipsum</p>
+              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+              <p></p>
+              <p></p>
+            </div>
           </div>
         </div>
       </div>
       <div className={`${styles.aboutUsSection} ${styles.section}`}>
-        <div className={styles.aboutUsTitle}>
-          <h1>我们的团队</h1>
-        </div>
-        <div className={styles.aboutUsImage}></div>
-        <div className={styles.aboutUsText}>
-          由于住房市场低迷，与随之而来的金融市场危机对更广泛经济所造成的风险，是世界上许多中央银行降低利率伴随着政府经济刺激方案出台的主要因素。这些行动的目的是刺激经济增长并鼓舞大众对金融市场的信心。
-
-          <p>
-            <Button className={styles.aboutUsButton} size={'large'} type={'primary'}>
-              了解更多
-            </Button>
-          </p>
-        </div>
       </div>
       {/*banks*/}
       <div className={`${styles.lenderBoardSection} ${styles.section}`}>
+        <div className={styles.lenderBoardSectionTitle}>
+            <span className={styles.titleDot}>Financial <span className={styles.highlight}>partner</span></span>
+        </div>
         <div className={styles.lenderBoardGroup}>
-          {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14].map((i) => {
-            if (i % 3 === 1) {
-              return (
-                <div className={styles.lender} key={i}>
-                  <img src="/assets/images/lender.jpg" />
-                </div>)
-            } else if (i % 3 === 2) {
-              return (
-                <div className={styles.lender} key={i}>
-                  <img src="/assets/images/lender2.jpg" />
-                </div>)
-            } else {
-              return (
-                <div className={styles.lender} key={i}>
-                  <img src="/assets/images/lender3.jpeg" />
-                </div>)
+          <Carousel>
+            {
+              
             }
-          })}
+            {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((i) => {
+              if (i % 3 === 1) {
+                return (
+                  <div className={styles.lender} key={i}>
+                    <img src="/assets/images/lender.jpg" />
+                  </div>)
+              }
+            })}
+          </Carousel>
         </div>
       </div>
       <div className={`${styles.articleSection} ${styles.section}`}>
