@@ -34,7 +34,7 @@ namespace Vendora.Infrastructure.Helpers
 
         public string GetColumn(string property)
         {
-            return _queryCollection.PropertyColumns[property];
+            return $"`{_queryCollection.PropertyColumns[property]}`";
         }
 
         public string GetColumnProperty(string separator, string property)

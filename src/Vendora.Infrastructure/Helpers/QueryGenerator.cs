@@ -13,7 +13,6 @@ namespace Vendora.Infrastructure.Helpers
     public class QueryGenerator : IQueryGenerator
     {
         private readonly IDictionary<Type, QueryCollection> _queryCollections;
-        private object _generationLock = new object();
 
         public QueryGenerator(IEnumerable<IEntityMap> entityMaps)
         {
@@ -22,12 +21,7 @@ namespace Vendora.Infrastructure.Helpers
 
         public IQueryFactory GetFactory<TEntity>()
         {
-            return new QueryFactory(GetQueryCollection<TEntity>());
-        }
-
-        private QueryCollection GetQueryCollection<TEntity>()
-        {
-            return _queryCollections[typeof(TEntity)];
+            return new QueryFactory(_queryCollections[typeof(TEntity)]);
         }
 
         private QueryCollection CreateQueryCollection(IEntityMap entityMap)
@@ -39,7 +33,7 @@ namespace Vendora.Infrastructure.Helpers
                 var queryType = QueryType.All ^ propertyMap.IgnoredQuery;
                 return (propertyMap.PropertyName, propertyMap.ColumnName, queryType);
             });
-            
+
             collection.TableName = entityMap.TableName;
 
             collection.PropertyColumns = entityMap.PropertyMaps.ToDictionary(x => x.PropertyName, x => x.ColumnName);
@@ -61,8 +55,8 @@ namespace Vendora.Infrastructure.Helpers
             queries[QueryType.SelectById] = $"{GetResultQuery(properties, QueryType.SelectById)} WHERE id = @Id";
             queries[QueryType.SelectNotDeleted] = $"{GetResultQuery(properties, QueryType.SelectNotDeleted)} WHERE {queries[QueryType.NotDeleted]}";
 
-            queries[QueryType.Update] = GetUpdateQuery(properties, tableName);
-            queries[QueryType.UpdateById] = $"{queries[QueryType.Update]} WHERE id = @Id";
+            queries[QueryType.Update] = GetUpdateQuery(properties, tableName, QueryType.Update);
+            queries[QueryType.UpdateById] = $"{GetUpdateQuery(properties, tableName, QueryType.UpdateById)} WHERE id = @Id";
 
             queries[QueryType.Insert] = GetInsertQuery(properties, tableName);
             return queries;
@@ -73,9 +67,9 @@ namespace Vendora.Infrastructure.Helpers
             return string.Join(", ", properties.Where(x => CheckBAnd(x.queryType, queryType)).Select(x => $"`{x.column}` as `{x.property}`"));
         }
 
-        private string GetUpdateQuery(IEnumerable<(string property, string column, QueryType queryType)> properties, string tableName)
+        private string GetUpdateQuery(IEnumerable<(string property, string column, QueryType queryType)> properties, string tableName, QueryType queryType)
         {
-            var setQuery = string.Join(", ", properties.Where(x => CheckBAnd(x.queryType, QueryType.Update)).Select(x => $"`{x.column}` = @{x.property}"));
+            var setQuery = string.Join(", ", properties.Where(x => CheckBAnd(x.queryType, queryType)).Select(x => $"`{x.column}` = @{x.property}"));
             return $"UPDATE `{tableName}` SET {setQuery}";
         }
 
