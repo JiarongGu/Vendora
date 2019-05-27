@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Vendora.Application.Models
+namespace Vendora.Application.Models.Entities
 {
     public class Profile : Entity<Profile>
     {

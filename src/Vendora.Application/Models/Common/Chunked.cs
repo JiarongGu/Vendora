@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Vendora.Application.Models
+namespace Vendora.Application.Models.Common
 {
     public class Chunked<TModel>
     {

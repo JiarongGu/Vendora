@@ -16,7 +16,7 @@ namespace Vendora.Database.Migrations._20190317
         {
             Create.Table(TableName)
                 .WithColumn("id").AsString(36).NotNullable().PrimaryKey()
-                .WithColumn("name").AsString().Nullable()
+                .WithColumn("name").AsString().NotNullable()
                 .WithColumn("language_code").AsString(10).NotNullable()
                 .WithColumn("metadata").AsCustom("JSON").Nullable()
                 .WithColumn("created_date").AsDateTime().NotNullable()
@@ -33,9 +33,9 @@ namespace Vendora.Database.Migrations._20190317
                 .OnColumn("language_code")
                 .Ascending().WithOptions().NonClustered();
 
-            Create.UniqueConstraint("UX_from_name_deleted_date")
+            Create.UniqueConstraint("UX_from_name_language_code_deleted_date")
                 .OnTable(TableName)
-                .Columns("name", "deleted_date");
+                .Columns("name", "language_code", "deleted_date");
         }
     }
 }

@@ -1,24 +1,27 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Vendora.Application.Models
+namespace Vendora.Application.Models.Entities
 {
-    public interface IEntity {
+    public interface IEntity
+    {
         string Id { get; set; }
 
         DateTime CreatedDate { get; set; }
 
         DateTime UpdatedDate { get; set; }
+
+        DateTime DeletedDate { get; set; }
     }
 
-    public abstract class Entity<T>: IEntity where T : class, IEntity, new()
+    public abstract class Entity<T> : IEntity where T : class, IEntity, new()
     {
         public string Id { get; set; }
 
         public DateTime CreatedDate { get; set; }
 
         public DateTime UpdatedDate { get; set; }
+
+        public DateTime DeletedDate { get; set; }
 
         public static T New(T entity = default)
         {
@@ -30,7 +33,8 @@ namespace Vendora.Application.Models
             return newEntity;
         }
 
-        public static T Update(T entity) {
+        public static T Update(T entity)
+        {
             entity.UpdatedDate = DateTime.UtcNow;
             return entity;
         }

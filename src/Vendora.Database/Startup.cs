@@ -1,12 +1,7 @@
-﻿using FluentMigrator;
-using FluentMigrator.Runner;
+﻿using FluentMigrator.Runner;
 using FluentMigrator.Runner.Initialization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Vendora.Database.Services;
 
 namespace Vendora.Database

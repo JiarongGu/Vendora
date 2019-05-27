@@ -1,4 +1,4 @@
-﻿using Vendora.Application.Models;
+﻿using Vendora.Application.Models.Entities;
 using Vendora.Infrastructure.Helpers;
 
 namespace Vendora.Infrastructure.EntityMaps

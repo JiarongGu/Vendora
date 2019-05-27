@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Vendora.Application.Models
+namespace Vendora.Application.Models.Entities
 {
     public class ProfileForm: Entity<ProfileForm>
     {
@@ -14,15 +14,5 @@ namespace Vendora.Application.Models
         public Form FormSnapshot { get; set; }
 
         public IEnumerable<FieldData> FormData { get; set; } = Enumerable.Empty<FieldData>();
-    }
-
-    public class FieldData {
-        public string FormPage { get; set; }
-
-        public string FormSection { get; set; }
-
-        public string FieldDescriptor { get; set; }
-
-        public IEnumerable<string> Values { get; set; }
     }
 }

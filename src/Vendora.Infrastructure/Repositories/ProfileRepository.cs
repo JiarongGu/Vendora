@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Threading.Tasks;
-using Vendora.Application.Models;
+using Vendora.Application.Models.Entities;
 using Vendora.Application.Repositories;
 using Vendora.Infrastructure.Helpers;
 
@@ -17,7 +17,7 @@ namespace Vendora.Infrastructure.Repositories
 
         public ProfileRepository(IConfiguration configuration, IQueryGenerator queryGenerator) : base(configuration)
         {
-            _queries = queryGenerator.GetTypedBuilder<Profile>();
+            _queries = queryGenerator.GetQueryFactory<Profile>();
             _tableName = queryGenerator.GetTableName<Profile>();
         }
 
