@@ -19,7 +19,7 @@ namespace Vendora.Infrastructure.Repositories
         {
             _queryFactory = queryGenerator.GetFactory<Form>();
 
-            _queryNameLanguage = $"{string.Join(" AND ", _queryFactory.GetColumnProperties("=@", nameof(Form.Name), nameof(Form.LanguageCode)))}";
+            _queryNameLanguage = $"{string.Join(" AND ", _queryFactory.GetColumnProperties(" = @", nameof(Form.Name), nameof(Form.LanguageCode)))}";
         }
 
         public async Task<Form> InsertAsync(Form form)
