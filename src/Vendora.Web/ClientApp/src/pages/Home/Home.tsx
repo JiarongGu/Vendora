@@ -11,25 +11,25 @@ import 'classnames';
 interface HomeProps {
   contentService: ContentService;
 }
-const sortBank = function (banks){
+const sortBank = function (banks) {
   const itemsPerPage = 8, pages = Math.ceil(banks / itemsPerPage);
   let bankstemplate = [];
-  for(let i = 0; i < banks.length; i++){
-    if (i % 8 === 0 || i === 0){
-      
+  for (let i = 0; i < banks.length; i++) {
+    if (i % 8 === 0 || i === 0) {
+
     }
   }
 }
 function Home({ contentService }: HomeProps) {
 
   const whyusItems = [
-    {title: 'Our Team', imagePath: '', desc: "Abacus Finance gathers professional mortgage brokers who always put the best interests of their customers first and are committed to maintaining an efficient and smooth loan process."}, 
-    {title: 'Our Experience', imagePath: '', desc: "Abacus Finance gathers professional mortgage brokers who always put the best"}, 
-    {title: 'Our Service Network', imagePath: '', desc: "Abacus Finance gathers professional mortgage brokers who always put the best"}, 
-    {title: 'Our Lenders', imagePath: '', desc: "Abacus Finance gathers professional mortgage brokers who always put the best"}, 
-    {title: 'Our Results', imagePath: '', desc: "Abacus Finance gathers professional mortgage brokers who always put the best"}, 
-    {title: 'Our Process', imagePath: '', desc: "Abacus Finance gathers professional mortgage brokers who always put the best"}, 
-  
+    { title: 'Our Team', imagePath: '', desc: "Abacus Finance gathers professional mortgage brokers who always put the best interests of their customers first and are committed to maintaining an efficient and smooth loan process." },
+    { title: 'Our Experience', imagePath: '', desc: "Abacus Finance gathers professional mortgage brokers who always put the best" },
+    { title: 'Our Service Network', imagePath: '', desc: "Abacus Finance gathers professional mortgage brokers who always put the best" },
+    { title: 'Our Lenders', imagePath: '', desc: "Abacus Finance gathers professional mortgage brokers who always put the best" },
+    { title: 'Our Results', imagePath: '', desc: "Abacus Finance gathers professional mortgage brokers who always put the best" },
+    { title: 'Our Process', imagePath: '', desc: "Abacus Finance gathers professional mortgage brokers who always put the best" },
+
   ];
 
 
@@ -37,7 +37,7 @@ function Home({ contentService }: HomeProps) {
     <>
       <div className={`${styles.mainSection} ${styles.section}`}>
         <div className={styles.mainSectionTextGroup}>
-          <h1 className={styles.mainSectionTitle}>The future<br/><span>is ours to shape</span></h1>
+          <h1 className={styles.mainSectionTitle}>The future<br /><span>is ours to shape</span></h1>
           <p className={styles.mainSectionText}>For over 20 years, we’ve been changing the way the world uses technology.</p>
           <Link to={'/quote'}>
             <Button className={styles.mainSectionButton} size={'large'} type={'primary'}>
@@ -51,7 +51,7 @@ function Home({ contentService }: HomeProps) {
 
       <div className={`${styles.contentSection} ${styles.section}`}>
         <div className={styles.contentText}>
-          <h1>“Integrity, Quality,<br/>Focus and Reliance”</h1>
+          <h1>“Integrity, Quality,<br />Focus and Reliance”</h1>
         </div>
         <div className={styles.infoGroup}>
           <div className={`${styles.infoCard} ${styles.left}`}>
@@ -65,17 +65,17 @@ function Home({ contentService }: HomeProps) {
           </div>
         </div>
       </div>
-      
+
       <div className={`${styles.middleBannerSection} ${styles.section}`}>
         <div className={styles.back1}>
         </div>
       </div>
       <div className={`${styles.whyusSection} ${styles.section}`}>
         <div className={styles.whyusTitle}>
-          <span className={styles.titleDot}>Why <span className = {styles.highlight}>Abcus Finance</span></span>
+          <span className={styles.titleDot}>Why <span className={styles.highlight}>Abcus Finance</span></span>
         </div>
         <div className={styles.whyusItemGroup}>
-          { whyusItems.map((item, index) => (
+          {whyusItems.map((item, index) => (
             <div className={styles.whyusItem}>
               <div className={styles.whyusImage}>
                 <img src={item.imagePath} />
@@ -95,7 +95,7 @@ function Home({ contentService }: HomeProps) {
         <div className={styles.rateText}>
           <div className={styles.rateTextLeft}>
             <span>Home Loan Interest Rates</span>
-            <div><Button size= {'large'} type={'default'}>Calculate my home loan repayment</Button></div>
+            <div><Button size={'large'} type={'default'}>Calculate my home loan repayment</Button></div>
           </div>
           <div className={styles.rateTextRight}>
 
@@ -119,21 +119,15 @@ function Home({ contentService }: HomeProps) {
       {/*banks*/}
       <div className={`${styles.lenderBoardSection} ${styles.section}`}>
         <div className={styles.lenderBoardSectionTitle}>
-            <span className={styles.titleDot}>Financial <span className={styles.highlight}>partner</span></span>
+          <span className={styles.titleDot}>Financial <span className={styles.highlight}>partner</span></span>
         </div>
         <div className={styles.lenderBoardGroup}>
           <Carousel>
-            {
-              
-            }
-            {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((i) => {
-              if (i % 3 === 1) {
-                return (
-                  <div className={styles.lender} key={i}>
-                    <img src="/assets/images/lender.jpg" />
-                  </div>)
-              }
-            })}
+            {[0, 1, 2, 3, 4, 5, 6, 7, 8].map(i =>
+              <div className={styles.lender} key={i}>
+                <img src="/assets/images/lender.jpg" />
+              </div>
+            )}
           </Carousel>
         </div>
       </div>
