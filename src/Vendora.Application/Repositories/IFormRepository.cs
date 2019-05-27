@@ -7,8 +7,10 @@ namespace Vendora.Application.Repositories
     {
         Task<Form> InsertAsync(Form profile);
 
-        Task<Form> SelectByIdAsync(string id);
+        Task<Form> FetchByIdAsync(string id);
 
         Task<Form> UpdateAsync(Form profile);
+
+        Task<Form> FetchByNameAndLanguageAsync(string name, string language);
     }
 }

@@ -1,19 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Vendora.Application.Models.Entities;
 
 namespace Vendora.Infrastructure.Helpers
 {
     public interface IQueryGenerator
     {
-        string GetQuery<TEntity>(QueryType queryType);
-        
-        Func<QueryType, string> GetFactory<TEntity>();
+        IQueryFactory GetFactory<TEntity>();
     }
 
     public class QueryGenerator : IQueryGenerator
     {
-        private readonly static string ID_WHERE_CLAUSE = "WHERE id = @Id";
         private readonly IDictionary<Type, QueryCollection> _queryCollections;
         private object _generationLock = new object();
 
@@ -22,17 +20,9 @@ namespace Vendora.Infrastructure.Helpers
             _queryCollections = entityMaps.ToDictionary(x => x.EntityType, x => CreateQueryCollection(x));
         }
 
-        public Func<QueryType, string> GetFactory<TEntity>()
+        public IQueryFactory GetFactory<TEntity>()
         {
-            return GetQuery<TEntity>;
-        }
-
-        public string GetQuery<TEntity>(QueryType queryType)
-        {
-            if (queryType == QueryType.All || queryType == QueryType.None)
-                throw new ArgumentException("Invalid queryType, using all or none");
-
-            return GetQueryCollection<TEntity>().Queries[queryType];
+            return new QueryFactory(GetQueryCollection<TEntity>());
         }
 
         private QueryCollection GetQueryCollection<TEntity>()
@@ -52,23 +42,27 @@ namespace Vendora.Infrastructure.Helpers
             
             collection.TableName = entityMap.TableName;
 
-            collection.Queries = GenerateQueries(collection.Properties, collection.TableName);
+            collection.PropertyColumns = entityMap.PropertyMaps.ToDictionary(x => x.PropertyName, x => x.ColumnName);
+
+            collection.Queries = GenerateQueries(collection.Properties, collection.TableName, collection.PropertyColumns);
 
             return collection;
         }
 
-        private IDictionary<QueryType, string> GenerateQueries(IEnumerable<(string property, string column, QueryType queryType)> properties, string tableName)
+        private IDictionary<QueryType, string> GenerateQueries(IEnumerable<(string property, string column, QueryType queryType)> properties, string tableName, IDictionary<string, string> propertyColumns)
         {
             var queries = new Dictionary<QueryType, string>();
             // query fragments
             queries[QueryType.Result] = GetResultQuery(properties, QueryType.Result);
+            queries[QueryType.NotDeleted] = $"{propertyColumns[nameof(IEntity.DeletedDate)]} IS NULL";
 
             // basic crud query
             queries[QueryType.Select] = $"SELECT {GetResultQuery(properties, QueryType.Select)} FROM `{tableName}`";
-            queries[QueryType.SelectById] = $"{queries[QueryType.Select]} {ID_WHERE_CLAUSE}";
+            queries[QueryType.SelectById] = $"{GetResultQuery(properties, QueryType.SelectById)} WHERE id = @Id";
+            queries[QueryType.SelectNotDeleted] = $"{GetResultQuery(properties, QueryType.SelectNotDeleted)} WHERE {queries[QueryType.NotDeleted]}";
 
             queries[QueryType.Update] = GetUpdateQuery(properties, tableName);
-            queries[QueryType.UpdateById] = $"{queries[QueryType.Select]} {ID_WHERE_CLAUSE}";
+            queries[QueryType.UpdateById] = $"{queries[QueryType.Update]} WHERE id = @Id";
 
             queries[QueryType.Insert] = GetInsertQuery(properties, tableName);
             return queries;

@@ -8,6 +8,8 @@ namespace Vendora.Infrastructure.Helpers
 
         public IEnumerable<(string property, string column, QueryType queryType)> Properties { get; set; }
 
+        public IDictionary<string, string> PropertyColumns { get; set; }
+
         public string TableName { get; set; }
     }
 }

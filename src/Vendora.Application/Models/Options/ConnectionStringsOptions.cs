@@ -1,4 +1,4 @@
-﻿namespace Vendora.Infrastructure.Models
+﻿namespace Vendora.Application.Models.Options
 {
     public class ConnectionStringsOptions
     {
