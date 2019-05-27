@@ -8,9 +8,9 @@ namespace Vendora.Infrastructure.Repositories
     {
         private readonly string _connectionString;
 
-        protected DapperRepository(IConfiguration configuration)
+        protected DapperRepository(string connectionString)
         {
-            _connectionString = configuration.GetConnectionString("Vendora");
+            _connectionString = connectionString;
 
             SqlMapper.AddTypeHandler(new DynamicTypeHandler());
         }

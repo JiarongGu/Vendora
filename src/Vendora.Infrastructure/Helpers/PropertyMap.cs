@@ -2,24 +2,18 @@
 
 namespace Vendora.Infrastructure.Helpers
 {
-    public interface IPropertyMap
+    public class PropertyMap
     {
-        string ColumnName { get; }
+        public PropertyMap(string propertyName)
+        {
+            PropertyName = propertyName;
+        }
 
-        PropertyInfo PropertyInfo { get; }
-
-        QueryType IgnoredQueries { get; }
-    }
-
-    public class PropertyMap : IPropertyMap
-    {
-        public PropertyMap(PropertyInfo propertyInfo) => PropertyInfo = propertyInfo;
-
-        public PropertyInfo PropertyInfo { get; }
+        public string PropertyName { get; private set; }
 
         public string ColumnName { get; private set; }
 
-        public QueryType IgnoredQueries { get; private set; }
+        public QueryType IgnoredQuery { get; private set; }
 
         public PropertyMap ToColumn(string columnName)
         {
@@ -27,9 +21,9 @@ namespace Vendora.Infrastructure.Helpers
             return this;
         }
 
-        public PropertyMap IgnoreQueries(QueryType queryType)
+        public PropertyMap IgnoreQuery(QueryType queryType)
         {
-            IgnoredQueries = queryType;
+            IgnoredQuery = queryType;
             return this;
         }
     }

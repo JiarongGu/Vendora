@@ -38,5 +38,12 @@ namespace Vendora.Application.Models.Entities
             entity.UpdatedDate = DateTime.UtcNow;
             return entity;
         }
+
+        public static T Delete(T entity)
+        {
+            entity.UpdatedDate = DateTime.UtcNow;
+            entity.DeletedDate = DateTime.UtcNow;
+            return entity;
+        }
     }
 }

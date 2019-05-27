@@ -29,7 +29,7 @@ namespace Vendora.Web
             });
 
             services.AddScoped<ISpaPrerenderingService, SpaPrerenderingService>();
-            services.AddInfrastructureModules();
+            services.AddInfrastructureModules(Configuration);
 
             ServiceLocator.SetLocatorProvider(services.BuildServiceProvider());
         }

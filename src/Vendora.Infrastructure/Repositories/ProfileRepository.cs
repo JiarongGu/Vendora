@@ -1,38 +1,38 @@
 ﻿using Dapper;
-using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 using System;
 using System.Threading.Tasks;
 using Vendora.Application.Models.Entities;
 using Vendora.Application.Repositories;
 using Vendora.Infrastructure.Helpers;
+using Vendora.Infrastructure.Models;
 
 namespace Vendora.Infrastructure.Repositories
 {
     public class ProfileRepository : DapperRepository, IProfileRepository
     {
-        private readonly Func<QueryType, string> _queries;
-        private readonly string _tableName;
-        private readonly string ID_WHERE_CLAUSE = "WHERE id = @Id";
+        private readonly Func<QueryType, string> _queryFactory;
 
-
-        public ProfileRepository(IConfiguration configuration, IQueryGenerator queryGenerator) : base(configuration)
+        public ProfileRepository(IOptions<ConnectionStringsOptions> connectionStrings, IQueryGenerator queryGenerator)
+            : base(connectionStrings.Value.Vendora)
         {
-            _queries = queryGenerator.GetQueryFactory<Profile>();
-            _tableName = queryGenerator.GetTableName<Profile>();
+            _queryFactory = queryGenerator.GetFactory<Profile>();
         }
 
-        public async Task<Profile> InsertAsync(Profile profile) {
-            using (var connection = GetConnection()) {
-                await connection.QueryAsync(_queries(QueryType.Insert), Profile.New(profile));
+        public async Task<Profile> InsertAsync(Profile profile)
+        {
+            using (var connection = GetConnection())
+            {
+                await connection.QueryAsync(_queryFactory(QueryType.Insert), Profile.New(profile));
                 return profile;
             }
         }
 
-        public async Task<Profile> SelectByIdAsync(string id) {
+        public async Task<Profile> SelectByIdAsync(string id)
+        {
             using (var connection = GetConnection())
             {
-                var query = $"{_queries(QueryType.Select)} {ID_WHERE_CLAUSE}";
-                return await connection.QueryFirstAsync<Profile>(query, new { Id = id });
+                return await connection.QueryFirstAsync<Profile>(_queryFactory(QueryType.SelectById), new { Id = id });
             }
         }
 
@@ -40,11 +40,10 @@ namespace Vendora.Infrastructure.Repositories
         {
             using (var connection = GetConnection())
             {
-                var query = $"{_queries(QueryType.Update)} {ID_WHERE_CLAUSE}";
-                var recordsAffected = await connection.ExecuteAsync(query, Profile.Update(profile));
+                var recordsAffected = await connection.ExecuteAsync(_queryFactory(QueryType.UpdateById), Profile.Update(profile));
 
                 if (recordsAffected != 1)
-                    throw new Exception($"Problem occurred while updating subscription with Id {profile.Id}");
+                    throw new Exception($"Problem occurred while updating profile with Id {profile.Id}");
 
                 return profile;
             }

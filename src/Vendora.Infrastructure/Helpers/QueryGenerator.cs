@@ -1,34 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 
 namespace Vendora.Infrastructure.Helpers
 {
     public interface IQueryGenerator
     {
         string GetQuery<TEntity>(QueryType queryType);
-
-        string GetTableName<TEntity>();
-
-        QueryCollection GetQueryCollection<TEntity>();
-
-        Func<QueryType, string> GetQueryFactory<TEntity>();
+        
+        Func<QueryType, string> GetFactory<TEntity>();
     }
 
     public class QueryGenerator : IQueryGenerator
     {
+        private readonly static string ID_WHERE_CLAUSE = "WHERE id = @Id";
         private readonly IDictionary<Type, QueryCollection> _queryCollections;
-        private readonly IDictionary<Type, IEntityMap> _entities;
         private object _generationLock = new object();
 
         public QueryGenerator(IEnumerable<IEntityMap> entityMaps)
         {
-            _entities = entityMaps.ToDictionary(x => x.EntityType, x => x);
-            _queryCollections = new Dictionary<Type, QueryCollection>();
+            _queryCollections = entityMaps.ToDictionary(x => x.EntityType, x => CreateQueryCollection(x));
         }
 
-        public Func<QueryType, string> GetQueryFactory<TEntity>()
+        public Func<QueryType, string> GetFactory<TEntity>()
         {
             return GetQuery<TEntity>;
         }
@@ -41,57 +35,25 @@ namespace Vendora.Infrastructure.Helpers
             return GetQueryCollection<TEntity>().Queries[queryType];
         }
 
-        public string GetTableName<TEntity>()
+        private QueryCollection GetQueryCollection<TEntity>()
         {
-            return GetQueryCollection<TEntity>().TableName;
-        }
-
-        public QueryCollection GetQueryCollection<TEntity>()
-        {
-            var entityType = typeof(TEntity);
-            if (!_queryCollections.ContainsKey(entityType))
-            {
-                lock (_generationLock)
-                {
-                    if (!_queryCollections.ContainsKey(entityType))
-                    {
-                        _queryCollections[entityType] = CreateQueryCollection(entityType);
-                    }
-                }
-            }
             return _queryCollections[typeof(TEntity)];
         }
 
-        private QueryCollection CreateQueryCollection(Type entityType)
+        private QueryCollection CreateQueryCollection(IEntityMap entityMap)
         {
-            var map = _entities.ContainsKey(entityType) ? _entities[entityType] : null;
-            var properties = entityType.GetProperties(BindingFlags.Instance | BindingFlags.SetProperty | BindingFlags.GetProperty | BindingFlags.Public);
             var collection = new QueryCollection();
 
-            collection.Properties = properties.Select(property =>
+            collection.Properties = entityMap.PropertyMaps.Select(propertyMap =>
             {
-                var column = property.Name;
-                var queryType = QueryType.All;
-
-                if (map != null && map.PropertyMaps.ContainsKey(property))
-                {
-                    var propertyMap = map.PropertyMaps[property];
-                    queryType = queryType ^ propertyMap.IgnoredQueries;
-                    column = propertyMap.ColumnName ?? column;
-                }
-                return (property.Name, column, queryType);
+                var queryType = QueryType.All ^ propertyMap.IgnoredQuery;
+                return (propertyMap.PropertyName, propertyMap.ColumnName, queryType);
             });
-
-            if (map != null)
-            {
-                collection.TableName = map.TableName;
-            }
-            else
-            {
-                collection.TableName = entityType.Name;
-            }
+            
+            collection.TableName = entityMap.TableName;
 
             collection.Queries = GenerateQueries(collection.Properties, collection.TableName);
+
             return collection;
         }
 
@@ -103,7 +65,11 @@ namespace Vendora.Infrastructure.Helpers
 
             // basic crud query
             queries[QueryType.Select] = $"SELECT {GetResultQuery(properties, QueryType.Select)} FROM `{tableName}`";
+            queries[QueryType.SelectById] = $"{queries[QueryType.Select]} {ID_WHERE_CLAUSE}";
+
             queries[QueryType.Update] = GetUpdateQuery(properties, tableName);
+            queries[QueryType.UpdateById] = $"{queries[QueryType.Select]} {ID_WHERE_CLAUSE}";
+
             queries[QueryType.Insert] = GetInsertQuery(properties, tableName);
             return queries;
         }
