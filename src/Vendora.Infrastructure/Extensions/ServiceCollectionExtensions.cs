@@ -16,6 +16,7 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddTransient<IEntityMap, ProfileFormMap>();
 
             services.AddSingleton<IProfileRepository, ProfileRepository>();
+            services.AddSingleton<IFormRepository, FormRepository>();
 
             services.AddSingleton<IQueryGenerator, QueryGenerator>();
         }

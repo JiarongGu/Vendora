@@ -48,12 +48,12 @@ namespace Vendora.Infrastructure.Helpers
             var queries = new Dictionary<QueryType, string>();
             // query fragments
             queries[QueryType.Result] = GetResultQuery(properties, QueryType.Result);
-            queries[QueryType.NotDeleted] = $"{propertyColumns[nameof(IEntity.DeletedDate)]} IS NULL";
+            queries[QueryType.NotDeleted] = $"`{propertyColumns[nameof(IEntity.DeletedDate)]}` IS NULL";
 
             // basic crud query
             queries[QueryType.Select] = $"SELECT {GetResultQuery(properties, QueryType.Select)} FROM `{tableName}`";
-            queries[QueryType.SelectById] = $"{GetResultQuery(properties, QueryType.SelectById)} WHERE id = @Id";
-            queries[QueryType.SelectNotDeleted] = $"{GetResultQuery(properties, QueryType.SelectNotDeleted)} WHERE {queries[QueryType.NotDeleted]}";
+            queries[QueryType.SelectById] = $"SELECT {GetResultQuery(properties, QueryType.SelectById)} FROM `{tableName}` WHERE id = @Id";
+            queries[QueryType.SelectNotDeleted] = $"SELECT {GetResultQuery(properties, QueryType.SelectNotDeleted)} FROM `{tableName}` WHERE {queries[QueryType.NotDeleted]}";
 
             queries[QueryType.Update] = GetUpdateQuery(properties, tableName, QueryType.Update);
             queries[QueryType.UpdateById] = $"{GetUpdateQuery(properties, tableName, QueryType.UpdateById)} WHERE id = @Id";

@@ -2,14 +2,12 @@
 
 namespace Vendora.Application.Models.Common
 {
-    public class Chunked<TModel>
+    public class Chunked<TEntity>
     {
-        public long Total { get; set; }
-
         public long Skip { get; set; }
 
         public long Take { get; set; }
 
-        public IEnumerable<TModel> Models { get; set; }
+        public IEnumerable<TEntity> Entities { get; set; }
     }
 }

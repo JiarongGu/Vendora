@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Vendora.Application.Models.Entities;
 
 namespace Vendora.Application.Repositories
@@ -7,10 +9,14 @@ namespace Vendora.Application.Repositories
     {
         Task<Form> InsertAsync(Form profile);
 
-        Task<Form> FetchByIdAsync(string id);
-
         Task<Form> UpdateAsync(Form profile);
 
-        Task<Form> FetchByNameAndLanguageAsync(string name, string language);
+        Task<Form> FetchAsync(Guid id);
+
+        Task<Form> FetchAsync(string name, string language);
+
+        Task<IEnumerable<Form>> FetchAsync(string name);
+
+        Task<IEnumerable<Form>> FetchAsync(int skip, int take);
     }
 }

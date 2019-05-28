@@ -29,7 +29,7 @@ namespace Vendora.Infrastructure.Helpers
                 .GetProperties(BindingFlags.Instance | BindingFlags.SetProperty | BindingFlags.GetProperty | BindingFlags.Public)
                 .ToDictionary(x => x, x => new PropertyMap(x.Name));
 
-            TableName = typeof(TEntity).Name;
+            TableName = typeof(TEntity).Name.ToLower();
 
             // default maps
             Map(x => x.Id)

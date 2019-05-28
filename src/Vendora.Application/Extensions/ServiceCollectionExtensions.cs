@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Serilog;
 using Vendora.Application.Models.Options;
+using Vendora.Application.Services;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -21,6 +22,9 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddLogging(loggingBuilder =>
                 loggingBuilder.AddSerilog(dispose: true)
             );
+
+            // services
+            services.AddTransient<IFormService, FormService>();
             
             return services;
         }

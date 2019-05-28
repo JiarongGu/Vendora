@@ -6,7 +6,7 @@ namespace Vendora.Infrastructure.EntityMaps
     public class FormMap: EntityMap<Form>
     {
         public FormMap() {
-            Map(x => x.LanguageCode)
+            Map(x => x.Language)
                 .ToColumn("language_code");
         }
     }

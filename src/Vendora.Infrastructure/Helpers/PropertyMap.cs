@@ -7,6 +7,7 @@ namespace Vendora.Infrastructure.Helpers
         public PropertyMap(string propertyName)
         {
             PropertyName = propertyName;
+            ColumnName = propertyName.ToLower();
         }
 
         public string PropertyName { get; private set; }

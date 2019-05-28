@@ -12,6 +12,8 @@ namespace Vendora.Application.Models.Entities
 
         public string Placeholder { get; set; }
 
+        public int Order { get; set; }
+
         public IEnumerable<FieldOption> FieldOptions { get; set; }
 
         public IEnumerable<ValidationRules> ValidationRules { get; set; }
