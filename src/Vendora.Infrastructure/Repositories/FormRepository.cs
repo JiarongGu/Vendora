@@ -2,7 +2,6 @@
 using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Vendora.Application.Models.Entities;
 using Vendora.Application.Models.Options;
@@ -14,14 +13,18 @@ namespace Vendora.Infrastructure.Repositories
     public class FormRepository : DapperRepository, IFormRepository
     {
         private readonly IQueryFactory _queryFactory;
-        private readonly string _queryNameLanguage;
+        private readonly string _queryLanguage;
+        private readonly string _queryName;
+        private readonly string _queryOrderByCreation;
 
         public FormRepository(IOptions<ConnectionStringsOptions> connectionStrings, IQueryGenerator queryGenerator)
             : base(connectionStrings.Value.Vendora)
         {
             _queryFactory = queryGenerator.GetFactory<Form>();
 
-            _queryNameLanguage = $"{string.Join(" AND ", _queryFactory.GetColumnProperties(" = @", nameof(Form.Name), nameof(Form.Language)))}";
+            _queryLanguage = _queryFactory.GetColumnProperty(" = @", nameof(Form.Language));
+            _queryName = _queryFactory.GetColumnProperty(" = @", nameof(Form.Name));
+            _queryOrderByCreation = $"ORDER BY {_queryFactory.GetColumn(nameof(Form.CreatedDate))}";
 
             SqlMapper.AddTypeHandler(typeof(FormMetadata), new JsonTypeHandler());
         }
@@ -42,24 +45,30 @@ namespace Vendora.Infrastructure.Repositories
                 return await connection.QuerySingleOrDefaultAsync<Form>(_queryFactory.GetQuery(QueryType.SelectById), new { Id = id });
             }
         }
-
-        public async Task<IEnumerable<Form>> FetchAsync(string name)
+        
+        public async Task<IEnumerable<Form>> FetchAsync(string name, string language, int skip, int take)
         {
-            var query = $"{_queryFactory.GetQuery(QueryType.SelectNotDeleted)} AND {_queryFactory.GetColumnProperty(" = @", nameof(Form.Name))}";
+            var query = $"{_queryFactory.GetQuery(QueryType.SelectNotDeleted)}";
+
+            if (!string.IsNullOrEmpty(name))
+                query += $" AND {_queryName}";
+
+            if (!string.IsNullOrEmpty(language))
+                query += $" AND {_queryLanguage}";
+
+            query += $" {_queryOrderByCreation}";
+
+            if (take > 0)
+                query += " Limit @Skip, @Take";
 
             using (var connection = GetConnection())
             {
-                return await connection.QueryAsync<Form>(query, new { Name = name });
-            }
-        }
-
-        public async Task<Form> FetchAsync(string name, string language)
-        {
-            var query = $"{_queryFactory.GetQuery(QueryType.SelectNotDeleted)} AND {_queryNameLanguage}";
-
-            using (var connection = GetConnection())
-            {
-                return await connection.QuerySingleOrDefaultAsync<Form>(query, new { Name = name, Language = language });
+                return await connection.QueryAsync<Form>(query, new {
+                    Name = name,
+                    Language = language,
+                    Skip = skip,
+                    Take = take
+                });
             }
         }
 
@@ -73,16 +82,6 @@ namespace Vendora.Infrastructure.Repositories
                     throw new Exception($"Problem occurred while updating profile with Id {form.Id}");
 
                 return form;
-            }
-        }
-
-        public async Task<IEnumerable<Form>> FetchAsync(int skip, int take)
-        {
-            var query = $"{_queryFactory.GetQuery(QueryType.SelectNotDeleted)} ORDER BY {_queryFactory.GetColumn(nameof(Form.CreatedDate))} Limit @Skip, @Take";
-
-            using (var connection = GetConnection())
-            {
-                return await connection.QueryAsync<Form>(query, new { Skip = skip, Take = take });
             }
         }
     }

@@ -13,10 +13,6 @@ namespace Vendora.Application.Repositories
 
         Task<Form> FetchAsync(Guid id);
 
-        Task<Form> FetchAsync(string name, string language);
-
-        Task<IEnumerable<Form>> FetchAsync(string name);
-
-        Task<IEnumerable<Form>> FetchAsync(int skip, int take);
+        Task<IEnumerable<Form>> FetchAsync(string name, string language, int skip, int take);
     }
 }

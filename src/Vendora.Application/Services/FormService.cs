@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Vendora.Application.Models.Common;
 using Vendora.Application.Models.Entities;
 using Vendora.Application.Repositories;
 
@@ -10,12 +10,11 @@ namespace Vendora.Application.Services
     public interface IFormService
     {
         Task<Form> CreateForm(Form form);
-        Task<Form> FetchByNameAndLanguageAsync(string name, string language);
-        Task<IEnumerable<Form>> FetchByNameAsync(string name);
-        Task<Chunked<Form>> FetchByChunkAsync(int skip, int take);
+        Task<Form> FetchByIdAsync(Guid id);
+        Task<IEnumerable<Form>> FetchAsync(string name, string language, int skip, int take);
     }
 
-    public class FormService: IFormService
+    public class FormService : IFormService
     {
         private readonly IFormRepository _formRepository;
         private readonly ILogger<FormService> _logger;
@@ -23,25 +22,22 @@ namespace Vendora.Application.Services
         public FormService(IFormRepository formRepository, ILogger<FormService> logger)
         {
             _formRepository = formRepository;
+            _logger = logger;
         }
 
-        public Task<Form> CreateForm(Form form) {
+        public Task<Form> CreateForm(Form form)
+        {
             return _formRepository.InsertAsync(form);
         }
 
-        public Task<Form> FetchByNameAndLanguageAsync(string name, string language)
+        public Task<IEnumerable<Form>> FetchAsync(string name, string language, int skip, int take)
         {
-            return _formRepository.FetchAsync(name, language);
+            return _formRepository.FetchAsync(name, language, skip, take);
         }
 
-        public Task<IEnumerable<Form>> FetchByNameAsync(string name)
+        public Task<Form> FetchByIdAsync(Guid id)
         {
-            return _formRepository.FetchAsync(name);
-        }
-
-        public async Task<Chunked<Form>> FetchByChunkAsync(int skip, int take) {
-            var forms = await _formRepository.FetchAsync(skip, take);
-            return new Chunked<Form> { Entities = forms, Skip = skip, Take = take };
+            return _formRepository.FetchAsync(id);
         }
     }
 }

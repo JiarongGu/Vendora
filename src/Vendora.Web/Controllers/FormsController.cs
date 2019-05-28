@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Vendora.Application.Models.Common;
 using Vendora.Application.Models.Entities;
 using Vendora.Application.Services;
+using Vendora.Web.Models;
 
 namespace Vendora.Web.Controllers
 {
@@ -19,22 +19,16 @@ namespace Vendora.Web.Controllers
             _formService = formService;
         }
 
-        [HttpGet("{name}")]
-        public async Task<IEnumerable<Form>> GetByChunk([FromRoute]string name, [FromQuery]string language)
+        [HttpGet("{id}")]
+        public async Task<Form> GetById([FromRoute]Guid id)
         {
-            if (!string.IsNullOrEmpty(language))
-            {
-                return new List<Form> { await _formService.FetchByNameAndLanguageAsync(name, language) };
-            }
-            else {
-                return await _formService.FetchByNameAsync(name);
-            }
+            return await _formService.FetchByIdAsync(id);
         }
 
         [HttpGet]
-        public async Task<Chunked<Form>> GetByChunk([FromQuery]int skip, [FromQuery]int take)
+        public async Task<IEnumerable<Form>> Get([FromQuery]GetFormsRequest request)
         {
-            return await _formService.FetchByChunkAsync(skip, take);
+            return await _formService.FetchAsync(request.Name, request.Language, request.Skip, request.Take);
         }
 
         [HttpPost]
