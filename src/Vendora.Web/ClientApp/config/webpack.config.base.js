@@ -12,6 +12,7 @@ const WebpackCleanupPlugin = require('webpack-cleanup-plugin');
 // style files regexes
 const lessRegex = /\.(less)$/;
 const lessModuleRegex = /\.module\.(less)$/;
+const lessAntdRegex = /node_modules[\/\\]+antd.*less$/;
 
 // utils
 const resolveLessRules = require('./utils/resolveLessRules');
@@ -27,6 +28,9 @@ const resolvedAlias = Object.keys(paths.alias)
 module.exports = function (publicPath) {
   const extractGlobelScssPlugin = new ExtractTextPlugin({
     filename: `static/css/globel.[md5:contenthash:hex:20].css`
+  });
+  const extractAntdScssPlugin = new ExtractTextPlugin({
+    filename: `static/css/antd.[md5:contenthash:hex:20].css`
   });
   const extractMoudleScssPlugin = new ExtractTextPlugin({
     filename: 'static/css/module.[md5:contenthash:hex:20].css'
@@ -59,7 +63,14 @@ module.exports = function (publicPath) {
         localIdentName: '[local]',
         extractPlugin: extractGlobelScssPlugin,
         path: __dirname,
-        exclude: lessModuleRegex,
+        exclude: [ lessAntdRegex, lessModuleRegex ],
+        sideEffects: true
+      }),
+      resolveLessRules({
+        test: lessAntdRegex,
+        localIdentName: '[local]',
+        extractPlugin: extractAntdScssPlugin,
+        path: __dirname,
         sideEffects: true
       }),
       resolveLessRules({
@@ -77,6 +88,7 @@ module.exports = function (publicPath) {
       new webpack.NoEmitOnErrorsPlugin(),
       new MiniCssExtractPlugin(),
       new WebpackCleanupPlugin(),
+      extractAntdScssPlugin,
       extractGlobelScssPlugin,
       extractMoudleScssPlugin
     ]
