@@ -12,6 +12,7 @@ const WebpackCleanupPlugin = require('webpack-cleanup-plugin');
 // style files regexes
 const lessRegex = /\.(less)$/;
 const lessModuleRegex = /\.module\.(less)$/;
+const lessAntdRegex = /node_modules[\/\\]+antd.*less$/;
 
 // utils
 const resolveLessRules = require('./utils/resolveLessRules');
@@ -25,10 +26,13 @@ const resolvedAlias = Object.keys(paths.alias)
   .reduce((a, c) => (a[c.key] = c.path, a), {});
 
 module.exports = function (publicPath) {
-  const extractGlobelScssPlugin = new ExtractTextPlugin({
+  const extractGlobelLessPlugin = new ExtractTextPlugin({
     filename: `static/css/globel.[md5:contenthash:hex:20].css`
   });
-  const extractMoudleScssPlugin = new ExtractTextPlugin({
+  const extractAntdLessPlugin = new ExtractTextPlugin({
+    filename: `static/css/antd.[md5:contenthash:hex:20].css`
+  });
+  const extractMoudleLessPlugin = new ExtractTextPlugin({
     filename: 'static/css/module.[md5:contenthash:hex:20].css'
   });
   
@@ -57,15 +61,22 @@ module.exports = function (publicPath) {
       resolveLessRules({
         test: lessRegex,
         localIdentName: '[local]',
-        extractPlugin: extractGlobelScssPlugin,
+        extractPlugin: extractGlobelLessPlugin,
         path: __dirname,
-        exclude: lessModuleRegex,
+        exclude: [ lessAntdRegex, lessModuleRegex ],
+        sideEffects: true
+      }),
+      resolveLessRules({
+        test: lessAntdRegex,
+        localIdentName: '[local]',
+        extractPlugin: extractAntdLessPlugin,
+        path: __dirname,
         sideEffects: true
       }),
       resolveLessRules({
         test: lessModuleRegex,
         localIdentName: '[name]__[local]___[hash:base64:5]',
-        extractPlugin: extractMoudleScssPlugin,
+        extractPlugin: extractMoudleLessPlugin,
         path: __dirname,
         ortherLoaders: ['css-type-loader']
       }),
@@ -77,8 +88,9 @@ module.exports = function (publicPath) {
       new webpack.NoEmitOnErrorsPlugin(),
       new MiniCssExtractPlugin(),
       new WebpackCleanupPlugin(),
-      extractGlobelScssPlugin,
-      extractMoudleScssPlugin
+      extractAntdLessPlugin,
+      extractGlobelLessPlugin,
+      extractMoudleLessPlugin
     ]
   };
 }

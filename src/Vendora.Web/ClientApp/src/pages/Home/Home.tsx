@@ -2,7 +2,6 @@ import * as React from 'react';
 import { sinking } from 'redux-sink';
 import Button from 'antd/lib/button';
 import * as styles from './Home.module.less';
-import Icon from 'antd/lib/icon';
 import { ContentService } from '@services/common/ContentService';
 import { Link } from 'react-router-dom';
 import Carousel from 'antd/lib/carousel';

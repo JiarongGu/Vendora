@@ -6,6 +6,8 @@ namespace Vendora.Application.Models.Entities
     {
         public string Label { get; set; }
 
+        public int Order { get; set; }
+
         public IEnumerable<FieldDescriptor> FieldDescriptors { get; set; }
     }
 }
