@@ -12,25 +12,34 @@ interface HomeProps {
 }
 const sortBank = function (banks) {
   const itemsPerPage = 8, pages = Math.ceil(banks / itemsPerPage);
-  let bankstemplate = [];
+  let bankstemplate: any[][] = [], col = 0;
   for (let i = 0; i < banks.length; i++) {
     if (i % 8 === 0 || i === 0) {
-
+      let newCol = [banks[i]];
+      bankstemplate.push(newCol);
+      col = newCol.length - 1;
+    } else {
+      bankstemplate[col].push(
+        <div>{banks[i].path}</div>
+      );
     }
   }
+  console.info(bankstemplate);
 }
 function Home({ contentService }: HomeProps) {
 
   const whyusItems = [
-    { title: 'Our Team', imagePath: '', desc: "Abacus Finance gathers professional mortgage brokers who always put the best interests of their customers first and are committed to maintaining an efficient and smooth loan process." },
-    { title: 'Our Experience', imagePath: '', desc: "Abacus Finance gathers professional mortgage brokers who always put the best" },
-    { title: 'Our Service Network', imagePath: '', desc: "Abacus Finance gathers professional mortgage brokers who always put the best" },
-    { title: 'Our Lenders', imagePath: '', desc: "Abacus Finance gathers professional mortgage brokers who always put the best" },
-    { title: 'Our Results', imagePath: '', desc: "Abacus Finance gathers professional mortgage brokers who always put the best" },
-    { title: 'Our Process', imagePath: '', desc: "Abacus Finance gathers professional mortgage brokers who always put the best" },
+    { title: 'Our Team', imagePath: '/assets/icons/team.png', desc: "Abacus Finance gathers professional mortgage brokers who always put the best interests of their customers first and are committed to maintaining an efficient and smooth loan process." },
+    { title: 'Our Experience', imagePath: '/assets/icons/work-team.png', desc: "Abacus Finance gathers professional mortgage brokers who always put the best" },
+    { title: 'Our Service Network', imagePath: '/assets/icons/connection.png', desc: "Abacus Finance gathers professional mortgage brokers who always put the best" },
+    { title: 'Our Lenders', imagePath: '/assets/icons/money.png', desc: "Abacus Finance gathers professional mortgage brokers who always put the best" },
+    { title: 'Our Results', imagePath: '/assets/icons/success.png', desc: "Abacus Finance gathers professional mortgage brokers who always put the best" },
+    { title: 'Our Process', imagePath: '/assets/icons/goal-1.png', desc: "Abacus Finance gathers professional mortgage brokers who always put the best" },
 
   ];
 
+  const banks = [];
+  sortBank();
 
   return (
     <>
