@@ -39,7 +39,7 @@ function Home({ contentService }: HomeProps) {
   ];
 
   const banks = [];
-  sortBank();
+  sortBank(banks);
 
   return (
     <>

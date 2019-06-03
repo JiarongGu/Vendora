@@ -1,22 +1,26 @@
 @import (reference) '../../styles/global.less';
 
-@title-font:  Spectral, serif;
+@title-font: Spectral, serif;
+
 .section {
   display: flex;
   min-height: 300px;
   background-color: #fff;
   z-index: 2;
 }
-.back1{
+
+.back1 {
   width: 100%;
   height: 300px;
   background: url(/assets/images/back1.png);
   background-repeat: no-repeat;
   background-size: cover;
 }
-.title-dot{
+
+.title-dot {
   position: relative;
-  &::after{
+
+  &::after {
     content: "";
     width: 7px;
     height: 7px;
@@ -27,9 +31,10 @@
   }
 }
 
-.highlight{
+.highlight {
   color: @primary-color;
 }
+
 .main-section {
   display: flex;
   height: calc(85vh + @header-height);
@@ -38,7 +43,8 @@
   background-color: rgb(120, 120, 120);
   margin-top: -@header-height;
   position: relative;
-
+  z-index: 6;
+  
   &__background {
     position: absolute;
     width: 100%;
@@ -46,7 +52,8 @@
     background-image: url('/assets/images/bitmap.png');
     background-repeat: no-repeat;
     background-size: cover;
-    &::before{
+
+    &::before {
       content: '';
       background-color: rgba(0, 0, 0, 0.55);
       position: absolute;
@@ -54,6 +61,7 @@
       height: 100%;
     }
   }
+
   &__text-group {
     display: flex;
     flex-direction: column;
@@ -61,20 +69,24 @@
     padding-top: 100px;
     z-index: 2;
   }
-  &__title{
+
+  &__title {
     font-size: 50.5px;
     line-height: 64.5px;
     color: #fff;
     font-weight: 800;
-    span{
+
+    span {
       color: @primary-color;
     }
   }
+
   &__button {
     width: 200px;
     margin: 10px 0;
   }
-  &__text{
+
+  &__text {
     font-size: 14px;
     line-height: 20px;
     color: #fff;
@@ -94,6 +106,7 @@
   .content-text {
     display: flex;
     align-items: inherit;
+
     h1 {
       font-size: 60px;
       font-weight: 400;
@@ -110,29 +123,35 @@
     flex-direction: row;
     display: flex;
     width: 65%;
-    .info-card{
+
+    .info-card {
       flex-direction: column;
       display: flex;
       justify-content: flex-end;
       padding: 0 30px;
-      &.left{
+
+      &.left {
         flex: 1;
         text-align: right
       }
-      &.right{
+
+      &.right {
         flex: 2;
       }
-      button{
+
+      button {
         padding: 0 15px;
         width: auto;
         font-size: 14px;
         height: 35px;
       }
+
       span.title {
         font-family: @title-font;
         font-size: 40px;
       }
-      p{
+
+      p {
         text-align: left;
         color: @text-color-secondary;
       }
@@ -159,55 +178,61 @@
     width: 90%;
     padding: 60px 0;
 
-    &__left{
+    &__left {
       display: flex;
       justify-content: space-between;
       flex-direction: column;
       flex: 2 0 0;
       padding: 20px 80px;
 
-      &>span{
+      &>span {
         font-size: 40px
       }
-      button{
+
+      button {
         background: @background-dark-text;
         color: @text-color;
         font-weight: 600;
         padding: 0 30px;
       }
     }
-    &__right{
+
+    &__right {
       display: flex;
       flex-direction: column;
       flex: 1 0 0;
       padding: 0 30px;
-  
+
       .rate-figure {
         font-weight: 200;
         flex: 1 0 0;
+
         span {
           font-size: 14px;
         }
-        p{
-          &.title{
+
+        p {
+          &.title {
             font-weight: 600;
             font-size: 14px;
             margin: -10px 0 4px 0;
           }
+
           font-size: 12px;
           max-width: 60%;
           color: @text-color-secondary;
         }
-    
+
         .number {
           font-size: 75px;
           font-family: @title-font;
         }
       }
+
       &:first-child {
         text-align: right
       }
-  
+
       &:last-child {
         text-align: left
       }
@@ -216,10 +241,12 @@
 
 
 }
-.middle-banner-section{
+
+.middle-banner-section {
   background: none !important;
   height: 300px;
 }
+
 .whyus-section {
   display: flex;
   padding: 7% 0 3% 0;
@@ -232,6 +259,7 @@
     width: 100%;
     text-align: center;
     margin-bottom: 30px;
+
     span {
       font-size: 55px;
       margin-bottom: 30px;
@@ -259,18 +287,20 @@
       overflow: hidden;
       height: 300px;
       position: relative;
-      
-      &::nth-child(3){
+
+      &::nth-child(3) {
         .whyus-text {
-          &__left{
+          &__left {
             width: 35%;
           }
         }
       }
-      &:hover{
+
+      &:hover {
         background-color: @background-dark;
         color: @background-dark-text;
-        .title-dot{
+
+        .title-dot {
           &::after {
             width: 10px;
             height: 10px;
@@ -278,24 +308,29 @@
             bottom: -5px;
           }
         }
-        .whyus-image{
+
+        .whyus-image {
           img {
             height: 0;
           }
         }
+
         .whyus-text {
           top: 10px;
+
           p {
             opacity: 1;
           }
         }
       }
+
       .whyus-image {
         width: 30%;
         padding-right: 10px;
         text-align: right;
         transition: all 0.4s linear;
         margin: 30px auto;
+
         img {
           margin-right: 5px;
           width: 80px;
@@ -303,6 +338,7 @@
           margin-top: 20px;
         }
       }
+
       .whyus-text {
         display: flex;
         position: absolute;
@@ -310,29 +346,35 @@
         flex-direction: column;
         align-items: flex-start;
         transition: all 0.4s linear;
+
         .whyus-index {
           padding: 10px 0;
+
           span {
             color: @primary-color;
             font-weight: 800;
             font-size: 14px;
           }
         }
-        &__left{
+
+        &__left {
           flex: 1;
           width: 27%;
         }
-        &__right{
+
+        &__right {
           flex: 2;
           margin-left: -20px;
           padding-right: 20px;
           margin-top: 15px;
         }
+
         span {
           font-size: 20px;
           font-weight: 800;
           margin-bottom: 0px;
         }
+
         p {
           min-height: 46px;
           opacity: 0;
@@ -404,7 +446,7 @@
   justify-content: center;
   align-items: center;
 
-  &__title{
+  &__title {
     font-family: @title-font;
     font-size: 55px;
     margin-bottom: 30px;
@@ -417,6 +459,7 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: flex-start;
+
     .lender {
       width: 170px;
       height: 200px;
