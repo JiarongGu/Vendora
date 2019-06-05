@@ -10,7 +10,7 @@ namespace Vendora.Application.Models.Entities
 
         public string Type { get; set; }
 
-        public string DefaultValue { get; set; }
+        public IEnumerable<string> DefaultValues { get; set; }
 
         public string Placeholder { get; set; }
 

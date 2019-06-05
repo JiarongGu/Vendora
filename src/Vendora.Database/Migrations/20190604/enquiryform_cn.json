@@ -12,7 +12,7 @@
           "fieldOptions": [
             {
               "label": "购置新房",
-              "value": "buy"
+              "value": "home loan"
             },
             {
               "label": "房屋融资",
@@ -186,7 +186,7 @@
         },
         {
           "order": 3,
-          "name": "total household Income",
+          "name": "primary income",
           "label": "家庭总收入",
           "type": "currency",
           "fieldDependencies": [
@@ -204,7 +204,7 @@
         },
         {
           "order": 3,
-          "name": "total household Income",
+          "name": "primary income",
           "label": "个人收入",
           "type": "currency",
           "fieldDependencies": [
@@ -234,12 +234,34 @@
         },
         {
           "order": 6,
-          "name": "other loan",
-          "label": "其他贷款",
-          "type": "check"
+          "name": "total credit card limits",
+          "label": "信用卡总额度",
+          "type": "currency"
         },
         {
           "order": 7,
+          "name": "other loan",
+          "label": "其他贷款",
+          "type": "select",
+          "fieldOptions": [
+            {
+              "label": "无其他贷款",
+              "value": "true"
+            },
+            {
+              "label": "有其他贷款",
+              "value": "false"
+            }
+          ],
+          "validationRules": [
+            {
+              "message": "请选择其他贷款信息",
+              "required": true
+            }
+          ]
+        },
+        {
+          "order": 8,
           "name": "owner-occupide monthly repayment",
           "label": "每月自住房还款额度",
           "type": "currency",
@@ -251,7 +273,7 @@
           ]
         },
         {
-          "order": 8,
+          "order": 9,
           "name": "total investment monthly repayment",
           "label": "每月投资还款额度",
           "type": "currency",
@@ -263,21 +285,9 @@
           ]
         },
         {
-          "order": 9,
+          "order": 10,
           "name": "other liabilities monthly repayment",
           "label": "每月其他贷款还款额度",
-          "type": "currency",
-          "fieldDependencies": [
-            {
-              "name": "other loan",
-              "values": [ "true" ]
-            }
-          ]
-        },
-        {
-          "order": 10,
-          "name": "total credit card limits",
-          "label": "信用卡总额度",
           "type": "currency",
           "fieldDependencies": [
             {
@@ -290,11 +300,11 @@
     },
     {
       "order": 3,
-      "label": "个人信息",
+      "label": "联系方式",
       "fieldDescriptors": [
         {
           "order": 0,
-          "name": "LastName",
+          "name": "last name",
           "label": "姓",
           "type": "text",
           "validationRules": [
@@ -306,7 +316,7 @@
         },
         {
           "order": 1,
-          "name": "Surname",
+          "name": "surname",
           "label": "名",
           "type": "text",
           "validationRules": [
@@ -318,7 +328,7 @@
         },
         {
           "order": 2,
-          "name": "ContactEmail",
+          "name": "contact email",
           "label": "邮箱",
           "type": "email",
           "validationRules": [
@@ -329,10 +339,44 @@
           ]
         },
         {
-          "order": 2,
-          "name": "ContactPhone",
+          "order": 3,
+          "name": "contact phone",
           "label": "联系电话",
           "type": "phone"
+        },
+        {
+          "order": 4,
+          "name": "suitable contact time",
+          "label": "联系时间",
+          "type": "multicheck",
+          "fieldOptions": [
+            {
+              "label": "任何时间",
+              "value": "anytime"
+            },
+            {
+              "label": "早上",
+              "value": "morning"
+            },
+            {
+              "label": "午餐时间",
+              "value": "lunch"
+            },
+            {
+              "label": "下午",
+              "value": "afternoon"
+            },
+            {
+              "label": "晚上",
+              "value": "evening"
+            }
+          ],
+          "validationRules": [
+            {
+              "message": "请选择至少一个联系时间, 已方便我们及时联系您",
+              "required": true
+            }
+          ]
         }
       ]
     }
