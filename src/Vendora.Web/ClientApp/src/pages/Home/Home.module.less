@@ -84,7 +84,7 @@
 .content-section {
   background: #fff;
   width: 100%;
-  padding: 7% 0 3% 0;
+  padding: 5% 0 7% 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -201,6 +201,7 @@
     
         .number {
           font-size: 75px;
+          font-weight: 600;
           font-family: @title-font;
         }
       }
@@ -355,120 +356,173 @@
 }
 
 
-.about-us-section {
+.customer-review-section {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  padding: 7% 0;
+  padding: 5% 0 0;
+  position: relative;
 
-  .about-us-title {
+  .comment-section{
+    position: relative;
     width: 100%;
-    text-align: center;
-    margin-bottom: 30px;
-
-    h1 {
-      font-weight: 700;
-      font-size: 24px;
-      margin-bottom: 30px;
-      color: @color-darkGreen;
+    font-size: 16px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    &_icon{
+      width: 30px;
+      height: 30px;
+      margin-bottom: 10px;
+      img{
+        width: 100%;
+      }
     }
-  }
-
-  .about-us-image {
-    width: 60%;
-    padding-bottom: 28%;
-    background-color: #bbbbbb;
-  }
-
-  .about-us-text {
-    width: 70%;
-    margin-top: 50px;
-    text-align: center;
-    color: #555;
-
-    .about-us-button {
-      margin-top: 30px;
+    &__navButtons{
+      position: absolute;
+      right: 0px;
+      bottom: 0px;
+      img{
+        width: 30px;
+        cursor: pointer;
+      }
+      &>:first-child{
+        margin-right: 10px;
+      }
+    }
+    &__text{
+      font-style: italic;
+      text-align: left;
+    }
+    &__author{
+      font-weight: 600;
+      text-align: left;
+      margin-top: 20px;
     }
   }
 }
+.gray-panel{
+  flex: 1 0 100%;
+  display: flex;
+  min-height: 450px;
+  background: #f9f9f9;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 80px 10%;
+  position: relative;
 
+  &__title-lg {
+    font-size: 80px;
+    position: absolute;
+    left: 10px;
+    top: -65px;
+    color: #d8d8d8;
+    font-family: @title-font;
+  }
+  &__title{
+    flex: 0 1 40%;
+    width: 40%;
+    span{
+      font-family: @title-font;
+      font-size: 45px;
+      margin-bottom: 30px;
+    }
+    p{
+      font-size: 13px;
+      color: @text-color-secondary;
+    }
+    p.opentime{
+      font-size: 16px;
+      color: @text-color;
+
+    }
+  }
+}
 
 .lender-board-section {
   display: flex;
   flex-direction: column;
-  padding: 7% 0;
+  padding: 5% 0;
   background-color: #fff;
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
-
-  &__title{
+  text-align: center;
+  &__title>span{
     font-family: @title-font;
     font-size: 55px;
     margin-bottom: 30px;
   }
+  &__title>p{
+    width: 40%;
+    font-size: 13px;
+    margin: 0 auto;
+    color: @text-color-secondary;
+  }
 
   .lender-board-group {
-    width: 1050px;
-    display: flex;
+    display: flex !important;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
     justify-content: flex-start;
-    .lender {
-      width: 170px;
+    .lender {    width: 20%;
       height: 200px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      padding: 30px;
+      & > img{
+        width: 100%;
+      }
     }
   }
 
 }
 
-.article-section {
+.contact-section {
   display: flex;
-  padding: 7% 0 15% 0;
+  padding: 5% 0 15% 0;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   width: 100vw;
   overflow: auto;
-
-  .article-title {
-    margin-bottom: 30px;
-    text-align: left;
-    width: 15%;
-
-    h1 {
-      font-weight: 700;
-      font-size: 24px;
-      margin-bottom: 30px;
-      color: @color-darkGreen;
-    }
-  }
-
-  .article-group {
+  .contact-item-group{
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    align-items: flex-start;
-    height: 550px;
-    width: 70%;
-
-    .article {
-      position: relative;
-      flex: 1 auto;
-      padding: 1em;
-      width: 48%;
-      color: #555;
-      margin: 10px;
-      border: 2px dashed #bbb;
-
-      .view-more {
-        position: absolute;
-        bottom: 10px;
-        right: 10px;
+    .contact-item{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+      height: 300px;
+      flex: 1 1 auto;
+      padding: 0 30px;
+      &:first-child {
+        padding-left: 0;
+      }
+      &:last-child {
+        padding-right: 0;
+      }
+      img{
+        width: 60px;
+        margin: 20px 0;
+      }
+      span.title{
+        font-size: 20px;
+        font-weight: 800;
+      }
+      p{
+        color: @text-color-secondary;
+        font-size: 14px;
+      }
+      .action{
+        font-size: 16px;
+        color: @primary-color;
+        cursor: pointer;
       }
     }
   }

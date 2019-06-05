@@ -9,13 +9,14 @@ import Select from 'antd/lib/select';
 import { CurrencyInput } from '@components/Input';
 import * as styles from './QuoteForm.module.less';
 import SuburbInput from '@components/Input/SuburbInput/SuburbInput';
+import { QuoteFormStepComponent } from '../QuoteFormStep/QuoteFormStep';
 
 
 interface QuoteFormProps extends FormComponentProps {
 
 }
 
-export class QuoteFormComponent extends React.Component<QuoteFormProps> {
+export class QuoteFormComponents extends React.Component<QuoteFormProps> {
   suburbRef = React.createRef();
   componentDidMount() {
     console.info(this.suburbRef.current);
@@ -56,18 +57,6 @@ export class QuoteFormComponent extends React.Component<QuoteFormProps> {
           </div>
           
           <div className={styles.formRow}>
-            <div className={styles.column6}>
-              <Form.Item label={'房产使用类型'}>
-                {getFieldDecorator('propertyUsage', {
-                  rules: [{ required: true, message: 'Please select your use property!' }],
-                })(
-                  <Select placeholder={'请选择房产使用类型'}>
-                    <Select.Option value={'living'}>自主房</Select.Option>
-                    <Select.Option value={'invest'}>投资房</Select.Option>
-                  </Select>
-                )}
-              </Form.Item>
-            </div>
             
             <div className={styles.column6}>
               <Form.Item label={'房产价值'}>
@@ -283,4 +272,4 @@ export class QuoteFormComponent extends React.Component<QuoteFormProps> {
   }
 }
 
-export const QuoteForm = Form.create({ name: 'quote' })(QuoteFormComponent);
+export const QuoteForms = Form.create({ name: 'quote' })(QuoteFormComponents);

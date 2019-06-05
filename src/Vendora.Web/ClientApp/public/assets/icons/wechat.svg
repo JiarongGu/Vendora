@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="43px" height="43px" viewBox="0 0 43 43" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.1 (78136) - https://sketchapp.com -->
+    <title>Group 21</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Home-Concept-1" transform="translate(-655.000000, -12971.000000)">
+            <g id="Group-27" transform="translate(656.000000, 12972.000000)">
+                <g id="Group-21">
+                    <g id="wechat" transform="translate(9.000000, 10.000000)" fill-rule="nonzero">
+                        <g id="Group" fill="#648040">
+                            <path d="M23,13.5 C23,10.1865 19.7814375,7.5 15.8125,7.5 C11.8435625,7.5 8.625,10.1865 8.625,13.5 C8.625,16.8135 11.8435625,19.5 15.8125,19.5 C16.465125,19.5 17.086125,19.404 17.6884375,19.2675 L21.5625,21 L20.22275,18.2055 C21.90175,17.1075 23,15.4185 23,13.5 Z" id="Path"></path>
+                            <path d="M8.625,0 C3.861125,0 0,3.3585 0,7.5 C0,9.888 1.290875,12.006 3.2933125,13.377 L2.15625,15.75 L5.2540625,14.3655 C5.9181875,14.6115 6.6081875,14.814 7.345625,14.9085 C7.245,14.451 7.1875,13.9815 7.1875,13.5 C7.1875,9.3645 11.0558125,6 15.8125,6 C16.2480625,6 16.6735625,6.0375 17.0933125,6.0915 C16.3343125,2.6235 12.834,0 8.625,0 Z" id="Path"></path>
+                        </g>
+                        <g id="Group" transform="translate(5.000000, 3.000000)" fill="#FAFAFA">
+                            <ellipse id="Oval" cx="1.05" cy="1.26923077" rx="1.05" ry="1.26923077"></ellipse>
+                            <ellipse id="Oval" cx="6.65" cy="1.26923077" rx="1.05" ry="1.26923077"></ellipse>
+                            <ellipse id="Oval" cx="8.75" cy="9.73076923" rx="1.05" ry="1.26923077"></ellipse>
+                            <ellipse id="Oval" cx="12.95" cy="9.73076923" rx="1.05" ry="1.26923077"></ellipse>
+                        </g>
+                    </g>
+                    <circle id="Oval" stroke="#4D4D54" cx="20.5" cy="20.5" r="20.5"></circle>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

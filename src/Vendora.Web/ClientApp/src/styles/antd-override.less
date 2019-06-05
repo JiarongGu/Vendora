@@ -12,7 +12,7 @@
     color: #fff;
 
     &:hover {
-      color: #bef17b;
+      color: #798c5d;
     }
   }
 }
@@ -28,4 +28,48 @@
   border-bottom: none;
   border-color: inherit;
   color: #fff;
+}
+.ant-carousel .slick-slider {
+  text-align: center;
+  width: 1050px;
+  overflow: hidden;
+  .slick-dots{
+    height: 5px;
+    li.slick-active>button {
+      background: @primary-color;
+      opacity: 1;
+      width: 30px;
+      height: 5px;
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+    li>button{
+      width: 30px;
+      height: 5px;
+      opacity: 1;
+      background: #e3e3e3;
+    }
+  }
+}
+
+.form-step{
+  .ant-menu-sub.ant-menu-inline{
+    background: none;
+  }
+  .ant-menu-submenu-arrow{
+    display: none;
+  }
+  .ant-menu-item-disabled>.ant-menu-submenu-title, .ant-menu-submenu-disabled>.ant-menu-submenu-title{
+    cursor: pointer;
+    &:active, &:focus{
+      background: none;
+    }
+  }
+}
+.quote-form{
+  .ant-carousel .slick-slider {
+    text-align: inherit;
+    width: 992px;
+    overflow: hidden;
+  }
 }

@@ -7,19 +7,25 @@
 }
 
 .container {
-  display: flex;
-  width: 900px;
-  background: #FFF;
-  justify-content: center;
   flex-direction: column;
+  position: relative;
+  margin: 0 0 0 10%;
+  flex: 0 1 70%;
+  display: flex;
+  position: relative;
 }
 
 .step-bar-container {
-  flex: 1;
-  padding: 32px 64px;
-  
+  padding: 32px 32px;
+  position: absolute;
+  left: -15%;
+  top: 0;
   .step-bar {
     height: 300px;
+  }
+  .steps{
+    background: transparent;
+
   }
 }
 
@@ -29,6 +35,12 @@
   flex: 1;
   
   padding: 20px;
+}
+
+.question-group {
+  min-height: 300px;
+  padding: 4px 0;
+  width: 992px;
 }
 
 .question-container {

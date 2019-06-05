@@ -58,6 +58,16 @@ module.exports = function (publicPath) {
         use: ['ts-loader'],
         exclude: /node_modules/
       },
+      {
+        test: /banks.*\.(png)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              name: '[hash].[ext]',
+            },
+          }]
+      },
       resolveLessRules({
         test: lessRegex,
         localIdentName: '[local]',

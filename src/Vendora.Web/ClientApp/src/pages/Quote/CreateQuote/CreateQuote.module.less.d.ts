@@ -5,13 +5,16 @@ interface CssExports {
   'main-section': string;
   'mainSection': string;
   'question-container': string;
+  'question-group': string;
   'question-group-container': string;
   'questionContainer': string;
+  'questionGroup': string;
   'questionGroupContainer': string;
   'step-bar': string;
   'step-bar-container': string;
   'stepBar': string;
   'stepBarContainer': string;
+  'steps': string;
 }
 
 declare var cssExports: CssExports;

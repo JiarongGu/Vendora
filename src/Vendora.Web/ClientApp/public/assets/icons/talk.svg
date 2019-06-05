@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="56px" height="56px" viewBox="0 0 56 56" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.1 (78136) - https://sketchapp.com -->
+    <title>talk</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Home-Concept-1" transform="translate(-239.000000, -8934.000000)" fill="#648040" fill-rule="nonzero">
+            <g id="talk" transform="translate(239.000000, 8934.000000)">
+                <path d="M9.953125,9.953125 L0,9.953125 L0,46.046875 L6.671875,46.046875 L6.671875,56 L11.2152099,56 L17.1214599,46.046875 L46.046875,46.046875 L46.046875,36.203125 L56,36.203125 L56,0 L9.953125,0 L9.953125,9.953125 Z M42.765625,42.765625 L15.2535401,42.765625 L9.953125,51.6972046 L9.953125,42.765625 L3.28125,42.765625 L3.28125,13.234375 L42.765625,13.234375 L42.765625,42.765625 Z M52.71875,3.28125 L52.71875,32.921875 L46.046875,32.921875 L46.046875,9.953125 L13.234375,9.953125 L13.234375,3.28125 L52.71875,3.28125 Z" id="Shape"></path>
+                <polygon id="Path" points="12 27 15 27 15 30 12 30"></polygon>
+                <polygon id="Path" points="22 27 25 27 25 30 22 30"></polygon>
+                <polygon id="Path" points="31 27 34 27 34 30 31 30"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

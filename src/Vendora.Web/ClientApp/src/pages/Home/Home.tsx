@@ -10,21 +10,35 @@ import 'classnames';
 interface HomeProps {
   contentService: ContentService;
 }
+const fetchBanksImages = function() {
+  let results: string[] = [];
+  require.context('../../../public/assets/images/banks', false, /.*\.png$/).keys().forEach((key) => {
+    results.push('/assets/images/banks'.concat(key.substr(1)));
+  })
+  return results;
+}
+const buildBankTemplate = function(imagePath) {
+  return (
+    <>
+      <div className={styles.lender}>
+        <img src= {imagePath}/>
+      </div>
+    </>
+  );
+}
 const sortBank = function (banks) {
-  const itemsPerPage = 8, pages = Math.ceil(banks / itemsPerPage);
+  const itemsPerPage = 10, pages = Math.ceil(banks / itemsPerPage);
   let bankstemplate: any[][] = [], col = 0;
   for (let i = 0; i < banks.length; i++) {
-    if (i % 8 === 0 || i === 0) {
-      let newCol = [banks[i]];
+    if (i % itemsPerPage === 0 || i === 0) {
+      let newCol = [buildBankTemplate(banks[i])];
       bankstemplate.push(newCol);
-      col = newCol.length - 1;
+      col = bankstemplate.length - 1;
     } else {
-      bankstemplate[col].push(
-        <div>{banks[i].path}</div>
-      );
+      bankstemplate[col].push(buildBankTemplate(banks[i]));
     }
   }
-  console.info(bankstemplate);
+  return bankstemplate
 }
 function Home({ contentService }: HomeProps) {
 
@@ -38,9 +52,19 @@ function Home({ contentService }: HomeProps) {
 
   ];
 
-  const banks = [];
-  sortBank();
-
+  const banks = fetchBanksImages();
+  const bankstemplate = sortBank(banks);
+  var carousel: Carousel | null;
+  const prev = function() {
+    if (carousel){
+      carousel.prev();
+    }
+  }
+  const next = function() {
+    if (carousel){
+      carousel.next();
+    }
+  }
   return (
     <>
       <div className={`${styles.mainSection} ${styles.section}`}>
@@ -74,31 +98,6 @@ function Home({ contentService }: HomeProps) {
         </div>
       </div>
 
-      <div className={`${styles.middleBannerSection} ${styles.section}`}>
-        <div className={styles.back1}>
-        </div>
-      </div>
-      <div className={`${styles.whyusSection} ${styles.section}`}>
-        <div className={styles.whyusTitle}>
-          <span className={styles.titleDot}>Why <span className={styles.highlight}>Abcus Finance</span></span>
-        </div>
-        <div className={styles.whyusItemGroup}>
-          {whyusItems.map((item, index) => (
-            <div className={styles.whyusItem}>
-              <div className={styles.whyusImage}>
-                <img src={item.imagePath} />
-              </div>
-              <div className={styles.whyusText}>
-                <div className={styles.whyusIndex}>
-                  <span>0{index + 1}</span>
-                </div>
-                <div className={styles.whyusTextLeft}><span className={styles.titleDot}>{item.title}</span></div>
-                <div className={styles.whyusTextRight}><p className={styles.whyusDesc}>{item.desc}</p></div>
-              </div>
-            </div>))}
-        </div>
-      </div>
-
       <div className={`${styles.interestrateSection} ${styles.section}`}>
         <div className={styles.rateText}>
           <div className={styles.rateTextLeft}>
@@ -122,43 +121,124 @@ function Home({ contentService }: HomeProps) {
           </div>
         </div>
       </div>
-      <div className={`${styles.aboutUsSection} ${styles.section}`}>
+
+      <div className={`${styles.middleBannerSection} ${styles.section}`}>
+        {/* <div className={styles.back1}>
+        </div> */}
+      </div>
+      <div className={`${styles.whyusSection} ${styles.section}`}>
+        <div className={styles.whyusTitle}>
+          <span className={styles.titleDot}>Why <span className={styles.highlight}>Abcus Finance</span></span>
+        </div>
+        <div className={styles.whyusItemGroup}>
+          {whyusItems.map((item, index) => (
+            <div className={styles.whyusItem}>
+              <div className={styles.whyusImage}>
+                <img src={item.imagePath} />
+              </div>
+              <div className={styles.whyusText}>
+                <div className={styles.whyusIndex}>
+                  <span>0{index + 1}</span>
+                </div>
+                <div className={styles.whyusTextLeft}><span className={styles.titleDot}>{item.title}</span></div>
+                <div className={styles.whyusTextRight}><p className={styles.whyusDesc}>{item.desc}</p></div>
+              </div>
+            </div>))}
+        </div>
+      </div>
+
+      
+      {/*customer review*/}
+      <div className={`${styles.customerReviewSection} ${styles.section}`}>
+          <div className={styles.grayPanel}>
+            <div className={styles.grayPanelTitleLg}>
+              What our customs say?
+            </div>
+            <div className={styles.grayPanelTitle}>
+              <span className={styles.titleDot}>Client <span className={styles.highlight}>review</span></span>
+              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+            </div>
+            
+            <div className={styles.commentSection}>
+              <div className={styles.commentSectionIcon}>
+                <img src="/assets/icons/talk.svg" />
+              </div>
+              <Carousel dots={false} ref ={(instance) => { carousel = instance}}>
+                <div>
+                  <div className={styles.commentSectionText}>
+                    "Eden was amazing!!!
+                    From start to finish she was there to help. After we were unconditional on our property Eden took it upon herself to ensure we had the lowest interest rate and found us an even better deal."
+                  </div>
+                  <div className={styles.commentSectionAuthor}>
+                    Sam Witwicky
+                  </div>
+                </div>
+                <div>
+                  <div className={styles.commentSectionText}>
+                    "Eden was amazing!!!
+                    From start to finish she was there to help. After we were unconditional on our property Eden took it upon herself to ensure we had the lowest interest rate and found us an even better deal."
+                  </div>
+                  <div className={styles.commentSectionAuthor}>
+                    Sam Witwicky
+                  </div>
+                </div>
+              </Carousel>
+              <div className={styles.commentSectionNavButtons}>
+                <span onClick={prev}><img src ='/assets/icons/previous.svg'/></span>
+                <span onClick={next}><img src ='/assets/icons/next.svg'/></span>
+              </div>
+            </div>
+          </div>
       </div>
       {/*banks*/}
       <div className={`${styles.lenderBoardSection} ${styles.section}`}>
-        <div className={styles.lenderBoardSectionTitle}>
-          <span className={styles.titleDot}>Financial <span className={styles.highlight}>partner</span></span>
-        </div>
-        <div className={styles.lenderBoardGroup}>
-          <Carousel>
-            {[0, 1, 2, 3, 4, 5, 6, 7, 8].map(i =>
-              <div className={styles.lender} key={i}>
-                <img src="/assets/images/lender.jpg" />
-              </div>
-            )}
-          </Carousel>
-        </div>
+          <div className={styles.lenderBoardSectionTitle}>
+            <span className={styles.titleDot}>Financial <span className={styles.highlight}>partner</span></span>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+          </div>
+        
+        <Carousel>
+          {bankstemplate.map(page =>
+            <div className={styles.lenderBoardGroup}>
+              {page.map(item => item)}
+            </div>
+            )
+          }
+        </Carousel>
       </div>
-      <div className={`${styles.articleSection} ${styles.section}`}>
-        <div className={styles.articleTitle}>
-          <h1>相关阅读</h1>
-        </div>
-        <div className={styles.articleGroup}>
-          <div className={styles.article}>
-            <Link className={styles.viewMore} to="">阅读更多</Link>
-            <p>美国房地产贷款系统里面分为三类：优质贷款市场、次优级贷款市场、次级贷款市场。美国把消费者的信用等级分为优级、次优级和次级。那些能够按时付款的消费者的信用级别被定为优级，那些不能按时付款的消费者的信用级别被定为次级。次级贷款市场就是面向那些收入信誉程度不高的客户，其贷款利率通常比一般抵押贷款高出2%～3%。尽管美国次级贷款市场所占美国整体房贷市场比重并不大，大约占7%～8%，但其利润最高，风险最大。</p></div>
-          <div className={styles.article}>
-
-            <Link className={styles.viewMore} to="">阅读更多</Link>
-            次贷危机是伴随着大约于2005-2006年的美国房地产泡沫破灭，[2][3]以及“次级贷款”与可调整利率贷款（Adjustable Rate Mortgage，下简称ARM）的高违约率而开始的。在危机发生前几年的政府政策和竞争压力助长了高风险贷款的实施。[4][5]此外，对贷款奖励力度的增加，如轻松的头期款以及房价长期上涨的趋势让借款人相信偿还房贷抵押的艰苦只是暂时性，他们能够在未来迅速的找到更有利的融资条件。然而，一旦利率开始回升，房地产价格于2006-2007年在美国许多地区开始适度下降，再融资变得更加困难。违约与法拍活动在轻松头期过后急剧增加，房屋价格并没有如预期般上升，以及ARM利率再创新高。在2006年年底美国法拍步调加速，引发后续的环球金融危机。在2007年期间，近130万房地产遭到法拍，比起2006年增长79％。</div>
-          <div className={styles.article}>
-
-            <Link className={styles.viewMore} to="">阅读更多</Link>
-            由于住房市场低迷，与随之而来的金融市场危机对更广泛经济所造成的风险，是世界上许多中央银行降低利率伴随着政府经济刺激方案出台的主要因素。这些行动的目的是刺激经济增长并鼓舞大众对金融市场的信心。此危机对全球股市的影响已经相当戏剧性。从2008年1月1日至10月11日为止，美国企业股票持有人随着总市值20兆下调至12兆美元，蒙受了约8兆美元的损失。在其他国家的损失幅度平均为40％左右。[10]股票市场的损失和住房价值下降进一步压缩消费者开支预算，而这个是经济引擎的一个重要环节。[11]较大的已开发及新兴国家的领导人已在2008年11月高峰会制定策略，以解决这场危机。</div>
-          <div className={styles.article}>
-
-            <Link className={styles.viewMore} to="">阅读更多</Link>
-            次级贷款是贷款的实现，主要形式是将购买住宅时的抵押贷款，以最低的借贷市场利率贷给不符一般贷款标准的借款人。这些标准涉及到借款人的信用评级、信用记录和其他种种因素。[1]如果借款人在偿还抵押贷款的按时付款给贷款服务商（如银行或其他金融机构）时拖欠，贷款人可以依贷款里的实收款项依法占有房产所有权，这个过程被称做法拍。</div>
+      
+      
+      {/*contact*/}
+      <div className={`${styles.contactSection} ${styles.section}`}>
+        <div className={styles.grayPanel}>
+          <div className={styles.grayPanelTitleLg}>
+            Community
+          </div>
+          <div className={styles.grayPanelTitle}>
+            <span className={styles.titleDot}>Get in touch</span>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+            <p className={styles.opentime}> We're available to help from Mon-Fri 8am-8pm (AEST/AEDT)</p>
+          </div>
+          <div className={styles.contactItemGroup}>
+            <div className={styles.contactItem}>
+                <img src="/assets/icons/phone-call.svg"/>
+                <span className={`${styles.titleDot} ${styles.title}`}>Call us</span>
+                <p>Got home loan questions or want to apply over the phone?</p>
+                <p className={styles.action}>1300 26 86 86</p>
+            </div>
+            <div className={styles.contactItem}>
+                <img src="/assets/icons/customer.svg"/>
+                <span className={`${styles.titleDot} ${styles.title}`}>Let us call youl</span>
+                <p>Leave your details and receive a call from a home loan specialist within 24 hours.</p>
+                <p className={styles.action}>Get a call</p>
+            </div>
+            <div className={styles.contactItem}>
+                <img src="/assets/icons/interview.svg"/>
+                <span className={`${styles.titleDot} ${styles.title}`}>Meet us</span>
+                <p>One of our home loan specialists can visit at a time that works for you.</p>
+                <p className={styles.action}>Book a time</p>
+            </div>
+          </div>
         </div>
       </div>
     </>
