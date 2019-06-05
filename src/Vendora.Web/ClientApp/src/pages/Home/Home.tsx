@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom';
 import Carousel from 'antd/lib/carousel';
 
 import 'classnames';
+import Input from 'antd/lib/input';
+import Checkbox from 'antd/lib/checkbox/Checkbox';
 interface HomeProps {
   contentService: ContentService;
 }
@@ -121,10 +123,10 @@ function Home({ contentService }: HomeProps) {
         </div>
       </div>
 
-      <div className={`${styles.middleBannerSection} ${styles.section}`}>
-        {/* <div className={styles.back1}>
-        </div> */}
-      </div>
+      {/* <div className={`${styles.middleBannerSection} ${styles.section}`}>
+        <div className={styles.back1}>
+        </div>
+      </div> */}
       <div className={`${styles.whyusSection} ${styles.section}`}>
         <div className={styles.whyusTitle}>
           <span className={styles.titleDot}>Why <span className={styles.highlight}>Abcus Finance</span></span>
@@ -239,6 +241,44 @@ function Home({ contentService }: HomeProps) {
             </div>
           </div>
         </div>
+      </div>
+      
+      <div className={`${styles.newsletterSection} ${styles.section}`}>
+        <div className={styles.newsletterSectionTitleLg}>
+          Newsletter
+        </div>
+        <div className={styles.newsletterSectionTitle}>
+          <span className={styles.titleDot}>What’s happening?<br/> Be the first to know</span>
+          <p>Subscribe for insider info about our latest news, products, promotions and events.</p>
+        </div>
+        <div className={styles.newsletterInput}>
+          
+          <Input placeholder="Enter your email."></Input>
+          <Button size='large'>Subscribe</Button>
+          <Checkbox>By submitting your data and signing up to receive our news updates, you authoruse Abacus Finance to process it as described in the Terms and Privacy Policy.</Checkbox>
+        </div>
+      </div>
+      <div className={`${styles.socialSection}`}>
+          <div className={styles.socialItem}>
+            <img src="/assets/icons/facebook.svg" />
+            <p>FACEBOOK</p>
+            <span>abacusfinance.com.au</span>
+          </div>
+          <div className={styles.socialItem}>
+            <img src="/assets/icons/wechat.svg" />
+            <p>WECHAT</p>
+            <span>abacusfinance.com.au</span>
+          </div>
+          <div className={styles.socialItem}>
+            <img src="/assets/icons/email.svg" />
+            <p>EMAIL</p>
+            <span>info@abacusfinance.com.au</span>
+          </div>
+          <div className={styles.socialItem}>
+            <img src="/assets/icons/youtube.svg" />
+            <p>YOUTUBE</p>
+            <span>info@abacusfinance.com.a</span>
+          </div>
       </div>
     </>
   )

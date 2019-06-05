@@ -60,6 +60,14 @@ interface CssExports {
   'mainSectionTitle': string;
   'middle-banner-section': string;
   'middleBannerSection': string;
+  'newsletter-input': string;
+  'newsletter-section': string;
+  'newsletter-section__title': string;
+  'newsletter-section__title-lg': string;
+  'newsletterInput': string;
+  'newsletterSection': string;
+  'newsletterSectionTitle': string;
+  'newsletterSectionTitleLg': string;
   'number': string;
   'opentime': string;
   'rate-figure': string;
@@ -72,6 +80,10 @@ interface CssExports {
   'rateTextRight': string;
   'right': string;
   'section': string;
+  'social-item': string;
+  'social-section': string;
+  'socialItem': string;
+  'socialSection': string;
   'title': string;
   'title-dot': string;
   'titleDot': string;
