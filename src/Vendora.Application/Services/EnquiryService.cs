@@ -4,7 +4,12 @@ using System.Text;
 
 namespace Vendora.Application.Services
 {
-    class EnquiryService
+    public interface IEnquiryService {
+
+    }
+
+    public class EnquiryService: IEnquiryService
     {
+
     }
 }

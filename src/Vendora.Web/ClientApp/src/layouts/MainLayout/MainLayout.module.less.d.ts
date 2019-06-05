@@ -4,6 +4,8 @@ interface CssExports {
   'body': string;
   'footer': string;
   'header': string;
+  'headerBackground': string;
+  'header__background': string;
   'logo': string;
 }
 

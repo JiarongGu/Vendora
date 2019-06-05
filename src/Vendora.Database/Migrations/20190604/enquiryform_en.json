@@ -1,0 +1,384 @@
+{
+  "formSections": [
+    {
+      "order": 0,
+      "label": "Required Service",
+      "fieldDescriptors": [
+        {
+          "order": 0,
+          "name": "service type",
+          "label": "Service Type",
+          "type": "radio",
+          "fieldOptions": [
+            {
+              "label": "New Home Loan",
+              "value": "home loan"
+            },
+            {
+              "label": "Refinance",
+              "value": "refinance"
+            }
+          ],
+          "validationRules": [
+            {
+              "message": "Please select service type",
+              "required": true
+            }
+          ]
+        },
+        {
+          "order": 1,
+          "name": "use of property",
+          "label": "Use of Property",
+          "type": "select",
+          "fieldOptions": [
+            {
+              "label": "Owner Occupied",
+              "value": "owner-occupied"
+            },
+            {
+              "label": "Investment",
+              "value": "investment"
+            }
+          ],
+          "validationRules": [
+            {
+              "message": "Please select Use of Property",
+              "required": true
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "name": "property value",
+          "label": "Property Value",
+          "type": "currency",
+          "validationRules": [
+            {
+              "message": "Property Value is required",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 1,
+      "label": "Mortgage",
+      "fieldDescriptors": [
+        {
+          "order": 0,
+          "name": "current deposit",
+          "label": "Current Deposit",
+          "type": "currency",
+          "validationRules": [
+            {
+              "message": "Current Deposit is required",
+              "required": true
+            }
+          ]
+        },
+        {
+          "order": 1,
+          "name": "expected loan amount",
+          "label": "Expected Loan Amount",
+          "type": "currency",
+          "validationRules": [
+            {
+              "message": "Expected Loan Amount is required",
+              "required": true
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "name": "number of applicants",
+          "label": "Number of Applicants",
+          "type": "number",
+          "validationRules": [
+            {
+              "message": "Number of Applicants is required",
+              "required": true
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "name": "property suburb",
+          "label": "Property Suburb",
+          "type": "suburb",
+          "validationRules": [
+            {
+              "message": "Property Suburb is required",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "label": "Financial Detail",
+      "fieldDescriptors": [
+        {
+          "order": 0,
+          "name": "marriage status",
+          "label": "Marriage Status",
+          "type": "select",
+          "fieldOptions": [
+            {
+              "label": "Single",
+              "value": "single"
+            },
+            {
+              "label": "Married",
+              "value": "married"
+            },
+            {
+              "label": "De Facto",
+              "value": "de facto"
+            }
+          ],
+          "validationRules": [
+            {
+              "message": "Please select Marriage Status",
+              "required": true
+            }
+          ]
+        },
+        {
+          "order": 1,
+          "name": "number of dependents",
+          "label": "Number of Dependents",
+          "type": "number",
+          "validationRules": [
+            {
+              "message": "Number of Dependents is required",
+              "required": true
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "name": "employment type",
+          "label": "Employment Type",
+          "type": "select",
+          "fieldOptions": [
+            {
+              "label": "Employee",
+              "value": "employee"
+            },
+            {
+              "label": "Self-Employed",
+              "value": "self-employed"
+            },
+            {
+              "label": "Other",
+              "value": "other"
+            }
+          ],
+          "validationRules": [
+            {
+              "message": "Please select Employment Type",
+              "required": true
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "name": "primary income",
+          "label": "Total household Income",
+          "type": "currency",
+          "fieldDependencies": [
+            {
+              "name": "marriage status",
+              "values": [ "married", "de facto" ]
+            }
+          ],
+          "validationRules": [
+            {
+              "message": "Total household Income is required",
+              "required": true
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "name": "primary income",
+          "label": "Individual Income",
+          "type": "currency",
+          "fieldDependencies": [
+            {
+              "name": "marriage status",
+              "values": [ "single" ]
+            }
+          ],
+          "validationRules": [
+            {
+              "message": "Individual Income is required",
+              "required": true
+            }
+          ]
+        },
+        {
+          "order": 4,
+          "name": "rental income",
+          "label": "Rental Income",
+          "type": "currency"
+        },
+        {
+          "order": 5,
+          "name": "total other incomes",
+          "label": "Total Other Incomes",
+          "type": "currency"
+        },
+        {
+          "order": 6,
+          "name": "total credit card limits",
+          "label": "信用卡总额度",
+          "type": "currency"
+        },
+        {
+          "order": 7,
+          "name": "other loan",
+          "label": "Other loan Detail",
+          "type": "select",
+          "fieldOptions": [
+            {
+              "label": "None",
+              "value": "false"
+            },
+            {
+              "label": "Has other loan and mortgage",
+              "value": "true"
+            }
+          ],
+          "validationRules": [
+            {
+              "message": "Other loan Detail is required",
+              "required": true
+            }
+          ]
+        },
+        {
+          "order": 8,
+          "name": "owner-occupide monthly repayment",
+          "label": "Owner-Occupide Monthly Repayment",
+          "type": "currency",
+          "fieldDependencies": [
+            {
+              "name": "other loan",
+              "values": [ "true" ]
+            }
+          ]
+        },
+        {
+          "order": 9,
+          "name": "total investment monthly repayment",
+          "label": "Total Investment Monthly Repayment",
+          "type": "currency",
+          "fieldDependencies": [
+            {
+              "name": "other loan",
+              "values": [ "true" ]
+            }
+          ]
+        },
+        {
+          "order": 10,
+          "name": "other liabilities monthly repayment",
+          "label": "Other Liabilities Monthly Repayment",
+          "type": "currency",
+          "fieldDependencies": [
+            {
+              "name": "other loan",
+              "values": [ "true" ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 3,
+      "label": "Contact Detail",
+      "fieldDescriptors": [
+        {
+          "order": 0,
+          "name": "LastName",
+          "label": "Last Name",
+          "type": "text",
+          "validationRules": [
+            {
+              "message": "Last Name is required",
+              "required": true
+            }
+          ]
+        },
+        {
+          "order": 1,
+          "name": "Surname",
+          "label": "Surname",
+          "type": "text",
+          "validationRules": [
+            {
+              "message": "Surname is required",
+              "required": true
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "name": "ContactEmail",
+          "label": "Email",
+          "type": "email",
+          "validationRules": [
+            {
+              "message": "Email is required",
+              "required": true
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "name": "contact phone",
+          "label": "Phone",
+          "type": "phone"
+        },
+        {
+          "order": 4,
+          "name": "suitable contact time",
+          "label": "Suitable Contact Time",
+          "type": "multicheck",
+          "fieldOptions": [
+            {
+              "label": "Anytime",
+              "value": "anytime"
+            },
+            {
+              "label": "Morning",
+              "value": "morning"
+            },
+            {
+              "label": "Lunch Time",
+              "value": "lunch"
+            },
+            {
+              "label": "Afternoon",
+              "value": "afternoon"
+            },
+            {
+              "label": "Evening",
+              "value": "evening"
+            }
+          ],
+          "validationRules": [
+            {
+              "message": "Please select a suitable contact time, we will contact you as soon as possible",
+              "required": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

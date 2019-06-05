@@ -1,18 +1,18 @@
-import { sink, state, effect, trigger } from 'redux-sink';
+import { sink, state, trigger } from 'redux-sink';
 
 @sink('mainLayoutService')
 export class MainLayoutService {
   @state 
-  footer = true;
+  headerBackground = true;
 
-  ignoreFooterPaths= ['/'];
+  // ignoreHeaderBackgroundPaths= ['', '/'];
 
-  @trigger('LOCATION_CHANGE', { fireOnInit: true })
-  onLocationChange(payload: Location) {
-    if (this.ignoreFooterPaths.find(x => x === payload.pathname)) {
-      this.footer = false;
-    } else {
-      this.footer = true;
-    }
-  }
+  // @trigger('LOCATION_CHANGE', { fireOnInit: true })
+  // onLocationChange(payload: Location) {
+  //   if (this.ignoreHeaderBackgroundPaths.find(x => x === payload.pathname)) {
+  //     this.headerBackground = false;
+  //   } else {
+  //     this.headerBackground = true;
+  //   }
+  // }
 }

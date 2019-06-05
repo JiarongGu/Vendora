@@ -10,9 +10,7 @@ interface CssExports {
   'questionContainer': string;
   'questionGroup': string;
   'questionGroupContainer': string;
-  'step-bar': string;
   'step-bar-container': string;
-  'stepBar': string;
   'stepBarContainer': string;
   'steps': string;
 }

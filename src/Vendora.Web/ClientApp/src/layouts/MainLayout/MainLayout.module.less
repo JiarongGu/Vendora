@@ -24,16 +24,24 @@
   height: @header-height;
   display: flex;
   position: fixed;
-  width: 100%;
-  z-index: 1000;
+  width: 100vw;
+  z-index: 10;
   background-color: transparent;
   color: @text-color;
   justify-content: center;
+
+  &__background {
+    background: #4d4d54;
+    height: @header-height;
+    display: flex;
+    position: fixed;
+    width: 100vw;
+    margin-top: -80px;
+    z-index: 5;
+  }
 }
 
 .body {
   padding-top: @header-height;
   height: 100vh;
-  overflow-y: auto;
-  overflow-x: hidden;
 }

@@ -10,9 +10,17 @@ namespace Vendora.Application.Models.Entities
 
         public string Type { get; set; }
 
+        public IEnumerable<string> DefaultValues { get; set; }
+
         public string Placeholder { get; set; }
 
+        public string Hint { get; set; }
+
+        public string Information { get; set; }
+
         public int Order { get; set; }
+
+        public IEnumerable<FieldDependency> FieldDependencies { get; set; }
 
         public IEnumerable<FieldOption> FieldOptions { get; set; }
 

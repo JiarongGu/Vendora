@@ -22,6 +22,7 @@ export class MainLayout extends React.PureComponent {
           <NavMenu/>
         </div>
         <div className={styles.body}>
+          <div className={styles.headerBackground} />
           <Switch>
             <Route key={'/user'} strict path={'/user'} component={User} />
             <Route key={'/quote'} strict path={'/quote'} component={Quote} />

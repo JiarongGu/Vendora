@@ -65,9 +65,21 @@ export default class CreateQuote extends React.Component<CreateQuoteProps> {
             </SubMenu>
           </Menu>
           </div>
-          <div className={styles.questionGroupContainer}>
-              <QuoteForm />
-          </div>
+            {/* <div style={{ background: '#FFF', padding: '20px 0' }}>
+              <div className={styles.container}>
+                <div className={styles.stepBarContainer}>
+                  <Steps current={0} direction={'horizontal'}>
+                    <Steps.Step title={'Step 1'} description={'服务信息'} />
+                    <Steps.Step title={'Step 2'} description={'贷款信息'} />
+                    <Steps.Step title={'Step 3'} description={'财务信息'} />
+                    <Steps.Step title={'Step 4'} description={'个人信息'} />
+                  </Steps>
+                </div>
+                <div className={styles.questionGroupContainer}>
+                  <QuoteForm />
+                </div>
+              </div>
+            </div> */}
         </div>
       </div>
     );
