@@ -1,11 +1,11 @@
-import * as React from 'react';
 import Layout from 'antd/lib/layout';
 import Menu from 'antd/lib/menu';
-import { Route, Link, Switch, RouteComponentProps, withRouter } from "react-router-dom";
+import * as React from 'react';
+import { Link, Route, RouteComponentProps, Switch, withRouter } from 'react-router-dom';
 import { Profile } from './Profile';
 
 export class User extends React.Component<RouteComponentProps> {
-  render() {
+  public render() {
     const { match } = this.props;
     return (
       <Layout>
@@ -18,7 +18,7 @@ export class User extends React.Component<RouteComponentProps> {
         </Layout.Sider>
         <Link to={`${match.url}/profile`}>My Proile</Link>
         <Switch>
-          <Route exact path={`${match.url}/profile`} component={Profile} />
+          <Route exact={true} path={`${match.url}/profile`} component={Profile} />
         </Switch>
       </Layout>
     );

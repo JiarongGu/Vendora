@@ -2,8 +2,8 @@ import { sink, state, trigger } from 'redux-sink';
 
 @sink('mainLayoutService')
 export class MainLayoutService {
-  @state 
-  headerBackground = true;
+  @state
+  public headerBackground = true;
 
   // ignoreHeaderBackgroundPaths= ['', '/'];
 

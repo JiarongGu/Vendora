@@ -1,37 +1,32 @@
-import * as React from 'react';
 import Form, { FormComponentProps } from 'antd/lib/form/Form';
 import InputNumber from 'antd/lib/input';
 import Input from 'antd/lib/input';
-import AutoComplete from 'antd/lib/auto-complete';
 import Radio from 'antd/lib/radio';
 import Select from 'antd/lib/select';
+import * as React from 'react';
 
 import { CurrencyInput } from '@components/Input';
-import * as styles from './QuoteForm.module.less';
 import SuburbInput from '@components/Input/SuburbInput/SuburbInput';
-import { QuoteFormStepComponent } from '../QuoteFormStep/QuoteFormStep';
+import * as styles from './QuoteForm.module.less';
 
-
-interface QuoteFormProps extends FormComponentProps {
-
-}
-
-export class QuoteFormComponents extends React.Component<QuoteFormProps> {
-  suburbRef = React.createRef();
-  componentDidMount() {
+export class QuoteFormComponents extends React.Component<FormComponentProps> {
+  public suburbRef = React.createRef();
+  public componentDidMount() {
     console.info(this.suburbRef.current);
   }
-  
-  render() {
-    const { form: { getFieldDecorator } } = this.props;
+
+  public render() {
+    const {
+      form: { getFieldDecorator }
+    } = this.props;
 
     const prefixSelector = getFieldDecorator('prefix', {
-      initialValue: '86',
+      initialValue: '86'
     })(
       <Select style={{ width: 70 }}>
         <Select.Option value="86">+86</Select.Option>
         <Select.Option value="61">+61</Select.Option>
-      </Select>,
+      </Select>
     );
     return (
       <Form className={styles.container}>
@@ -43,36 +38,35 @@ export class QuoteFormComponents extends React.Component<QuoteFormProps> {
                   rules: [
                     {
                       required: true,
-                      message: '请选择服务类型',
-                    },
+                      message: '请选择服务类型'
+                    }
                   ]
                 })(
                   <Radio.Group>
                     <Radio value={'newhome'}>购置新房</Radio>
                     <Radio value={'refinance'}>房屋融资</Radio>
-                  </Radio.Group>,
+                  </Radio.Group>
                 )}
               </Form.Item>
             </div>
           </div>
-          
+
           <div className={styles.formRow}>
-            
             <div className={styles.column6}>
               <Form.Item label={'房产价值'}>
                 {getFieldDecorator('propertyValue', {
                   rules: [
                     {
                       required: true,
-                      message: 'Please input your property value',
-                    },
-                  ],
+                      message: 'Please input your property value'
+                    }
+                  ]
                 })(<CurrencyInput />)}
               </Form.Item>
             </div>
           </div>
         </div>
-        <div id="step1"  className={styles.section}>
+        <div id="step1" className={styles.section}>
           <div className={styles.formRow}>
             <div className={styles.column6}>
               <Form.Item label={'已付款额度'}>
@@ -80,9 +74,9 @@ export class QuoteFormComponents extends React.Component<QuoteFormProps> {
                   rules: [
                     {
                       required: true,
-                      message: 'Please input your E-mail!',
-                    },
-                  ],
+                      message: 'Please input your E-mail!'
+                    }
+                  ]
                 })(<CurrencyInput />)}
               </Form.Item>
             </div>
@@ -92,9 +86,9 @@ export class QuoteFormComponents extends React.Component<QuoteFormProps> {
                   rules: [
                     {
                       required: true,
-                      message: 'Please input your E-mail!',
-                    },
-                  ],
+                      message: 'Please input your E-mail!'
+                    }
+                  ]
                 })(<CurrencyInput />)}
               </Form.Item>
             </div>
@@ -106,27 +100,27 @@ export class QuoteFormComponents extends React.Component<QuoteFormProps> {
                   rules: [
                     {
                       required: true,
-                      message: '请输入申请人数！',
-                    },
-                  ],
+                      message: '请输入申请人数！'
+                    }
+                  ]
                 })(<InputNumber min={1} max={5} />)}
               </Form.Item>
             </div>
             <div className={styles.column6}>
               <Form.Item label={'房屋所在地区'}>
                 {getFieldDecorator('propertySuburb', {
-                    rules: [{ required: true, message: '请输入房屋所在区域！' }],
-                  })(<SuburbInput ref = {this.suburbRef}/>)}
+                  rules: [{ required: true, message: '请输入房屋所在区域！' }]
+                })(<SuburbInput ref={this.suburbRef} />)}
               </Form.Item>
             </div>
           </div>
         </div>
-        <div id='step3' className={styles.section}>
+        <div id="step3" className={styles.section}>
           <div className={styles.formRow}>
             <div className={styles.column6}>
               <Form.Item label={'婚姻状况'}>
                 {getFieldDecorator('marriageStatus', {
-                  rules: [{ required: true, message: '请选择婚姻状况' }],
+                  rules: [{ required: true, message: '请选择婚姻状况' }]
                 })(
                   <Select placeholder={'请选择婚姻状况'}>
                     <Select.Option value={'married'}>已婚</Select.Option>
@@ -141,8 +135,8 @@ export class QuoteFormComponents extends React.Component<QuoteFormProps> {
             <div className={styles.column6}>
               <Form.Item label={'家属人数'}>
                 {getFieldDecorator('dependentsNumber', {
-                    rules: [{ required: true, message: '请输入家属人数' }],
-                  })(<InputNumber min={1} max={20} />)}
+                  rules: [{ required: true, message: '请输入家属人数' }]
+                })(<InputNumber min={1} max={20} />)}
               </Form.Item>
             </div>
           </div>
@@ -150,7 +144,7 @@ export class QuoteFormComponents extends React.Component<QuoteFormProps> {
             <div className={styles.column6}>
               <Form.Item label={'雇佣状况'}>
                 {getFieldDecorator('employmentStatus', {
-                  rules: [{ required: true, message: '请选择雇佣状况' }],
+                  rules: [{ required: true, message: '请选择雇佣状况' }]
                 })(
                   <Select placeholder={'请选择雇佣状况'}>
                     <Select.Option value={'employee'}>雇员</Select.Option>
@@ -163,8 +157,8 @@ export class QuoteFormComponents extends React.Component<QuoteFormProps> {
             <div className={styles.column6}>
               <Form.Item label={'请输入家庭总收入'}>
                 {getFieldDecorator('housholdIncome', {
-                    rules: [{ required: true, message: '请输入家庭总收入' }],
-                  })(<CurrencyInput />)}
+                  rules: [{ required: true, message: '请输入家庭总收入' }]
+                })(<CurrencyInput />)}
               </Form.Item>
             </div>
           </div>
@@ -172,15 +166,15 @@ export class QuoteFormComponents extends React.Component<QuoteFormProps> {
             <div className={styles.column6}>
               <Form.Item label={'租金收入'}>
                 {getFieldDecorator('rentalIncome', {
-                  rules: [{ required: true, message: '请输入租金收入' }],
+                  rules: [{ required: true, message: '请输入租金收入' }]
                 })(<CurrencyInput />)}
               </Form.Item>
             </div>
             <div className={styles.column6}>
               <Form.Item label={'其他总收入'}>
                 {getFieldDecorator('otherIncome', {
-                    rules: [{ required: true, message: '请输入家庭总收入' }],
-                  })(<CurrencyInput />)}
+                  rules: [{ required: true, message: '请输入家庭总收入' }]
+                })(<CurrencyInput />)}
               </Form.Item>
             </div>
           </div>
@@ -188,15 +182,15 @@ export class QuoteFormComponents extends React.Component<QuoteFormProps> {
             <div className={styles.column6}>
               <Form.Item label={'每月投资总还款额'}>
                 {getFieldDecorator('investmentRepayment', {
-                  rules: [{ required: true, message: '请输入每月投资总还款额' }],
+                  rules: [{ required: true, message: '请输入每月投资总还款额' }]
                 })(<CurrencyInput />)}
               </Form.Item>
             </div>
             <div className={styles.column6}>
               <Form.Item label={'自住房每月还款额'}>
                 {getFieldDecorator('ooRepayment', {
-                    rules: [{ required: true, message: '请输入自住房每月还款额' }],
-                  })(<CurrencyInput />)}
+                  rules: [{ required: true, message: '请输入自住房每月还款额' }]
+                })(<CurrencyInput />)}
               </Form.Item>
             </div>
           </div>
@@ -204,36 +198,40 @@ export class QuoteFormComponents extends React.Component<QuoteFormProps> {
             <div className={styles.column6}>
               <Form.Item label={'其他债务每月还款额'}>
                 {getFieldDecorator('otherLabilityRepayment', {
-                  rules: [{ required: true, message: '请输入其他债务每月还款额' }],
+                  rules: [{ required: true, message: '请输入其他债务每月还款额' }]
                 })(<CurrencyInput />)}
               </Form.Item>
             </div>
             <div className={styles.column6}>
               <Form.Item label={'信用总额度'}>
                 {getFieldDecorator('totalCredit', {
-                    rules: [{ required: true, message: '请输入信用总额度' }],
-                  })(<CurrencyInput />)}
+                  rules: [{ required: true, message: '请输入信用总额度' }]
+                })(<CurrencyInput />)}
               </Form.Item>
             </div>
           </div>
         </div>
-        <div id='step4' className={styles.section}>
+        <div id="step4" className={styles.section}>
           <div className={styles.formRow}>
             <div className={styles.column3}>
               <Form.Item label={'姓氏'}>
                 {getFieldDecorator('surname', {
-                    rules: [{ required: true, message: '请输入姓氏' },
+                  rules: [
                     { required: true, message: '请输入姓氏' },
-                    {pattern: /[a-zA-Z]/i, message: '仅拼音'}],
-                  })(<Input placeholder="姓氏"/>)}
+                    { required: true, message: '请输入姓氏' },
+                    { pattern: /[a-zA-Z]/i, message: '仅拼音' }
+                  ]
+                })(<Input placeholder="姓氏" />)}
               </Form.Item>
             </div>
             <div className={styles.column5}>
               <Form.Item label={'名'}>
                 {getFieldDecorator('firstname', {
-                    rules: [{ required: true, message: '请输入名字拼音' },
-                    {pattern: /[a-zA-Z]/i, message: '仅拼音'}],
-                  })(<Input placeholder="名"/>)}
+                  rules: [
+                    { required: true, message: '请输入名字拼音' },
+                    { pattern: /[a-zA-Z]/i, message: '仅拼音' }
+                  ]
+                })(<Input placeholder="名" />)}
               </Form.Item>
             </div>
           </div>
@@ -244,32 +242,30 @@ export class QuoteFormComponents extends React.Component<QuoteFormProps> {
                   rules: [
                     {
                       type: 'email',
-                      message: '请输入正确的邮箱地址格式',
+                      message: '请输入正确的邮箱地址格式'
                     },
                     {
                       required: true,
-                      message: '请输入邮箱地址！',
-                    },
-                  ],
+                      message: '请输入邮箱地址！'
+                    }
+                  ]
                 })(<Input />)}
               </Form.Item>
             </div>
             <div className={styles.column6}>
               <Form.Item label="手机号码">
                 {getFieldDecorator('phone', {
-                  rules: [{ required: true, message: '手机号码不能为空！' }],
+                  rules: [{ required: true, message: '手机号码不能为空！' }]
                 })(<Input addonBefore={prefixSelector} />)}
               </Form.Item>
             </div>
           </div>
-          
-          <div className={styles.formRow}>
-          
-          </div>
+
+          <div className={styles.formRow} />
         </div>
       </Form>
-    )
+    );
   }
 }
 
-export const QuoteForms = Form.create({ name: 'quote' })(QuoteFormComponents);
+export const QuoteForm = Form.create({ name: 'quote' })(QuoteFormComponents);

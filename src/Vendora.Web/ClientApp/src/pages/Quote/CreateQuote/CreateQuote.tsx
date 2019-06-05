@@ -1,111 +1,95 @@
-import * as React from 'react';
-import * as styles from './CreateQuote.module.less';
-import Input from 'antd/lib/input';
-import { CurrencyInput } from '@components/Input';
-import Menu from 'antd/lib/menu'
 import Carousel from 'antd/lib/carousel';
-import { QuoteFormStepComponent } from '../QuoteFormStep/QuoteFormStep';
 import Form, { FormComponentProps } from 'antd/lib/form/Form';
-import Radio from 'antd/lib/radio';
+import Input from 'antd/lib/input';
+import Menu from 'antd/lib/menu';
+import Steps from 'antd/lib/steps';
+import * as React from 'react';
+import { QuoteForm } from '../QuoteForm/QuoteForm';
+import { QuoteFormStepComponent } from '../QuoteFormStep/QuoteFormStep';
+import * as styles from './CreateQuote.module.less';
 
-interface CreateQuoteProps {
-
-}
-
-
-export default class CreateQuote extends React.Component<CreateQuoteProps> {
-
-  componentDidMount() {
-    console.info(this.props)
-  }
-  state = {
-    question1: 0,
-    question2: 0,
-  }
-
-  form = {
+export default class CreateQuote extends React.Component {
+  public state = {
     question1: 0,
     question2: 0
-  }
-
-  inputRef = React.createRef<Input>();
-
-  updateAnswer = (questionNumber) => {
-    return (value) => this.form['question' + questionNumber] = value;
   };
 
-  onSubmit() {
+  public form = {
+    question1: 0,
+    question2: 0
+  };
 
+  public inputRef = React.createRef<Input>();
+
+  public componentDidMount() {
+    console.info(this.props);
   }
-  render() {
-    const { SubMenu, ItemGroup, Item } = Menu;
+
+  public updateAnswer = (questionNumber) => {
+    return (value) => (this.form['question' + questionNumber] = value);
+  };
+
+  public onSubmit() {}
+  public render() {
+    const { SubMenu, Item } = Menu;
     return (
       <div className={styles.mainSection}>
         <div className={styles.container}>
-          <div className={`${styles.stepBarContainer} form-step`}>
-          <Menu mode="inline" className={styles.steps} defaultOpenKeys= {['step1', 'step2']}>
-            <SubMenu
-              key="step1"
-              title={
-                <span>Service Information</span>
-              }
-              disabled = {true}
-              onTitleClick = {({key, domEvent}) => { domEvent.preventDefault(); }}
-            >
-              <Item key="1">Service type</Item>
-              <Item key="2">Property Info</Item>
-            </SubMenu>
-            <SubMenu key="step2"
-              title={
-                <span>Loan Information</span>
-              }
-            >
-              <Item key="5">Option 5</Item>
-              <Item key="6">Option 6</Item>
-            </SubMenu>
-          </Menu>
-          </div>
-            {/* <div style={{ background: '#FFF', padding: '20px 0' }}>
-              <div className={styles.container}>
-                <div className={styles.stepBarContainer}>
-                  <Steps current={0} direction={'horizontal'}>
-                    <Steps.Step title={'Step 1'} description={'服务信息'} />
-                    <Steps.Step title={'Step 2'} description={'贷款信息'} />
-                    <Steps.Step title={'Step 3'} description={'财务信息'} />
-                    <Steps.Step title={'Step 4'} description={'个人信息'} />
-                  </Steps>
-                </div>
-                <div className={styles.questionGroupContainer}>
-                  <QuoteForm />
-                </div>
+          {/* <div className={`${styles.stepBarContainer} form-step`}>
+            <Menu mode="inline" className={styles.steps} defaultOpenKeys={['step1', 'step2']}>
+              <SubMenu
+                key="step1"
+                title={<span>Service Information</span>}
+                disabled={true}
+                onTitleClick={({ domEvent }) => {
+                  domEvent.preventDefault();
+                }}
+              >
+                <Item key="1">Service type</Item>
+                <Item key="2">Property Info</Item>
+              </SubMenu>
+              <SubMenu key="step2" title={<span>Loan Information</span>}>
+                <Item key="5">Option 5</Item>
+                <Item key="6">Option 6</Item>
+              </SubMenu>
+            </Menu>
+          </div> */}
+          <div style={{ background: '#FFF' }}>
+            <div className={styles.container}>
+              <div className={styles.stepBarContainer}>
+                <Steps current={0} direction={'horizontal'}>
+                  <Steps.Step title={'Step 1'} description={'服务信息'} />
+                  <Steps.Step title={'Step 2'} description={'贷款信息'} />
+                  <Steps.Step title={'Step 3'} description={'财务信息'} />
+                  <Steps.Step title={'Step 4'} description={'个人信息'} />
+                </Steps>
               </div>
-            </div> */}
+              <div className={styles.questionGroupContainer}>
+                <QuoteForm />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     );
   }
 }
 
-interface QupteFormProps extends FormComponentProps {
+// interface QupteFormProps extends FormComponentProps {}
+// class QuoteFormComponent extends React.Component<QupteFormProps> {
+//   render() {
+//     const {
+//     } = this.props;
 
-}
-class QuoteFormComponent extends React.Component<QupteFormProps> {
-  
-  render() {
-    const { form: { getFieldDecorator } } = this.props;
-
-    return (
-      
-      <Form className="quote-form">
-        <Carousel>
-            <div className={styles.questionGroup}>
-              <QuoteFormStepComponent form={this.props.form}/>
-            </div>
-
-          </Carousel>
-      </Form>
-    )
-  }
-}
-const QuoteForm = Form.create({ name: 'quote' })(QuoteFormComponent);
-//export default sinking(ContentService, MainLayoutService)(Home) as React.FunctionComponent;//
+//     return (
+//       <Form className="quote-form">
+//         <Carousel>
+//           <div className={styles.questionGroup}>
+//             <QuoteFormStepComponent form={this.props.form} />
+//           </div>
+//         </Carousel>
+//       </Form>
+//     );
+//   }
+// }
+// //export default sinking(ContentService, MainLayoutService)(Home) as React.FunctionComponent;//

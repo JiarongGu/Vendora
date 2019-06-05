@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-export default function (props) {
+export default function(props) {
   const params = props.params;
-  console.info(props)
+  console.info(props);
   return (
     <div>View Quote</div>
   );

@@ -1,10 +1,10 @@
-import * as React from 'react';
-import Dropdown from 'antd/lib/dropdown/dropdown';
 import Button from 'antd/lib/button/button';
+import Dropdown from 'antd/lib/dropdown/dropdown';
+import * as React from 'react';
 
+import Menu from 'antd/lib/menu';
 import classnames from 'classnames';
 import * as styles from './DropdownMenu.module.less';
-import Menu from 'antd/lib/menu';
 
 interface DropdownMenuProps {
   display: JSX.Element;
