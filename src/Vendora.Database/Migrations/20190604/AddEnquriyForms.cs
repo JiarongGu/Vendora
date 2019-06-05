@@ -1,5 +1,7 @@
 ﻿using FluentMigrator;
+using Newtonsoft.Json;
 using System;
+using System.IO;
 
 namespace Vendora.Database.Migrations._20190604
 {
@@ -8,12 +10,13 @@ namespace Vendora.Database.Migrations._20190604
     {
         public override void Down()
         {
-            throw new NotImplementedException();
+            
         }
 
         public override void Up()
         {
-            throw new NotImplementedException();
+            var enquiryFormCN = File.ReadAllText("Migrations/20190604/enqiryform_cn.json");
+
         }
     }
 }

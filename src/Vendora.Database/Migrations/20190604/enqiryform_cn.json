@@ -2,26 +2,26 @@
   "formSections": [
     {
       "order": 0,
-      "label": "ËùĞè·şÎñ",
+      "label": "æ‰€éœ€æœåŠ¡",
       "fieldDescriptors": [
         {
           "order": 0,
           "name": "service type",
-          "label": "·şÎñÀàĞÍ",
+          "label": "æœåŠ¡ç±»å‹",
           "type": "radio",
           "fieldOptions": [
             {
-              "label": "¹ºÖÃĞÂ·¿",
+              "label": "è´­ç½®æ–°æˆ¿",
               "value": "buy"
             },
             {
-              "label": "·¿ÎİÈÚ×Ê",
+              "label": "æˆ¿å±‹èèµ„",
               "value": "refinance"
             }
           ],
           "validationRules": [
             {
-              "message": "ÇëÑ¡Ôñ·şÎñÀàĞÍ",
+              "message": "è¯·é€‰æ‹©æœåŠ¡ç±»å‹",
               "required": true
             }
           ]
@@ -29,21 +29,21 @@
         {
           "order": 1,
           "name": "use of property",
-          "label": "·¿²úÊ¹ÓÃÀàĞÍ",
+          "label": "æˆ¿äº§ä½¿ç”¨ç±»å‹",
           "type": "select",
           "fieldOptions": [
             {
-              "label": "×Ô×¡·¿",
+              "label": "è‡ªä½æˆ¿",
               "value": "owner-occupied"
             },
             {
-              "label": "Í¶×Ê·¿",
+              "label": "æŠ•èµ„æˆ¿",
               "value": "investment"
             }
           ],
           "validationRules": [
             {
-              "message": "ÇëÑ¡Ôñ·¿²úÊ¹ÓÃÀàĞÍ",
+              "message": "è¯·é€‰æ‹©æˆ¿äº§ä½¿ç”¨ç±»å‹",
               "required": true
             }
           ]
@@ -51,11 +51,11 @@
         {
           "order": 2,
           "name": "property value",
-          "label": "·¿²ú¼ÛÖµ",
+          "label": "æˆ¿äº§ä»·å€¼",
           "type": "currency",
           "validationRules": [
             {
-              "message": "ÇëÊäÈë·¿²ú¼ÛÖµ",
+              "message": "è¯·è¾“å…¥æˆ¿äº§ä»·å€¼",
               "required": true
             }
           ]
@@ -64,16 +64,16 @@
     },
     {
       "order": 1,
-      "label": "´û¿îĞÅÏ¢",
+      "label": "è´·æ¬¾ä¿¡æ¯",
       "fieldDescriptors": [
         {
           "order": 0,
           "name": "current deposit",
-          "label": "ÒÑ¸¶¿î¶î¶È",
+          "label": "å·²ä»˜æ¬¾é¢åº¦",
           "type": "currency",
           "validationRules": [
             {
-              "message": "ÇëÊäÈëÒÑ¸¶¿î¶î¶È",
+              "message": "è¯·è¾“å…¥å·²ä»˜æ¬¾é¢åº¦",
               "required": true
             }
           ]
@@ -81,11 +81,11 @@
         {
           "order": 1,
           "name": "expected loan amount",
-          "label": "ËùĞè´û¿î¶î¶È",
+          "label": "æ‰€éœ€è´·æ¬¾é¢åº¦",
           "type": "currency",
           "validationRules": [
             {
-              "message": "ÇëÊäÈëÒÑËùĞè´û¿î¶î¶È",
+              "message": "è¯·è¾“å…¥å·²æ‰€éœ€è´·æ¬¾é¢åº¦",
               "required": true
             }
           ]
@@ -93,11 +93,11 @@
         {
           "order": 2,
           "name": "number of applicants",
-          "label": "ÉêÇëÈËÊı",
+          "label": "ç”³è¯·äººæ•°",
           "type": "number",
           "validationRules": [
             {
-              "message": "ÇëÊäÈëÉêÇëÈËÊı",
+              "message": "è¯·è¾“å…¥ç”³è¯·äººæ•°",
               "required": true
             }
           ]
@@ -105,11 +105,11 @@
         {
           "order": 3,
           "name": "property suburb",
-          "label": "·¿ÎİËùÔÚµØÇø",
+          "label": "æˆ¿å±‹æ‰€åœ¨åœ°åŒº",
           "type": "suburb",
           "validationRules": [
             {
-              "message": "ÇëÑ¡Ôñ·¿ÎİËùÔÚµØÇø",
+              "message": "è¯·é€‰æ‹©æˆ¿å±‹æ‰€åœ¨åœ°åŒº",
               "required": true
             }
           ]
@@ -118,30 +118,30 @@
     },
     {
       "order": 2,
-      "label": "²ÆÎñ×´¿ö",
+      "label": "è´¢åŠ¡çŠ¶å†µ",
       "fieldDescriptors": [
         {
           "order": 0,
           "name": "marriage status",
-          "label": "»éÒö×´¿ö",
+          "label": "å©šå§»çŠ¶å†µ",
           "type": "select",
           "fieldOptions": [
             {
-              "label": "µ¥Éí",
+              "label": "å•èº«",
               "value": "single"
             },
             {
-              "label": "ÒÑ»é",
+              "label": "å·²å©š",
               "value": "married"
             },
             {
-              "label": "Í¬¾Ó",
+              "label": "åŒå±…",
               "value": "de facto"
             }
           ],
           "validationRules": [
             {
-              "message": "ÇëÑ¡Ôñ»éÒö×´¿ö",
+              "message": "è¯·é€‰æ‹©å©šå§»çŠ¶å†µ",
               "required": true
             }
           ]
@@ -149,11 +149,11 @@
         {
           "order": 1,
           "name": "number of dependents",
-          "label": "¼ÒÊôÈËÊı",
+          "label": "å®¶å±äººæ•°",
           "type": "number",
           "validationRules": [
             {
-              "message": "ÇëÊäÈë¼ÒÊôÈËÊı",
+              "message": "è¯·è¾“å…¥å®¶å±äººæ•°",
               "required": true
             }
           ]
@@ -161,25 +161,25 @@
         {
           "order": 2,
           "name": "employment type",
-          "label": "ÊÜ¹ÍÀàĞÍ",
+          "label": "å—é›‡ç±»å‹",
           "type": "select",
           "fieldOptions": [
             {
-              "label": "¹ÍÔ±",
+              "label": "é›‡å‘˜",
               "value": "employee"
             },
             {
-              "label": "×Ô¹Í",
+              "label": "è‡ªé›‡",
               "value": "self-employed"
             },
             {
-              "label": "ÆäËû",
+              "label": "å…¶ä»–",
               "value": "other"
             }
           ],
           "validationRules": [
             {
-              "message": "ÇëÑ¡ÔñÊÜ¹ÍÀàĞÍ",
+              "message": "è¯·é€‰æ‹©å—é›‡ç±»å‹",
               "required": true
             }
           ]
@@ -187,7 +187,7 @@
         {
           "order": 3,
           "name": "total household Income",
-          "label": "¼ÒÍ¥×ÜÊÕÈë",
+          "label": "å®¶åº­æ€»æ”¶å…¥",
           "type": "currency",
           "fieldDependencies": [
             {
@@ -197,7 +197,7 @@
           ],
           "validationRules": [
             {
-              "message": "ÇëÊäÈë¼ÒÍ¥×ÜÊÕÈë",
+              "message": "è¯·è¾“å…¥å®¶åº­æ€»æ”¶å…¥",
               "required": true
             }
           ]
@@ -205,7 +205,7 @@
         {
           "order": 3,
           "name": "total household Income",
-          "label": "¸öÈËÊÕÈë",
+          "label": "ä¸ªäººæ”¶å…¥",
           "type": "currency",
           "fieldDependencies": [
             {
@@ -215,7 +215,7 @@
           ],
           "validationRules": [
             {
-              "message": "ÇëÊäÈë¸öÈËÊÕÈë",
+              "message": "è¯·è¾“å…¥ä¸ªäººæ”¶å…¥",
               "required": true
             }
           ]
@@ -223,25 +223,25 @@
         {
           "order": 4,
           "name": "rental income",
-          "label": "×â½ğÊÕÈë",
+          "label": "ç§Ÿé‡‘æ”¶å…¥",
           "type": "currency"
         },
         {
           "order": 5,
           "name": "total other Incomes",
-          "label": "ÆäËû×ÜÊÕÈë",
+          "label": "å…¶ä»–æ€»æ”¶å…¥",
           "type": "currency"
         },
         {
           "order": 6,
           "name": "other loan",
-          "label": "ÆäËû´û¿î",
+          "label": "å…¶ä»–è´·æ¬¾",
           "type": "check"
         },
         {
           "order": 7,
           "name": "owner-occupide monthly repayment",
-          "label": "Ã¿ÔÂ×Ô×¡·¿»¹¿î¶î¶È",
+          "label": "æ¯æœˆè‡ªä½æˆ¿è¿˜æ¬¾é¢åº¦",
           "type": "currency",
           "fieldDependencies": [
             {
@@ -253,7 +253,7 @@
         {
           "order": 8,
           "name": "total investment monthly repayment",
-          "label": "Ã¿ÔÂÍ¶×Ê»¹¿î¶î¶È",
+          "label": "æ¯æœˆæŠ•èµ„è¿˜æ¬¾é¢åº¦",
           "type": "currency",
           "fieldDependencies": [
             {
@@ -265,7 +265,7 @@
         {
           "order": 9,
           "name": "other liabilities monthly repayment",
-          "label": "Ã¿ÔÂÆäËû´û¿î»¹¿î¶î¶È",
+          "label": "æ¯æœˆå…¶ä»–è´·æ¬¾è¿˜æ¬¾é¢åº¦",
           "type": "currency",
           "fieldDependencies": [
             {
@@ -277,7 +277,7 @@
         {
           "order": 10,
           "name": "total credit card limits",
-          "label": "ĞÅÓÃ¿¨×Ü¶î¶È",
+          "label": "ä¿¡ç”¨å¡æ€»é¢åº¦",
           "type": "currency",
           "fieldDependencies": [
             {
@@ -290,16 +290,16 @@
     },
     {
       "order": 3,
-      "label": "¸öÈËĞÅÏ¢",
+      "label": "ä¸ªäººä¿¡æ¯",
       "fieldDescriptors": [
         {
           "order": 0,
           "name": "LastName",
-          "label": "ĞÕ",
+          "label": "å§“",
           "type": "text",
           "validationRules": [
             {
-              "message": "ÇëÊäÈëĞÕ",
+              "message": "è¯·è¾“å…¥å§“",
               "required": true
             }
           ]
@@ -307,11 +307,11 @@
         {
           "order": 1,
           "name": "Surname",
-          "label": "Ãû",
+          "label": "å",
           "type": "text",
           "validationRules": [
             {
-              "message": "ÇëÊäÈëÃû",
+              "message": "è¯·è¾“å…¥å",
               "required": true
             }
           ]
@@ -319,11 +319,11 @@
         {
           "order": 2,
           "name": "ContactEmail",
-          "label": "ÓÊÏä",
+          "label": "é‚®ç®±",
           "type": "email",
           "validationRules": [
             {
-              "message": "ÇëÊäÈëÓÊÏä",
+              "message": "è¯·è¾“å…¥é‚®ç®±",
               "required": true
             }
           ]
@@ -331,7 +331,7 @@
         {
           "order": 2,
           "name": "ContactPhone",
-          "label": "ÁªÏµµç»°",
+          "label": "è”ç³»ç”µè¯",
           "type": "phone"
         }
       ]
