@@ -27,7 +27,6 @@ const sortBank = function (banks) {
   console.info(bankstemplate);
 }
 function Home({ contentService }: HomeProps) {
-
   const whyusItems = [
     { title: 'Our Team', imagePath: '/assets/icons/team.png', desc: "Abacus Finance gathers professional mortgage brokers who always put the best interests of their customers first and are committed to maintaining an efficient and smooth loan process." },
     { title: 'Our Experience', imagePath: '/assets/icons/work-team.png', desc: "Abacus Finance gathers professional mortgage brokers who always put the best" },
@@ -84,7 +83,7 @@ function Home({ contentService }: HomeProps) {
         </div>
         <div className={styles.whyusItemGroup}>
           {whyusItems.map((item, index) => (
-            <div className={styles.whyusItem}>
+            <div key={index} className={styles.whyusItem}>
               <div className={styles.whyusImage}>
                 <img src={item.imagePath} />
               </div>
