@@ -4,7 +4,9 @@ interface CssExports {
   'language': string;
   'nav': string;
   'nav-item': string;
+  'nav-item__right': string;
   'navItem': string;
+  'navItemRight': string;
   'search-icon': string;
   'searchIcon': string;
 }

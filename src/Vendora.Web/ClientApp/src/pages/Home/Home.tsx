@@ -24,13 +24,11 @@ const fetchBanksImages = () => {
   return results;
 };
 
-const buildBankTemplate = (imagePath) => {
+const buildBankTemplate = (imagePath, i) => {
   return (
-    <>
-      <div className={styles.lender}>
-        <img src={imagePath} />
-      </div>
-    </>
+    <div className={styles.lender} key={i}>
+      <img src={imagePath} />
+    </div>
   );
 };
 
@@ -43,11 +41,11 @@ const sortBank = (banks) => {
 
   for (let i = 0; i < banks.length; i++) {
     if (i % itemsPerPage === 0 || i === 0) {
-      const newCol = [buildBankTemplate(banks[i])];
+      const newCol = [buildBankTemplate(banks[i], i)];
       bankstemplate.push(newCol);
       col = bankstemplate.length - 1;
     } else {
-      bankstemplate[col].push(buildBankTemplate(banks[i]));
+      bankstemplate[col].push(buildBankTemplate(banks[i], i));
     }
   }
   return bankstemplate;
@@ -58,8 +56,9 @@ function Home({ contentService }: HomeProps) {
     {
       title: 'Our Team',
       imagePath: '/assets/icons/team.png',
-      desc:
-        'Abacus Finance gathers professional mortgage brokers who always put the best interests of their customers first and are committed to maintaining an efficient and smooth loan process.'
+      desc: `Abacus Finance gathers professional mortgage brokers
+         who always put the best interests of their customers
+         first and are committed to maintaining an efficient and smooth loan process.`
     },
     {
       title: 'Our Experience',

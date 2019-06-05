@@ -1,27 +1,35 @@
 @import (reference) '../../styles/global.less';
+
 .nav {
-    flex-basis: initial;
-    display: flex;
-    align-items: stretch;
-    line-height: @header-height;
-    justify-content: flex-start;
-    background-color: transparent;
-    border-width: 0px;
-    margin: 0px 30px;
-    
-    &-item{
-        &>a{
-            font-weight: 600;
-        }
-        .search-icon{
-            font-size: 25px;
-            color: #fff;
-        }
-        .language{
-            a {
-                display: inline;
-                padding: 0 5px;
-            }
-        }
+  flex-basis: initial;
+  display: flex;
+  align-items: stretch;
+  line-height: @header-height;
+  justify-content: flex-start;
+  background-color: transparent;
+  border-width: 0px;
+  margin: 0px 30px;
+  width: 100%;
+
+  &-item {
+    &>a {
+      font-weight: 600;
     }
+
+    .search-icon {
+      font-size: 25px;
+      color: #fff;
+    }
+
+    .language {
+      a {
+        display: inline;
+        padding: 0 5px;
+      }
+    }
+
+    &__right {
+      margin-left: auto;
+    }
+  }
 }
