@@ -2,24 +2,43 @@ import Form, { FormComponentProps } from 'antd/lib/form/Form';
 import InputNumber from 'antd/lib/input';
 import Input from 'antd/lib/input';
 import Radio from 'antd/lib/radio';
+import Button from 'antd/lib/button';
 import Select from 'antd/lib/select';
 import * as React from 'react';
 
 import { CurrencyInput } from '@components/Input';
 import SuburbInput from '@components/Input/SuburbInput/SuburbInput';
 import * as styles from './QuoteForm.module.less';
+import Carousel from 'antd/lib/carousel';
 
-export class QuoteFormComponents extends React.Component<FormComponentProps> {
+interface  QuoteFormProps extends FormComponentProps {
+  onIndexChange: any;
+}
+export class QuoteFormComponents extends React.Component<QuoteFormProps> {
   public suburbRef = React.createRef();
   public componentDidMount() {
     console.info(this.suburbRef.current);
   }
-
+  
   public render() {
+    let carousel: Carousel | null;
+      
+    const prev = (currentId) => {
+      if (carousel) {
+        carousel.prev();
+        this.props.onIndexChange(currentId-2);
+      }
+    };
+    const next = (currentId) => {
+
+      if (carousel) {
+        carousel.next();
+        this.props.onIndexChange(currentId);
+      }
+    };
     const {
       form: { getFieldDecorator }
     } = this.props;
-
     const prefixSelector = getFieldDecorator('prefix', {
       initialValue: '86'
     })(
@@ -29,10 +48,15 @@ export class QuoteFormComponents extends React.Component<FormComponentProps> {
       </Select>
     );
     return (
-      <Form className={styles.container}>
+      <Form className={`${styles.container} quote-form`}>
+        <Carousel 
+          dots={false}
+          ref={(instance) => {
+            carousel = instance;
+          }}>
         <div id="step1" className={styles.section}>
           <div className={styles.formRow}>
-            <div className={styles.column12}>
+            <div className={styles.column6}>
               <Form.Item label={'服务类型'}>
                 {getFieldDecorator('service', {
                   rules: [
@@ -65,8 +89,12 @@ export class QuoteFormComponents extends React.Component<FormComponentProps> {
               </Form.Item>
             </div>
           </div>
+          
+          <div className={` ${styles.formRow} ${styles.formButtonGroup} ${styles.single}`}>
+            <Button size= {'large'} type={'primary'} className={styles.right} onClick={() => next(1)}>Next</Button>
+          </div>
         </div>
-        <div id="step1" className={styles.section}>
+        <div id="step2" className={styles.section}>
           <div className={styles.formRow}>
             <div className={styles.column6}>
               <Form.Item label={'已付款额度'}>
@@ -114,6 +142,11 @@ export class QuoteFormComponents extends React.Component<FormComponentProps> {
               </Form.Item>
             </div>
           </div>
+          
+           <div className={` ${styles.formRow} ${styles.formButtonGroup}`}>
+              <Button size='large' className={styles.left} onClick={() => prev(2)}>Back</Button>
+              <Button size= {'large'} type={'primary'} className={styles.right} onClick={() => next(2)}>Next</Button>
+            </div>
         </div>
         <div id="step3" className={styles.section}>
           <div className={styles.formRow}>
@@ -210,6 +243,11 @@ export class QuoteFormComponents extends React.Component<FormComponentProps> {
               </Form.Item>
             </div>
           </div>
+          
+          <div className={` ${styles.formRow} ${styles.formButtonGroup}`}>
+            <Button size='large' className={styles.left} onClick={() => prev(3)}>Back</Button>
+            <Button size= {'default'} type={'primary'} className={styles.right} onClick={() => next(3)}>Next</Button>
+          </div>
         </div>
         <div id="step4" className={styles.section}>
           <div className={styles.formRow}>
@@ -224,7 +262,7 @@ export class QuoteFormComponents extends React.Component<FormComponentProps> {
                 })(<Input placeholder="姓氏" />)}
               </Form.Item>
             </div>
-            <div className={styles.column5}>
+            <div className={styles.column4}>
               <Form.Item label={'名'}>
                 {getFieldDecorator('firstname', {
                   rules: [
@@ -236,7 +274,7 @@ export class QuoteFormComponents extends React.Component<FormComponentProps> {
             </div>
           </div>
           <div className={styles.formRow}>
-            <div className={styles.column6}>
+            <div className={styles.column7}>
               <Form.Item label="邮箱">
                 {getFieldDecorator('email', {
                   rules: [
@@ -252,7 +290,9 @@ export class QuoteFormComponents extends React.Component<FormComponentProps> {
                 })(<Input />)}
               </Form.Item>
             </div>
-            <div className={styles.column6}>
+          </div>
+          <div className={styles.formRow}>
+            <div className={styles.column7}>
               <Form.Item label="手机号码">
                 {getFieldDecorator('phone', {
                   rules: [{ required: true, message: '手机号码不能为空！' }]
@@ -261,8 +301,16 @@ export class QuoteFormComponents extends React.Component<FormComponentProps> {
             </div>
           </div>
 
-          <div className={styles.formRow} />
+          <div className={styles.formRow}>
+                
+          
+          </div>
+          <div className={` ${styles.formRow} ${styles.formButtonGroup}`}>
+            <Button size='large' className={styles.left} onClick={() => prev(4)}>Back</Button>
+            <Button size= {'large'} type={'primary'} className={styles.right}>Finish</Button>
+          </div>
         </div>
+        </Carousel>
       </Form>
     );
   }

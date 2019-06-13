@@ -26,9 +26,14 @@ interface CssExports {
   'column8': string;
   'column9': string;
   'container': string;
+  'form-button-group': string;
   'form-row': string;
+  'formButtonGroup': string;
   'formRow': string;
+  'left': string;
+  'right': string;
   'section': string;
+  'single': string;
 }
 
 declare var cssExports: CssExports;

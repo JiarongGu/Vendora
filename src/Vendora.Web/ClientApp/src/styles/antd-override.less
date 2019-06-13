@@ -31,7 +31,7 @@
 }
 .ant-carousel .slick-slider {
   text-align: center;
-  width: 1050px;
+  max-width: 1050px;
   overflow: hidden;
   .slick-dots{
     height: 5px;
@@ -67,11 +67,24 @@
   }
 }
 .quote-form{
-  .ant-carousel .slick-slider {
-    text-align: inherit;
-    width: 992px;
-    overflow: hidden;
+  .ant-form-item-label{
+    margin-bottom: 20px;
+    font-weight: 600;
+    font-size: 18px;
   }
+  .ant-select-selection--single{
+    height: 50px;
+    .ant-select-arrow{
+      top: 30%;
+    }
+  }
+  .ant-select-search__field__placeholder, .ant-select-selection__placeholder{
+    height: 50px;
+  }
+  .ant-select-auto-complete.ant-select .ant-input{
+    height: 50px;
+  }
+
 }
 .antd-input{
   background-color: transparent;
@@ -79,7 +92,20 @@
   border-bottom: 2px;
   border-style: solid;
 }
-// .ant-input:focus, .ant-input:hover{
-//   border: none;
-//   box-shadow: none;
-// }
+.ant-input:focus, .ant-input:hover{
+  // border: none;
+  box-shadow: none;
+}
+.ant-select-selection__rendered{
+  font-weight: 600;
+  font-size: 18px;
+}
+.ant-select-selection-selected-value{
+    top: 40%;
+    position: absolute;
+    margin-top: -10px;
+}
+
+.ant-input-group-addon .ant-select{
+  width: 80px !important;
+}

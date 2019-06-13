@@ -10,8 +10,7 @@ import * as styles from './CreateQuote.module.less';
 
 export default class CreateQuote extends React.Component {
   public state = {
-    question1: 0,
-    question2: 0
+    stepIndex : 0
   };
 
   public form = {
@@ -30,6 +29,13 @@ export default class CreateQuote extends React.Component {
   };
 
   public onSubmit() {}
+
+  public changeStep = () =>{
+    return  (index) => { 
+      console.info(index)
+      this.setState({stepIndex: index});
+    }
+  }
   public render() {
     const { SubMenu, Item } = Menu;
     return (
@@ -57,7 +63,7 @@ export default class CreateQuote extends React.Component {
           <div style={{ background: '#FFF' }}>
             <div className={styles.container}>
               <div className={styles.stepBarContainer}>
-                <Steps current={0} direction={'horizontal'}>
+                <Steps current={this.state.stepIndex} direction={'horizontal'}>
                   <Steps.Step title={'Step 1'} description={'服务信息'} />
                   <Steps.Step title={'Step 2'} description={'贷款信息'} />
                   <Steps.Step title={'Step 3'} description={'财务信息'} />
@@ -65,7 +71,7 @@ export default class CreateQuote extends React.Component {
                 </Steps>
               </div>
               <div className={styles.questionGroupContainer}>
-                <QuoteForm />
+                <QuoteForm onIndexChange = {this.changeStep()}/>
               </div>
             </div>
           </div>

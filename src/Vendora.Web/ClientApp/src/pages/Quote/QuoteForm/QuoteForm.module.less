@@ -2,7 +2,6 @@
 @baseWidth: 8.5%;
 @colNumber: 12;
 .container {
-  width: 500px;
   display: flex;
   flex-direction: column;
 }
@@ -10,6 +9,36 @@
 .section {
   min-height: 300px;
   padding: 4px 0;
+  width: 100%;
+  padding-bottom: 20%;
+  *{
+    line-height: 2
+  }
+  label{
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  i{
+    font-size: 20px;
+  }
+  input{
+    font-size: 20px;
+    height: inherit;
+  }
+}
+.form-button-group{
+  margin-top: 30px;
+  align-items: center;
+  &.single{
+    justify-content: center !important;
+  }
+  .left{
+    flex: 0 1 80px;
+    margin-right: 40%;
+  }
+  .right{
+    flex: 0 1 150px;
+  }
 }
 .form-row{
   display: flex;
@@ -21,6 +50,7 @@
   .column-@{index} {
       width: @baseWidth * @index;
       padding: 0 20px;
+      text-align: left;
       &:first-child {
         padding-left: 0px;
       }
