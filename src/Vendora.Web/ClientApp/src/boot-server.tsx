@@ -1,15 +1,15 @@
-import * as React from 'react';
+import { HttpClient } from '@services/httpclient';
+import { BootFuncParams, createServerRenderer, RenderResult } from 'aspnet-prerendering';
 import * as https from 'https';
-import * as Loadable from 'react-loadable';
-import Helmet from 'react-helmet';
-import { Provider } from 'react-redux';
+import * as React from 'react';
 import { renderToString } from 'react-dom/server';
-import { StaticRouter } from 'react-router-dom';
+import Helmet from 'react-helmet';
+import * as Loadable from 'react-loadable';
+import { Provider } from 'react-redux';
 import { StaticRouterContext } from 'react-router';
-import { createServerRenderer, RenderResult, BootFuncParams } from 'aspnet-prerendering';
+import { StaticRouter } from 'react-router-dom';
 import { SinkFactory } from 'redux-sink';
 import App from './App';
-import { HttpClient } from '@services/httpclient';
 
 export default createServerRenderer(
   async (params: BootFuncParams): Promise<RenderResult> => {
@@ -40,7 +40,7 @@ export default createServerRenderer(
     };
     await SinkFactory.activeTrigger(locationAction);
 
-    // Prepare an instance of the application and perform an inital render that will
+    // Prepare an instance of the application and perform an initial render that will
     const routerContext: StaticRouterContext = { url: undefined };
 
     const app = (
@@ -83,7 +83,8 @@ export default createServerRenderer(
           `<script id='preloaded-state'>window.__PRELOADED_STATE__ = ${JSON.stringify(
             state
           )}</script>`
-        )
+        ),
+      statusCode: 200
     };
   }
 );

@@ -1,7 +1,7 @@
 import { EnquirySink } from '@services/enquiry';
+import Steps from 'antd/lib/steps';
 import * as React from 'react';
 import { sinking } from 'redux-sink';
-import Steps from 'antd/lib/steps';
 
 interface IEnquiryProps {
   enquirySink: EnquirySink;
