@@ -25,7 +25,7 @@ namespace Vendora.Database.Migrations._20190604
             var createdDate = DateTime.UtcNow;
             return new {
                 id = Guid.NewGuid().ToString(),
-                name = "basic enquiry",
+                name = "basic-enquiry",
                 language_code = language,
                 metadata,
                 created_date = createdDate,

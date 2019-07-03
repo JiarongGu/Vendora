@@ -8,6 +8,6 @@ namespace Vendora.Application.Models.Entities
 
         public IEnumerable<string> Values { get; set; }
 
-        public string Parttern { get; set; }
+        public string Pattern { get; set; }
     }
 }

@@ -25,7 +25,7 @@ export default createServerRenderer(
     // set HttpClient config
     const httpsAgent = new https.Agent({ rejectUnauthorized: false });
     const config = { baseURL: host, httpsAgent };
-    HttpClient.defualtConfig = config;
+    HttpClient.defaultConfig = config;
 
     // Parpare store
     const store = SinkFactory.createStore();

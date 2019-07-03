@@ -24,7 +24,7 @@ namespace Vendora.Application.Models.Entities
 
         public IEnumerable<FieldOption> FieldOptions { get; set; }
 
-        public IEnumerable<ValidationRules> ValidationRules { get; set; }
+        public IEnumerable<ValidationRule> ValidationRules { get; set; }
 
         public IEnumerable<FieldDescriptor> FieldDescriptors { get; set; }
     }

@@ -9,7 +9,7 @@ import Axios, {
 import { formatRequestQuery } from './formatRequestQuery';
 
 export class HttpClient {
-  public static defualtConfig: AxiosRequestConfig;
+  public static defaultConfig: AxiosRequestConfig;
 
   public cancelTokenSource: CancelTokenSource;
 
@@ -22,10 +22,10 @@ export class HttpClient {
   private axios: AxiosInstance;
 
   constructor(config?: AxiosRequestConfig) {
-    // initalize config if does not supply
+    // initialize config if does not supply
     this.cancelTokenSource = Axios.CancelToken.source();
 
-    const tokenConfig = { cancelToken: this.cancelTokenSource.token, ...HttpClient.defualtConfig };
+    const tokenConfig = { cancelToken: this.cancelTokenSource.token, ...HttpClient.defaultConfig };
     const axiosConfig = config ? { ...config, ...tokenConfig } : tokenConfig;
 
     this.config = axiosConfig;
@@ -49,6 +49,9 @@ export class HttpClient {
     return this.axios.request<TResponse>(config);
   }
 
+  public get<TResponse>(url: string, config?: AxiosRequestConfig): AxiosPromise<TResponse>;
+  public get<TResponse>(url: string, data?: any, config?: AxiosRequestConfig): AxiosPromise<TResponse>;
+  public get<TRequest, TResponse>(url: string, data?: TRequest, config?: AxiosRequestConfig): AxiosPromise<TResponse>;
   public get<TRequest = any, TResponse = any>(url: string, data?: TRequest, config?: AxiosRequestConfig) {
     if (data) { return this.axios.get<TResponse>(`${url}?${formatRequestQuery(data)}`, config); }
     return this.axios.get<TResponse>(url, config);

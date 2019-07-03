@@ -7,27 +7,28 @@ import { Home, Quote, User } from '@pages';
 
 import { Footer } from '@components/Footer';
 import { NavMenu } from '@components/NavMenu';
-import { MainLayoutService } from '@services/laytous/MainLayoutService';
+import { Enquiry } from '@pages/Enquiry';
+import { MainLayoutService } from '@services/layouts/MainLayoutService';
+import { string } from 'prop-types';
 import { sinking } from 'redux-sink';
 import * as styles from './MainLayout.module.less';
-import { string } from 'prop-types';
 
 export class MainLayout extends React.PureComponent {
-  state = {activeClass: string};
-  componentDidMount(){
+  public state = {activeClass: string};
+  public componentDidMount() {
       window.addEventListener('scroll', (event) => {
-        let layout: EventTarget = event.srcElement || new EventTarget();
-        if (layout !== null){
+        const layout: EventTarget = event.srcElement || new EventTarget();
+        if (layout !== null) {
         }
         let navclass = '';
-        if(true){
+        if (true) {
           navclass = 'banner';
-        }else{
+        } else {
           navclass = 'normal';
         }
         this.setState({
             activeClass: navclass
-        })
+        });
       });
   }
   public render() {
@@ -42,9 +43,10 @@ export class MainLayout extends React.PureComponent {
         <div id="main-layout" className={styles.body}>
           <div className={styles.headerBackground} />
           <Switch>
-            <Route key={'/user'} strict={true} path={'/user'} component={User} />
-            <Route key={'/quote'} strict={true} path={'/quote'} component={Quote} />
-            <Route key={'/'} strict={true} path={'/'} component={Home} />
+            <Route strict={true} path={'/user'} component={User} />
+            <Route strict={true} path={'/quote'} component={Quote} />
+            <Route strict={true} path={'/:language/enquiry/:name'} component={Enquiry} />
+            <Route strict={true} path={'/'} component={Home} />
           </Switch>
           <Footer />
         </div>

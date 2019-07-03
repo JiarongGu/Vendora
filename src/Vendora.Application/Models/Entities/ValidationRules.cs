@@ -1,6 +1,6 @@
 ﻿namespace Vendora.Application.Models.Entities
 {
-    public class ValidationRules
+    public class ValidationRule
     {
         // validation error message
         public string Message { get; set; }

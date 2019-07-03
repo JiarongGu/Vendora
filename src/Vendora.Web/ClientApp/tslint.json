@@ -12,6 +12,7 @@
     "jsx-no-lambda": false,
     "no-console": false,
     "jsx-no-multiline-js": false,
+    "jsx-wrap-multiline": false,
     "trailing-comma": false
   },
   "rulesDirectory": []
