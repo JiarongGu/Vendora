@@ -9,7 +9,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const WebpackCleanupPlugin = require('webpack-cleanup-plugin');
 
-// style files regexes
+// style files regex
 const lessRegex = /\.(less)$/;
 const lessModuleRegex = /\.module\.(less)$/;
 const lessAntdRegex = /node_modules[\/\\]+antd.*less$/;
@@ -26,16 +26,16 @@ const resolvedAlias = Object.keys(paths.alias)
   .reduce((a, c) => (a[c.key] = c.path, a), {});
 
 module.exports = function (publicPath) {
-  const extractGlobelLessPlugin = new ExtractTextPlugin({
-    filename: `static/css/globel.[md5:contenthash:hex:20].css`
+  const extractGlobalLessPlugin = new ExtractTextPlugin({
+    filename: `static/css/global.[md5:contenthash:hex:20].css`
   });
   const extractAntdLessPlugin = new ExtractTextPlugin({
     filename: `static/css/antd.[md5:contenthash:hex:20].css`
   });
-  const extractMoudleLessPlugin = new ExtractTextPlugin({
+  const extractModuleLessPlugin = new ExtractTextPlugin({
     filename: 'static/css/module.[md5:contenthash:hex:20].css'
   });
-  
+
   return {
     context: paths.appSrc,
     entry: {
@@ -55,7 +55,7 @@ module.exports = function (publicPath) {
     module: {
       rules: [{
         test: /\.(ts|tsx)$/,
-        use: ['ts-loader'],
+        use: ['babel-loader', 'ts-loader'],
         exclude: /node_modules/
       },
       {
@@ -71,7 +71,7 @@ module.exports = function (publicPath) {
       resolveLessRules({
         test: lessRegex,
         localIdentName: '[local]',
-        extractPlugin: extractGlobelLessPlugin,
+        extractPlugin: extractGlobalLessPlugin,
         path: __dirname,
         exclude: [ lessAntdRegex, lessModuleRegex ],
         sideEffects: true
@@ -86,9 +86,9 @@ module.exports = function (publicPath) {
       resolveLessRules({
         test: lessModuleRegex,
         localIdentName: '[name]__[local]___[hash:base64:5]',
-        extractPlugin: extractMoudleLessPlugin,
+        extractPlugin: extractModuleLessPlugin,
         path: __dirname,
-        ortherLoaders: ['css-type-loader']
+        otherLoaders: ['css-type-loader']
       }),
       ]
     },
@@ -99,8 +99,8 @@ module.exports = function (publicPath) {
       new MiniCssExtractPlugin(),
       new WebpackCleanupPlugin(),
       extractAntdLessPlugin,
-      extractGlobelLessPlugin,
-      extractMoudleLessPlugin
+      extractGlobalLessPlugin,
+      extractModuleLessPlugin
     ]
   };
 }

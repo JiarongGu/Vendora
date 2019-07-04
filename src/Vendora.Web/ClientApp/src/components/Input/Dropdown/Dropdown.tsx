@@ -1,9 +1,6 @@
-import Icon from 'antd/lib/icon';
-import Menu from 'antd/lib/menu';
+import { Dropdown, Icon, Menu } from 'antd';
 import * as React from 'react';
 import * as styles from './Dropdown.module.less';
-
-import Dropdown from 'antd/lib/dropdown';
 
 function DropdownInput(props, ref) {
   const menu = (

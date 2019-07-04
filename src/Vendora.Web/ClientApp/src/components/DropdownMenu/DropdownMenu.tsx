@@ -1,9 +1,7 @@
-import Button from 'antd/lib/button/button';
-import Dropdown from 'antd/lib/dropdown/dropdown';
 import * as React from 'react';
 
-import Menu from 'antd/lib/menu';
-import classnames from 'classnames';
+import { Dropdown, Menu } from 'antd';
+
 import * as styles from './DropdownMenu.module.less';
 
 interface DropdownMenuProps {

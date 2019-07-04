@@ -1,12 +1,10 @@
+import * as React from 'react';
+
 import { faUserTie } from '@fortawesome/free-solid-svg-icons/faUserTie';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Button from 'antd/lib/button';
-import Icon from 'antd/lib/icon';
-import Input from 'antd/lib/input';
-import Menu from 'antd/lib/menu';
-import classNames from 'classnames';
-import * as React from 'react';
+import { Button, Icon, Menu } from 'antd';
 import { Link } from 'react-router-dom';
+
 import * as styles from './NavMenu.module.less';
 
 interface NavMenuProps {
@@ -15,24 +13,6 @@ interface NavMenuProps {
 
 export const NavMenu = ({ className }: NavMenuProps) => (
   <Menu theme={'light'} mode={'horizontal'} className={styles.nav}>
-    {/* <Menu.Item className={styles.navItem}>
-      <Link to={'/'}>Service</Link>
-    </Menu.Item>
-    <Menu.Item className={styles.navItem}>
-      <Link to={'/'}>About us</Link>
-    </Menu.Item>
-    <Menu.Item className={styles.navItem}>
-      <Link to={'/'}>Success story</Link>
-    </Menu.Item>
-    <Menu.Item className={styles.navItem}>
-      <Link to={'/'}>Media</Link>
-    </Menu.Item>
-    <Menu.Item className={styles.navItem}>
-      <Link to={'/'}>Career</Link>
-    </Menu.Item>
-    <Menu.Item className={styles.navItem}>
-      <Link to={'/'}>Contact us</Link>
-    </Menu.Item> */}
     <Menu.Item className={styles.navItemRight} />
     <Menu.Item className={styles.navItem}>
       <Icon type="search" className={styles.searchIcon} />

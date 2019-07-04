@@ -6,7 +6,7 @@ module.exports = function ({
   localIdentName,
   path,
   sideEffects,
-  ortherLoaders = [],
+  otherLoaders = [],
 }) {
   return ({
     test,
@@ -17,7 +17,7 @@ module.exports = function ({
       fallback: 'style-loader',
       use: [
         'css-hot-loader',
-        ...ortherLoaders,
+        ...otherLoaders,
         {
           loader: 'css-loader',
           query: {

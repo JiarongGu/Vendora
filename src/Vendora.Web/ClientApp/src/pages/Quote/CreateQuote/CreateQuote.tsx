@@ -1,8 +1,4 @@
-import Carousel from 'antd/lib/carousel';
-import Form, { FormComponentProps } from 'antd/lib/form/Form';
-import Input from 'antd/lib/input';
-import Menu from 'antd/lib/menu';
-import Steps from 'antd/lib/steps';
+import { Carousel, Form, Input, Menu, Steps } from 'antd';
 import * as React from 'react';
 import { QuoteForm } from '../QuoteForm/QuoteForm';
 import { QuoteFormStepComponent } from '../QuoteFormStep/QuoteFormStep';
@@ -10,7 +6,7 @@ import * as styles from './CreateQuote.module.less';
 
 export default class CreateQuote extends React.Component {
   public state = {
-    stepIndex : 0
+    stepIndex: 0
   };
 
   public form = {
@@ -26,16 +22,17 @@ export default class CreateQuote extends React.Component {
 
   public updateAnswer = (questionNumber) => {
     return (value) => (this.form['question' + questionNumber] = value);
-  };
+  }
 
   public onSubmit() {}
 
-  public changeStep = () =>{
-    return  (index) => { 
-      console.info(index)
-      this.setState({stepIndex: index});
-    }
+  public changeStep = () => {
+    return (index) => {
+      console.info(index);
+      this.setState({ stepIndex: index });
+    };
   }
+
   public render() {
     const { SubMenu, Item } = Menu;
     return (
@@ -71,7 +68,7 @@ export default class CreateQuote extends React.Component {
                 </Steps>
               </div>
               <div className={styles.questionGroupContainer}>
-                <QuoteForm onIndexChange = {this.changeStep()}/>
+                <QuoteForm onIndexChange={this.changeStep()} />
               </div>
             </div>
           </div>

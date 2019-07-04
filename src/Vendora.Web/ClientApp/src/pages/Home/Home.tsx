@@ -1,13 +1,9 @@
 import { ContentService } from '@services/common/ContentService';
-import Button from 'antd/lib/button';
-import Carousel from 'antd/lib/carousel';
+import { Button, Carousel, Checkbox, Input } from 'antd';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { sinking } from 'redux-sink';
 import * as styles from './Home.module.less';
-
-import Checkbox from 'antd/lib/checkbox/Checkbox';
-import Input from 'antd/lib/input';
 
 interface HomeProps {
   contentService: ContentService;
@@ -35,24 +31,24 @@ const buildBankTemplate = (imagePath, i) => {
 const sortBank = (banks) => {
   const itemsPerPage = 10;
   const pages = Math.ceil(banks / itemsPerPage);
-  const bankstemplate: any[][] = [];
+  const bankTemplates: any[][] = [];
 
   let col = 0;
 
   for (let i = 0; i < banks.length; i++) {
     if (i % itemsPerPage === 0 || i === 0) {
       const newCol = [buildBankTemplate(banks[i], i)];
-      bankstemplate.push(newCol);
-      col = bankstemplate.length - 1;
+      bankTemplates.push(newCol);
+      col = bankTemplates.length - 1;
     } else {
-      bankstemplate[col].push(buildBankTemplate(banks[i], i));
+      bankTemplates[col].push(buildBankTemplate(banks[i], i));
     }
   }
-  return bankstemplate;
+  return bankTemplates;
 };
 
 function Home({ contentService }: HomeProps) {
-  const whyusItems = [
+  const whyUsItems = [
     {
       title: 'Our Team',
       imagePath: '/assets/icons/team.png',
@@ -88,7 +84,7 @@ function Home({ contentService }: HomeProps) {
   ];
 
   const banks = fetchBanksImages();
-  const bankstemplate = sortBank(banks);
+  const bankTemplates = sortBank(banks);
   let carousel: Carousel | null;
   const prev = () => {
     if (carousel) {
@@ -193,7 +189,7 @@ function Home({ contentService }: HomeProps) {
           </span>
         </div>
         <div className={styles.whyusItemGroup}>
-          {whyusItems.map((item, index) => (
+          {whyUsItems.map((item, index) => (
             <div key={index} className={styles.whyusItem}>
               <div className={styles.whyusImage}>
                 <img src={item.imagePath} />
@@ -279,7 +275,7 @@ function Home({ contentService }: HomeProps) {
         </div>
 
         <Carousel>
-          {bankstemplate.map((page, index) => (
+          {bankTemplates.map((page, index) => (
             <div key={index} className={styles.lenderBoardGroup}>
               {page.map((item) => item)}
             </div>
@@ -297,7 +293,7 @@ function Home({ contentService }: HomeProps) {
               Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum
               is simply dummy text of the printing and typesetting industry.
             </p>
-            <p className={styles.opentime}>
+            <p className={styles.openTime}>
               {' '}
               We're available to help from Mon-Fri 8am-8pm (AEST/AEDT)
             </p>
@@ -311,7 +307,7 @@ function Home({ contentService }: HomeProps) {
             </div>
             <div className={styles.contactItem}>
               <img src="/assets/icons/customer.svg" />
-              <span className={`${styles.titleDot} ${styles.title}`}>Let us call youl</span>
+              <span className={`${styles.titleDot} ${styles.title}`}>Let us call you</span>
               <p>
                 Leave your details and receive a call from a home loan specialist within 24 hours.
               </p>

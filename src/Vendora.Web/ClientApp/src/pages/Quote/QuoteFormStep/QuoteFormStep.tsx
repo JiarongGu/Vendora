@@ -1,6 +1,4 @@
-import Form from 'antd/lib/form/Form';
-import Radio from 'antd/lib/radio';
-import Select from 'antd/lib/select';
+import { Form, Radio, Select } from 'antd';
 import * as React from 'react';
 import * as styles from './QuoteFormStep.module.less';
 

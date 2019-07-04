@@ -1,4 +1,4 @@
-import Layout from 'antd/lib/layout';
+import { Layout } from 'antd';
 import * as React from 'react';
 import { Switch } from 'react-router';
 import { Link, Route } from 'react-router-dom';

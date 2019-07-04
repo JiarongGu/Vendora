@@ -1,5 +1,5 @@
 import { EnquirySink } from '@services/enquiry';
-import Steps from 'antd/lib/steps';
+import { Steps } from 'antd';
 import * as React from 'react';
 import { sinking } from 'redux-sink';
 

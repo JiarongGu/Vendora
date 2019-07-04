@@ -1,19 +1,16 @@
-import Button from 'antd/lib/button';
-import Form, { FormComponentProps } from 'antd/lib/form/Form';
-import InputNumber from 'antd/lib/input';
-import Input from 'antd/lib/input';
-import Radio from 'antd/lib/radio';
-import Select from 'antd/lib/select';
+import { Button, Carousel, Form, Input, InputNumber, Radio, Select } from 'antd';
 import * as React from 'react';
 
 import { CurrencyInput } from '@components/Input';
 import SuburbInput from '@components/Input/SuburbInput/SuburbInput';
-import Carousel from 'antd/lib/carousel';
+import { FormComponentProps } from 'antd/lib/form';
 import * as styles from './QuoteForm.module.less';
 
 interface  QuoteFormProps extends FormComponentProps {
   onIndexChange: any;
 }
+
+
 export class QuoteFormComponents extends React.Component<QuoteFormProps> {
   public suburbRef = React.createRef();
   public componentDidMount() {

@@ -1,5 +1,4 @@
-import Icon from 'antd/lib/icon';
-import Input from 'antd/lib/input';
+import { Icon, Input } from 'antd';
 import * as React from 'react';
 import * as styles from './CurrencyInput.module.less';
 

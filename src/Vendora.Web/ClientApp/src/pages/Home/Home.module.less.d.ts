@@ -69,7 +69,7 @@ interface CssExports {
   'newsletterSectionTitle': string;
   'newsletterSectionTitleLg': string;
   'number': string;
-  'opentime': string;
+  'openTime': string;
   'rate-figure': string;
   'rate-text': string;
   'rate-text__left': string;

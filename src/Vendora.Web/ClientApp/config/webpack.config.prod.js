@@ -13,13 +13,6 @@ module.exports = function (publicPath) {
     entry: {
       app: './boot-client.tsx'
     },
-    module: {
-      rules: [{
-        test: /\.(ts|tsx)$/,
-        use: ['babel-loader', 'ts-loader'],
-        exclude: /node_modules/
-      }]
-    },
     optimization: {
       splitChunks: {
         chunks: 'all',

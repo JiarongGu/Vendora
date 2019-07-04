@@ -1,5 +1,4 @@
-import Layout from 'antd/lib/layout';
-import Menu from 'antd/lib/menu';
+import { Layout, Menu } from 'antd';
 import * as React from 'react';
 import { Link, Route, RouteComponentProps, Switch, withRouter } from 'react-router-dom';
 import { Profile } from './Profile';

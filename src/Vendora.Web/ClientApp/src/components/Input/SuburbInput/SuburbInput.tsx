@@ -1,5 +1,4 @@
-import AutoComplete from 'antd/lib/auto-complete';
-import Input from 'antd/lib/input';
+import { AutoComplete, Input } from 'antd';
 import * as React from 'react';
 
 function SuburbInput(props, ref) {
