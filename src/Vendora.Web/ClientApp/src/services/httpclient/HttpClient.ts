@@ -49,7 +49,6 @@ export class HttpClient {
     return this.axios.request<TResponse>(config);
   }
 
-  public get<TResponse>(url: string, config?: AxiosRequestConfig): AxiosPromise<TResponse>;
   public get<TResponse>(url: string, data?: any, config?: AxiosRequestConfig): AxiosPromise<TResponse>;
   public get<TRequest, TResponse>(url: string, data?: TRequest, config?: AxiosRequestConfig): AxiosPromise<TResponse>;
   public get<TRequest = any, TResponse = any>(url: string, data?: TRequest, config?: AxiosRequestConfig) {
