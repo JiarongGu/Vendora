@@ -2,6 +2,10 @@
 
 interface CssExports {
   'container': string;
+  'decorator': string;
+  'decorator-number': string;
+  'decoratorNumber': string;
+  'fields': string;
 }
 
 declare var cssExports: CssExports;

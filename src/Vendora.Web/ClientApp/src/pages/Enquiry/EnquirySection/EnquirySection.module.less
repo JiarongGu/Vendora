@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  flex-direction: row;
+
+  &:not(:last-child) {
+    margin-bottom: 60px;
+  }
+}
+
+.decorator {
+  display: flex;
+  align-items: center;
+  width: 40%;
+  height: 72px;
+  font-size: 36px;
+  font-weight: 600;
+
+  &-number {
+    margin-right: 24px;
+  }
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}

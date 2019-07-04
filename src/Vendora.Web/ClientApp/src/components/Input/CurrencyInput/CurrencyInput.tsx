@@ -26,9 +26,9 @@ function CurrencyInput(props, ref) {
   return (
     <Input
       ref={ref}
-      className={styles.inputbox}
+      className={styles.container}
       value={display}
-      addonBefore={<Icon type="dollar" />}
+      addonBefore={<Icon type={'dollar'} />}
       allowClear={true}
       onChange={(e) => onchange(e.target.value)}
     />

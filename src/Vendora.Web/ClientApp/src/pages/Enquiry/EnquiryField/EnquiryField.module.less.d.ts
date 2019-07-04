@@ -2,6 +2,7 @@
 
 interface CssExports {
   'container': string;
+  'field': string;
 }
 
 declare var cssExports: CssExports;
