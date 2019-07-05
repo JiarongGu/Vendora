@@ -1,13 +1,8 @@
-import { ContentService } from '@services/common/ContentService';
 import { Button, Carousel, Checkbox, Input } from 'antd';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { sinking } from 'redux-sink';
 import * as styles from './Home.module.less';
-
-interface HomeProps {
-  contentService: ContentService;
-}
 
 const fetchBanksImages = () => {
   const results: string[] = [];
@@ -47,7 +42,7 @@ const sortBank = (banks) => {
   return bankTemplates;
 };
 
-function Home({ contentService }: HomeProps) {
+function Home() {
   const whyUsItems = [
     {
       title: 'Our Team',
@@ -367,4 +362,4 @@ function Home({ contentService }: HomeProps) {
   );
 }
 
-export default sinking(ContentService)(Home) as React.FunctionComponent;
+export default Home as React.FunctionComponent;

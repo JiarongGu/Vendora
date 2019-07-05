@@ -1,7 +1,7 @@
 import { sink, state, trigger } from 'redux-sink';
 
-@sink('mainLayoutService')
-export class MainLayoutService {
+@sink('mainLayoutSink')
+export class MainLayoutSink {
   @state
   public headerBackground = true;
 

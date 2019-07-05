@@ -17,8 +17,8 @@ namespace Vendora.Database.Migrations._20190604
             var formMetaCN = File.ReadAllText("Migrations/20190604/enquiryform_cn.json");
             var formMetaEN = File.ReadAllText("Migrations/20190604/enquiryform_en.json");
 
-            Insert.IntoTable("form").Row(GetForm("cn", formMetaCN));
-            Insert.IntoTable("form").Row(GetForm("en", formMetaEN));
+            Insert.IntoTable("form").Row(GetForm("zh-cn", formMetaCN));
+            Insert.IntoTable("form").Row(GetForm("en-gb", formMetaEN));
         }
 
         private object GetForm(string language, string metadata) {

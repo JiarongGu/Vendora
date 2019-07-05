@@ -5,19 +5,18 @@ import * as React from 'react';
 import { EnquiryField } from '../EnquiryField';
 import * as styles from './EnquirySection.module.less';
 
-interface IEnquirySectionProps {
+interface EnquirySectionProps {
   formSection: IFormSection;
   step: number;
 }
 
 function checkFieldDependencies(descriptor: IFieldDescriptor) {
-  if (!descriptor.fieldDependencies || descriptor.fieldDependencies.length === 0)
-    return true;
+  if (!descriptor.fieldDependencies || descriptor.fieldDependencies.length === 0) return true;
   return false;
 }
 
 export class EnquirySectionComponent extends React.Component<
-  IEnquirySectionProps & FormComponentProps
+  EnquirySectionProps & FormComponentProps
 > {
   public render() {
     const {
@@ -52,4 +51,4 @@ export class EnquirySectionComponent extends React.Component<
   }
 }
 
-export const EnquirySection = Form.create<IEnquirySectionProps>({})(EnquirySectionComponent);
+export const EnquirySection = Form.create<EnquirySectionProps>({})(EnquirySectionComponent);

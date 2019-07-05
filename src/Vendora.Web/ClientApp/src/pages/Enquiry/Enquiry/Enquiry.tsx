@@ -5,11 +5,11 @@ import { sinking } from 'redux-sink';
 import { EnquirySection } from '../EnquirySection/EnquirySection';
 import * as styles from './Enquiry.module.less';
 
-interface IEnquiryProps {
+interface EnquiryProps {
   enquirySink: EnquirySink;
 }
 
-export class EnquiryComponent extends React.Component<IEnquiryProps> {
+export class EnquiryComponent extends React.Component<EnquiryProps> {
   public render() {
     const {
       enquirySink: { currentEnquiry, currentStep }

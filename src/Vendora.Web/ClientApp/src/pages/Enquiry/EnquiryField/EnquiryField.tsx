@@ -4,7 +4,7 @@ import { Input, InputNumber, Radio, Select } from 'antd';
 import * as React from 'react';
 import * as styles from './EnquiryField.module.less';
 
-interface IEnquiryFieldProps {
+interface EnquiryFieldProps {
   fieldDescriptor: IFieldDescriptor;
 }
 
@@ -62,7 +62,7 @@ const fieldMap: { [key: string]: (descriptor?: IFieldDescriptor) => JSX.Element 
   phone: mapPhoneField
 };
 
-export class EnquiryField extends React.Component<IEnquiryFieldProps> {
+export class EnquiryField extends React.Component<EnquiryFieldProps> {
   public render() {
     const { fieldDescriptor } = this.props;
     const mapper = fieldMap[fieldDescriptor.type];
