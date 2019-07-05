@@ -25,15 +25,21 @@ interface HomeProps {
 class HomeSink {
   @state public settings: HomeContentSettings = {};
 
+  constructor(private commonSink: CommonSink) {}
+
   @trigger('commonSink/settings')
   public async updateSettings(setting: SettingService) {
-    this.settings = await setting.get('home');
+    if (this.commonSink.pathname === '') {
+      this.settings = await setting.get('home');
+    }
   }
 }
 
 class Home extends React.PureComponent<HomeProps> {
   public render() {
-    const { homeSink: { settings } } = this.props;
+    const {
+      homeSink: { settings }
+    } = this.props;
 
     return (
       <>

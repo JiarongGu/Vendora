@@ -8,6 +8,7 @@ import { Home, Quote, User } from '@pages';
 import { Footer } from '@components/Footer';
 import { NavMenu } from '@components/NavMenu';
 import { Enquiry } from '@pages/Enquiry';
+import { Error404 } from '@pages/Error/Error404';
 import { CommonSink } from '@services/common';
 import { MainLayoutSink } from '@services/layouts/MainLayoutSink';
 import { string } from 'prop-types';
@@ -41,10 +42,11 @@ export class MainLayout extends React.PureComponent<MainLayoutProps> {
         <div id="main-layout" className={styles.body}>
           <div className={styles.headerBackground} />
           <Switch>
-            <Route strict={true} path={'/:language/user'} component={User} />
-            <Route strict={true} path={'/:language/quote'} component={Quote} />
-            <Route strict={true} path={'/:language/enquiry/:name'} component={Enquiry} />
-            <Route strict={true} path={['/:language', '/']} component={Home} />
+            <Route strict={true} path={`/${commonSink.languageRegex}/user`} component={User} />
+            <Route strict={true} path={`/${commonSink.languageRegex}/quote`} component={Quote} />
+            <Route exact={true} path={`/${commonSink.languageRegex}/enquiry/:name`} component={Enquiry} />
+            <Route exact={true} path={[`/${commonSink.languageRegex}`, '/']} component={Home} />
+            <Route path={'*'} component={Error404} />
           </Switch>
           <Footer />
         </div>

@@ -5,8 +5,10 @@ import { SettingService } from './SettingService';
 @sink('commonSink')
 export class CommonSink {
   @state public settings: SettingService;
-  @state public language: string;
-  @state public pathname: string;
+  @state public language: string = 'zh-cn';
+  @state public pathname: string = '';
+  @state public supportedLanguages: string[] = ['zh-cn', 'en-gb'];
+  @state public languageRegex = `:language(${this.supportedLanguages.join('|').toLowerCase()})`;
 
   private settingServiceMap: Map<string, SettingService> = new Map();
 
@@ -39,11 +41,12 @@ export class CommonSink {
   public triggerByLocation(location: Location) {
     const matches = matchPath<{ language: string }>(location.pathname, { path: '/:language' });
     let pathname = location.pathname;
+
     if (matches) {
       this.setLanguage(matches.params.language);
       pathname = location.pathname.replace(this.language, '');
     } else {
-      this.setLanguage('zh-cn');
+      this.setServiceByLanguage(this.language);
     }
 
     if (pathname[0] === '/') {
