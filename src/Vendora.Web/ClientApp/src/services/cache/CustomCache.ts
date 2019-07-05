@@ -9,6 +9,7 @@ export class CustomCache<TModel = any> {
 
     if (!value && valueProvider) {
       let process = this.processMap.get(key);
+      const firstProcess = !process;
 
       if (!process) {
         process = valueProvider(key).finally(() => {
@@ -18,6 +19,9 @@ export class CustomCache<TModel = any> {
       }
 
       value = await process;
+
+      if (firstProcess)
+        this.cacheMap.set(key, value);
     }
 
     return value;

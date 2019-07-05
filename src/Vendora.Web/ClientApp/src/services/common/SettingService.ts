@@ -6,8 +6,12 @@ export class SettingService {
 
   constructor(private language: string) { }
 
-  public async get(group: string, name: string) {
-    const contentGroup = await this.cache.get(group, () => new HttpClient().get(`/contents/${this.language}/${group}`));
-    return contentGroup[name];
+  public async get(group: string, name?: string) {
+    const contentGroup = await this.cache.get(group,
+      () => new HttpClient().get(`/contents/${this.language}/${group}.json`).then((response) => response.data)
+    );
+    if (name)
+      return contentGroup[name];
+    return contentGroup;
   }
 }

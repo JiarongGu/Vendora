@@ -14,7 +14,8 @@
     "jsx-no-multiline-js": false,
     "jsx-wrap-multiline": false,
     "trailing-comma": false,
-    "curly": false
+    "curly": false,
+    "max-classes-per-file": 0
   },
   "rulesDirectory": []
 }
