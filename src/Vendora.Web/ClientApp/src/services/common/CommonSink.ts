@@ -35,7 +35,7 @@ export class CommonSink {
     }
   }
 
-  @trigger('LOCATION_CHANGE', { fireOnInit: true })
+  @trigger('LOCATION_CHANGE', { fireOnInit: true, priority: 100 })
   public triggerByLocation(location: Location) {
     const matches = matchPath<{ language: string }>(location.pathname, { path: '/:language' });
     let pathname = location.pathname;

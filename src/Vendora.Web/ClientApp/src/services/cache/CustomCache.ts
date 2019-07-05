@@ -1,6 +1,6 @@
 export type ValueProvider<TModel> = (key: string) => Promise<TModel>;
 
-export class Cache<TModel> {
+export class CustomCache<TModel = any> {
   private cacheMap: Map<string, TModel> = new Map();
   private processMap: Map<string, Promise<TModel>> = new Map();
 

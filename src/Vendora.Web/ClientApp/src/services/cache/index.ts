@@ -1,1 +1,1 @@
-export { Cache } from './Cache';
+export { CustomCache } from './CustomCache';

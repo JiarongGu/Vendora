@@ -3,16 +3,6 @@
 interface CssExports {
   'action': string;
   'back1': string;
-  'comment-section': string;
-  'comment-section__author': string;
-  'comment-section__navButtons': string;
-  'comment-section__text': string;
-  'comment-section_icon': string;
-  'commentSection': string;
-  'commentSectionAuthor': string;
-  'commentSectionIcon': string;
-  'commentSectionNavButtons': string;
-  'commentSectionText': string;
   'contact-item': string;
   'contact-item-group': string;
   'contact-section': string;
@@ -23,8 +13,6 @@ interface CssExports {
   'content-text': string;
   'contentSection': string;
   'contentText': string;
-  'customer-review-section': string;
-  'customerReviewSection': string;
   'gray-panel': string;
   'gray-panel__title': string;
   'gray-panel__title-lg': string;
@@ -87,28 +75,6 @@ interface CssExports {
   'title': string;
   'title-dot': string;
   'titleDot': string;
-  'whyus-button': string;
-  'whyus-desc': string;
-  'whyus-image': string;
-  'whyus-index': string;
-  'whyus-item': string;
-  'whyus-item-group': string;
-  'whyus-section': string;
-  'whyus-text': string;
-  'whyus-text__left': string;
-  'whyus-text__right': string;
-  'whyus-title': string;
-  'whyusButton': string;
-  'whyusDesc': string;
-  'whyusImage': string;
-  'whyusIndex': string;
-  'whyusItem': string;
-  'whyusItemGroup': string;
-  'whyusSection': string;
-  'whyusText': string;
-  'whyusTextLeft': string;
-  'whyusTextRight': string;
-  'whyusTitle': string;
 }
 
 declare var cssExports: CssExports;

@@ -1,0 +1,64 @@
+@import (reference) '../../styles/global.less';
+
+@title-font: Spectral, serif;
+
+.title-dot {
+  position: relative;
+
+  &::after {
+    content: "";
+    width: 7px;
+    height: 7px;
+    right: -13px;
+    bottom: 4px;
+    position: absolute;
+    background-color: @primary-color;
+  }
+}
+
+.highlight {
+  color: @primary-color;
+}
+
+
+.gray-panel {
+  flex: 1 0 100%;
+  display: flex;
+  min-height: 450px;
+  background: #f9f9f9;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 80px 10%;
+  position: relative;
+
+  &__title-lg {
+    font-size: 80px;
+    position: absolute;
+    left: 10px;
+    top: -65px;
+    color: #d8d8d8;
+    font-family: @title-font;
+  }
+
+  &__title {
+    flex: 0 1 40%;
+    width: 40%;
+
+    span {
+      font-family: @title-font;
+      font-size: 45px;
+      margin-bottom: 30px;
+    }
+
+    p {
+      font-size: 13px;
+      color: @text-color-secondary;
+    }
+
+    p.openTime {
+      font-size: 16px;
+      color: @text-color;
+
+    }
+  }
+}
