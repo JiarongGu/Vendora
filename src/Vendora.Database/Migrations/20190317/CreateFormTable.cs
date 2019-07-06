@@ -25,13 +25,19 @@ namespace Vendora.Database.Migrations._20190317
 
             Create.Index("IX_form_name")
                 .OnTable(TableName)
-                .OnColumn("name")
-                .Ascending().WithOptions().NonClustered();
+                .OnColumn("name").Ascending()
+                .WithOptions().NonClustered();
 
             Create.Index("IX_form_language_code")
                 .OnTable(TableName)
-                .OnColumn("language_code")
-                .Ascending().WithOptions().NonClustered();
+                .OnColumn("language_code").Ascending()
+                .WithOptions().NonClustered();
+
+            Create.Index("IX_form_name_language_code")
+                .OnTable(TableName)
+                .OnColumn("name").Ascending()
+                .OnColumn("language_code").Ascending()
+                .WithOptions().NonClustered();
 
             Create.UniqueConstraint("UX_from_name_language_code_deleted_date")
                 .OnTable(TableName)

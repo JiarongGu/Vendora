@@ -43,12 +43,12 @@ class Home extends React.PureComponent<HomeProps> {
 
     return (
       <>
-        <HomeInformation />
-        <HomeContent />
         <HomeInterestRate />
+        <HomeBanks />
+        {/* <HomeInformation /> */}
+        <HomeContent />
         <HomeIntroduction />
         <HomeCustomerReview />
-        <HomeBanks />
         <HomeContact />
         <HomeNews settings={settings} />
         <HomeSocial />

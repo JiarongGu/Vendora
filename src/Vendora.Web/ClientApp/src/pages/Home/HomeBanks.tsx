@@ -8,7 +8,7 @@ const fetchBanksImages = () => {
     .context('../../../public/assets/images/banks', false, /.*\.png$/)
     .keys()
     .forEach((key) => {
-      results.push('/assets/images/banks'.concat(key.substr(1)));
+      results.push('/assets/images/banks'.concat(key.substring(1)));
     });
   return results;
 };

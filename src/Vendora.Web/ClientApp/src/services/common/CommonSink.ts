@@ -7,6 +7,7 @@ export class CommonSink {
   @state public settings: SettingService;
   @state public language: string = 'zh-cn';
   @state public pathname: string = '';
+
   @state public supportedLanguages: string[] = ['zh-cn', 'en-gb'];
   @state public languageRegex = `:language(${this.supportedLanguages.join('|').toLowerCase()})`;
 

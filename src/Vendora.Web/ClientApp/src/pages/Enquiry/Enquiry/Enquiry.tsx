@@ -4,6 +4,7 @@ import * as React from 'react';
 import { sinking } from 'redux-sink';
 import { EnquirySection } from '../EnquirySection/EnquirySection';
 import * as styles from './Enquiry.module.less';
+import { EnquiryMenu } from '../EnquiryMenu/EnquiryMenu';
 
 interface EnquiryProps {
   enquirySink: EnquirySink;
@@ -16,9 +17,12 @@ export class EnquiryComponent extends React.Component<EnquiryProps> {
     } = this.props;
     return currentEnquiry ? (
       <div className={styles.container}>
-        {currentEnquiry.metadata.formSections.map((section, index) => (
-          <EnquirySection key={section.label} step={index + 1} formSection={section} />
-        ))}
+        <EnquiryMenu />
+        <div>
+          {currentEnquiry.metadata.formSections.map((section, index) => (
+            <EnquirySection key={section.label} step={index + 1} formSection={section} />
+          ))}
+        </div>
       </div>
     ) : null;
   }
