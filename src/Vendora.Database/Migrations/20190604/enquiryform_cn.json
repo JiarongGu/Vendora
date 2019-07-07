@@ -6,111 +6,129 @@
       "fieldDescriptors": [
         {
           "order": 0,
-          "name": "service type",
-          "label": "服务类型",
-          "type": "radio",
-          "fieldOptions": [
+          "name": "service basic",
+          "label": "基本信息",
+          "type": "group",
+          "fieldDescriptors": [
             {
-              "label": "购置新房",
-              "value": "home loan"
+              "order": 0,
+              "name": "number of applicants",
+              "label": "申请人数",
+              "type": "number",
+              "validationRules": [
+                {
+                  "message": "请输入申请人数",
+                  "required": true
+                }
+              ]
             },
             {
-              "label": "房屋融资",
-              "value": "refinance"
-            }
-          ],
-          "validationRules": [
+              "order": 1,
+              "name": "service type",
+              "label": "服务类型",
+              "type": "radio",
+              "fieldOptions": [
+                {
+                  "label": "购置新房",
+                  "value": "home loan"
+                },
+                {
+                  "label": "房屋融资",
+                  "value": "refinance"
+                }
+              ],
+              "validationRules": [
+                {
+                  "message": "请选择服务类型",
+                  "required": true
+                }
+              ]
+            },
             {
-              "message": "请选择服务类型",
-              "required": true
+              "order": 2,
+              "name": "use of property",
+              "label": "房产使用类型",
+              "type": "radio",
+              "fieldOptions": [
+                {
+                  "label": "自住房",
+                  "value": "owner-occupied"
+                },
+                {
+                  "label": "投资房",
+                  "value": "investment"
+                }
+              ],
+              "validationRules": [
+                {
+                  "message": "请选择房产使用类型",
+                  "required": true
+                }
+              ]
             }
           ]
         },
         {
           "order": 1,
-          "name": "use of property",
-          "label": "房产使用类型",
-          "type": "select",
-          "fieldOptions": [
+          "name": "property info",
+          "label": "房产信息",
+          "type": "group",
+          "fieldDescriptors":[
             {
-              "label": "自住房",
-              "value": "owner-occupied"
+              "order": 0,
+              "name": "property value",
+              "label": "房产价值",
+              "type": "currency",
+              "validationRules": [
+                {
+                  "message": "请输入房产价值",
+                  "required": true
+                }
+              ]
             },
             {
-              "label": "投资房",
-              "value": "investment"
-            }
-          ],
-          "validationRules": [
-            {
-              "message": "请选择房产使用类型",
-              "required": true
-            }
-          ]
-        },
-        {
-          "order": 2,
-          "name": "property value",
-          "label": "房产价值",
-          "type": "currency",
-          "validationRules": [
-            {
-              "message": "请输入房产价值",
-              "required": true
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "order": 1,
-      "label": "贷款信息",
-      "fieldDescriptors": [
-        {
-          "order": 0,
-          "name": "current deposit",
-          "label": "已付款额度",
-          "type": "currency",
-          "validationRules": [
-            {
-              "message": "请输入已付款额度",
-              "required": true
-            }
-          ]
-        },
-        {
-          "order": 1,
-          "name": "expected loan amount",
-          "label": "所需贷款额度",
-          "type": "currency",
-          "validationRules": [
-            {
-              "message": "请输入已所需贷款额度",
-              "required": true
+              "order": 1,
+              "name": "property suburb",
+              "label": "房屋所在地区",
+              "type": "suburb",
+              "validationRules": [
+                {
+                  "message": "请选择房屋所在地区",
+                  "required": true
+                }
+              ]
             }
           ]
         },
         {
           "order": 2,
-          "name": "number of applicants",
-          "label": "申请人数",
-          "type": "number",
-          "validationRules": [
+          "label": "贷款信息",
+          "name": "loan info",
+          "type": "group",
+          "fieldDescriptors": [
             {
-              "message": "请输入申请人数",
-              "required": true
-            }
-          ]
-        },
-        {
-          "order": 3,
-          "name": "property suburb",
-          "label": "房屋所在地区",
-          "type": "suburb",
-          "validationRules": [
+              "order": 0,
+              "name": "current deposit",
+              "label": "已付款额度",
+              "type": "currency",
+              "validationRules": [
+                {
+                  "message": "请输入已付款额度",
+                  "required": true
+                }
+              ]
+            },
             {
-              "message": "请选择房屋所在地区",
-              "required": true
+              "order": 1,
+              "name": "expected loan amount",
+              "label": "所需贷款额度",
+              "type": "currency",
+              "validationRules": [
+                {
+                  "message": "请输入已所需贷款额度",
+                  "required": true
+                }
+              ]
             }
           ]
         }
@@ -118,183 +136,232 @@
     },
     {
       "order": 2,
-      "label": "财务状况",
+      "label": "关于申请人",
       "fieldDescriptors": [
         {
           "order": 0,
-          "name": "marriage status",
-          "label": "婚姻状况",
-          "type": "select",
-          "fieldOptions": [
+          "name": "family",
+          "label": "家庭情况",
+          "type": "group",
+          "fieldDescriptors": [
             {
-              "label": "单身",
-              "value": "single"
+              "order": 0,
+              "name": "marriage status",
+              "label": "婚姻状况",
+              "type": "select",
+              "fieldOptions": [
+                {
+                  "label": "单身",
+                  "value": "single"
+                },
+                {
+                  "label": "已婚",
+                  "value": "married"
+                },
+                {
+                  "label": "同居",
+                  "value": "de facto"
+                }
+              ],
+              "validationRules": [
+                {
+                  "message": "请选择婚姻状况",
+                  "required": true
+                }
+              ]
             },
             {
-              "label": "已婚",
-              "value": "married"
-            },
-            {
-              "label": "同居",
-              "value": "de facto"
-            }
-          ],
-          "validationRules": [
-            {
-              "message": "请选择婚姻状况",
-              "required": true
+              "order": 1,
+              "name": "number of dependents",
+              "label": "家属人数",
+              "type": "number",
+              "validationRules": [
+                {
+                  "message": "请输入家属人数",
+                  "required": true
+                }
+              ]
             }
           ]
         },
+        
         {
           "order": 1,
-          "name": "number of dependents",
-          "label": "家属人数",
-          "type": "number",
-          "validationRules": [
+          "name": "employment",
+          "label": "工作情况",
+          "type": "group",
+          "fieldDescriptors": [
             {
-              "message": "请输入家属人数",
-              "required": true
+              "order": 0,
+              "name": "employment type",
+              "label": "受雇类型",
+              "type": "select",
+              "fieldOptions": [
+                {
+                  "label": "雇员",
+                  "value": "employee"
+                },
+                {
+                  "label": "自雇",
+                  "value": "self-employed"
+                },
+                {
+                  "label": "其他",
+                  "value": "other"
+                }
+              ],
+              "validationRules": [
+                {
+                  "message": "请选择受雇类型",
+                  "required": true
+                }
+              ]
             }
           ]
         },
         {
           "order": 2,
-          "name": "employment type",
-          "label": "受雇类型",
-          "type": "select",
-          "fieldOptions": [
+          "name": "income",
+          "label": "主要收入",
+          "type": "group",
+          "fieldDescriptors": [
             {
-              "label": "雇员",
-              "value": "employee"
+              "order": 0,
+              "name": "primary income",
+              "label": "家庭总收入",
+              "type": "currency",
+              "fieldDependencies": [
+                {
+                  "name": "marriage status",
+                  "values": [ "married", "de facto" ]
+                }
+              ],
+              "validationRules": [
+                {
+                  "message": "请输入家庭总收入",
+                  "required": true
+                }
+              ]
             },
             {
-              "label": "自雇",
-              "value": "self-employed"
-            },
-            {
-              "label": "其他",
-              "value": "other"
-            }
-          ],
-          "validationRules": [
-            {
-              "message": "请选择受雇类型",
-              "required": true
+              "order": 0,
+              "name": "primary income",
+              "label": "个人收入",
+              "type": "currency",
+              "fieldDependencies": [
+                {
+                  "name": "marriage status",
+                  "values": [ "single" ]
+                }
+              ],
+              "validationRules": [
+                {
+                  "message": "请输入个人收入",
+                  "required": true
+                }
+              ]
             }
           ]
         },
         {
           "order": 3,
-          "name": "primary income",
-          "label": "家庭总收入",
-          "type": "currency",
-          "fieldDependencies": [
+          "name": "other income",
+          "label": "其他收入",
+          "type": "group",
+          "fieldDescriptors": [
             {
-              "name": "marriage status",
-              "values": [ "married", "de facto" ]
-            }
-          ],
-          "validationRules": [
+              "order": 4,
+              "name": "rental income",
+              "label": "租金收入",
+              "type": "currency"
+            },
             {
-              "message": "请输入家庭总收入",
-              "required": true
-            }
-          ]
-        },
-        {
-          "order": 3,
-          "name": "primary income",
-          "label": "个人收入",
-          "type": "currency",
-          "fieldDependencies": [
-            {
-              "name": "marriage status",
-              "values": [ "single" ]
-            }
-          ],
-          "validationRules": [
-            {
-              "message": "请输入个人收入",
-              "required": true
+              "order": 5,
+              "name": "total other Incomes",
+              "label": "其他总收入",
+              "type": "currency"
             }
           ]
         },
         {
           "order": 4,
-          "name": "rental income",
-          "label": "租金收入",
-          "type": "currency"
+          "name": "credits",
+          "label": "信用卡情况",
+          "type": "group",
+          "fieldDescriptors": [
+            {
+              "order": 6,
+              "name": "total credit card limits",
+              "label": "信用卡总额度",
+              "type": "currency"
+            }
+          ]
         },
         {
           "order": 5,
-          "name": "total other Incomes",
-          "label": "其他总收入",
-          "type": "currency"
-        },
-        {
-          "order": 6,
-          "name": "total credit card limits",
-          "label": "信用卡总额度",
-          "type": "currency"
-        },
-        {
-          "order": 7,
-          "name": "other loan",
+          "name": "other loans",
           "label": "其他贷款",
-          "type": "select",
-          "fieldOptions": [
+          "type": "group",
+          "fieldDescriptors": [
             {
-              "label": "无其他贷款",
-              "value": "true"
+              "order": 0,
+              "name": "existing loan",
+              "label": "其他现有贷款",
+              "type": "radio",
+              "fieldOptions": [
+                {
+                  "label": "无其他贷款",
+                  "value": "true"
+                },
+                {
+                  "label": "有其他贷款",
+                  "value": "false"
+                }
+              ],
+              "validationRules": [
+                {
+                  "message": "请选择其他贷款信息",
+                  "required": true
+                }
+              ]
             },
             {
-              "label": "有其他贷款",
-              "value": "false"
-            }
-          ],
-          "validationRules": [
+              "order": 1,
+              "name": "owner-occupide monthly repayment",
+              "label": "每月自住房还款额度",
+              "type": "currency",
+              "fieldDependencies": [
+                {
+                  "name": "other loan",
+                  "values": [ "true" ]
+                }
+              ]
+            },
             {
-              "message": "请选择其他贷款信息",
-              "required": true
-            }
-          ]
-        },
-        {
-          "order": 8,
-          "name": "owner-occupide monthly repayment",
-          "label": "每月自住房还款额度",
-          "type": "currency",
-          "fieldDependencies": [
+              "order": 2,
+              "name": "total investment monthly repayment",
+              "label": "每月投资还款额度",
+              "type": "currency",
+              "fieldDependencies": [
+                {
+                  "name": "other loan",
+                  "values": [ "true" ]
+                }
+              ]
+            },
             {
-              "name": "other loan",
-              "values": [ "true" ]
+              "order": 3,
+              "name": "other liabilities monthly repayment",
+              "label": "每月其他贷款还款额度",
+              "type": "currency",
+              "fieldDependencies": [
+                {
+                  "name": "other loan",
+                  "values": [ "true" ]
+                }
+              ]
             }
-          ]
-        },
-        {
-          "order": 9,
-          "name": "total investment monthly repayment",
-          "label": "每月投资还款额度",
-          "type": "currency",
-          "fieldDependencies": [
-            {
-              "name": "other loan",
-              "values": [ "true" ]
-            }
-          ]
-        },
-        {
-          "order": 10,
-          "name": "other liabilities monthly repayment",
-          "label": "每月其他贷款还款额度",
-          "type": "currency",
-          "fieldDependencies": [
-            {
-              "name": "other loan",
-              "values": [ "true" ]
-            }
-          ]
+          ] 
         }
       ]
     },
@@ -304,77 +371,86 @@
       "fieldDescriptors": [
         {
           "order": 0,
-          "name": "last name",
-          "label": "姓",
-          "type": "text",
-          "validationRules": [
+          "name": "contact detail",
+          "label": "详细联络信息",
+          "type": "group",
+          "fieldDescriptors": [
+
             {
-              "message": "请输入姓",
-              "required": true
-            }
-          ]
-        },
-        {
-          "order": 1,
-          "name": "surname",
-          "label": "名",
-          "type": "text",
-          "validationRules": [
-            {
-              "message": "请输入名",
-              "required": true
-            }
-          ]
-        },
-        {
-          "order": 2,
-          "name": "contact email",
-          "label": "邮箱",
-          "type": "email",
-          "validationRules": [
-            {
-              "message": "请输入邮箱",
-              "required": true
-            }
-          ]
-        },
-        {
-          "order": 3,
-          "name": "contact phone",
-          "label": "联系电话",
-          "type": "phone"
-        },
-        {
-          "order": 4,
-          "name": "suitable contact time",
-          "label": "联系时间",
-          "type": "multicheck",
-          "fieldOptions": [
-            {
-              "label": "任何时间",
-              "value": "anytime"
+              "order": 0,
+              "name": "last name",
+              "label": "姓",
+              "type": "text",
+              "validationRules": [
+                {
+                  "message": "请输入姓",
+                  "required": true
+                }
+              ]
             },
             {
-              "label": "早上",
-              "value": "morning"
+              "order": 1,
+              "name": "surname",
+              "label": "名",
+              "type": "text",
+              "validationRules": [
+                {
+                  "message": "请输入名",
+                  "required": true
+                }
+              ]
             },
             {
-              "label": "午餐时间",
-              "value": "lunch"
+              "order": 2,
+              "name": "contact email",
+              "label": "邮箱",
+              "type": "email",
+              "validationRules": [
+                {
+                  "message": "请输入邮箱",
+                  "required": true
+                }
+              ]
             },
             {
-              "label": "下午",
-              "value": "afternoon"
+              "order": 3,
+              "name": "contact phone",
+              "label": "联系电话",
+              "type": "phone"
             },
             {
-              "label": "晚上",
-              "value": "evening"
-            }
-          ],
-          "validationRules": [
-            {
-              "message": "请选择至少一个联系时间, 已方便我们及时联系您",
-              "required": true
+              "order": 4,
+              "name": "suitable contact time",
+              "label": "联系时间",
+              "type": "multicheck",
+              "fieldOptions": [
+                {
+                  "label": "任何时间",
+                  "value": "anytime"
+                },
+                {
+                  "label": "早上",
+                  "value": "morning"
+                },
+                {
+                  "label": "午餐时间",
+                  "value": "lunch"
+                },
+                {
+                  "label": "下午",
+                  "value": "afternoon"
+                },
+                {
+                  "label": "晚上",
+                  "value": "evening"
+                }
+              ],
+              "validationRules": [
+                {
+                  "message": "请选择至少一个联系时间, 已方便我们及时联系您",
+                  "required": true
+                }
+              ]
             }
           ]
         }

@@ -1,3 +1,5 @@
+import { ValidationRule } from 'antd/lib/form';
+
 export interface IFormModel {
   name: string;
   language: string;
@@ -25,7 +27,7 @@ export interface IFieldDescriptor {
   order: number;
   fieldDependencies: IFieldDependency[];
   fieldOptions: IFieldOption[];
-  validationRules: IValidationRule[];
+  validationRules: ValidationRule[];
   fieldDescriptors: IFieldDescriptor[];
 }
 
@@ -38,13 +40,4 @@ export interface IFieldDependency {
 export interface IFieldOption {
   label: string;
   value: string;
-}
-
-export interface IValidationRule {
-  message: string;
-  type: string;
-  required?: boolean;
-  min?: number;
-  max?: number;
-  pattern?: string;
 }

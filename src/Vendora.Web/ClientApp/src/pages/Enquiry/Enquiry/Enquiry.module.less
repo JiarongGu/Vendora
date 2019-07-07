@@ -1,6 +1,36 @@
 .container {
   display: flex;
   width: 1080px;
-  flex-direction: column;
+  flex-direction: row;
   margin: 0 auto;
+  .nav{
+    flex: 0 0 auto;
+    padding: 40px 0 60px 60px;
+    background: #777;
+    color: #fff
+  }
+  .form{
+    flex: 1 0 auto;
+    padding: 0px 60px;
+    height: calc(100vh - 80px);
+    overflow: hidden;
+    .form-outter{
+      display: block;
+      .section-container{
+        padding: 40px 0;
+        position: relative;
+        height: calc(100vh - 80px);
+        .prev-button {
+          position: absolute;
+          left: 40%;
+          top: 10px;
+        }
+        .next-button {
+          position: absolute;
+          left: 40%;
+          bottom: 50px;
+        }
+      }
+    }
+  }
 }

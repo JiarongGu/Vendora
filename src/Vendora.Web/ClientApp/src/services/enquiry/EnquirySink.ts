@@ -1,4 +1,5 @@
 import { HttpClient } from '@services/httpclient';
+
 import { matchPath } from 'react-router';
 import { effect, sink, state, trigger } from 'redux-sink';
 import { IFormModel } from './IFormModel';
@@ -10,6 +11,9 @@ export class EnquirySink {
 
   @state
   public currentStep: number = 0;
+
+  @state
+  public currentStepName: string = '';
 
   @effect
   public async getForm(name: string, language: string) {
@@ -25,6 +29,11 @@ export class EnquirySink {
   @effect
   public updateState(updateAction: (enquirySink: EnquirySink) => void) {
     updateAction(this);
+  }
+
+  @effect
+  public updateFormFields() {
+    // call it on answers change
   }
 
   @trigger('LOCATION_CHANGE', { fireOnInit: true })

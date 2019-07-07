@@ -45,11 +45,11 @@ function mapNumberField(descriptor: IFieldDescriptor) {
 }
 
 function mapEmailField(descriptor: IFieldDescriptor) {
-  return <InputNumber className={styles.field} />;
+  return <Input className={styles.field} />;
 }
 
 function mapPhoneField(descriptor: IFieldDescriptor) {
-  return <InputNumber className={styles.field} />;
+  return <Input className={styles.field} />;
 }
 
 const fieldMap: { [key: string]: (descriptor?: IFieldDescriptor) => JSX.Element } = {
@@ -61,8 +61,8 @@ const fieldMap: { [key: string]: (descriptor?: IFieldDescriptor) => JSX.Element 
   email: mapEmailField,
   phone: mapPhoneField
 };
-
 export class EnquiryField extends React.Component<EnquiryFieldProps> {
+
   public render() {
     const { fieldDescriptor } = this.props;
     const mapper = fieldMap[fieldDescriptor.type];

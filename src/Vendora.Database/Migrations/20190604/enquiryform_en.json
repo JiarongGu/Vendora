@@ -30,7 +30,7 @@
           "order": 1,
           "name": "use of property",
           "label": "Use of Property",
-          "type": "select",
+          "type": "radio",
           "fieldOptions": [
             {
               "label": "Owner Occupied",

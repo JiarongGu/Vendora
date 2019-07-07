@@ -1,5 +1,5 @@
 export function formatRequestQuery<TModel>(model: TModel) {
-  const parameters: String[] = [];
+  const parameters: string[] = [];
 
   Object.keys(model).forEach((key) => {
     if (model[key]) {

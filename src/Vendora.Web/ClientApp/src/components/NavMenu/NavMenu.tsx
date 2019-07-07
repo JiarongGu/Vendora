@@ -20,7 +20,7 @@ export const NavMenu = ({ className, language, pathname }: NavMenuProps) => (
       <Icon type="search" className={styles.searchIcon} />
     </Menu.Item>
     <Menu.Item className={styles.navItem}>
-      <Link to={`/${language}/quote/buyinghome`}>
+      <Link to={`/${language}/enquiry/basic-enquiry`}>
         <Button size={'large'} type={'primary'}>
           Online Enquire Form
         </Button>

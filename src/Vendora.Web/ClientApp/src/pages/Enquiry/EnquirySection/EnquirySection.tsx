@@ -26,24 +26,19 @@ export class EnquirySectionComponent extends React.Component<
     } = this.props;
     return (
       <div className={styles.container}>
-        <div className={styles.decorator}>
-          <div className={styles.decoratorNumber}>{step}</div>
-          <div>{formSection.label}</div>
-        </div>
         <div className={styles.fields}>
           {formSection.fieldDescriptors.map((descriptor, index) =>
-            checkFieldDependencies(descriptor) ? (
-              <Form.Item key={descriptor.name} label={descriptor.label}>
-                {getFieldDecorator(descriptor.name, {
-                  rules: [
-                    {
-                      required: true,
-                      message: '请选择服务类型'
-                    }
-                  ]
-                })(<EnquiryField fieldDescriptor={descriptor} />)}
-              </Form.Item>
-            ) : null
+            checkFieldDependencies(descriptor) ?
+              descriptor.type === 'group' ? (
+                <EnquirySection key={descriptor.label} step={index + 1} formSection={descriptor}/>
+              ) :
+              (
+                <Form.Item key={descriptor.name} label={descriptor.label}>
+                  {getFieldDecorator(descriptor.name, {
+                    rules: descriptor.validationRules
+                  })(<EnquiryField fieldDescriptor={descriptor} />)}
+                </Form.Item>
+              ) : null
           )}
         </div>
       </div>

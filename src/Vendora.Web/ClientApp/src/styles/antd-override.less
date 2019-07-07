@@ -16,18 +16,23 @@
     }
   }
 }
-
-.ant-menu-horizontal>.ant-menu-item-active,
-.ant-menu-horizontal>.ant-menu-item-open,
-.ant-menu-horizontal>.ant-menu-item-selected,
-.ant-menu-horizontal>.ant-menu-item:hover,
-.ant-menu-horizontal>.ant-menu-submenu-active,
-.ant-menu-horizontal>.ant-menu-submenu-open,
-.ant-menu-horizontal>.ant-menu-submenu-selected,
-.ant-menu-horizontal>.ant-menu-submenu:hover {
-  border-bottom: none;
-  border-color: inherit;
-  color: #fff;
+.ant-menu-submenu-arrow {
+  display: none;
+}
+.ant-menu, .ant-menu-submenu>.ant-menu {
+  background: none;
+  color: inherit;
+  border: none;
+}
+.ant-menu-item-active, .ant-menu-item:hover, .ant-menu-submenu-active, .ant-menu-submenu-title:hover, .ant-menu:not(.ant-menu-inline) .ant-menu-submenu-open,
+.ant-menu-item-selected, .ant-menu-item-selected>a, .ant-menu-item-selected>a:hover{
+  color: inherit;
+}
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected, .ant-menu-item:active, .ant-menu-submenu-title:active{
+  background: none;
+}
+.ant-menu-inline .ant-menu-item:after, .ant-menu-vertical-left .ant-menu-item:after, .ant-menu-vertical-right .ant-menu-item:after, .ant-menu-vertical .ant-menu-item:after{
+  border-right: 7px solid #adff43;
 }
 .ant-carousel .slick-slider {
   text-align: center;

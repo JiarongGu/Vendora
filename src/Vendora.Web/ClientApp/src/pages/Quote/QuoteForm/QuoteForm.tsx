@@ -10,7 +10,6 @@ interface  QuoteFormProps extends FormComponentProps {
   onIndexChange: any;
 }
 
-
 export class QuoteFormComponents extends React.Component<QuoteFormProps> {
   public suburbRef = React.createRef();
   public componentDidMount() {

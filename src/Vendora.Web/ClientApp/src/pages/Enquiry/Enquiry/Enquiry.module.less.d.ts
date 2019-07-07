@@ -2,6 +2,16 @@
 
 interface CssExports {
   'container': string;
+  'form': string;
+  'form-outter': string;
+  'formOutter': string;
+  'nav': string;
+  'next-button': string;
+  'nextButton': string;
+  'prev-button': string;
+  'prevButton': string;
+  'section-container': string;
+  'sectionContainer': string;
 }
 
 declare var cssExports: CssExports;
