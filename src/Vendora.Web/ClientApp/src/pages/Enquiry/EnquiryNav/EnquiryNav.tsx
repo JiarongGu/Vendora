@@ -6,7 +6,6 @@ import * as React from 'react';
 const { SubMenu } = Menu;
 function findFormSectionIndex(sections: IFormSection[], currentStepName): string {
     for (const i in sections) {
-      console.info(sections, currentStepName);
       if (sections[i].fieldDescriptors.some((descriptor) => descriptor.name === currentStepName) === true) {
         console.info(i);
         return i;

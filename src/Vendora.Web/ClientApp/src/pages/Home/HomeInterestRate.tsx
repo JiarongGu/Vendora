@@ -7,11 +7,11 @@ export const HomeInterestRate = () => (
     <div className={styles.rateText}>
       <div className={styles.rateTextLeft}>
         <span>Home Loan Interest Rates</span>
-        <div>
+        {/* <div>
           <Button size={'large'} type={'default'}>
             Calculate my home loan repayment
           </Button>
-        </div>
+        </div> */}
       </div>
       <div className={styles.rateTextRight}>
         <div className={styles.rateFigure}>

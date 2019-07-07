@@ -6,9 +6,8 @@ export default function(props) {
   return (
     <>
       <Switch>
-        <Route key={'/quote/create'} strict={true} path={'/quote/create'} component={CreateQuote} />
-        <Route key={'/quote/:name'} strict={true} path={'/quote/:name'} component={CreateQuote} />
-        <Redirect from="/quote" to="/quote/create" />
+        <Route key={'/:language/quote/create'} exact={true} path={'/:language/quote/create'} component={CreateQuote} />
+        <Redirect exact={true} from="/:language/quote" to="/:language/quote/create" />
       </Switch>
     </>
   );
