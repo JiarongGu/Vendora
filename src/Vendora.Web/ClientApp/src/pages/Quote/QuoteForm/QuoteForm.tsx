@@ -6,11 +6,11 @@ import SuburbInput from '@components/Input/SuburbInput/SuburbInput';
 import { FormComponentProps } from 'antd/lib/form';
 import * as styles from './QuoteForm.module.less';
 
-interface  QuoteFormProps extends FormComponentProps {
+interface  QuoteFormProps {
   onIndexChange: any;
 }
 
-export class QuoteFormComponents extends React.Component<QuoteFormProps> {
+export class QuoteFormComponents extends React.Component<QuoteFormProps & FormComponentProps> {
   public suburbRef = React.createRef();
   public componentDidMount() {
     console.info(this.suburbRef.current);
@@ -310,4 +310,6 @@ export class QuoteFormComponents extends React.Component<QuoteFormProps> {
   }
 }
 
-export const QuoteForm = Form.create({ name: 'quote' })(QuoteFormComponents);
+export const QuoteForm = Form.create({ name: 'quote' })(
+  QuoteFormComponents
+) as unknown as React.ComponentClass<QuoteFormProps>;

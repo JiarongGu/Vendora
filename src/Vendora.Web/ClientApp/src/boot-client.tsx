@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { SinkFactory } from 'redux-sink';
-import App from './App';
+import App from './app-client';
 
 // Grab the state from a global variable injected into the server-generated HTML
 const preloadedState = window.__PRELOADED_STATE__;

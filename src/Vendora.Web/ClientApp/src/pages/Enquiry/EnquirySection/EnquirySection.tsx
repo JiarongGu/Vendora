@@ -46,4 +46,4 @@ export class EnquirySectionComponent extends React.Component<
   }
 }
 
-export const EnquirySection = Form.create<EnquirySectionProps>({})(EnquirySectionComponent);
+export const EnquirySection = Form.create<EnquirySectionProps & FormComponentProps>({})(EnquirySectionComponent);

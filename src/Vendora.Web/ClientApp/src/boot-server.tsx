@@ -9,7 +9,7 @@ import { Provider } from 'react-redux';
 import { StaticRouterContext } from 'react-router';
 import { StaticRouter } from 'react-router-dom';
 import { SinkFactory } from 'redux-sink';
-import App from './App';
+import App from './app-client';
 
 export default createServerRenderer(
   async (params: BootFuncParams): Promise<RenderResult> => {
