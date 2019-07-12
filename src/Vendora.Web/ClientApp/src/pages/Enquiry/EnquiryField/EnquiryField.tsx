@@ -1,4 +1,5 @@
 import { CurrencyInput } from '@components';
+import { RenshuInput } from '@components';
 import { IFieldDescriptor } from '@services/enquiry/IFormModel';
 import { Input, InputNumber, Radio, Select } from 'antd';
 import * as React from 'react';
@@ -41,7 +42,7 @@ function mapTextField(descriptor: IFieldDescriptor) {
 }
 
 function mapNumberField(descriptor: IFieldDescriptor) {
-  return <InputNumber className={styles.field} />;
+  return <RenshuInput />;
 }
 
 function mapEmailField(descriptor: IFieldDescriptor) {

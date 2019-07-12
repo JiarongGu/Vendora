@@ -1,11 +1,12 @@
 import { EnquirySink } from '@services/enquiry';
+import { Button, Icon} from 'antd';
 import * as React from 'react';
 import { sinking } from 'redux-sink';
 import { EnquiryNav } from '../EnquiryNav/EnquiryNav';
 import { EnquirySection } from '../EnquirySection/EnquirySection';
 import { IFieldDescriptor } from '@services/enquiry/IFormModel';
+import classnames from 'classnames';
 import * as styles from './Enquiry.module.less';
-import { Button } from 'antd';
 
 interface EnquiryProps {
   enquirySink: EnquirySink;
@@ -44,6 +45,8 @@ export class EnquiryComponent extends React.Component<EnquiryProps> {
     const {
       enquirySink: { currentEnquiry, currentStepName, updateFormFields }
     } = this.props;
+    const prevButton = classnames(styles.prev, styles.navButon);
+    const nextButton = classnames(styles.next, styles.navButon);
     return currentEnquiry ? (
       <div className={styles.container}>
         <div className={styles.nav}>
@@ -55,12 +58,16 @@ export class EnquiryComponent extends React.Component<EnquiryProps> {
               formatSections(currentEnquiry).map((section, index, sections) => (
                 <div key={index} id={section.name} className={styles.sectionContainer}>
                   {index > 0 ?
-                    (<Button className={styles.prevButton} onClick={this.changeSection(sections[index - 1].name)}>Previous Step</Button>) 
+                    (<Button className={prevButton} onClick={this.changeSection(sections[index - 1].name)}>
+                      <Icon type="left-square" />Previous</Button>)
                     : null
                   }
                   <EnquirySection key={section.label} step={index + 1} formSection={section}/>
                   {index < sections.length - 1 ?
-                    (<Button className={styles.nextButton} onClick={this.changeSection(sections[index + 1].name)}>Next Step</Button>) : null}
+                    (<Button className={nextButton} onClick={this.changeSection(sections[index + 1].name)}>
+                      Next Step
+                    <Icon type="right-square" /></Button>) : null
+                  }
                 </div>
             ))}
           </div>

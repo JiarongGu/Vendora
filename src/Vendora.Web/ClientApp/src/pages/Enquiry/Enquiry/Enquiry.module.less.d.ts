@@ -6,10 +6,10 @@ interface CssExports {
   'form-outter': string;
   'formOutter': string;
   'nav': string;
-  'next-button': string;
-  'nextButton': string;
-  'prev-button': string;
-  'prevButton': string;
+  'nav-buton': string;
+  'navButon': string;
+  'next': string;
+  'prev': string;
   'section-container': string;
   'sectionContainer': string;
 }
