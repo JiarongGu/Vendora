@@ -4,10 +4,10 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --env dev --mode development --progress --color --open",
-    "build": "webpack --mode production -p --progress --colors --env prod",
-    "build:ssr": "webpack --mode production -p --progress --colors --env server",
-    "build:all": "npm run build & npm run build:ssr",
+    "start": "webpack-dev-server --env dev --mode development --progress --color --open --project=loan",
+    "build:loan": "webpack --mode production -p --progress --colors --env prod --project=loan",
+    "build:loan-ssr": "webpack --mode production -p --progress --colors --env server --project=loan",
+    "build:all": "npm run build:loan & npm run build:loan-ssr",
     "release": "webpack --mode production -p --progress --colors --env prod --public Prod",
     "format": "prettier --write \"src/**/*.{ts,tsx,css}\""
   },

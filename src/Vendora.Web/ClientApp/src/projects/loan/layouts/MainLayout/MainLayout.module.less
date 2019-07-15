@@ -1,0 +1,46 @@
+
+@import (reference) '../../../../shared/styles/global.less';
+.footer {
+  background-color: @background-dark;
+  color: @background-dark-text;
+}
+
+.logo {
+  width: 100px;
+  height: 100%;
+  text-align: center;
+  color: #000;
+  font-size: 20px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  background-repeat: no-repeat;
+  background-size: initial;
+  background-position: center;
+  background-image: url('/assets/images/abacus_finance_logo.png');
+}
+
+.header {
+  height: @header-height;
+  display: flex;
+  position: fixed;
+  width: 100vw;
+  z-index: 10;
+  background-color: transparent;
+  color: @text-color;
+  justify-content: center;
+
+  &__background {
+    background: #4d4d54;
+    height: @header-height;
+    display: flex;
+    position: fixed;
+    width: 100vw;
+    margin-top: -@header-height;
+    z-index: 5;
+  }
+}
+
+.body {
+  padding-top: @header-height;
+}

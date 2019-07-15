@@ -1,0 +1,1 @@
+export { HomeNews } from './HomeNews';

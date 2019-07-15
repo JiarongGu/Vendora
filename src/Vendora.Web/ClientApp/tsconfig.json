@@ -19,20 +19,10 @@
     "experimentalDecorators": true,
     "suppressImplicitAnyIndexErrors": true,
     "paths": {
-      "@styles": ["src/styles"],
-      "@styles*": ["src/styles*"],
-      "@models": ["src/models"],
-      "@models*": ["src/models*"],
-      "@components": ["src/components"],
-      "@components*": ["src/components*"],
-      "@services": ["src/services"],
-      "@services*": ["src/services*"],
-      "@pages": ["src/pages"],
-      "@pages*": ["src/pages*"],
-      "@layouts": ["src/layouts"],
-      "@layouts*": ["src/layouts*"],
-      "@utilities": ["src/utilities"],
-      "@utilities*": ["src/utilities*"]
+      "@shared": ["src/shared"],
+      "@shared*": ["src/shared*"],
+      "@loan": ["src/projects/loan"],
+      "@loan*": ["src/projects/loan*"]
     },
   },
   "exclude": ["dist", "build", "node_modules", "scripts"]
