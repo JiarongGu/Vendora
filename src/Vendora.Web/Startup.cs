@@ -63,18 +63,45 @@ namespace Vendora.Web
                 apiApp.UseMvc(routes => routes.MapRoute("default", "{controller}/{action=Index}/{id?}"));
             });
 
+            // Add URL prefix, so all middleware below will follow the new request URL
+            app.Use((context, next) =>
+            {
+                // you can have different conditions to add different prefixes
+                context.Request.Path = "/loan" + context.Request.Path;
+                return next.Invoke();
+            });
+
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
 
-            app.UseSpa(spa =>
-            {
-                spa.Options.SourcePath = "ClientApp";
-                //spa.UseSpaPrerendering(options =>
-                //{
-                //    options.BootModulePath = $"{spa.Options.SourcePath}/build/server/bundle.js";
-                //    options.SupplyData = ServiceLocator.Current.GetInstance<ISpaPrerenderingService>().Process;
-                //});
-            });
+            //app.Map("/admin", apiApp =>
+            //{
+            //    app.UseSpa(spa =>
+            //    {
+            //        spa.Options.SourcePath = "ClientApp/build";
+            //        spa.Options.DefaultPage = "/admin/index.html";
+            //        //spa.UseSpaPrerendering(options =>
+            //        //{
+            //        //    options.BootModulePath = $"{spa.Options.SourcePath}/build/server/bundle.js";
+            //        //    options.SupplyData = ServiceLocator.Current.GetInstance<ISpaPrerenderingService>().Process;
+            //        //});
+            //    });
+            //});
+
+            app.Map("/loan", spaApp =>
+                spaApp.UseSpa(spa =>
+                {
+                    spa.Options.SourcePath = "ClientApp/build";
+                    // because the root is 'ClientApp/build' 
+                    // so we need to use the index.html in desktop folder for SSR
+                    spa.Options.DefaultPage = "/loan/index.html";
+                    //spa.UseSpaPrerendering(options =>
+                    //{
+                    //    options.BootModulePath = $"{spa.Options.SourcePath}/loan/server/bundle.js";
+                    //    options.SupplyData = ServiceLocator.Current.GetInstance<ISpaPrerenderingService>().Process;
+                    //});
+                })
+            );
         }
     }
 }
