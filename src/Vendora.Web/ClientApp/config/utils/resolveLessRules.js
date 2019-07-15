@@ -4,9 +4,9 @@ module.exports = function ({
   exclude,
   extractPlugin,
   localIdentName,
-  path,
   sideEffects,
   otherLoaders = [],
+  modifyVars = {}
 }) {
   return ({
     test,
@@ -32,21 +32,14 @@ module.exports = function ({
           loader: 'postcss-loader',
           options: {
             config: {
-              path
+              path: __dirname
             }
           }
         },
         {
           loader: "less-loader",
           options: {
-            modifyVars: {
-              'primary-color': '#637f3f',//green
-              'link-color': '#88ad58',//dark gray
-              'border-color-base': '#637f3f',//dark gray
-              'text-color': '#4d4c53',//dark gray
-              'text-color-secondary': '#9599a5',
-              'border-radius-base': '1px'
-            },
+            modifyVars,
             javascriptEnabled: true
           }
         }
