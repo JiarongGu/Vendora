@@ -47,7 +47,13 @@ export const EnquirySectionComponent = ({ form }: FormComponentProps) => {
             <Form.Item key={descriptor.name} label={descriptor.label}>
               {form.getFieldDecorator(descriptor.name, {
                 rules: descriptor.validationRules
-              })(<EnquiryField fieldDescriptor={descriptor} setValue={handelFieldValue} />)}
+              })(
+                <EnquiryField
+                  fieldDescriptor={descriptor}
+                  setValue={handelFieldValue}
+                  defaultValue={enquirySink.fieldValues[descriptor.name]}
+                />
+              )}
             </Form.Item>
           ) : null
         )}
@@ -71,4 +77,4 @@ export const EnquirySectionComponent = ({ form }: FormComponentProps) => {
   );
 };
 
-export const EnquirySection = Form.create({})(EnquirySectionComponent);
+export const EnquirySection = Form.create()(EnquirySectionComponent);
