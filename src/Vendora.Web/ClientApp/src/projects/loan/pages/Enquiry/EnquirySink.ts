@@ -33,7 +33,7 @@ interface CurrentSection {
 export class EnquirySink {
   @state public form?: FormModel;
   @state public current: CurrentSection = { keys: [], fields: [] };
-  @state public fieldData: { [key: string]: any } = {};
+  @state public fieldValues: { [key: string]: any } = {};
 
   private sectionMap: { [key: string]: string } = {};
   private sections: Array<string>;
@@ -44,15 +44,20 @@ export class EnquirySink {
   constructor(private formSink: FormSink) { }
 
   @effect
-  public open(name: string) {
+  public openSection(name: string) {
     if (this.current.name !== name) {
-      this.updateOpen(name);
+      this.updateCurrentSection(name);
     }
   }
 
   @effect
+  public setFieldValues(fieldsValue) {
+    this.fieldValues = Object.assign({}, this.fieldValues, fieldsValue);
+  }
+
+  @effect
   public submit() {
-    console.log('submit:: ', this.fieldData);
+    console.log('submit:: ', this.fieldValues);
   }
 
   @locationTrigger('/:language/enquiry/:name')
@@ -68,11 +73,11 @@ export class EnquirySink {
     this.updateNameMap(sections);
     this.updateFieldMap(sections);
 
-    this.updateOpen(this.sections[0]);
-    this.fieldData = {};
+    this.updateCurrentSection(this.sections[0]);
+    this.fieldValues = {};
   }
 
-  private updateOpen(name?: string) {
+  private updateCurrentSection(name?: string) {
     const keys: Array<string> = [];
     const fields: Array<FieldDescriptor> = [];
     let previous: string | undefined;
@@ -81,7 +86,7 @@ export class EnquirySink {
     if (name) {
       const mappedSection = this.sectionMap[name];
       if (mappedSection !== name) {
-        this.updateOpen(mappedSection);
+        this.updateCurrentSection(mappedSection);
         return;
       }
 

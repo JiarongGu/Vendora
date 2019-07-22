@@ -38,7 +38,7 @@ export const EnquiryMenu = () => {
         selectedKeys={enquirySink.current.keys}
       >
         {enquirySink.form.metadata.formSections.map((section) =>
-          getSubMenuSection(section, enquirySink.open)
+          getSubMenuSection(section, enquirySink.openSection)
         )}
       </Menu>
     </div>
