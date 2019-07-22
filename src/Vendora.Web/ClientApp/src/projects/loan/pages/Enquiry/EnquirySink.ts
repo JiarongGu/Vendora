@@ -30,7 +30,6 @@ export class EnquirySink {
   @state public current: CurrentSection =  { keys: [], fields: [] };
   @state public fieldData: { [key: string]: any } = {};
 
-  private currentOpen: string;
   private sections: Array<string>;
   private nameMap: { [key: string]: Array<string> } = {};
   private fieldMap: { [key: string]: Array<FieldDescriptor> } = {};
@@ -39,20 +38,9 @@ export class EnquirySink {
   constructor(private formSink: FormSink) {}
 
   @effect
-  public updateState(updateAction: (enquirySink: EnquirySink) => void) {
-    updateAction(this);
-  }
-
-  @effect
-  public updateFormFields() {
-    // call it on answers change
-  }
-
-  @effect
   public open(name: string) {
-    if (this.currentOpen !== name) {
+    if (this.current.name !== name) {
       this.updateOpen(name);
-      this.currentOpen = name;
     }
   }
 

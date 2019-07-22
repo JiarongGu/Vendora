@@ -6,12 +6,25 @@ import { FormSection } from '@loan/services/form/FormModel';
 import { EnquirySink } from '../EnquirySink';
 import * as styles from './EnquiryMenu.module.less';
 
-const getSubMenuSection = (section: FormSection, open: (key: string) => void) => (
-  <Menu.SubMenu key={section.name} title={section.label} onTitleClick={() => open(section.name)}>
-    {section.formSections &&
-      section.formSections.map((subSection) => getSubMenuSection(subSection, open))}
-  </Menu.SubMenu>
-);
+const getSubMenuSection = (section: FormSection, open: (key: string) => void) => {
+  if (section.formSections && section.formSections.length > 0) {
+    return (
+      <Menu.SubMenu
+        key={section.name}
+        title={section.label}
+        onTitleClick={() => open(section.name)}
+      >
+        {section.formSections.map((subSection) => getSubMenuSection(subSection, open))}
+      </Menu.SubMenu>
+    );
+  } else {
+    return (
+      <Menu.Item key={section.name} onClick={() => open(section.name)}>
+        {section.label}
+      </Menu.Item>
+    );
+  }
+};
 
 export const EnquiryMenu = () => {
   const enquirySink = useSink(EnquirySink)!;
