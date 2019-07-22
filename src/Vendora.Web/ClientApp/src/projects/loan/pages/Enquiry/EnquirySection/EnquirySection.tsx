@@ -2,10 +2,25 @@ import { Button, Form, Icon } from 'antd';
 import * as React from 'react';
 import { useSink } from 'redux-sink';
 
+import { FieldDescriptor } from '@loan/services/form/FormModel';
 import { FormComponentProps } from 'antd/lib/form';
 import { EnquiryField } from '../EnquiryField';
 import { EnquirySink } from '../EnquirySink';
 import * as styles from './EnquirySection.module.less';
+
+function isFieldValid(descriptor: FieldDescriptor, fieldValues: { [key: string]: any }): boolean {
+  let valid = true;
+  if (descriptor.fieldDependencies) {
+    valid = descriptor.fieldDependencies.every((dependency) => {
+      const dependencyValue = fieldValues[dependency.name];
+      if (dependencyValue !== undefined) {
+        if (dependency.values.includes(dependencyValue)) return true;
+      }
+      return false;
+    });
+  }
+  return valid;
+}
 
 export const EnquirySectionComponent = ({ form }: FormComponentProps) => {
   const enquirySink = useSink(EnquirySink)!;
@@ -23,30 +38,19 @@ export const EnquirySectionComponent = ({ form }: FormComponentProps) => {
   const handelFieldValue = (name, value) => {
     form.setFieldsValue({ [name]: value });
   };
+
   return (
     <div className={styles.container}>
       <div className={styles.fields}>
-        {enquirySink.current.fields.map((descriptor) => {
-          let valid = true;
-          if (descriptor.fieldDependencies) {
-            valid = descriptor.fieldDependencies.every((dependency) => {
-              const dependencyValue = enquirySink.fieldValues[dependency.name];
-              if (dependencyValue !== undefined) {
-                if (dependency.values.includes(dependencyValue))
-                  return true;
-              }
-              return false;
-            });
-          }
-
-          return valid ? (
+        {enquirySink.current.fields.map((descriptor) =>
+          isFieldValid(descriptor, enquirySink.fieldValues) ? (
             <Form.Item key={descriptor.name} label={descriptor.label}>
               {form.getFieldDecorator(descriptor.name, {
                 rules: descriptor.validationRules
               })(<EnquiryField fieldDescriptor={descriptor} setValue={handelFieldValue} />)}
             </Form.Item>
-          ) : null;
-        })}
+          ) : null
+        )}
       </div>
       <div className={styles.buttons}>
         <Button className={styles.button} onClick={handelNext}>
