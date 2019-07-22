@@ -42,21 +42,26 @@ export const EnquirySectionComponent = ({ form }: FormComponentProps) => {
   return (
     <div className={styles.container}>
       <div className={styles.fields}>
-        {enquirySink.current.fields.map((descriptor) =>
-          isFieldValid(descriptor, enquirySink.fieldValues) ? (
+        {enquirySink.current.fields.map((descriptor) => {
+          if (!isFieldValid(descriptor, enquirySink.fieldValues))
+            return null;
+          const initialValue = enquirySink.fieldValues[descriptor.name];
+
+          return (
             <Form.Item key={descriptor.name} label={descriptor.label}>
               {form.getFieldDecorator(descriptor.name, {
+                initialValue,
                 rules: descriptor.validationRules
               })(
                 <EnquiryField
+                  initialValue={initialValue}
                   fieldDescriptor={descriptor}
                   setValue={handelFieldValue}
-                  defaultValue={enquirySink.fieldValues[descriptor.name]}
                 />
               )}
             </Form.Item>
-          ) : null
-        )}
+          );
+        })}
       </div>
       <div className={styles.buttons}>
         <Button className={styles.button} onClick={handelNext}>

@@ -10,7 +10,7 @@ type SetValue = (name: string, value: any) => void;
 interface EnquiryFieldProps {
   fieldDescriptor: FieldDescriptor;
   setValue: SetValue;
-  defaultValue?: any;
+  initialValue?: any;
 }
 
 function mapRadioField(descriptor: FieldDescriptor, defaultValue: any, setValue: SetValue) {
@@ -36,6 +36,7 @@ function mapSelectField(descriptor: FieldDescriptor, defaultValue: any, setValue
     <Select
       className={styles.field}
       placeholder={descriptor.placeholder}
+      defaultValue={defaultValue}
       onChange={(value) => setValue(descriptor.name, value)}
     >
       {descriptor.fieldOptions &&
@@ -51,26 +52,33 @@ function mapSelectField(descriptor: FieldDescriptor, defaultValue: any, setValue
 }
 
 function mapCurrencyField(descriptor: FieldDescriptor, defaultValue: any, setValue: SetValue) {
-  return <CurrencyInput onChange={(value) => setValue(descriptor.name, value)} />;
+  return (
+    <CurrencyInput
+      defaultValue={defaultValue}
+      onChange={(value) => setValue(descriptor.name, value)}
+    />
+  );
 }
 
-function mapTextField(descriptor: FieldDescriptor, setValue: SetValue) {
+function mapTextField(descriptor: FieldDescriptor, defaultValue: any, setValue: SetValue) {
   return (
     <Input
       className={styles.field}
+      defaultValue={defaultValue}
       onChange={(event) => setValue(descriptor.name, event.target.value)}
     />
   );
 }
 
 function mapNumberField(descriptor: FieldDescriptor, defaultValue: any, setValue: SetValue) {
-  return <InputNumber onChange={(value) => setValue(descriptor.name, value)} />;
+  return <InputNumber defaultValue={defaultValue} onChange={(value) => setValue(descriptor.name, value)} />;
 }
 
-function mapEmailField(descriptor: FieldDescriptor, setValue: SetValue) {
+function mapEmailField(descriptor: FieldDescriptor, defaultValue: any, setValue: SetValue) {
   return (
     <Input
       className={styles.field}
+      defaultValue={defaultValue}
       onChange={(event) => setValue(descriptor.name, event.target.value)}
     />
   );
@@ -80,6 +88,7 @@ function mapPhoneField(descriptor: FieldDescriptor, defaultValue: any, setValue:
   return (
     <Input
       className={styles.field}
+      defaultValue={defaultValue}
       onChange={(event) => setValue(descriptor.name, event.target.value)}
     />
   );
@@ -113,16 +122,11 @@ const fieldMap: {
 };
 
 export class EnquiryField extends React.Component<EnquiryFieldProps> {
-  public componentDidMount() {
-    const { fieldDescriptor, setValue, defaultValue } = this.props;
-    setValue(fieldDescriptor.name, defaultValue);
-  }
-
   public render() {
-    const { fieldDescriptor, setValue, defaultValue } = this.props;
+    const { fieldDescriptor, setValue, initialValue } = this.props;
     const mapper = fieldMap[fieldDescriptor.type];
     return mapper ? (
-      <div className={styles.container}>{mapper(fieldDescriptor, defaultValue, setValue)}</div>
+      <div className={styles.container}>{mapper(fieldDescriptor, initialValue, setValue)}</div>
     ) : null;
   }
 }

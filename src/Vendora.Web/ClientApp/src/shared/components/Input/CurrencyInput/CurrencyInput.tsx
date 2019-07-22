@@ -3,6 +3,7 @@ import * as React from 'react';
 import * as styles from './CurrencyInput.module.less';
 
 const formatInputCurrency = (value) => {
+  if (value === undefined) return '';
   value = value.replace(/[^\d]/g, '');
   const origin = value === '' ? value : Number(value.split(',').join('')) + '';
   return new Intl.NumberFormat('en-AU', {
@@ -23,9 +24,11 @@ function CurrencyInput(props, ref) {
     setDisplay(newDisplay);
     props.onChange(formatOutputValue(newDisplay));
   };
+
   return (
     <Input
       ref={ref}
+      defaultValue={props.defaultValue}
       className={styles.container}
       value={display}
       addonBefore={<Icon type={'dollar'} />}
