@@ -1,4 +1,4 @@
-import { Form, Button, Icon } from 'antd';
+import { Button, Form, Icon } from 'antd';
 import * as React from 'react';
 import { useSink } from 'redux-sink';
 
@@ -26,7 +26,7 @@ export const EnquirySectionComponent = (props: FormComponentProps) => {
           </Form.Item>
         ))}
       </div>
-      <div>
+      <div className={styles.buttons}>
         {current.previous && (
           <Button onClick={() => enquirySink.open(current.previous!)}>
             <Icon type="left-square" />

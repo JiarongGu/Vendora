@@ -1,15 +1,20 @@
 .container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 
   &:not(:last-child) {
     margin-bottom: 60px;
   }
 }
 
+.buttons {
+  display: flex;
+  flex-direction: column;
+}
 
 .fields {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  height: 80vh;
 }

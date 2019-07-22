@@ -51,6 +51,7 @@ module.exports = function (paths, config) {
         exclude: e.exclude,
         sideEffects: e.sideEffects,
         modifyVars: e.modifyVars,
+        otherLoaders: e.otherLoaders,
         extractPlugin: new ExtractTextPlugin({ filename: e.output }),
       }))
     cssExtracts = cssLoaders.map(e => resolveLessRules(e));

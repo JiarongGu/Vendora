@@ -32,7 +32,11 @@ export const EnquiryMenu = () => {
 
   return (
     <div className={styles.container}>
-      <Menu mode={'inline'} openKeys={enquirySink.current.keys}>
+      <Menu
+        mode={'inline'}
+        openKeys={enquirySink.current.keys}
+        selectedKeys={enquirySink.current.keys}
+      >
         {enquirySink.form.metadata.formSections.map((section) =>
           getSubMenuSection(section, enquirySink.open)
         )}

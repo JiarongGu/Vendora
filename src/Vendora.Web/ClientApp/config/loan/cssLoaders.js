@@ -30,6 +30,7 @@ module.exports = [
     test: lessModuleRegex,
     output: 'static/css/module.[md5:contenthash:hex:20].css',
     localIdentName: '[name]__[local]__[hash:base64:5]',
+    otherLoaders: ['css-type-loader'],
     modifyVars
   }
 ]
