@@ -27,16 +27,16 @@ export const EnquirySectionComponent = (props: FormComponentProps) => {
         ))}
       </div>
       <div className={styles.buttons}>
-        {current.previous && (
-          <Button onClick={() => enquirySink.open(current.previous!)}>
-            <Icon type="left-square" />
-            Previous
+        {current.next && (
+          <Button className={styles.button} onClick={() => enquirySink.open(current.next!)}>
+            <Icon type="right-square" />
+            <span className={styles.buttonText}>Next</span>
           </Button>
         )}
-        {current.next && (
-          <Button onClick={() => enquirySink.open(current.next!)}>
-            <Icon type="right-square" />
-            Next
+        {current.previous && (
+          <Button className={styles.button} onClick={() => enquirySink.open(current.previous!)}>
+            <Icon type="left-square" />
+            <span className={styles.buttonText}>Previous</span>
           </Button>
         )}
       </div>

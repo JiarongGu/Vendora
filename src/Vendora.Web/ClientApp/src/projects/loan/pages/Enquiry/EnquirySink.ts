@@ -16,6 +16,11 @@ interface FieldMap {
   map: Array<FieldDescriptor>;
 }
 
+interface SectionMap {
+  name: string;
+  map: string;
+}
+
 interface CurrentSection {
   keys: Array<string>;
   fields: Array<FieldDescriptor>;
@@ -27,15 +32,16 @@ interface CurrentSection {
 @sink('enquirySink', FormSink)
 export class EnquirySink {
   @state public form?: FormModel;
-  @state public current: CurrentSection =  { keys: [], fields: [] };
+  @state public current: CurrentSection = { keys: [], fields: [] };
   @state public fieldData: { [key: string]: any } = {};
 
+  private sectionMap: { [key: string]: string } = {};
   private sections: Array<string>;
   private nameMap: { [key: string]: Array<string> } = {};
   private fieldMap: { [key: string]: Array<FieldDescriptor> } = {};
   private orderMap: { [key: string]: number };
 
-  constructor(private formSink: FormSink) {}
+  constructor(private formSink: FormSink) { }
 
   @effect
   public open(name: string) {
@@ -57,7 +63,7 @@ export class EnquirySink {
     this.updateNameMap(sections);
     this.updateFieldMap(sections);
 
-    this.updateOpen(sections[0] && sections[0].name);
+    this.updateOpen(this.sections[0]);
     this.fieldData = {};
   }
 
@@ -68,20 +74,38 @@ export class EnquirySink {
     let next: string | undefined;
 
     if (name) {
+      const mappedSection = this.sectionMap[name];
+      if (mappedSection !== name) {
+        this.updateOpen(mappedSection);
+        return;
+      }
+
+      const mapOrder = this.orderMap[name];
+
+      previous = this.sections[mapOrder - 1];
+      next = this.sections[mapOrder + 1];
+
+      const mapFields = this.fieldMap[name];
+      if (mapFields) {
+        fields.push(...mapFields);
+      }
+
       keys.push(name);
 
       const mapKeys = this.nameMap[name];
-      if (mapKeys) keys.push(...mapKeys);
-
-      const mapFields = this.fieldMap[name];
-      if (mapFields) fields.push(...mapFields);
-
-      const mapOrder = this.orderMap[name];
-      previous = this.sections[mapOrder - 1];
-      next = this.sections[mapOrder + 1];
+      if (mapKeys) {
+        keys.push(...mapKeys);
+      }
     }
 
     this.current = { fields, keys, name, previous, next };
+  }
+
+  private updateOrderMap(formSections: Array<FormSection>): void {
+    const sectionMaps = _.flatMap(formSections.map(section => this.getOrderMap(section)));
+    this.sectionMap = sectionMaps.reduce((map, sectionMap) => (map[sectionMap.name] = sectionMap.map, map), {});
+    this.sections = sectionMaps.filter(x => x.map === x.name).map(x => x.name);
+    this.orderMap = this.sections.reduce((map, name, index) => (map[name] = index, map), {});
   }
 
   private updateFieldMap(formSections: Array<FormSection>): void {
@@ -94,15 +118,6 @@ export class EnquirySink {
     this.nameMap = _.flatMap(formSections.map(
       section => this.getNameMap(section)
     )).reduce((map, current) => (map[current.name] = current.map, map), {});
-  }
-
-  private updateOrderMap(formSections: Array<FormSection>): void {
-    this.sections = _.flatMap(formSections.map(
-      section => this.getOrderMap(section)
-    ));
-
-    this.orderMap = this.sections
-      .reduce((map, name, index) => (map[name] = index, map), {});
   }
 
   private getNameMap(fromSection: FormSection): Array<{ name: string, map: Array<string> }> {
@@ -140,14 +155,18 @@ export class EnquirySink {
     return fieldMaps;
   }
 
-  private getOrderMap(fromSection: FormSection): Array<string> {
-    const orderMaps: Array<string> = [fromSection.name];
+  private getOrderMap(fromSection: FormSection): Array<SectionMap> {
+    const orderMaps: Array<SectionMap> = [];
     const sections = fromSection.formSections;
+    const subOrderMap = sections && _.flatMap(sections.map(section => this.getOrderMap(section))) || [];
 
-    if (sections) {
-      const subOrderMap = _.flatMap(sections.map(section => this.getOrderMap(section)));
-      orderMaps.push(...subOrderMap);
+    if (fromSection.fieldDescriptors && fromSection.fieldDescriptors.length > 0) {
+      orderMaps.push({ name: fromSection.name, map: fromSection.name });
+    } else {
+      orderMaps.push({ name: fromSection.name, map: subOrderMap[0].map });
     }
+
+    orderMaps.push(...subOrderMap);
     return orderMaps;
   }
 }

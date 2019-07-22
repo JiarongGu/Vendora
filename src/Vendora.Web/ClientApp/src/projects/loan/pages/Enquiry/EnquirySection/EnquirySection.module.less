@@ -1,6 +1,8 @@
 .container {
   display: flex;
   flex-direction: column;
+  height: 100%;
+  position: relative;
 
   &:not(:last-child) {
     margin-bottom: 60px;
@@ -12,9 +14,22 @@
   flex-direction: column;
 }
 
+.button {
+  display: flex;
+  align-items: center;
+
+  &:not(:first-child) {
+   margin-top: 10px;
+  }
+
+  &__text {
+    flex: 1;
+  }
+}
+
 .fields {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  height: 80vh;
+  height: calc(100% - 100px);
 }
