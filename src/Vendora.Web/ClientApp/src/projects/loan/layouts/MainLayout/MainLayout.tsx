@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Switch } from 'react-router';
 import { Link, Route } from 'react-router-dom';
 
-import { Enquiry, Home, Quote, User } from '@loan/pages';
+import { Enquiry, Home, User } from '@loan/pages';
 import { Error404 } from '@loan/pages/Error/Error404';
 import { Footer, NavMenu } from '@shared/components';
 import { CommonSink } from '@shared/services/common';
@@ -39,8 +39,6 @@ export class MainLayout extends React.PureComponent<MainLayoutProps> {
         <div id={'main-layout'} className={styles.body}>
           <div className={styles.headerBackground} />
           <Switch>
-            <Route strict={true} path={`/${commonSink.languageRegex}/user`} component={User} />
-            <Route strict={true} path={`/${commonSink.languageRegex}/quote`} component={Quote} />
             <Route
               exact={true}
               path={`/${commonSink.languageRegex}/enquiry/:name`}
@@ -60,7 +58,7 @@ export class MainLayout extends React.PureComponent<MainLayoutProps> {
     this.setState({
       activeClass: 'banner'
     });
-  }
+  };
 }
 
 export default sinking(CommonSink)(MainLayout) as React.ComponentClass;

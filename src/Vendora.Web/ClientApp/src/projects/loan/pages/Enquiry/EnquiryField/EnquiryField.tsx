@@ -1,7 +1,8 @@
-import { FieldDescriptor } from '@loan/services/enquiry';
-import { CurrencyInput, RenshuInput } from '@shared/components';
 import { Input, InputNumber, Radio, Select } from 'antd';
 import * as React from 'react';
+
+import { FieldDescriptor } from '@loan/services/form/FormModel';
+import { CurrencyInput, RenshuInput } from '@shared/components';
 import * as styles from './EnquiryField.module.less';
 
 interface EnquiryFieldProps {
@@ -11,11 +12,14 @@ interface EnquiryFieldProps {
 function mapRadioField(descriptor: FieldDescriptor) {
   return (
     <Radio.Group>
-      {descriptor.fieldOptions.map((option) => (
-        <Radio key={option.value} value={option.value}>
-          {option.label}
-        </Radio>
-      ))}
+      {descriptor.fieldOptions &&
+        descriptor.fieldOptions.map((option) =>
+          option ? (
+            <Radio key={option.value.toString()} value={option.value}>
+              {option.label}
+            </Radio>
+          ) : null
+        )}
     </Radio.Group>
   );
 }
@@ -23,11 +27,14 @@ function mapRadioField(descriptor: FieldDescriptor) {
 function mapSelectField(descriptor: FieldDescriptor) {
   return (
     <Select className={styles.field} placeholder={descriptor.placeholder}>
-      {descriptor.fieldOptions.map((option) => (
-        <Select.Option key={option.value} value={option.value}>
-          {option.label}
-        </Select.Option>
-      ))}
+      {descriptor.fieldOptions &&
+        descriptor.fieldOptions.map((option) =>
+          option ? (
+            <Select.Option key={option.value.toString()} value={option.value.toString()}>
+              {option.label}
+            </Select.Option>
+          ) : null
+        )}
     </Select>
   );
 }
@@ -62,7 +69,6 @@ const fieldMap: { [key: string]: (descriptor?: FieldDescriptor) => JSX.Element }
   phone: mapPhoneField
 };
 export class EnquiryField extends React.Component<EnquiryFieldProps> {
-
   public render() {
     const { fieldDescriptor } = this.props;
     const mapper = fieldMap[fieldDescriptor.type];

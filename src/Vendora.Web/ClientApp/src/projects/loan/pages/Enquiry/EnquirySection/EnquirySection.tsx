@@ -1,12 +1,13 @@
-import { FieldDescriptor, FormSection } from '@loan/services/enquiry';
 import { Form } from 'antd';
-import { FormComponentProps } from 'antd/lib/form';
 import * as React from 'react';
+
+import { FieldDescriptor } from '@loan/services/form/FormModel';
+import { FormComponentProps } from 'antd/lib/form';
 import { EnquiryField } from '../EnquiryField';
 import * as styles from './EnquirySection.module.less';
 
 interface EnquirySectionProps {
-  formSection: FormSection;
+  formSection: any;
   step: number;
 }
 
@@ -34,7 +35,7 @@ export class EnquirySectionComponent extends React.Component<
               ) :
               (
                 <Form.Item key={descriptor.name} label={descriptor.label}>
-                  {getFieldDecorator(descriptor.name, {
+                  {getFieldDecorator<string>(descriptor.name, {
                     rules: descriptor.validationRules
                   })(<EnquiryField fieldDescriptor={descriptor} />)}
                 </Form.Item>

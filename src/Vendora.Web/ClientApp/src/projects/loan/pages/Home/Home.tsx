@@ -1,7 +1,5 @@
 import * as React from 'react';
-import { sink, sinking, state, trigger } from 'redux-sink';
 
-import { CommonSink, SettingService } from '@shared/services/common';
 import { HomeBanks } from './HomeBanks';
 import { HomeContact } from './HomeContact';
 import { HomeContent } from './HomeContent';
@@ -16,30 +14,8 @@ export interface HomeContentSettings {
   newsHeading?: string;
 }
 
-interface HomeProps {
-  homeSink: HomeSink;
-}
-
-@sink('homeSink', CommonSink)
-class HomeSink {
-  @state public settings: HomeContentSettings = {};
-
-  constructor(private commonSink: CommonSink) {}
-
-  @trigger('commonSink/settings')
-  public async updateSettings(setting: SettingService) {
-    if (this.commonSink.pathname === '') {
-      this.settings = await setting.get('home');
-    }
-  }
-}
-
-class Home extends React.PureComponent<HomeProps> {
+export default class Home extends React.PureComponent {
   public render() {
-    const {
-      homeSink: { settings }
-    } = this.props;
-
     return (
       <>
         <HomeInterestRate />
@@ -49,11 +25,9 @@ class Home extends React.PureComponent<HomeProps> {
         <HomeIntroduction />
         <HomeCustomerReview />
         <HomeContact />
-        <HomeNews settings={settings} />
+        <HomeNews />
         <HomeSocial />
       </>
     );
   }
 }
-
-export default sinking(HomeSink)(Home) as React.ComponentClass;

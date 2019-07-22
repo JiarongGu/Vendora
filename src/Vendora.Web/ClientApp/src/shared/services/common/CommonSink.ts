@@ -1,33 +1,18 @@
 import { matchPath } from 'react-router';
 import { effect, sink, state, trigger } from 'redux-sink';
-import { SettingService } from './SettingService';
 
 @sink('commonSink')
 export class CommonSink {
-  @state public settings: SettingService;
-  @state public language: string = 'zh-cn';
+  @state public language: string = '';
   @state public pathname: string = '';
 
-  @state public supportedLanguages: string[] = ['zh-cn', 'en-gb'];
+  @state public supportedLanguages: Array<string> = ['zh-cn', 'en-gb'];
   @state public languageRegex = `:language(${this.supportedLanguages.join('|').toLowerCase()})`;
-
-  private settingServiceMap: Map<string, SettingService> = new Map();
-
-  @effect
-  public setServiceByLanguage(language: string) {
-    let service = this.settingServiceMap.get(language);
-    if (!service) {
-      service = new SettingService(language);
-      this.settingServiceMap.set(language, service);
-    }
-    this.settings = service;
-  }
 
   @effect
   public setLanguage(language: string) {
     if (this.language !== language) {
       this.language = language;
-      this.setServiceByLanguage(language);
     }
   }
 
@@ -47,7 +32,7 @@ export class CommonSink {
       this.setLanguage(matches.params.language);
       pathname = location.pathname.replace(this.language, '');
     } else {
-      this.setServiceByLanguage(this.language);
+      this.setLanguage('en-gb');
     }
 
     if (pathname[0] === '/') {

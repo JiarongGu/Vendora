@@ -1,18 +1,19 @@
 import { Button, Checkbox, Input } from 'antd';
 import * as classNames from 'classnames';
 import * as React from 'react';
-import { HomeContentSettings } from '../Home';
+import { useSink } from 'redux-sink';
+
+import { SettingSink } from '@loan/services/setting';
+
 import * as sharedStyles from '../HomeShared.module.less';
 import * as styles from './HomeNews.module.less';
 
-interface HomeNewsProps {
-  settings?: HomeContentSettings;
-}
+export const HomeNews = () => {
+  const setting = useSink(SettingSink)!;
 
-export const HomeNews = ({ settings }: HomeNewsProps) =>
-  settings ? (
+  return (
     <div className={classNames(styles.container, 'u-flex', 'u-flexColumn', 'u-flexSpaceBetween')}>
-      <div className={styles.heading}>{settings.newsHeading}</div>
+      <div className={styles.heading}>{setting.get('home.newsHeading')}</div>
       <div className={styles.title}>
         <span className={sharedStyles.titleDot}>
           What’s happening?
@@ -29,4 +30,5 @@ export const HomeNews = ({ settings }: HomeNewsProps) =>
         </Checkbox>
       </div>
     </div>
-  ) : null;
+  );
+};

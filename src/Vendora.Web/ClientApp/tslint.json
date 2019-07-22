@@ -1,9 +1,6 @@
 {
   "defaultSeverity": "error",
-  "extends": [
-    "tslint:recommended",
-    "tslint-react"
-  ],
+  "extends": ["tslint:recommended", "tslint-react"],
   "jsRules": {},
   "rules": {
     "quotemark": [true, "single", "jsx-double"],
@@ -14,8 +11,10 @@
     "jsx-no-multiline-js": false,
     "jsx-wrap-multiline": false,
     "trailing-comma": false,
+    "only-arrow-functions": false,
     "curly": false,
     "max-classes-per-file": 0,
+    "arrow-parens": false,
     "array-type": [true, "generic"]
   },
   "rulesDirectory": []
