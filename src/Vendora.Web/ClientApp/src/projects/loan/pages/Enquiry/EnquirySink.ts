@@ -50,6 +50,11 @@ export class EnquirySink {
     }
   }
 
+  @effect
+  public submit() {
+    console.log('submit:: ', this.fieldData);
+  }
+
   @locationTrigger('/:language/enquiry/:name')
   public async getFormTrigger(matches: match<EnquiryMatches>) {
     this.form = this.formSink.get(matches.params.name);

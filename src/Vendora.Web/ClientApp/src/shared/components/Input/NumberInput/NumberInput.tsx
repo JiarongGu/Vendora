@@ -1,6 +1,6 @@
 import { Button, Icon, Input } from 'antd';
 import * as React from 'react';
-import * as styles from './RenshuInput.module.less';
+import * as styles from './NumberInput.module.less';
 
 const formatInputNumber = (value) => {
   value = value.replace(/[^\d]/g, '');
@@ -11,7 +11,7 @@ const formatInputNumber = (value) => {
   return origin;
 };
 
-function RenshuInput(props, ref) {
+function NumberInput(props, ref) {
   const [display, setDisplay] = React.useState('1');
   const onchange = (input: string) => {
     const newDisplay = formatInputNumber(input);
@@ -40,4 +40,4 @@ function RenshuInput(props, ref) {
   );
 }
 
-export default React.forwardRef(RenshuInput);
+export default React.forwardRef(NumberInput);

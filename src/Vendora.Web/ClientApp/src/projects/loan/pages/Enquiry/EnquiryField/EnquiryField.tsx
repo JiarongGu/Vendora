@@ -2,16 +2,19 @@ import { Input, InputNumber, Radio, Select } from 'antd';
 import * as React from 'react';
 
 import { FieldDescriptor } from '@loan/services/form/FormModel';
-import { CurrencyInput, RenshuInput } from '@shared/components';
+import { CurrencyInput, NumberInput } from '@shared/components';
 import * as styles from './EnquiryField.module.less';
+
+type SetValue = (name: string, value: any) => void;
 
 interface EnquiryFieldProps {
   fieldDescriptor: FieldDescriptor;
+  setValue: SetValue;
 }
 
-function mapRadioField(descriptor: FieldDescriptor) {
+function mapRadioField(descriptor: FieldDescriptor, setValue: SetValue) {
   return (
-    <Radio.Group>
+    <Radio.Group onChange={(e) => setValue(descriptor.name, e.target.value)}>
       {descriptor.fieldOptions &&
         descriptor.fieldOptions.map((option) =>
           option ? (
@@ -24,9 +27,13 @@ function mapRadioField(descriptor: FieldDescriptor) {
   );
 }
 
-function mapSelectField(descriptor: FieldDescriptor) {
+function mapSelectField(descriptor: FieldDescriptor, setValue: SetValue) {
   return (
-    <Select className={styles.field} placeholder={descriptor.placeholder}>
+    <Select
+      className={styles.field}
+      placeholder={descriptor.placeholder}
+      onChange={(value) => setValue(descriptor.name, value)}
+    >
       {descriptor.fieldOptions &&
         descriptor.fieldOptions.map((option) =>
           option ? (
@@ -39,39 +46,69 @@ function mapSelectField(descriptor: FieldDescriptor) {
   );
 }
 
-function mapCurrencyField(descriptor: FieldDescriptor) {
-  return <CurrencyInput />;
+function mapCurrencyField(descriptor: FieldDescriptor, setValue: SetValue) {
+  return <CurrencyInput onChange={(value) => setValue(descriptor.name, value)} />;
 }
 
-function mapTextField(descriptor: FieldDescriptor) {
-  return <Input className={styles.field} />;
+function mapTextField(descriptor: FieldDescriptor, setValue: SetValue) {
+  return (
+    <Input
+      className={styles.field}
+      onChange={(event) => setValue(descriptor.name, event.target.value)}
+    />
+  );
 }
 
-function mapNumberField(descriptor: FieldDescriptor) {
-  return <RenshuInput />;
+function mapNumberField(descriptor: FieldDescriptor, setValue: SetValue) {
+  return <InputNumber onChange={(value) => setValue(descriptor.name, value)} />;
 }
 
-function mapEmailField(descriptor: FieldDescriptor) {
-  return <Input className={styles.field} />;
+function mapEmailField(descriptor: FieldDescriptor, setValue: SetValue) {
+  return (
+    <Input
+      className={styles.field}
+      onChange={(event) => setValue(descriptor.name, event.target.value)}
+    />
+  );
 }
 
-function mapPhoneField(descriptor: FieldDescriptor) {
-  return <Input className={styles.field} />;
+function mapPhoneField(descriptor: FieldDescriptor, setValue: SetValue) {
+  return (
+    <Input
+      className={styles.field}
+      onChange={(event) => setValue(descriptor.name, event.target.value)}
+    />
+  );
 }
 
-const fieldMap: { [key: string]: (descriptor?: FieldDescriptor) => JSX.Element } = {
+function mapSuburbField(descriptor: FieldDescriptor, setValue: SetValue) {
+  return (
+    <Input
+      className={styles.field}
+      onChange={(event) => setValue(descriptor.name, event.target.value)}
+    />
+  );
+}
+
+const fieldMap: {
+  [key: string]: (descriptor: FieldDescriptor, setValue: SetValue) => JSX.Element;
+} = {
   radio: mapRadioField,
   select: mapSelectField,
   currency: mapCurrencyField,
   text: mapTextField,
   number: mapNumberField,
   email: mapEmailField,
-  phone: mapPhoneField
+  phone: mapPhoneField,
+  suburb: mapSuburbField
 };
+
 export class EnquiryField extends React.Component<EnquiryFieldProps> {
   public render() {
-    const { fieldDescriptor } = this.props;
+    const { fieldDescriptor, setValue } = this.props;
     const mapper = fieldMap[fieldDescriptor.type];
-    return mapper ? <div className={styles.container}>{mapper(fieldDescriptor)}</div> : null;
+    return mapper ? (
+      <div className={styles.container}>{mapper(fieldDescriptor, setValue)}</div>
+    ) : null;
   }
 }
