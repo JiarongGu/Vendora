@@ -10,10 +10,12 @@ const modifyVars = {
   'border-radius-base': '1px'
 }
 
+const output = (name) => `static/css/${name}.[md5:contenthash:hex:20].css`;
+
 module.exports = [
   {
     test: lessRegex,
-    output: 'static/css/global.[md5:contenthash:hex:20].css',
+    output: output('global'),
     localIdentName: '[local]',
     exclude: [ lessAntdRegex, lessModuleRegex ],
     sideEffects: true,
@@ -21,14 +23,14 @@ module.exports = [
   },
   {
     test: lessAntdRegex,
-    output: 'static/css/antd.[md5:contenthash:hex:20].css',
+    output: output('antd'),
     localIdentName: '[local]',
     sideEffects: true,
     modifyVars
   },
   {
     test: lessModuleRegex,
-    output: 'static/css/module.[md5:contenthash:hex:20].css',
+    output: output('module'),
     localIdentName: '[name]__[local]__[hash:base64:5]',
     otherLoaders: ['css-type-loader'],
     modifyVars

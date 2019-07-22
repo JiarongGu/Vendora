@@ -22,7 +22,7 @@ export class EnquiryComponent extends React.Component<EnquiryProps> {
         targetEl.scrollIntoView({ behavior: 'smooth', block: 'end' });
       }
     };
-  };
+  }
 
   public render() {
     return (
