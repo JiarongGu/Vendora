@@ -1,50 +1,47 @@
-import { Form } from 'antd';
+import { Form, Button, Icon } from 'antd';
 import * as React from 'react';
+import { useSink } from 'redux-sink';
 
 import { FieldDescriptor } from '@loan/services/form/FormModel';
 import { FormComponentProps } from 'antd/lib/form';
 import { EnquiryField } from '../EnquiryField';
+import { EnquirySink } from '../EnquirySink';
 import * as styles from './EnquirySection.module.less';
 
-interface EnquirySectionProps {
-  formSection: any;
-  step: number;
-}
+export const EnquirySectionComponent = (props: FormComponentProps) => {
+  const {
+    form: { getFieldDecorator }
+  } = props;
+  const enquirySink = useSink(EnquirySink)!;
+  const current = enquirySink.current;
 
-function checkFieldDependencies(descriptor: FieldDescriptor) {
-  if (!descriptor.fieldDependencies || descriptor.fieldDependencies.length === 0) return true;
-  return false;
-}
-
-export class EnquirySectionComponent extends React.Component<
-  EnquirySectionProps & FormComponentProps
-> {
-  public render() {
-    const {
-      formSection,
-      step,
-      form: { getFieldDecorator }
-    } = this.props;
-    return (
-      <div className={styles.container}>
-        <div className={styles.fields}>
-          {formSection.fieldDescriptors.map((descriptor, index) =>
-            checkFieldDependencies(descriptor) ?
-              descriptor.type === 'group' ? (
-                <EnquirySection key={descriptor.label} step={index + 1} formSection={descriptor}/>
-              ) :
-              (
-                <Form.Item key={descriptor.name} label={descriptor.label}>
-                  {getFieldDecorator<string>(descriptor.name, {
-                    rules: descriptor.validationRules
-                  })(<EnquiryField fieldDescriptor={descriptor} />)}
-                </Form.Item>
-              ) : null
-          )}
-        </div>
+  return (
+    <div className={styles.container}>
+      <div className={styles.fields}>
+        {enquirySink.current.fields.map((descriptor) => (
+          <Form.Item key={descriptor.name} label={descriptor.label}>
+            {getFieldDecorator(descriptor.name, {
+              rules: descriptor.validationRules
+            })(<EnquiryField fieldDescriptor={descriptor} />)}
+          </Form.Item>
+        ))}
       </div>
-    );
-  }
-}
+      <div>
+        {current.previous && (
+          <Button onClick={() => enquirySink.open(current.previous!)}>
+            <Icon type="left-square" />
+            Previous
+          </Button>
+        )}
+        {current.next && (
+          <Button onClick={() => enquirySink.open(current.next!)}>
+            <Icon type="right-square" />
+            Next
+          </Button>
+        )}
+      </div>
+    </div>
+  );
+};
 
-export const EnquirySection = Form.create<EnquirySectionProps & FormComponentProps>({})(EnquirySectionComponent);
+export const EnquirySection = Form.create({})(EnquirySectionComponent);

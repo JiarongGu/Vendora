@@ -13,7 +13,7 @@
     "trailing-comma": false,
     "only-arrow-functions": false,
     "curly": false,
-    "max-classes-per-file": 0,
+    "max-classes-per-file": false,
     "arrow-parens": false,
     "array-type": [true, "generic"]
   },
