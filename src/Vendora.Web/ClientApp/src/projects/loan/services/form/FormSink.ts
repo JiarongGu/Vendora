@@ -20,7 +20,8 @@ export class FormSink {
   @languageTrigger
   public languageChangeTrigger(language: string): void {
     this.get = (name: string) => {
-      return formGroups[language].find(x => x.name === name);
+      const formGroup = formGroups[language];
+      return formGroup && formGroup.find(x => x.name === name);
     }
   }
 }
