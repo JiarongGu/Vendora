@@ -1,4 +1,5 @@
 import { Button, Form, Icon } from 'antd';
+import * as classNames from 'classnames';
 import * as React from 'react';
 import { useSink } from 'redux-sink';
 
@@ -48,7 +49,8 @@ export const EnquirySectionComponent = ({ form }: FormComponentProps) => {
           const initialValue = enquirySink.fieldValues[descriptor.name];
 
           return (
-            <Form.Item key={descriptor.name} label={descriptor.label}>
+            <Form.Item key={descriptor.name}>
+              <h3>{descriptor.label}</h3>
               {form.getFieldDecorator(descriptor.name, {
                 initialValue,
                 rules: descriptor.validationRules
@@ -64,17 +66,17 @@ export const EnquirySectionComponent = ({ form }: FormComponentProps) => {
         })}
       </div>
       <div className={styles.buttons}>
-        <Button className={styles.button} onClick={handelNext}>
-          <Icon type="right-square" />
-          <span className={styles.buttonText}>{current.next ? 'Next' : 'Submit'}</span>
+        <Button className={classNames(styles.button, styles.buttonSuccess)} onClick={handelNext}>
+          <Icon className={styles.buttonIcon} type={'right-square'} />
+          <span className={styles.buttonText}>{current.next ? 'NEXT' : 'SUBMIT'}</span>
         </Button>
         {current.previous && (
           <Button
             className={styles.button}
             onClick={() => enquirySink.openSection(current.previous!)}
           >
-            <Icon type="left-square" />
-            <span className={styles.buttonText}>Previous</span>
+            <Icon className={styles.buttonIcon} type={'left-square'} />
+            <span className={styles.buttonText}>PREVIOUS</span>
           </Button>
         )}
       </div>

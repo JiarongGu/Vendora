@@ -2,7 +2,11 @@
 
 interface CssExports {
   'button': string;
+  'button--success': string;
+  'buttonIcon': string;
+  'buttonSuccess': string;
   'buttonText': string;
+  'button__icon': string;
   'button__text': string;
   'buttons': string;
   'container': string;

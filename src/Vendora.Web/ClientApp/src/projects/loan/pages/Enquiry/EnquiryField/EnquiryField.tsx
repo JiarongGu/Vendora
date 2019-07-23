@@ -19,7 +19,8 @@ const fieldMap: { [key: string]: React.FunctionComponent<DynamicFieldProps> } = 
   number: DynamicField.Number,
   email: DynamicField.Email,
   phone: DynamicField.Phone,
-  suburb: DynamicField.Suburb
+  suburb: DynamicField.Suburb,
+  ['icon-radio']: DynamicField.IconRadio,
 };
 
 export class EnquiryField extends React.Component<EnquiryFieldProps> {

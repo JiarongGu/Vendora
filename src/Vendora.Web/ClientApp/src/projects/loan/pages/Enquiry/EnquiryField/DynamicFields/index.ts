@@ -1,5 +1,6 @@
 import Currency from './Currency';
 import Email from './Email';
+import IconRadio from './IconRadio';
 import Number from './Number';
 import Phone from './Phone';
 import Radio from './Radio';
@@ -15,5 +16,6 @@ export const DynamicField = {
   Phone,
   Email,
   Suburb,
-  Number
+  Number,
+  IconRadio
 };

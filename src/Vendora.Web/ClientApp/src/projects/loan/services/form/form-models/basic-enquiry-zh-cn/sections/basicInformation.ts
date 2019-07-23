@@ -2,7 +2,7 @@ import { FieldDescriptor, FormSection } from '../../../FormModel';
 
 const applicantsField: FieldDescriptor = {
   name: 'number of applicants',
-  type: 'radio',
+  type: 'icon-radio',
   label: '申请人数',
   fieldOptions: [
     {
@@ -30,16 +30,22 @@ const applicantsField: FieldDescriptor = {
 
 const serviceTypeField: FieldDescriptor = {
   name: 'service type',
-  type: 'radio',
+  type: 'icon-radio',
   label: '服务类型',
   fieldOptions: [
     {
       label: '购置新房',
-      value: 'home loan'
+      value: 'home loan',
+      other: {
+        icon: 'home'
+      }
     },
     {
       label: '房屋融资',
-      value: 'refinance'
+      value: 'refinance',
+      other: {
+        icon: 'red-envelope'
+      }
     }
   ],
   validationRules: [
@@ -53,16 +59,5 @@ const serviceTypeField: FieldDescriptor = {
 export const basicInformation: FormSection = {
   name: 'basic information section',
   label: '基本信息',
-  formSections: [
-    {
-      name: 'applicant section',
-      label: '申请人数',
-      fieldDescriptors: [ applicantsField ]
-    },
-    {
-      name: 'service type section',
-      label: '服务类型',
-      fieldDescriptors: [ serviceTypeField ]
-    }
-  ]
+  fieldDescriptors: [applicantsField, serviceTypeField]
 };

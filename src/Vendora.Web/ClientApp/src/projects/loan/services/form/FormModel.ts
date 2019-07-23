@@ -42,5 +42,5 @@ export interface FieldDependency {
 export interface FieldOption {
   label: string;
   value: string | number | boolean;
-  other?: { [key: string]: string };
+  other?: { [key: string]: any };
 }

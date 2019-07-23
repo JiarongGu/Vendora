@@ -1,3 +1,5 @@
+@import (reference) '../../../styles/global.less';
+
 .container {
   display: flex;
   flex-direction: column;
@@ -17,6 +19,8 @@
 .button {
   display: flex;
   align-items: center;
+  height: 50px;
+  font-size: 18px;
 
   &:not(:first-child) {
    margin-top: 10px;
@@ -25,11 +29,31 @@
   &__text {
     flex: 1;
   }
+
+  &__icon {
+    font-size: 24px;
+  }
+
+  &--success {
+    color: #fff;
+    background: @color-success;
+
+    &:focus, &:hover {
+      color: #fff;
+      background: @color-success;
+    }
+
+    &:active {
+      color: #fff;
+      background: @color-midGreen--darker;
+    }
+  }
 }
 
 .fields {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  height: calc(100% - 100px);
+  height: calc(100% - 160px);
+  padding: 90px 0;
 }

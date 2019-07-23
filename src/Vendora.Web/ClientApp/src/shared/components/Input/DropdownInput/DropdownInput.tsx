@@ -16,7 +16,7 @@ function DropdownInput(props, ref) {
     <Dropdown overlay={menu} trigger={['click']}>
       <a className={styles.dlabel + ' ant-dropdown-link'} href="#">
         <span>Click me </span>
-        <Icon type="down" />
+        <Icon type={'down'} />
       </a>
     </Dropdown>
   );
