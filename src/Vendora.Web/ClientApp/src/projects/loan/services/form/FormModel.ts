@@ -25,7 +25,6 @@ export interface FieldDescriptor {
   defaultValues?: Array<string>;
   placeholder?: string;
   hint?: string;
-  icon?: string;
   information?: string;
   order?: number;
   fieldDependencies?: Array<FieldDependency>;
@@ -43,4 +42,5 @@ export interface FieldDependency {
 export interface FieldOption {
   label: string;
   value: string | number | boolean;
+  other?: { [key: string]: string };
 }
