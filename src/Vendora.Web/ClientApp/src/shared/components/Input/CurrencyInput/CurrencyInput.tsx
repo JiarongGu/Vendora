@@ -1,6 +1,7 @@
 import { Icon, Input } from 'antd';
 import * as React from 'react';
 import * as styles from './CurrencyInput.module.less';
+import classNames from 'classnames';
 
 const formatInputCurrency = (value) => {
   if (value === undefined) return '';
@@ -29,7 +30,7 @@ function CurrencyInput(props, ref) {
     <Input
       ref={ref}
       defaultValue={props.defaultValue}
-      className={styles.container}
+      className={classNames(props.className, styles.container)}
       value={display}
       addonBefore={<Icon type={'dollar'} />}
       allowClear={true}

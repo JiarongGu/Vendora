@@ -104,8 +104,8 @@ const creditInformation: FormSection =  {
       type: 'radio',
       label: '其他现有贷款',
       fieldOptions: [
-        { label: '无其他贷款', value: 'true' },
-        { label: '有其他贷款', value: 'false' }],
+        { label: '有其他贷款', value: 'true' },
+        { label: '无其他贷款', value: 'false' }],
       validationRules: [
         { message: '请选择其他贷款信息', required: true }
       ]
@@ -174,11 +174,19 @@ const contactInformation: FormSection = {
       type: 'phone',
       label: '联系电话',
       order: 3
-    },
+    }
+  ]
+};
+
+const contactTimeInformation: FormSection = {
+  name: 'contact time information',
+  label: '最佳联系时间',
+  order: 0,
+  fieldDescriptors: [
     {
       name: 'suitable contact time',
       type: 'multi-check',
-      label: '联系时间',
+      label: '选择联系时间',
       order: 4,
       fieldOptions: [
         { label: '任何时间', value: 'anytime' },
@@ -221,7 +229,7 @@ export const basicEnquiryZhCN: FormModel = {
       {
         label: '联系方式',
         name: 'contact detail',
-        formSections: [contactInformation]
+        formSections: [contactInformation, contactTimeInformation]
       }
     ]
   }

@@ -44,27 +44,29 @@ export const EnquirySectionComponent = ({ form }: FormComponentProps) => {
   return (
     <div className={styles.container}>
       <div className={styles.fields}>
-        {enquirySink.current.fields.map((descriptor) => {
-          if (!isFieldValid(descriptor, enquirySink.fieldValues))
-            return null;
-          const initialValue = enquirySink.fieldValues[descriptor.name];
+        <div>
+          {enquirySink.current.fields.map((descriptor) => {
+            if (!isFieldValid(descriptor, enquirySink.fieldValues))
+              return null;
+            const initialValue = enquirySink.fieldValues[descriptor.name];
 
-          return (
-            <Form.Item className={styles.field} key={descriptor.name}>
-              <h3>{descriptor.label}</h3>
-              {form.getFieldDecorator(descriptor.name, {
-                initialValue,
-                rules: descriptor.validationRules
-              })(
-                <EnquiryField
-                  initialValue={initialValue}
-                  fieldDescriptor={descriptor}
-                  setValue={handelFieldValue}
-                />
-              )}
-            </Form.Item>
-          );
-        })}
+            return (
+              <Form.Item className={styles.field} key={descriptor.name}>
+                <h3>{descriptor.label}</h3>
+                {form.getFieldDecorator(descriptor.name, {
+                  initialValue,
+                  rules: descriptor.validationRules
+                })(
+                  <EnquiryField
+                    initialValue={initialValue}
+                    fieldDescriptor={descriptor}
+                    setValue={handelFieldValue}
+                  />
+                )}
+              </Form.Item>
+            );
+          })}
+        </div>
       </div>
       <div className={styles.buttons}>
         <Button className={classNames(styles.button, styles.buttonSuccess)} onClick={handelNext}>
