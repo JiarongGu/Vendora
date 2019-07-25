@@ -1,35 +1,42 @@
 import { Icon, Input } from 'antd';
-import * as React from 'react';
-import * as styles from './CurrencyInput.module.less';
 import classNames from 'classnames';
+import * as React from 'react';
 
-const formatInputCurrency = (value) => {
-  if (value === undefined) return '';
-  value = value.replace(/[^\d]/g, '');
-  const origin = value === '' ? value : Number(value.split(',').join('')) + '';
+import * as styles from './CurrencyInput.module.less';
+
+interface CurrencyInputProps {
+  onChange: (input: number) => void;
+  defaultValue?: number;
+  className?: string;
+}
+
+const formatInputCurrency = (value: number | undefined) => {
+  if (!value) return '$0';
+
   return new Intl.NumberFormat('en-AU', {
     style: 'currency',
     currency: 'AUD',
     minimumFractionDigits: 0
-  }).format(Number(origin));
+  }).format(value);
 };
 
-const formatOutputValue = (display) => {
+const formatOutputValue = (display: string) => {
   return Number(display.replace(/[\$,]/g, '')) || 0;
 };
 
-function CurrencyInput(props, ref) {
-  const [display, setDisplay] = React.useState('');
+const CurrencyInput: React.RefForwardingComponent<Input, CurrencyInputProps> = (props, ref) => {
+  const defaultValue = formatInputCurrency(props.defaultValue);
+  const [display, setDisplay] = React.useState(defaultValue);
+
   const onchange = (input: string) => {
-    const newDisplay = formatInputCurrency(input);
-    setDisplay(newDisplay);
-    props.onChange(formatOutputValue(newDisplay));
+    const value = formatOutputValue(input);
+    setDisplay(formatInputCurrency(value));
+    props.onChange(value);
   };
 
   return (
     <Input
       ref={ref}
-      defaultValue={props.defaultValue}
       className={classNames(props.className, styles.container)}
       value={display}
       addonBefore={<Icon type={'dollar'} />}
@@ -37,6 +44,6 @@ function CurrencyInput(props, ref) {
       onChange={(e) => onchange(e.target.value)}
     />
   );
-}
+};
 
 export default React.forwardRef(CurrencyInput);
