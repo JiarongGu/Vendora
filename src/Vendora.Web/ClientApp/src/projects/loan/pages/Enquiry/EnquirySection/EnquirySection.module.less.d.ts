@@ -10,6 +10,7 @@ interface CssExports {
   'button__text': string;
   'buttons': string;
   'container': string;
+  'field': string;
   'fields': string;
 }
 

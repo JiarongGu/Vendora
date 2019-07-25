@@ -38,6 +38,7 @@ export const EnquirySectionComponent = ({ form }: FormComponentProps) => {
 
   const handelFieldValue = (name, value) => {
     form.setFieldsValue({ [name]: value });
+    enquirySink.setFieldValues({ [name]: value });
   };
 
   return (
@@ -49,7 +50,7 @@ export const EnquirySectionComponent = ({ form }: FormComponentProps) => {
           const initialValue = enquirySink.fieldValues[descriptor.name];
 
           return (
-            <Form.Item key={descriptor.name}>
+            <Form.Item className={styles.field} key={descriptor.name}>
               <h3>{descriptor.label}</h3>
               {form.getFieldDecorator(descriptor.name, {
                 initialValue,

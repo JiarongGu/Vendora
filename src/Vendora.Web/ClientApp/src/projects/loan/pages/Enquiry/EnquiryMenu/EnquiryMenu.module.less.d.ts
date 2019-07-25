@@ -2,6 +2,7 @@
 
 interface CssExports {
   'container': string;
+  'menu': string;
 }
 
 declare var cssExports: CssExports;

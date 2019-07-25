@@ -52,9 +52,9 @@ const employmentInformation: FormSection = {
     }]
 };
 
-const majorIncomeInformation: FormSection = {
+const incomeInformation: FormSection = {
   name: 'major income',
-  label: '主要收入',
+  label: '收入情况',
   fieldDescriptors: [
     {
       name: 'primary income',
@@ -77,13 +77,7 @@ const majorIncomeInformation: FormSection = {
       fieldDependencies: [
         { name: 'marriage status', values: ['single'] }
       ]
-    }]
-};
-
-const otherIncomeInformation: FormSection = {
-  name: 'other income',
-  label: '其他收入',
-  fieldDescriptors: [
+    },
     {
       name: 'rental income',
       type: 'currency',
@@ -93,26 +87,18 @@ const otherIncomeInformation: FormSection = {
       name: 'total other Incomes',
       type: 'currency',
       label: '其他总收入',
-    }
-  ]
+    }]
 };
 
 const creditInformation: FormSection =  {
-  name: 'credits',
-  label: '信用卡情况',
+  name: 'loans information',
+  label: '贷款信息',
   fieldDescriptors: [
     {
       name: 'total credit card limits',
       type: 'currency',
       label: '信用卡总额度',
-    }
-  ]
-};
-
-const otherLoanInformation: FormSection = {
-  name: 'other loans',
-  label: '其他贷款',
-  fieldDescriptors: [
+    },
     {
       name: 'existing loan',
       type: 'radio',
@@ -129,7 +115,7 @@ const otherLoanInformation: FormSection = {
       type: 'currency',
       label: '每月自住房还款额度',
       fieldDependencies: [
-        { name: 'other loan', values: ['true'] }
+        { name: 'existing loan', values: ['true'] }
       ]
     },
     {
@@ -137,7 +123,7 @@ const otherLoanInformation: FormSection = {
       type: 'currency',
       label: '每月投资还款额度',
       fieldDependencies: [
-        { name: 'other loan', values: ['true'] }
+        { name: 'existing loan', values: ['true'] }
       ]
     },
     {
@@ -145,7 +131,7 @@ const otherLoanInformation: FormSection = {
       type: 'currency',
       label: '每月其他贷款还款额度',
       fieldDependencies: [
-        { name: 'other loan', values: ['true'] }
+        { name: 'existing loan', values: ['true'] }
       ]
     }
   ]
@@ -208,7 +194,7 @@ const contactInformation: FormSection = {
   ]
 };
 
-export const basicEnquiryZhCn: FormModel = {
+export const basicEnquiryZhCN: FormModel = {
   name: 'basic-enquiry',
   language: 'zh-cn',
   metadata: {
@@ -228,10 +214,8 @@ export const basicEnquiryZhCn: FormModel = {
         formSections: [
           familyInformation,
           employmentInformation,
-          majorIncomeInformation,
-          otherIncomeInformation,
-          creditInformation,
-          otherLoanInformation
+          incomeInformation,
+          creditInformation
         ],
       },
       {

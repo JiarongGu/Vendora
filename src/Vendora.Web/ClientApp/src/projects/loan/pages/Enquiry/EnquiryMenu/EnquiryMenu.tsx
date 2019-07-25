@@ -11,6 +11,7 @@ const getSubMenuSection = (section: FormSection, open: (key: string) => void) =>
     return (
       <Menu.SubMenu
         key={section.name}
+        className={styles.menu}
         title={section.label}
         onTitleClick={() => open(section.name)}
       >
@@ -19,7 +20,7 @@ const getSubMenuSection = (section: FormSection, open: (key: string) => void) =>
     );
   } else {
     return (
-      <Menu.Item key={section.name} onClick={() => open(section.name)}>
+      <Menu.Item className={styles.menu} key={section.name} onClick={() => open(section.name)}>
         {section.label}
       </Menu.Item>
     );

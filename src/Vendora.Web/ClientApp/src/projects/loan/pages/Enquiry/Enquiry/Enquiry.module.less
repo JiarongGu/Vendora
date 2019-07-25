@@ -1,44 +1,21 @@
 .container {
   display: flex;
-  width: 1080px;
   flex-direction: row;
-  margin: 0 auto;
-  .nav{
-    flex: 0 0 auto;
+
+  .nav {
     padding: 40px 0 60px 60px;
     background: #777;
     color: #fff
   }
-  .form{
-    flex: 1 0 auto;
+
+  .form {
     padding: 0px 60px;
+    width: 720px;
     height: calc(100vh - 80px);
     overflow: hidden;
-    .form-outter{
-      display: block;
-      .section-container{
-        padding: 40px 0;
-        position: relative;
-        height: calc(100vh - 80px);
-        .nav-buton{
-          position: absolute;
-          bottom: 20px;
-          background-color: #798c5d;
-          color: #fff;
-          font-size: 16px;
-          line-height: 45px;
-          height: 45px;
-          padding: 0 40px;
-          &.prev {
-            left: 0;
-            color: #798c5d;
-            background-color: #fff;
-          }
-          &.next {
-            right: 0;
-          }
-        }
-      }
-    }
+  }
+
+  .side {
+    width: 100px;
   }
 }

@@ -4,3 +4,30 @@
   width: 300px;
   flex-direction: column;
 }
+
+.menu>:global.ant-menu-submenu-title {
+  height: 52px !important;
+  line-height: 52px !important;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.menu:global.ant-menu-item {
+  height: 52px !important;
+  line-height: 52px !important;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.menu:global.ant-menu-submenu-selected {
+  color: #4d4c53;
+  background: #bcbfb4;
+}
+
+.menu:global.ant-menu-item-selected {
+  color: #fff;
+}
+
+.menu:global.ant-menu-item-selected:after {
+  border-right: 3px solid #777
+}

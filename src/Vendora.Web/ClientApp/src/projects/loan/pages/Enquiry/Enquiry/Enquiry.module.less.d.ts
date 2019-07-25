@@ -3,15 +3,8 @@
 interface CssExports {
   'container': string;
   'form': string;
-  'form-outter': string;
-  'formOutter': string;
   'nav': string;
-  'nav-buton': string;
-  'navButon': string;
-  'next': string;
-  'prev': string;
-  'section-container': string;
-  'sectionContainer': string;
+  'side': string;
 }
 
 declare var cssExports: CssExports;
