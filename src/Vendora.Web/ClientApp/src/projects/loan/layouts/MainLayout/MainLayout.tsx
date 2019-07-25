@@ -47,7 +47,7 @@ export class MainLayout extends React.PureComponent<MainLayoutProps> {
             <Route exact={true} path={[`/${commonSink.languageRegex}`, '/']} component={Home} />
             <Route path={'*'} component={Error404} />
           </Switch>
-          <Footer />
+          {/* <Footer /> */}
         </div>
       </Layout>
     );
