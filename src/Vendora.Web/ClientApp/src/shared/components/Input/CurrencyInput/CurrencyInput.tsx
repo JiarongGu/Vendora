@@ -5,13 +5,13 @@ import * as React from 'react';
 import * as styles from './CurrencyInput.module.less';
 
 interface CurrencyInputProps {
-  onChange: (input: number) => void;
+  onChange: (input: number | undefined) => void;
   defaultValue?: number;
   className?: string;
 }
 
 const formatInputCurrency = (value: number | undefined) => {
-  if (!value) return '$0';
+  if (value === undefined) return '';
 
   return new Intl.NumberFormat('en-AU', {
     style: 'currency',
@@ -31,7 +31,7 @@ const CurrencyInput: React.RefForwardingComponent<Input, CurrencyInputProps> = (
   const onchange = (input: string) => {
     const value = formatOutputValue(input);
     setDisplay(formatInputCurrency(value));
-    props.onChange(value);
+    props.onChange(value || undefined);
   };
 
   return (
