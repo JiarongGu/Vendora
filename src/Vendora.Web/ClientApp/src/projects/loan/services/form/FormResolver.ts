@@ -12,6 +12,14 @@ export interface SectionMap {
   map: string;
 }
 
+export interface ActiveSection {
+  keys: Array<string>;
+  fields: Array<FieldDescriptor>;
+  name?: string;
+  next?: string;
+  previous?: string;
+}
+
 export class FormResolver {
   public sectionMap: { [key: string]: string } = {};
   public sections: Array<string>;
@@ -31,6 +39,39 @@ export class FormResolver {
     this.nameMap = nameMap;
     this.fieldMap = fieldMap;
     this.sectionMap = sectionMap;
+  }
+
+  public getActiveSection(name: string): ActiveSection {
+    const keys: Array<string> = [];
+    const fields: Array<FieldDescriptor> = [];
+    let previous: string | undefined;
+    let next: string | undefined;
+
+    if (name) {
+      const mappedSection = this.sectionMap[name];
+      if (mappedSection !== name) {
+        return this.getActiveSection(mappedSection);
+      }
+
+      const mapOrder = this.orderMap[name];
+
+      previous = this.sections[mapOrder - 1];
+      next = this.sections[mapOrder + 1];
+
+      const mapFields = this.fieldMap[name];
+      if (mapFields) {
+        fields.push(...mapFields);
+      }
+
+      keys.push(name);
+
+      const mapKeys = this.nameMap[name];
+      if (mapKeys) {
+        keys.push(...mapKeys);
+      }
+    }
+
+    return { fields, keys, name, previous, next };
   }
 
   private formatOrderMap(formSections: Array<FormSection>) {
