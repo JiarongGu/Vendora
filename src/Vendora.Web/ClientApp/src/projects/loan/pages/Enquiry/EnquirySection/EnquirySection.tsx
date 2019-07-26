@@ -6,7 +6,7 @@ import { useSink } from 'redux-sink';
 import { FieldDescriptor } from '@loan/services/form/FormModel';
 import { FormComponentProps } from 'antd/lib/form';
 import { EnquiryField } from '../EnquiryField';
-import { EnquirySink } from '../EnquirySink';
+import { EnquirySink, SectionStatus } from '../EnquirySink';
 import * as styles from './EnquirySection.module.less';
 
 function isFieldValid(descriptor: FieldDescriptor, fieldValues: { [key: string]: any }): boolean {
@@ -29,8 +29,8 @@ export const EnquirySectionComponent = ({ form }: FormComponentProps) => {
 
   const handelNext = () => {
     form.validateFields((errors) => {
-      if (!errors) {
-        enquirySink.setFieldValues(form.getFieldsValue());
+      if (!errors && current.name) {
+        enquirySink.setSectionStatus(current.name, SectionStatus.Completed);
         enquirySink.openSection(current.next!);
       }
     });
