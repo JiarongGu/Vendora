@@ -18,7 +18,7 @@ delete window.__PRELOADED_STATE__;
 const history = createBrowserHistory();
 const store = SinkFactory.createStore({
   preloadedState: { ...preloadedState },
-  devtoolOptions: { devToolCompose: composeWithDevTools }
+  devToolOptions: { devToolCompose: composeWithDevTools }
 });
 
 // setup location change event
