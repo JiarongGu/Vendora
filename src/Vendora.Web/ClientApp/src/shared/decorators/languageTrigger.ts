@@ -15,5 +15,5 @@ export const languageTrigger = (target: any, name: string, descriptor: PropertyD
     }
   };
 
-  return trigger('commonSink/language', { fireOnInit: true })(target, name, descriptor);
+  return trigger('commonSink/language')(target, name, descriptor);
 };

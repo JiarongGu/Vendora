@@ -15,5 +15,5 @@ export const locationTrigger = (pathRegex: string) =>
       }
     };
 
-    return trigger('LOCATION_CHANGE', { fireOnInit: true })(target, name, descriptor);
+    return trigger('LOCATION_CHANGE')(target, name, descriptor);
   };
