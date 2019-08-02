@@ -28,7 +28,7 @@ export default createServerRenderer(
     HttpClient.defaultConfig = config;
 
     // Parpare store
-    const store = SinkFactory.createStore();
+    const store = SinkFactory.createStore({ effectTrace: true });
 
     // load all chunk components
     await Loadable.preloadAll();
@@ -38,7 +38,7 @@ export default createServerRenderer(
       type: 'LOCATION_CHANGE',
       payload: { pathname: urlAfterBasename }
     };
-    await SinkFactory.activeTrigger(locationAction);
+    await SinkFactory.activateTrigger(locationAction);
 
     // Prepare an instance of the application and perform an initial render that will
     const routerContext: StaticRouterContext = { url: undefined };
@@ -52,7 +52,7 @@ export default createServerRenderer(
     );
 
     // ensure all effect task completed
-    await Promise.all(SinkFactory.effectTasks);
+    await Promise.all(SinkFactory.getEffectTasks());
 
     // load data for current url
     await params.domainTasks;

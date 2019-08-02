@@ -3,7 +3,7 @@ import { SinkFactory, trigger } from 'redux-sink';
 
 export const languageTrigger = (target: any, name: string, descriptor: PropertyDescriptor) => {
   // initialize commonSink;
-  SinkFactory.sink(CommonSink);
+  SinkFactory.getSink(CommonSink);
 
   let language = '';
   const method = descriptor.value;
